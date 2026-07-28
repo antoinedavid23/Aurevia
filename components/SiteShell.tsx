@@ -15,7 +15,7 @@ const nav = [
 ];
 
 export function Logo() {
-  return <Link href="/" className="logo" aria-label="Accueil AUREVIA"><Image src="/images/brand/aurevia-logo-primary.png" width={420} height={420} priority alt="AUREVIA Private Concierge"/></Link>;
+  return <Link href="/" className="logo" aria-label="Accueil AUREVIA"><Image src="/images/brand/aurevia-logo-transparent-gold.png" width={420} height={420} priority alt="AUREVIA Private Concierge"/></Link>;
 }
 
 export function SiteShell({ children }: { children: React.ReactNode }) {

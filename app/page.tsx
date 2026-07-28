@@ -12,7 +12,7 @@ export default function Home() {
         <div className="hero-orb" />
         <div className="container hero-content">
           <Reveal className="hero-brand">
-            <Image className="hero-logo" src="/images/brand/aurevia-logo-primary.png" width={720} height={720} priority alt="AUREVIA Private Concierge"/>
+            <Image className="hero-logo" src="/images/brand/aurevia-logo-transparent-gold.png" width={720} height={720} priority alt="AUREVIA Private Concierge"/>
             <h1 className="sr-only">AUREVIA Private Concierge</h1>
             <p className="hero-slogan">L’art de prendre soin de ce qui compte.</p>
             <div className="actions">
