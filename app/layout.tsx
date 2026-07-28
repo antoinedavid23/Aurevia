@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Cinzel, Montserrat } from "next/font/google";
 import { SiteShell } from "@/components/SiteShell";
 import "./globals.css";
 
-const serif = Cormorant_Garamond({subsets:["latin"],variable:"--font-serif",weight:["400","500","600"]});
-const sans = Manrope({subsets:["latin"],variable:"--font-sans"});
+const serif = Cinzel({subsets:["latin"],variable:"--font-serif",weight:["400","500","600"]});
+const sans = Montserrat({subsets:["latin"],variable:"--font-sans",weight:["300","400","500","600"]});
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
