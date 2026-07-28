@@ -19,10 +19,10 @@ const sans = Manrope({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
-  title: { default: "AUREVIA Private Concierge | Gênes & Ligurie", template: "%s | AUREVIA" },
+  title: { default: "AUREVIA | Gestion de propriétés à Gênes et en Ligurie", template: "%s | AUREVIA" },
   description: "Gestion exclusive de propriétés et hospitalité sur mesure à Gênes et en Ligurie.",
   openGraph: {
-    title: "AUREVIA Private Concierge",
+    title: "AUREVIA",
     description: "L’art de prendre soin de ce qui compte.",
     type: "website",
     locale: "fr_FR",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AUREVIA Private Concierge",
+    title: "AUREVIA",
     description: "Gestion exclusive à Gênes et en Ligurie.",
     images: ["/og.png"],
   },

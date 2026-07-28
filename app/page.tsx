@@ -11,8 +11,8 @@ export default function Home(){
  return <>
   <section className="hero hero-aurevia">
    <div className="container hero-content"><Reveal className="hero-brand">
-    <Image className="hero-logo" src="/images/brand/aurevia-logo-transparent-gold.png" width={720} height={720} priority alt="AUREVIA Private Concierge"/>
-    <h1 className="sr-only">AUREVIA Private Concierge</h1>
+    <Image className="hero-logo" src="/images/brand/aurevia-property-logo.svg" width={840} height={168} priority alt="AUREVIA"/>
+    <h1 className="sr-only">AUREVIA</h1>
     <p className="hero-slogan">L’art de prendre soin de ce qui compte.</p>
     <div className="actions"><Link className="button" href="/valutazione">Évaluer mon bien <ArrowRight size={16}/></Link><Link className="button ghost" href="/servizi">Découvrir nos services</Link></div>
     <small>Évaluation confidentielle, gratuite et sans engagement.</small>

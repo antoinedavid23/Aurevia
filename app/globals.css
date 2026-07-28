@@ -65,7 +65,7 @@ header nav{letter-spacing:.065em;text-transform:uppercase;font-size:.67rem}
 .comparison>div,.form-card,.result-panel{border:1px solid rgba(200,161,90,.25)}
 .steps>div{border-top-color:rgba(200,161,90,.5)}
 .final-cta{border-block:1px solid var(--line);background:linear-gradient(135deg,#071019,#0d1b2a 62%,#152637)}
-.final-cta:before{content:"AUREVIA · PRIVATE CONCIERGE";display:block;color:var(--gold);font-size:.63rem;letter-spacing:.28em;margin-bottom:25px}
+.final-cta:before{content:"AUREVIA";display:block;color:var(--gold);font-size:.63rem;letter-spacing:.28em;margin-bottom:25px}
 footer{background:#060d14;border-top-color:var(--line)}
 .social span{width:30px;height:30px;border:1px solid rgba(200,161,90,.4);display:grid;place-items:center;color:var(--gold);font-size:.58rem}
 .cookie{border:1px solid var(--gold)}
@@ -110,7 +110,7 @@ input,select,textarea{font-size:.95rem;line-height:1.5}
 footer .logo{width:180px;height:180px;margin-bottom:8px}
 .mobile-menu>a:not(.logo):not(.button){font-size:clamp(2rem,8vw,3rem);line-height:1.05;letter-spacing:-.01em}
 header>.logo{width:138px;height:92px;overflow:hidden;flex:0 0 138px}
-header>.logo img{display:block;width:88px!important;height:88px!important;max-width:88px!important;object-fit:contain!important;margin:2px auto}
+header>.logo img{display:block;width:136px!important;height:88px!important;max-width:136px!important;object-fit:contain!important;margin:2px auto}
 
 /* Calm, centered home hero */
 .hero-aurevia{min-height:100svh;text-align:center}
@@ -127,7 +127,7 @@ header>.logo img{display:block;width:88px!important;height:88px!important;max-wi
 @media(max-width:900px){
   header{height:80px;padding-inline:22px}
   header>.logo{width:104px;height:78px;flex-basis:104px}
-  header>.logo img{width:74px!important;height:74px!important;max-width:74px!important;margin:2px auto}
+  header>.logo img{width:102px!important;height:74px!important;max-width:102px!important;margin:2px auto}
   .mobile-menu .logo{width:170px;height:170px;margin-bottom:8px}
   .card-grid{gap:24px}
 }
