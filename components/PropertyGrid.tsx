@@ -4,11 +4,11 @@ import { useState } from "react";
 import { properties } from "@/data/content";
 import { PropertyCard } from "@/components/Cards";
 
-const locations = ["Tutte", "Genova", "Portofino", "Santa Margherita Ligure", "Camogli", "Rapallo", "Nervi"];
+const locations = ["Toutes", "Genova", "Portofino", "Santa Margherita Ligure", "Camogli", "Rapallo", "Nervi"];
 
 export function PropertyGrid() {
-  const [location, setLocation] = useState("Tutte");
-  const visible = location === "Tutte" ? properties : properties.filter((property) => property.location === location);
+  const [location, setLocation] = useState("Toutes");
+  const visible = location === "Toutes" ? properties : properties.filter((property) => property.location === location);
 
   return (
     <>
