@@ -1,10 +1,42 @@
 "use client";
-import {useMemo,useState} from "react";import {motion} from "motion/react";import {calculateRevenueEstimate,SimulatorInput} from "@/lib/simulator";import Link from "next/link";
-const initial:SimulatorInput={location:"Genova",type:"Appartement",bedrooms:2,guests:4,area:90,finish:"Attentionto",sea:true,pool:false,terrace:true,parking:false,days:300};
-export function RevenueSimulator(){const [i,setI]=useState(initial);const r=useMemo(()=>calculateRevenueEstimate(i),[i]);const set=(k:keyof SimulatorInput,v:string|number|boolean)=>setI(x=>({...x,[k]:v}));return <div className="simulator-layout"><form className="form-card" onSubmit={e=>e.preventDefault()}>
- <div className="field-row"><label>Località<select value={i.location} onChange={e=>set("location",e.target.value)}>{["Genova","Nervi","Camogli","Rapallo","Santa Margherita Ligure","Portofino","Altra località in Liguria"].map(x=><option key={x}>{x}</option>)}</select></label><label>Type de bien<select value={i.type} onChange={e=>set("type",e.target.value)}>{["Appartement","Penthouse","Villa","Maison indÃ©pendante"].map(x=><option key={x}>{x}</option>)}</select></label></div>
- <div className="field-row"><label>Camere<input type="number" min="1" max="10" value={i.bedrooms} onChange={e=>set("bedrooms",+e.target.value)}/></label><label>Couchages<input type="number" min="1" max="20" value={i.guests} onChange={e=>set("guests",+e.target.value)}/></label></div>
- <div className="field-row"><label>Surface m²<input type="number" min="25" max="1000" value={i.area} onChange={e=>set("area",+e.target.value)}/></label><label>Niveau de finition<select value={i.finish} onChange={e=>set("finish",e.target.value)}>{["Essentiel","Attentionto","Premium","Luxe"].map(x=><option key={x}>{x}</option>)}</select></label></div>
- <label>Disponibilità annuale: {i.days} jours<input type="range" min="60" max="365" value={i.days} onChange={e=>set("days",+e.target.value)}/></label>
- <div className="field-row">{([["sea","Vue mer"],["pool","Piscine"],["terrace","Terrasse"],["parking","Parking"]] as const).map(([k,l])=><label key={k}><span><input type="checkbox" checked={i[k]} onChange={e=>set(k,e.target.checked)}/> {l}</span></label>)}</div></form>
- <motion.aside className="result-panel" key={r.annual} initial={{opacity:.5,y:10}} animate={{opacity:1,y:0}}><p className="eyebrow dark">Estimation indicative</p><small>REVENUS ANNUELS ESTIMÃ‰S</small><strong>€ {r.annual.toLocaleString("it-IT")}</strong><p className="range">€ {r.low.toLocaleString("it-IT")} — {r.high.toLocaleString("it-IT")}</p><div className="result-grid"><div><small>Tarif moyen</small>€ {r.nightly}/notte</div><div><small>Occupation</small>{r.occupancy}%</div></div><p className="demo-note">La stima è puramente indicativa e non costituisce una garanzia di rendimento. La valutazione definitiva richiede un’analisi personalizzata.</p><Link className="button" href="/valutazione">Recevoir une Ã©valuation personnalisÃ©e</Link></motion.aside></div>}
+import {useMemo,useState} from "react";
+import {motion} from "motion/react";
+import Link from "next/link";
+import {calculateRevenueEstimate,SimulatorInput} from "@/lib/simulator";
+
+const initial:SimulatorInput={location:"Gênes",type:"Appartement",bedrooms:2,guests:4,area:90,finish:"Soigné",sea:true,pool:false,terrace:true,parking:false,days:300};
+const euro=(value:number)=>new Intl.NumberFormat("fr-FR",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(value);
+
+export function RevenueSimulator(){
+ const [i,setI]=useState(initial);
+ const r=useMemo(()=>calculateRevenueEstimate(i),[i]);
+ const set=(k:keyof SimulatorInput,v:string|number|boolean)=>setI(x=>({...x,[k]:v}));
+ return <div className="simulator-layout">
+  <form className="form-card" onSubmit={e=>e.preventDefault()}>
+   <p className="eyebrow">Caractéristiques du bien</p>
+   <div className="field-row">
+    <label>Localisation<select value={i.location} onChange={e=>set("location",e.target.value)}>{["Gênes","Nervi","Camogli","Rapallo","Santa Margherita Ligure","Portofino","Autre localité en Ligurie"].map(x=><option key={x}>{x}</option>)}</select></label>
+    <label>Type de bien<select value={i.type} onChange={e=>set("type",e.target.value)}>{["Appartement","Attique","Villa","Maison indépendante"].map(x=><option key={x}>{x}</option>)}</select></label>
+   </div>
+   <div className="field-row"><label>Chambres<input type="number" min="1" max="10" value={i.bedrooms} onChange={e=>set("bedrooms",+e.target.value)}/></label><label>Capacité d’accueil<input type="number" min="1" max="20" value={i.guests} onChange={e=>set("guests",+e.target.value)}/></label></div>
+   <div className="field-row"><label>Surface en m²<input type="number" min="25" max="1000" value={i.area} onChange={e=>set("area",+e.target.value)}/></label><label>Niveau de finition<select value={i.finish} onChange={e=>set("finish",e.target.value)}>{["Essentiel","Soigné","Premium","Luxe"].map(x=><option key={x}>{x}</option>)}</select></label></div>
+   <label>Disponibilité annuelle : {i.days} jours<input type="range" min="60" max="365" value={i.days} onChange={e=>set("days",+e.target.value)}/></label>
+   <div className="field-row">{([["sea","Vue mer"],["pool","Piscine"],["terrace","Terrasse"],["parking","Parking"]] as const).map(([k,l])=><label key={k}><span><input type="checkbox" checked={i[k]} onChange={e=>set(k,e.target.checked)}/> {l}</span></label>)}</div>
+  </form>
+  <motion.aside className="result-panel" key={r.annual} initial={{opacity:.5,y:10}} animate={{opacity:1,y:0}}>
+   <p className="eyebrow dark">Projection indicative</p>
+   <small>Revenus annuels estimés</small><strong>{euro(r.annual)}</strong>
+   <p className="range">{euro(r.low)} — {euro(r.high)}</p>
+   <div className="result-grid">
+    <div><small>Tarif moyen par nuit</small>{euro(r.nightly)}</div>
+    <div><small>Taux d’occupation</small>{r.occupancy}%</div>
+    <div><small>Nuits réservées estimées</small>{r.bookedNights}</div>
+    <div><small>Moyenne mensuelle</small>{euro(r.monthlyAverage)}</div>
+    <div><small>Haute saison</small>{euro(r.seasonHigh)}/nuit</div>
+    <div><small>Basse saison</small>{euro(r.seasonLow)}/nuit</div>
+   </div>
+   <p className="demo-note">Cette projection est purement indicative et ne constitue pas une garantie de revenus. L’estimation définitive nécessite une analyse personnalisée du bien, de sa saisonnalité et de son positionnement.</p>
+   <Link className="button" href="/valutazione">Recevoir une évaluation personnalisée</Link>
+  </motion.aside>
+ </div>;
+}

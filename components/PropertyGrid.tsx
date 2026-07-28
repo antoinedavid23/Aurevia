@@ -4,7 +4,7 @@ import { useState } from "react";
 import { properties } from "@/data/content";
 import { PropertyCard } from "@/components/Cards";
 
-const locations = ["Toutes", "Genova", "Portofino", "Santa Margherita Ligure", "Camogli", "Rapallo", "Nervi"];
+const locations = ["Toutes", "Gênes", "Portofino", "Santa Margherita Ligure", "Camogli", "Rapallo", "Nervi"];
 
 export function PropertyGrid() {
   const [location, setLocation] = useState("Toutes");
@@ -12,7 +12,7 @@ export function PropertyGrid() {
 
   return (
     <>
-      <div className="property-filters" aria-label="Filtra le proprietà per località">
+      <div className="property-filters" aria-label="Filtrer les propriétés par localisation">
         {locations.map((item) => (
           <button
             key={item}
