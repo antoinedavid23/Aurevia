@@ -105,9 +105,9 @@ header nav{font-family:var(--font-sans);font-size:.68rem;line-height:1.2;letter-
 blockquote{font-size:clamp(1.5rem,2.3vw,2rem);line-height:1.35;letter-spacing:-.01em}
 label{font-size:.76rem;line-height:1.45;letter-spacing:.025em;font-weight:500}
 input,select,textarea{font-size:.95rem;line-height:1.5}
-.logo{width:150px;height:72px;overflow:hidden;display:grid;place-items:center}
-.logo img{width:170%;max-width:none;height:auto;object-fit:contain}
-footer .logo{width:180px;height:100px;margin-bottom:8px}
+.logo{width:148px;height:82px;overflow:visible;display:grid;place-items:center}
+.logo img{width:100%;height:100%;max-width:100%;object-fit:contain}
+footer .logo{width:180px;height:180px;margin-bottom:8px}
 .mobile-menu>a:not(.logo):not(.button){font-size:clamp(2rem,8vw,3rem);line-height:1.05;letter-spacing:-.01em}
 
 /* Calm, centered home hero */
@@ -124,8 +124,8 @@ footer .logo{width:180px;height:100px;margin-bottom:8px}
 
 @media(max-width:900px){
   header{height:80px;padding-inline:22px}
-  .logo{width:132px;height:64px}
-  .mobile-menu .logo{width:170px;height:92px;margin-bottom:16px}
+  .logo{width:112px;height:72px}
+  .mobile-menu .logo{width:170px;height:170px;margin-bottom:8px}
   .card-grid{gap:24px}
 }
 @media(max-width:600px){
