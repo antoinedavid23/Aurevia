@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import {ArrowRight,ShieldCheck} from "lucide-react";
-import {properties,services,testimonials} from "@/data/content";
+import {properties,services} from "@/data/content";
 import {Reveal} from "@/components/Reveal";
 import {PropertyCard,ServiceCard} from "@/components/Cards";
+import {MethodJourney,ReviewCards} from "@/components/InteractiveSections";
 
 const promises=["Discrétion absolue","Gestion complète","Valeur optimisée","Hospitalité d’excellence","Accompagnement dédié"];
 
@@ -37,9 +38,9 @@ export default function Home(){
 
   <section className="section ivory"><div className="container"><Reveal><p className="eyebrow dark">Collection de démonstration</p><h2>Propriétés sélectionnées</h2></Reveal><div className="card-grid three">{properties.slice(0,3).map(p=><PropertyCard key={p.slug} property={p}/>)}</div><p className="demo-note">Images et propriétés présentées à titre démonstratif.</p></div></section>
 
-  <section className="section process"><div className="container"><Reveal><p className="eyebrow">Notre méthode</p><h2>Un service complet en quatre étapes</h2></Reveal><div className="steps">{["Découverte de la propriété","Définition de la stratégie","Préparation et valorisation","Gestion de chaque détail"].map((x,i)=><div key={x}><span>0{i+1}</span><h3>{x}</h3></div>)}</div></div></section>
+  <section className="section process"><div className="container"><Reveal><p className="eyebrow">Notre méthode</p><h2>Un accompagnement clair, de la première visite au pilotage quotidien</h2></Reveal><MethodJourney/></div></section>
 
-  <section className="section ivory"><div className="container"><Reveal><p className="eyebrow dark">La confiance, racontée</p><h2>Une présence discrète et constante</h2></Reveal><div className="card-grid three">{testimonials.map(t=><blockquote key={t.place}>“{t.quote}”<footer>— Propriétaire, {t.place}</footer></blockquote>)}</div><p className="demo-note">Témoignages de démonstration à remplacer par des avis vérifiés.</p></div></section>
+  <section className="section ivory"><div className="container"><Reveal><p className="eyebrow dark">La confiance, racontée</p><h2>Une présence discrète et constante</h2></Reveal><ReviewCards/><p className="demo-note">Les portraits et avis définitifs seront publiés uniquement après accord écrit et vérification de leur provenance.</p></div></section>
 
   <section className="section final-cta"><ShieldCheck/><h2>Votre propriété mérite une gestion à sa hauteur</h2><p>Échangeons sur votre bien et construisons une solution sur mesure.</p><Link className="button" href="/valutazione">Demander une évaluation privée</Link></section>
  </>;

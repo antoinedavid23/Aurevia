@@ -3,7 +3,7 @@ export type Property={slug:string;name:string;location:string;bedrooms:number;gu
 
 export const services:Service[]=[
  {slug:"gestione-proprieta",title:"Gestion de propriété",short:"Un interlocuteur unique pour coordonner chaque étape opérationnelle.",number:"01"},
- {slug:"concierge",title:"Conciergerie privée",short:"Des demandes sélectionnées et une assistance entièrement sur mesure.",number:"02"},
+ {slug:"concierge",title:"Assistance sur mesure",short:"Des demandes sélectionnées et une assistance entièrement personnalisée.",number:"02"},
  {slug:"accoglienza-voyageurs",title:"Accueil des voyageurs",short:"Une arrivée impeccable, personnalisée et discrète.",number:"03"},
  {slug:"pulizie-biancheria",title:"Ménage et linge",short:"Des standards élevés et un contrôle après chaque séjour.",number:"04"},
  {slug:"manutenzione",title:"Maintenance",short:"Prévention, interventions et réseau local de confiance.",number:"05"},
@@ -23,12 +23,13 @@ export const properties:Property[]=[
 
 export const experiences=[
  ["yacht-e-boat","Yacht privé","La côte ligure vue depuis la mer, avec des itinéraires conçus sur demande."],
+ ["jet-prive","Jet privé","Vols privés et transferts aéroport coordonnés selon votre itinéraire."],
  ["chef-privato","Chef privé","Une table intime inspirée par les saveurs de la Ligurie."],
  ["transfer-privato","Transfert privé","Des déplacements coordonnés avec confort et discrétion."],
  ["esperienze-locali","Expériences locales","Des lieux, maisons et rencontres soigneusement sélectionnés."],
  ["wellness","Bien-être","Des soins et moments de détente directement dans la propriété."],
  ["eventi-privati","Événements privés","Des occasions orchestrées avec attention jusque dans les détails."],
-].map(([slug,title,short],i)=>({slug,title,short,tone:i+1,image:["/images/experiences/yacht.webp","/images/experiences/private-chef.webp","/images/experiences/private-transfer.webp","/images/experiences/liguria-tour.webp","/images/experiences/wellness.webp","/images/experiences/private-event.webp"][i]}));
+].map(([slug,title,short],i)=>({slug,title,short,tone:i+1,image:["/images/experiences/yacht.webp","/images/experiences/private-transfer.webp","/images/experiences/private-chef.webp","/images/experiences/private-transfer.webp","/images/experiences/liguria-tour.webp","/images/experiences/wellness.webp","/images/experiences/private-event.webp"][i]}));
 
 export const testimonials=[
  {quote:"Un service précis, discret et toujours présent.",place:"Portofino"},

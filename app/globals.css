@@ -14,7 +14,7 @@ form{display:grid;gap:18px}.field-row{display:grid;grid-template-columns:1fr 1fr
 .image-photo{background-size:cover;background-position:center;position:relative}
 .image-photo:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(7,16,25,.82))}
 .image-photo span{position:relative}
-.home-owner{background-image:url("/images/home/owner-trust.webp")}
+.home-owner{background-image:url("/images/home/key-detail.webp");background-position:center 62%}
 .about-genova{background-image:url("/images/about/genova-architecture.webp")}
 .service-card-image{background-size:cover;background-position:center;display:flex;flex-direction:column;justify-content:flex-end;min-height:390px}
 .service-card-image h3{margin:10px 0 8px}.service-card-image p{margin:0;max-width:310px}
@@ -192,3 +192,42 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .offer-card .button{margin-top:20px}
 @media(max-width:900px){.offers-grid{grid-template-columns:1fr}.offer-head{align-items:flex-end}}
 @media(max-width:600px){.offer-head{display:block}.offer-head strong{display:block;margin-top:12px}.offer-card{padding:26px 22px}}
+
+/* Complete annotation pass */
+.hero-aurevia{background-position:center 42%}
+.hero-aurevia:after{background:linear-gradient(90deg,rgba(4,10,16,.72) 0%,rgba(4,10,16,.28) 52%,rgba(4,10,16,.08) 100%),linear-gradient(180deg,rgba(7,16,25,.12),rgba(7,16,25,.42))}
+.hero-logo-crop{margin-bottom:-30px}
+.hero-slogan{font-family:var(--font-serif);font-size:clamp(1.25rem,2.1vw,1.75rem);font-weight:500;line-height:1.25;letter-spacing:.15em;margin-top:0;text-shadow:0 2px 18px rgba(0,0,0,.4)}
+.language-selector{position:relative;color:var(--gold)}
+.language-selector summary{display:flex;align-items:center;gap:5px;cursor:pointer;list-style:none;padding:8px 0}
+.language-selector summary::-webkit-details-marker{display:none}
+.language-selector>div{position:absolute;right:0;top:38px;width:170px;padding:8px;background:#09131df5;border:1px solid var(--line);box-shadow:0 18px 45px #0008}
+.language-selector button{display:flex;width:100%;justify-content:space-between;border:0;background:transparent;color:var(--ivory);padding:9px 10px;text-align:left;font-size:.7rem}
+.language-selector button:hover{background:rgba(200,161,90,.12)}.language-selector button span{opacity:.64}
+.social a{width:34px;height:34px;border:1px solid rgba(200,161,90,.4);display:grid;place-items:center;color:var(--gold)}
+.social a:hover{background:var(--gold);color:var(--midnight)}
+.service-card{overflow:hidden;padding:0;border-color:rgba(200,161,90,.28)}
+.service-card-image{justify-content:space-between}
+.service-card-top{display:flex;justify-content:space-between;align-items:center;padding:24px 26px}
+.service-card-top svg{position:static}
+.service-card-copy{padding:54px 26px 28px;background:linear-gradient(180deg,transparent,rgba(5,12,18,.95))}
+.service-card-copy h3{margin:0 0 10px}.service-card-copy p{min-height:3.2em;margin-bottom:22px}
+.service-card-copy small{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--soft-gold)}
+.estimate-card{position:relative;border:1px solid rgba(200,161,90,.35);box-shadow:0 26px 70px rgba(0,0,0,.24);overflow:hidden}
+.estimate-card:before{content:"";position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,var(--gold),var(--soft-gold),transparent)}
+.estimate-card>strong{font-size:clamp(2.5rem,4vw,4rem);letter-spacing:-.035em}
+.method-journey{display:grid;grid-template-columns:1.15fr .85fr;gap:52px;margin-top:58px;border-top:1px solid var(--line);padding-top:34px}
+.method-tabs{display:grid}.method-tabs button{display:grid;grid-template-columns:42px 1fr auto;align-items:center;gap:18px;border:0;border-bottom:1px solid rgba(200,161,90,.18);background:transparent;color:var(--ivory);padding:22px 5px;text-align:left}
+.method-tabs button span,.method-detail>span{color:var(--gold);font-size:.65rem;letter-spacing:.12em}.method-tabs button strong{font-family:var(--font-serif);font-size:1.25rem;font-weight:500}.method-tabs button small{opacity:.55}.method-tabs button[aria-selected="true"]{padding-left:18px;background:linear-gradient(90deg,rgba(200,161,90,.12),transparent)}
+.method-detail{padding:34px;border:1px solid var(--line);align-self:start;min-height:360px}.method-detail h3{font-size:2rem;margin:18px 0}.method-detail p{color:#bdc4c6}.method-detail ul{list-style:none;padding:0;display:grid;gap:12px}.method-detail li{display:flex;align-items:center;gap:10px}.method-detail li svg{color:var(--gold)}
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:50px}.review-card{padding:28px;border:1px solid rgba(13,27,42,.16);background:#fff8}.review-head{display:flex;align-items:center;gap:13px}.review-avatar{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:var(--gold);font-family:var(--font-serif);font-size:1.1rem}.review-head strong,.review-head span{display:block}.review-head span{font-size:.72rem;color:#74766f}.review-stars{display:flex;gap:4px;color:var(--gold);margin:23px 0 8px}.review-card blockquote{border:0;padding:0;font-size:1.35rem;min-height:150px}.review-card>small{display:block;color:#817b71;border-top:1px solid #ded5c7;padding-top:15px;font-size:.65rem}
+.values-story{display:grid;grid-template-columns:.75fr 1.25fr;gap:70px;margin-top:55px}.values-intro{font-family:var(--font-serif);font-size:1.55rem;color:#c7ced0}.values-accordion details{border-top:1px solid var(--line);padding:22px 0}.values-accordion summary{list-style:none;cursor:pointer;font-family:var(--font-serif);font-size:1.8rem}.values-accordion summary span{display:inline-block;width:50px;color:var(--gold);font-family:var(--font-sans);font-size:.64rem}.values-accordion p{margin:18px 0 0 50px;color:#b9c0c2}
+.final-cta{background:linear-gradient(90deg,rgba(5,12,18,.88),rgba(5,12,18,.55)),url("/images/home/genova-night.webp") center/cover no-repeat}
+.final-cta:before{content:"AUREVIA";color:var(--gold)}
+.page-hero-image h1{max-width:19ch}.experience-card h3{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.form-hint{font-size:.77rem;color:#aeb6b9;line-height:1.65;margin:-8px 0 12px}.simulator-subhead{margin-top:22px}
+.amenities-checks{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.amenities-checks>span{grid-column:1/-1;font-size:.72rem;letter-spacing:.06em}.amenities-checks label{display:flex;grid-template-columns:auto 1fr;align-items:center;gap:8px}.amenities-checks input{width:auto}
+.admin-layout{display:grid;grid-template-columns:1fr 1fr;gap:34px}.admin-list h2,.admin-layout .form-card h2{font-size:2rem;margin-bottom:28px}.admin-list article{display:flex;justify-content:space-between;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}.admin-list article span{color:var(--gold);font-size:.68rem;letter-spacing:.12em}.admin-list article h3{margin:5px 0}.admin-list article p{color:#aeb6b9}.admin-list button{align-self:center;background:transparent;color:var(--gold);border:1px solid var(--line);padding:10px}
+.property-card:hover,.experience-card:hover,.offer-card:hover{transform:none!important}.service-card-image,.property-image,.experience-card{background-size:cover!important}
+@media(max-width:900px){.method-journey,.values-story,.admin-layout{grid-template-columns:1fr}.review-grid{grid-template-columns:1fr}.method-detail{min-height:auto}.hero-slogan{font-size:1.18rem}.language-selector{display:none}}
+@media(max-width:600px){.hero-logo-crop{margin-bottom:-18px}.hero-slogan{font-size:1.08rem;line-height:1.35;letter-spacing:.09em;width:90vw}.method-tabs button{grid-template-columns:34px 1fr}.method-tabs button small{grid-column:2}.method-detail{padding:24px}.amenities-checks{grid-template-columns:1fr}.review-card blockquote{min-height:auto}.service-card-image{min-height:360px}}

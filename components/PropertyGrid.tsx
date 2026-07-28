@@ -1,19 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { properties } from "@/data/content";
 import { PropertyCard } from "@/components/Cards";
 
-const locations = ["Toutes", "Gênes", "Portofino", "Santa Margherita Ligure", "Camogli", "Rapallo", "Nervi"];
-
 export function PropertyGrid() {
   const [location, setLocation] = useState("Toutes");
-  const visible = location === "Toutes" ? properties : properties.filter((property) => property.location === location);
+  const [managed,setManaged]=useState<typeof properties>([]);
+  useEffect(()=>{fetch("/api/properties").then(response=>response.ok?response.json():[]).then(rows=>setManaged(rows.map((row:typeof properties[number],index:number)=>({...row,tone:(index%6)+1})))).catch(()=>setManaged([]));},[]);
+  const collection=useMemo(()=>[...managed,...properties.filter(item=>!managed.some(row=>row.slug===item.slug))],[managed]);
+  const availableLocations=useMemo(()=>["Toutes",...Array.from(new Set(collection.map(item=>item.location)))],[collection]);
+  const visible = location === "Toutes" ? collection : collection.filter((property) => property.location === location);
 
   return (
     <>
       <div className="property-filters" aria-label="Filtrer les propriétés par localisation">
-        {locations.map((item) => (
+        {availableLocations.map((item) => (
           <button
             key={item}
             type="button"
