@@ -1,0 +1,5 @@
+import Link from "next/link";
+import { ArrowUpRight, BedDouble, Users, Bath } from "lucide-react";
+import type { Property, Service } from "@/data/content";
+export function ServiceCard({service}:{service:Service}){return <Link className="service-card service-card-image" style={{backgroundImage:`linear-gradient(180deg,rgba(7,16,25,.16),rgba(7,16,25,.94)),url(${service.image})`}} href={`/servizi/${service.slug}`}><span>{service.number}</span><h3>{service.title}</h3><p>{service.short}</p><ArrowUpRight/></Link>}
+export function PropertyCard({property}:{property:Property}){return <Link className="property-card" href={`/proprieta/${property.slug}`}><div className={`property-image tone-${property.tone}`} style={{backgroundImage:`linear-gradient(180deg,rgba(7,16,25,.02),rgba(7,16,25,.72)),url(${property.image})`}}><span>{property.location}</span></div><h3>{property.name}</h3><div className="facts"><span><BedDouble/> {property.bedrooms}</span><span><Users/> {property.guests}</span><span><Bath/> {property.baths}</span></div></Link>}
