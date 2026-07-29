@@ -22,7 +22,7 @@ export default function Page() {
             <div><h4>Lancement &amp; Booster inclus</h4><ul><li>Audit du bien et de son positionnement</li><li>Création ou optimisation de l’annonce</li><li>Plan tarifaire de lancement</li><li>Conseils décoration et équipements</li><li>Livret d’accueil numérique personnalisé</li><li>Recommandations pour les photos</li></ul></div>
             <div><h4>Gestion quotidienne incluse</h4><ul><li>Gestion des réservations et du calendrier</li><li>Communication voyageurs 7j/7</li><li>Optimisation régulière des tarifs</li><li>Optimisation du taux d’occupation et des durées de séjour</li><li>Organisation des arrivées et départs</li><li>Gestion des incidents</li><li>Coordination ménage et linge</li><li>Suivi des performances et compte rendu</li></ul></div>
           </div>
-          <p className="offer-note">Ménage, linge, consommables et interventions techniques facturés séparément.</p>
+          <p className="offer-note">Ménage, linge, consommables et interventions techniques facturés au réel, séparément, sans marge AUREVIA.</p>
           <Link className="button" href="/valutazione">Choisir la solution Sérénité</Link>
         </article>
         <article className="offer-card offer-card-360">
