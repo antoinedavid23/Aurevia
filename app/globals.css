@@ -506,11 +506,15 @@ input,select,textarea,label,
 
 /* À propos — récit progressif */
 .about-story-heading{
-  grid-template-columns:.8fr 1.2fr;
-  max-width:1040px;
+  grid-template-columns:1fr;
+  max-width:920px;
   margin-inline:auto;
+  text-align:center;
+  justify-items:center;
 }
-.about-story-heading h2{max-width:18ch!important}
+.about-story-heading .eyebrow{width:100%;text-align:center}
+.about-story-heading h2{max-width:18ch!important;margin-inline:auto}
+.about-story-heading>p:last-child{max-width:720px;margin-inline:auto}
 .about-story-shell{height:360vh;position:relative}
 .about-story-sticky{
   position:sticky;
