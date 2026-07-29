@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ArrowRight, BriefcaseBusiness, Camera, ChevronDown, Menu, X } from "lucide-react";
+import { ArrowRight, BriefcaseBusiness, Camera, ChevronDown, LogIn, Menu, X } from "lucide-react";
 
 const nav = [
   ["Services", "/servizi"],
@@ -40,10 +40,10 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   return <>
     <header>
       <Logo/>
-      <nav>{nav.map(([name, href]) => <Link key={href} href={href}>{name}</Link>)}<LanguageSelector/><Link className="button small" href="/valutazione">Évaluer mon bien</Link></nav>
+      <nav>{nav.map(([name, href]) => <Link key={href} href={href}>{name}</Link>)}<LanguageSelector/><Link className="admin-login" href="/administration" aria-label="Se connecter à l’administration"><LogIn size={14}/><span>Connexion</span></Link><Link className="button small" href="/valutazione">Évaluer mon bien</Link></nav>
       <button className="menu-btn" aria-label="Ouvrir le menu" onClick={() => setOpen(true)}><Menu/></button>
     </header>
-    {open && <div className="mobile-menu"><button aria-label="Fermer le menu" onClick={() => setOpen(false)}><X/></button><Logo/>{nav.map(([name, href]) => <Link onClick={() => setOpen(false)} key={href} href={href}>{name}</Link>)}<Link className="button" onClick={() => setOpen(false)} href="/valutazione">Évaluer mon bien</Link></div>}
+    {open && <div className="mobile-menu"><button aria-label="Fermer le menu" onClick={() => setOpen(false)}><X/></button><Logo/>{nav.map(([name, href]) => <Link onClick={() => setOpen(false)} key={href} href={href}>{name}</Link>)}<Link className="mobile-admin-login" onClick={() => setOpen(false)} href="/administration"><LogIn size={18}/> Connexion administrateur</Link><Link className="button" onClick={() => setOpen(false)} href="/valutazione">Évaluer mon bien</Link></div>}
     <main>{children}</main>
     <footer>
       <div className="footer-grid">

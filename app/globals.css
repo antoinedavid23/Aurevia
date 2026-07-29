@@ -93,6 +93,8 @@ h3{font-size:clamp(1.45rem,2vw,1.9rem);line-height:1.12;letter-spacing:-.01em}
 .eyebrow,.breadcrumbs{font-family:var(--font-sans);font-size:.68rem;font-weight:600;line-height:1.5;letter-spacing:.2em}
 .button{font-family:var(--font-sans);font-size:.7rem;line-height:1.2;letter-spacing:.13em}
 header nav{font-family:var(--font-sans);font-size:.68rem;line-height:1.2;letter-spacing:.08em}
+.admin-login{display:inline-flex;align-items:center;gap:7px;color:var(--soft-gold);white-space:nowrap}
+.admin-login svg{flex:0 0 auto}.mobile-admin-login{display:flex!important;align-items:center;gap:10px;color:var(--soft-gold);font-family:var(--font-sans)!important;font-size:.9rem!important;text-transform:uppercase;letter-spacing:.1em;margin-top:auto}
 .section{padding:clamp(82px,9vw,124px) 0}
 .content-section{padding:clamp(72px,8vw,104px) 0}
 .page-hero{padding:clamp(150px,16vw,205px) 0 clamp(76px,8vw,110px)}
