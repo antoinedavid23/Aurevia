@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1785276785453,
+      "tag": "0000_green_lethal_legion",
+      "breakpoints": true
+    }
+  ]
+}

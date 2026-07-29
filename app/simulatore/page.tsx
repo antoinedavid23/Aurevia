@@ -1,0 +1,3 @@
+import {PageHero} from "@/components/PageHero";import {RevenueSimulator} from "@/components/RevenueSimulator";
+export const metadata={title:"Simulateur de revenus locatifs"};
+export default function Page(){return <><PageHero label="Simulateur" title="Découvrez le potentiel de votre propriété" text="Une première projection transparente fondée sur la localisation, la capacité, le standing, les équipements et les périodes disponibles." image="/images/simulator/simulator-background.webp"/><section className="section"><div className="container simulator-intro"><div className="simulator-brand-image" aria-hidden="true"/><RevenueSimulator/></div></section></>}

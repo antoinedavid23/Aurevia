@@ -1,0 +1,3 @@
+import Link from "next/link";
+export function PageHero({label,title,text,image}:{label:string;title:string;text:string;image?:string}){return <section className={`page-hero ${image?"page-hero-image":""}`} style={image?{backgroundImage:`linear-gradient(90deg,rgba(7,16,25,.84),rgba(7,16,25,.18)),url(${image})`}:undefined}><div className="container"><p className="eyebrow">{label}</p><h1>{title}</h1><p>{text}</p></div></section>}
+export function CTA(){return <section className="section final-cta"><h2>Parlons de votre propriété</h2><p>Évaluation confidentielle, gratuite et sans engagement.</p><Link className="button" href="/valutazione">Demander une évaluation privée</Link></section>}
