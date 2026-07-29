@@ -416,7 +416,7 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 
 /* Système typographique AUREVIA — plus éditorial et plus respirant */
 :root{
-  --type-display-tracking:-.012em;
+  --type-display-tracking:.004em;
   --type-display-leading:1.08;
   --type-copy-tracking:.002em;
   --type-copy-leading:1.75;

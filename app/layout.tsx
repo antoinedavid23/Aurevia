@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { DM_Sans, Newsreader } from "next/font/google";
+import { Cinzel, DM_Sans } from "next/font/google";
 import { SiteShell } from "@/components/SiteShell";
 import "./globals.css";
 
-const serif = Newsreader({
+const serif = Cinzel({
   subsets: ["latin"],
   variable: "--font-serif",
   weight: ["400", "500", "600"],
