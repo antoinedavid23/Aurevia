@@ -820,6 +820,35 @@ input,select,textarea,label,
   }
 }
 
+/* Chiffres AUREVIA — même dessin serif que les projections */
+:where(
+  input[type="number"],
+  .estimate-comparison b,
+  .estimate-comparison strong,
+  .estimate-gain b,
+  .estimate-premium>div b,
+  .result-panel strong,
+  .result-panel .range,
+  .result-grid div,
+  .facts span,
+  .form-progress>span,
+  .service-card-top>span,
+  .about-story-number,
+  .method-detail-number,
+  .steps>div>span,
+  .owner-phase-content>span,
+  .admin-kpis strong,
+  .lead-card-top span,
+  .admin-list>article p
+){
+  font-family:var(--font-serif);
+  font-variant-numeric:lining-nums tabular-nums;
+  font-feature-settings:"lnum" 1,"tnum" 1;
+}
+.result-grid small{
+  font-family:var(--font-sans);
+}
+
 /* Page propriétaires */
 .owner-intro-grid,.owner-transparency-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,8vw,110px);align-items:end}
 .owner-intro-grid h2,.owner-transparency-grid h2{max-width:17ch!important}
