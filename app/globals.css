@@ -619,44 +619,44 @@ input,select,textarea,label,
 .contact-heading span{display:block;white-space:nowrap}
 .contact-panel{
   margin:34px 0 30px;
-  border:1px solid var(--line);
-  background:linear-gradient(145deg,rgba(15,43,72,.86),rgba(8,25,40,.9));
-  box-shadow:0 24px 70px rgba(0,0,0,.16);
+  border:0;
+  background:transparent;
+  box-shadow:none;
 }
 .contact-panel-head{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:22px 24px;
+  padding:0 0 18px;
   border-bottom:1px solid var(--line);
 }
 .contact-panel-head small,.contact-panel-head strong{display:block}
 .contact-panel-head small{color:#8e9ba0;font-size:.61rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px}
 .contact-panel-head strong{font-family:var(--font-serif);font-size:1.05rem;font-weight:500;letter-spacing:.05em}
-.contact-panel-head svg{color:var(--gold)}
+.contact-panel-head svg{display:none}
 .contact-details{display:grid;grid-template-columns:1fr;margin:0}
 .contact-details a,.contact-details>div{
   display:grid;
-  grid-template-columns:42px 1fr auto;
-  gap:14px;
+  grid-template-columns:26px 1fr auto;
+  gap:16px;
   align-items:center;
-  min-height:78px;
-  padding:15px 24px;
+  min-height:70px;
+  padding:12px 0;
   border-top:0;
   border-bottom:1px solid var(--line);
 }
-.contact-details>a:hover{background:rgba(200,161,90,.08)}
+.contact-details>a:hover{background:transparent;color:var(--soft-gold)}
 .contact-icon{
-  width:36px;
-  height:36px;
+  width:24px;
+  height:24px;
   display:grid!important;
   place-items:center;
-  border:1px solid rgba(200,161,90,.35);
+  border:0;
   color:var(--gold);
 }
 .contact-details>a>svg:last-child{opacity:.55}
 .contact-details small{font-size:.6rem;letter-spacing:.14em;color:#92a0a7}
-.contact-reassurance{margin:0!important;padding:17px 24px;color:#9eaaaf!important;font-size:.75rem;line-height:1.6!important}
+.contact-reassurance{margin:0!important;padding:16px 0 0;color:#9eaaaf!important;font-size:.75rem;line-height:1.6!important;max-width:54ch}
 
 @media(max-width:800px){
   .about-story-heading,.about-values-heading,.values-manifest{grid-template-columns:1fr}
