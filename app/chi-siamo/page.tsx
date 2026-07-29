@@ -1,13 +1,6 @@
 import Link from "next/link";
 import { PageHero, CTA } from "@/components/PageHero";
-import { ValuesStory } from "@/components/InteractiveSections";
-
-const chapters = [
-  { number: "01", title: "Tout commence par une absence", text: "Une résidence reste silencieuse plusieurs semaines. À distance, le moindre détail devient une question : la maison est-elle prête, entretenue, protégée ? AUREVIA est née de cette réalité. Être la présence fiable qui veille lorsque le propriétaire n’est pas là." },
-  { number: "02", title: "Puis vient la rencontre", text: "Nous ne commençons jamais par un forfait. Nous découvrons un lieu, son histoire, ses usages et les attentes de ceux qui y sont attachés. Cette écoute transforme une simple gestion en accompagnement véritablement personnel." },
-  { number: "03", title: "Le détail devient une signature", text: "Une lumière allumée avant une arrivée tardive. Un linge parfaitement préparé. Un incident résolu sans bruit. Ce sont ces gestes, souvent invisibles, qui préservent la valeur d’un bien et donnent à chaque séjour une impression d’évidence." },
-  { number: "04", title: "La confiance s’installe", text: "Elle se construit dans la constance : une information claire, un interlocuteur disponible, une décision expliquée. Notre ambition n’est pas seulement de gérer une propriété, mais de devenir le prolongement naturel de son propriétaire en Ligurie." },
-];
+import { AboutStoryJourney, ValuesStory } from "@/components/InteractiveSections";
 
 export default function Page() {
   return <>
@@ -19,8 +12,8 @@ export default function Page() {
     </div></section>
 
     <section className="about-story"><div className="container">
-      <div className="about-story-heading"><p className="eyebrow">L’histoire AUREVIA</p><h2>De l’absence à la confiance.</h2><p>Notre histoire ne se résume pas à une date. Elle se raconte à travers quatre convictions devenues notre manière d’agir.</p></div>
-      <div className="about-chapters">{chapters.map((chapter)=><article key={chapter.number} className="about-chapter"><span>{chapter.number}</span><div><h3>{chapter.title}</h3><p>{chapter.text}</p></div></article>)}</div>
+      <div className="about-story-heading"><p className="eyebrow">L’histoire AUREVIA</p><h2>De la distance à la confiance.</h2><p>Une histoire ne vaut que par ce qu’elle transforme. La nôtre raconte comment une présence locale, attentive et silencieuse redonne aux propriétaires la liberté de profiter de leur bien sans en porter chaque contrainte.</p></div>
+      <AboutStoryJourney/>
     </div></section>
 
     <section className="section ivory about-territory"><div className="container split">
@@ -30,7 +23,7 @@ export default function Page() {
 
     <section className="section about-promise"><div className="container"><p className="eyebrow">Notre promesse</p><div className="about-promise-grid"><h2>Rendre l’excellence presque invisible.</h2><div><p>Le véritable luxe ne se montre pas. Il se ressent dans la fluidité d’une arrivée, la précision d’un compte rendu et la sérénité d’un propriétaire qui n’a plus besoin de vérifier.</p><Link className="text-link" href="/proprietari">Découvrir notre accompagnement <span>→</span></Link></div></div></div></section>
 
-    <section className="section about-values"><div className="container"><p className="eyebrow">Nos valeurs</p><h2>Les principes qui donnent du sens à chaque geste.</h2><ValuesStory/></div></section>
+    <section className="section about-values"><div className="container"><div className="about-values-heading"><p className="eyebrow">Nos valeurs</p><h2>Cinq engagements. Une seule manière d’agir.</h2><p>Ces principes ne décorent pas notre discours. Ils orientent chaque décision, chaque partenaire choisi et chaque compte rendu adressé au propriétaire.</p></div><ValuesStory/></div></section>
     <CTA/>
   </>;
 }
