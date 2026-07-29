@@ -413,3 +413,71 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .hero-aurevia:after{z-index:1;background:linear-gradient(90deg,rgba(4,10,16,.16),rgba(4,10,16,.04) 56%,rgba(4,10,16,.02)),linear-gradient(180deg,rgba(4,10,16,.18),rgba(4,10,16,.08) 48%,rgba(4,10,16,.3))}
 @media(max-width:700px){.hero-video{object-position:center center}.hero-aurevia:after{background:linear-gradient(180deg,rgba(4,10,16,.22),rgba(4,10,16,.1) 48%,rgba(4,10,16,.36))}}
 @media(prefers-reduced-motion:reduce){.hero-video{display:none}.hero-aurevia{background-image:url("/images/home/hero-concierge.webp")}}
+
+/* Système typographique AUREVIA — plus éditorial et plus respirant */
+:root{
+  --type-display-tracking:-.012em;
+  --type-display-leading:1.08;
+  --type-copy-tracking:.002em;
+  --type-copy-leading:1.75;
+}
+body{
+  font-family:var(--font-sans);
+  font-weight:400;
+  line-height:var(--type-copy-leading);
+  letter-spacing:var(--type-copy-tracking);
+  font-optical-sizing:auto;
+}
+h1,h2,h3,
+.faq summary,
+.values-accordion summary,
+.offer-promise,
+.service-lead,
+.about-lead{
+  font-family:var(--font-serif);
+  font-optical-sizing:auto;
+  font-kerning:normal;
+  letter-spacing:var(--type-display-tracking);
+  text-wrap:balance;
+}
+h1{
+  font-size:clamp(3rem,5.65vw,6rem);
+  line-height:1.04;
+}
+h2{
+  font-size:clamp(2.4rem,4.15vw,4.35rem);
+  line-height:var(--type-display-leading);
+}
+h3{
+  line-height:1.18;
+  letter-spacing:-.006em;
+}
+p,li,blockquote,figcaption,
+input,select,textarea,label,
+.page-hero p,
+.prose p:not(.eyebrow),
+.content-section p,
+.service-card p,
+.experience-card p,
+.property-card p{
+  font-family:var(--font-sans);
+  line-height:var(--type-copy-leading);
+  letter-spacing:var(--type-copy-tracking);
+}
+.prose p:not(.eyebrow),.content-section p{
+  line-height:1.85;
+}
+.eyebrow,.breadcrumbs,.button,header nav{
+  font-family:var(--font-sans);
+  letter-spacing:.16em;
+}
+
+@media(max-width:600px){
+  :root{
+    --type-display-leading:1.1;
+    --type-copy-leading:1.72;
+  }
+  h1{font-size:clamp(2.7rem,12vw,3.8rem);line-height:1.06}
+  h2{font-size:clamp(2.2rem,10vw,3.05rem)}
+  h3{line-height:1.2}
+}
