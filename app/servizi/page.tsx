@@ -7,7 +7,7 @@ export const metadata = { title: "Services de gestion de propriété" };
 
 export default function Page() {
   return <>
-    <PageHero label="Services" title="Un service complet, conçu sur mesure" text="De la gestion quotidienne à la valorisation du bien, nous coordonnons chaque détail."/>
+    <PageHero label="Services" title="Un service complet, conçu sur mesure" text="De la gestion quotidienne à la valorisation du bien, nous coordonnons chaque détail." image="/images/home/hero-concierge.webp"/>
     <section className="section"><div className="container card-grid three">{services.map(service=><ServiceCard key={service.slug} service={service}/>)}</div></section>
     <section className="section ivory offers-section"><div className="container">
       <p className="eyebrow dark">Nos solutions de gestion</p>

@@ -34,7 +34,11 @@ export const metadata: Metadata = {
     description: "Gestion exclusive à Gênes et en Ligurie.",
     images: ["/og.png"],
   },
-  icons: { icon: "/images/brand/favicon.svg" },
+  icons: {
+    icon: [{ url: "/images/brand/favicon.svg", type: "image/svg+xml" }],
+    shortcut: "/images/brand/favicon.svg",
+    apple: "/images/brand/favicon.svg",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

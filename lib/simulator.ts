@@ -9,7 +9,7 @@ export function calculateRevenueEstimate(i:SimulatorInput):RevenueEstimate{
  const amenity=1+(i.sea?.16:0)+(i.pool?.15:0)+(i.terrace?.07:0)+(i.parking?.04:0);
  const size=1+Math.min(Math.max(i.bedrooms-1,0)*.13,.52)+Math.min(Math.max(i.area-70,0)/1000,.16);
  const capacity=1+Math.min(Math.max(i.guests-2,0)*.018,.15);
- const occupancy=Math.min(76,Math.round(49+(i.sea?5:0)+(i.finish==="Luxe"?6:i.finish==="Premium"?3:0)+(i.location==="Portofino"?3:0)+(i.pool?2:0)));
+ const occupancy=Math.min(76,Math.max(60,Math.round(49+(i.sea?5:0)+(i.finish==="Luxe"?6:i.finish==="Premium"?3:0)+(i.location==="Portofino"?3:0)+(i.pool?2:0))));
  const nightly=Math.round((base[i.location]||165)*type*finish*amenity*size*capacity);
  const bookedNights=Math.round(i.days*(occupancy/100));
  const annual=Math.round(nightly*bookedNights/100)*100;

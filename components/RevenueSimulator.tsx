@@ -14,7 +14,7 @@ export function RevenueSimulator(){
  const r=useMemo(()=>calculateRevenueEstimate(i),[i]);
  const projected=useMemo(()=>{
   const currentAnnual=Math.round(currentNightly*i.days*(currentOccupancy/100));
-  const occupancy=Math.min(80,Math.max(r.occupancy,currentOccupancy+12));
+  const occupancy=Math.min(80,Math.max(60,r.occupancy,currentOccupancy+12));
   const bookedNights=Math.round(i.days*(occupancy/100));
   const nightlyCeiling=Math.round(currentNightly*1.2);
   const nightly=Math.min(nightlyCeiling,Math.max(currentNightly,r.nightly));
@@ -29,7 +29,7 @@ export function RevenueSimulator(){
    <p className="form-hint">Le scénario combine une meilleure occupation, des durées de séjour optimisées et une tarification dynamique. Le tarif moyen par nuit est plafonné à +20 % par rapport à votre tarif actuel.</p>
    <p className="eyebrow simulator-subhead">Caractéristiques du bien</p>
    <div className="field-row">
-    <label>Localisation<select value={i.location} onChange={e=>set("location",e.target.value)}>{["Gênes","Nervi","Camogli","Rapallo","Santa Margherita Ligure","Portofino","Autre localité en Ligurie"].map(x=><option key={x}>{x}</option>)}</select></label>
+    <label>Localisation<input type="text" value={i.location} placeholder="Ville ou commune" autoComplete="address-level2" onChange={e=>set("location",e.target.value)}/></label>
     <label>Type de bien<select value={i.type} onChange={e=>set("type",e.target.value)}>{["Appartement","Attique","Villa","Maison indépendante"].map(x=><option key={x}>{x}</option>)}</select></label>
    </div>
    <div className="field-row"><label>Chambres<input type="number" min="1" max="10" value={i.bedrooms} onChange={e=>set("bedrooms",+e.target.value)}/></label><label>Capacité d’accueil<input type="number" min="1" max="20" value={i.guests} onChange={e=>set("guests",+e.target.value)}/></label></div>
@@ -44,7 +44,7 @@ export function RevenueSimulator(){
    <div className="result-grid">
     <div><small>Revenu actuel estimé</small>{euro(projected.currentAnnual)}</div>
     <div><small>Revenu optimisé estimé</small>{euro(projected.annual)}</div>
-    <div><small>Tarif actuel / optimisé</small>{euro(currentNightly)} → {euro(projected.nightly)}</div>
+    <div><small>Tarif actuel / tarif moyen par nuit (tarification dynamique)</small>{euro(currentNightly)} → {euro(projected.nightly)}</div>
     <div><small>Occupation actuelle / cible</small>{currentOccupancy}% → {projected.occupancy}%</div>
     <div><small>Nuits supplémentaires</small>+ {Math.max(0,projected.bookedNights-Math.round(i.days*(currentOccupancy/100)))}</div>
     <div><small>Hausse tarifaire maximale</small>+20 % / nuit en moyenne</div>
