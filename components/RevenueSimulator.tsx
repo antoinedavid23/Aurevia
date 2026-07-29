@@ -14,11 +14,10 @@ export function RevenueSimulator(){
  const r=useMemo(()=>calculateRevenueEstimate(i),[i]);
  const projected=useMemo(()=>{
   const currentAnnual=Math.round(currentNightly*i.days*(currentOccupancy/100));
-  const multiplier=currentOccupancy<40?2:currentOccupancy<60?1.75:1.5;
   const occupancy=Math.min(80,Math.max(r.occupancy,currentOccupancy+12));
-  const targetAnnual=Math.max(r.annual,Math.round(currentAnnual*multiplier));
   const bookedNights=Math.round(i.days*(occupancy/100));
-  const nightly=Math.max(r.nightly,Math.ceil(targetAnnual/Math.max(1,bookedNights)));
+  const nightlyCeiling=Math.round(currentNightly*1.2);
+  const nightly=Math.min(nightlyCeiling,Math.max(currentNightly,r.nightly));
   const annual=Math.round(nightly*bookedNights);
   return {currentAnnual,occupancy,nightly,bookedNights,annual,gain:Math.max(0,annual-currentAnnual),gainRate:currentAnnual?Math.round((annual/currentAnnual-1)*100):0,multiplier:currentAnnual?annual/currentAnnual:0};
  },[currentNightly,currentOccupancy,i.days,r]);
@@ -27,7 +26,7 @@ export function RevenueSimulator(){
   <form className="form-card" onSubmit={e=>e.preventDefault()}>
    <p className="eyebrow">Situation actuelle et potentiel</p>
    <div className="field-row"><label>Taux d’occupation actuel : {currentOccupancy}%<input type="range" min="0" max="100" value={currentOccupancy} onChange={e=>setCurrentOccupancy(+e.target.value)}/></label><label>Tarif actuel par nuit (€)<input type="number" min="0" value={currentNightly} onChange={e=>setCurrentNightly(+e.target.value)}/></label></div>
-   <p className="form-hint">Le scénario AUREVIA modélise un potentiel compris entre ×1,5 et ×2 du chiffre d’affaires actuel, puis le confronte aux caractéristiques et à la disponibilité du bien. Cette hypothèse commerciale reste à confirmer par une étude personnalisée.</p>
+   <p className="form-hint">Le scénario combine une meilleure occupation, des durées de séjour optimisées et une tarification dynamique. Le tarif moyen par nuit est plafonné à +20 % par rapport à votre tarif actuel.</p>
    <p className="eyebrow simulator-subhead">Caractéristiques du bien</p>
    <div className="field-row">
     <label>Localisation<select value={i.location} onChange={e=>set("location",e.target.value)}>{["Gênes","Nervi","Camogli","Rapallo","Santa Margherita Ligure","Portofino","Autre localité en Ligurie"].map(x=><option key={x}>{x}</option>)}</select></label>
@@ -48,7 +47,7 @@ export function RevenueSimulator(){
     <div><small>Tarif actuel / optimisé</small>{euro(currentNightly)} → {euro(projected.nightly)}</div>
     <div><small>Occupation actuelle / cible</small>{currentOccupancy}% → {projected.occupancy}%</div>
     <div><small>Nuits supplémentaires</small>+ {Math.max(0,projected.bookedNights-Math.round(i.days*(currentOccupancy/100)))}</div>
-    <div><small>Hypothèse de progression</small>×1,5 à ×2</div>
+    <div><small>Hausse tarifaire maximale</small>+20 % / nuit en moyenne</div>
    </div>
    <p className="demo-note">Le potentiel représente une amélioration supposée par rapport aux données actuelles renseignées. Il ne constitue pas une garantie et doit être confirmé par une analyse du bien.</p>
    <Link className="button" href="/valutazione">Recevoir une évaluation personnalisée</Link>
