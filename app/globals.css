@@ -865,11 +865,11 @@ input,select,textarea,label,
 :where(.section,.page-hero,.hero,.final-cta) h3+p:not(.eyebrow),
 .prose h2+p:not(.eyebrow),
 .content-section h2+p:not(.eyebrow){
-  margin-top:clamp(25px,2.8vw,40px);
+  margin-top:clamp(21px,2.2vw,32px);
 }
 .prose p:not(.eyebrow)+.feature-list,
 .content-section p:not(.eyebrow)+ul{
-  margin-top:clamp(24px,2.4vw,34px);
+  margin-top:clamp(20px,2vw,28px);
 }
 
 /* Page propriétaires */
