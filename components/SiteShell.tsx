@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, BriefcaseBusiness, Camera, ChevronDown, Menu, X } from "lucide-react";
 
 const nav = [
@@ -28,7 +28,15 @@ function LanguageSelector() {
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
-  const [cookies, setCookies] = useState(true);
+  const [cookies, setCookies] = useState(false);
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => setCookies(!localStorage.getItem("aurevia-cookie")));
+    return () => cancelAnimationFrame(frame);
+  }, []);
+  function saveCookieChoice(choice: "accepted" | "refused") {
+    localStorage.setItem("aurevia-cookie", choice);
+    setCookies(false);
+  }
   return <>
     <header>
       <Logo/>
@@ -39,7 +47,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
     <main>{children}</main>
     <footer>
       <div className="footer-grid">
-        <div><Logo/><p>L’art de prendre soin de ce qui compte.</p></div>
+        <div className="footer-brand"><Logo/><p><span>L’art de prendre soin</span><span>de ce qui compte.</span></p></div>
         <div><b>Explorer</b>{nav.map(([name, href]) => <Link key={href} href={href}>{name}</Link>)}</div>
         <div><b>Propriétaires</b><Link href="/proprietari">Gestion AUREVIA</Link><Link href="/valutazione">Évaluation privée</Link><Link href="/faq">Questions fréquentes</Link></div>
         <div><b>Contact</b><a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL || "info@aurevia.it"}`}>{process.env.NEXT_PUBLIC_EMAIL || "info@aurevia.it"}</a><span>Gênes, Italie</span><div className="social"><a href={process.env.NEXT_PUBLIC_INSTAGRAM || "#"} aria-label="Instagram"><Camera size={15}/></a><a href={process.env.NEXT_PUBLIC_LINKEDIN || "#"} aria-label="LinkedIn"><BriefcaseBusiness size={15}/></a></div></div>
@@ -47,6 +55,6 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       <div className="footer-bottom"><span>© {new Date().getFullYear()} AUREVIA</span><Link href="/privacy">Confidentialité</Link><Link href="/cookie-policy">Cookies</Link><Link href="/termini">Conditions</Link></div>
     </footer>
     <Link className="sticky-cta" href="/valutazione">Évaluer mon bien <ArrowRight size={16}/></Link>
-    {cookies && <div className="cookie"><p>Nous utilisons uniquement des cookies essentiels. Vos préférences restent sur cet appareil.</p><button onClick={() => { localStorage.setItem("aurevia-cookie", "accepted"); setCookies(false); }}>Accepter</button><button onClick={() => setCookies(false)}>Refuser</button></div>}
+    {cookies && <div className="cookie" role="dialog" aria-label="Vos préférences de confidentialité"><div className="cookie-mark">A</div><div className="cookie-copy"><strong>Votre confidentialité, sans compromis</strong><p>Le site utilise uniquement les éléments essentiels à son fonctionnement. Aucun cookie publicitaire n’est déposé sans votre accord.</p><Link href="/cookie-policy">Consulter notre politique de confidentialité</Link></div><div className="cookie-actions"><button className="cookie-primary" onClick={() => saveCookieChoice("accepted")}>Accepter</button><button onClick={() => saveCookieChoice("refused")}>Continuer sans accepter</button></div></div>}
   </>;
 }
