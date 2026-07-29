@@ -41,7 +41,7 @@ export default function Home(){
 
   <section className="section ivory"><div className="container"><Reveal><p className="eyebrow dark">Collection de démonstration</p><h2>Propriétés sélectionnées</h2></Reveal><div className="card-grid three">{properties.slice(0,3).map(p=><PropertyCard key={p.slug} property={p}/>)}</div><p className="demo-note">Images et propriétés présentées à titre démonstratif.</p></div></section>
 
-  <section className="section process"><div className="container"><Reveal><p className="eyebrow">Notre méthode</p><h2>Un accompagnement clair, de la première visite au pilotage quotidien</h2></Reveal><MethodJourney/></div></section>
+  <section className="section process"><div className="container"><Reveal><p className="eyebrow">Notre méthode</p><h2 className="method-title"><span>Un accompagnement clair,</span><span>de la première visite au pilotage quotidien</span></h2></Reveal><MethodJourney/></div></section>
 
   <section className="section ivory"><div className="container"><Reveal><p className="eyebrow dark">La confiance, racontée</p><h2>Une présence discrète et constante</h2></Reveal><ReviewCards/><p className="demo-note">Les portraits et avis définitifs seront publiés uniquement après accord écrit et vérification de leur provenance.</p></div></section>
 

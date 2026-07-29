@@ -487,13 +487,22 @@ input,select,textarea,label,
 
 /* Méthode — introduction centrée */
 .process>.container>div:first-child{
-  max-width:880px;
+  max-width:1120px;
   margin-inline:auto;
+  text-align:center;
+}
+.process>.container>div:first-child .eyebrow{
+  width:100%;
   text-align:center;
 }
 .process>.container>div:first-child h2{
   margin-inline:auto;
 }
+.method-title{
+  max-width:none!important;
+  font-size:clamp(2rem,3.25vw,3.45rem);
+}
+.method-title span{display:block}
 
 /* À propos — récit progressif */
 .about-story-heading{
@@ -660,7 +669,10 @@ input,select,textarea,label,
 
 @media(max-width:520px){
   .process>.container>div:first-child{text-align:left}
+  .process>.container>div:first-child .eyebrow{text-align:left}
   .process>.container>div:first-child h2{margin-inline:0}
+  .method-title span{display:inline}
+  .method-title span+span::before{content:" "}
   .about-story-progress{display:none}
   .about-story-sticky{display:block;padding-block:88px}
   .about-story-card{min-height:540px}
