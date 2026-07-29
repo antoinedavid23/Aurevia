@@ -615,6 +615,8 @@ input,select,textarea,label,
 
 /* Contact — coordonnées professionnelles */
 .contact-intro h2{font-size:clamp(2rem,3.1vw,3.35rem);max-width:18ch!important}
+.contact-heading{max-width:none!important}
+.contact-heading span{display:block;white-space:nowrap}
 .contact-panel{
   margin:34px 0 30px;
   border:1px solid var(--line);
@@ -679,6 +681,7 @@ input,select,textarea,label,
   .about-story-hint{margin-top:14px}
   .values-feature{padding:28px 22px}
   .contact-details a,.contact-details>div{padding-inline:18px}
+  .contact-heading span{white-space:normal}
 }
 
 @media(prefers-reduced-motion:reduce){
