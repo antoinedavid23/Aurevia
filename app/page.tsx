@@ -27,7 +27,7 @@ export default function Home(){
 
   <section className="section ivory"><div className="container split">
    <Reveal className="editorial-card"><div className="image-placeholder image-photo home-owner"><span>Le soin jusque dans les détails</span></div></Reveal>
-   <Reveal className="prose"><p className="eyebrow dark">Pour les propriétaires</p><h2>Un partenaire de confiance pour votre propriété</h2><p>AUREVIA accompagne les propriétaires exigeants qui souhaitent valoriser leur bien sans en gérer les contraintes quotidiennes.</p><ul className="feature-list"><li>Un interlocuteur unique</li><li>Accompagnement dédié</li><li>Standards élevés</li><li>Gestion sur mesure</li></ul><Link className="text-link" href="/proprietari">Notre approche <ArrowRight size={15}/></Link></Reveal>
+   <Reveal className="prose"><p className="eyebrow dark">Pour les propriétaires</p><h2>Un partenaire de confiance pour votre propriété</h2><p>AUREVIA accompagne les propriétaires exigeants qui souhaitent valoriser leur bien sans en gérer les contraintes quotidiennes.</p><ul className="feature-list"><li>Une relation privilégiée</li><li>Une prise en charge intégrale</li><li>Des standards d’exception</li><li>Une gestion entièrement sur mesure</li></ul><Link className="text-link" href="/proprietari">Découvrir l’approche AUREVIA <ArrowRight size={15}/></Link></Reveal>
   </div></section>
 
   <section className="section"><div className="container"><Reveal><p className="eyebrow">Services</p><h2>L’excellence dans chaque détail</h2></Reveal><div className="card-grid three">{services.slice(0,6).map(s=><ServiceCard key={s.slug} service={s}/>)}</div></div></section>
