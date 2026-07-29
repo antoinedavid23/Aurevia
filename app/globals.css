@@ -338,7 +338,7 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .estimate-comparison small{display:flex;align-items:flex-start;min-height:0;color:#766f64;line-height:1.45}
 .estimate-comparison b{display:block;font-family:var(--font-serif);font-size:1.55rem;line-height:1;margin-top:10px;color:#6d6d68;white-space:nowrap}
 .estimate-comparison strong{display:block!important;align-self:end;border:0!important;padding:0!important;font-size:clamp(2rem,3vw,2.85rem)!important;line-height:1;color:var(--navy);white-space:nowrap}
-.estimate-comparison i{align-self:end;justify-self:center;font-style:normal;color:var(--gold);font-size:1.5rem;line-height:1;padding-bottom:2px}
+.estimate-comparison i{align-self:end;justify-self:center;transform:translateX(-15px);font-style:normal;color:var(--gold);font-size:1.5rem;line-height:1;padding-bottom:2px}
 .estimate-gain{background:var(--navy);color:var(--ivory);padding:18px 34px!important;border:0!important;align-items:center}
 .estimate-gain span{font-size:.67rem;letter-spacing:.12em;text-transform:uppercase}
 .estimate-gain b{font-family:var(--font-serif);font-size:1.55rem;color:var(--soft-gold)}
