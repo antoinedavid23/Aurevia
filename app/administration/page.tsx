@@ -27,7 +27,6 @@ export default async function Page() {
   const newLeads = leadRows.filter((lead) => lead.status === "new").length;
   const activeLeads = leadRows.filter((lead) => lead.status !== "archived").length;
   const publishedProperties = propertyRows.filter((property) => property.status === "published").length;
-  const emailNotificationsReady = Boolean(process.env.RESEND_API_KEY);
 
   return (
     <>
@@ -124,13 +123,6 @@ export default async function Page() {
                 <MailCheck size={19} />
                 <div><strong>Collecte des formulaires</strong><span>Contact et évaluation centralisés ici</span></div>
                 <b className="is-ready">Active</b>
-              </article>
-              <article>
-                <MailCheck size={19} />
-                <div><strong>Notifications par e-mail</strong><span>Réception instantanée en complément de cette boîte</span></div>
-                <b className={emailNotificationsReady ? "is-ready" : "needs-setup"}>
-                  {emailNotificationsReady ? "Active" : "À configurer"}
-                </b>
               </article>
             </div>
           </section>
