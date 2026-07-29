@@ -326,12 +326,13 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .estimate-premium{padding:0;background:#f6f1e8;border:1px solid rgba(200,161,90,.55)}
 .estimate-premium:before{height:2px;background:var(--gold)}
 .estimate-brand{display:flex!important;justify-content:center!important;align-items:center;gap:15px;padding:32px 34px 20px!important;border:0!important;text-align:center}
-.estimate-brand span{font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;color:#8a6b32}
+.estimate-brand span{letter-spacing:.2em;text-transform:uppercase;color:#8a6b32}
+.estimate-brand>span:last-child{font-size:1.08rem;font-weight:500}
 .estimate-logo-crop{position:relative;display:block!important;width:64px;height:64px;overflow:hidden;flex:0 0 64px}
 .estimate-logo-crop img{position:absolute;width:150px!important;height:150px!important;max-width:none;left:-43px;top:-20px}
-.estimate-case{padding:0 34px 25px;margin:0!important;color:#746f66!important;letter-spacing:.04em;text-align:center;font-size:.78rem!important}
+.estimate-case{padding:0 34px 25px;margin:0!important;color:#746f66!important;letter-spacing:.045em;text-align:center;font-size:.9rem!important}
 .estimate-comparison{display:grid!important;grid-template-columns:minmax(0,1fr) auto minmax(0,1.3fr);align-items:stretch;gap:22px;padding:28px 34px!important;border-block:1px solid #d8c9ad!important}
-.estimate-comparison div{display:grid!important;grid-template-rows:44px auto;align-items:end;border:0!important;padding:0!important;min-width:0}
+.estimate-comparison div{display:grid!important;grid-template-rows:44px auto;align-items:stretch;border:0!important;padding:0!important;min-width:0}
 .estimate-comparison small{display:flex;align-items:flex-start;min-height:0;color:#766f64;line-height:1.45}
 .estimate-comparison b{display:block;font-family:var(--font-serif);font-size:1.55rem;line-height:1;margin-top:10px;color:#6d6d68;white-space:nowrap}
 .estimate-comparison strong{display:block!important;align-self:end;border:0!important;padding:0!important;font-size:clamp(2rem,3vw,2.85rem)!important;line-height:1;color:var(--navy);white-space:nowrap}
