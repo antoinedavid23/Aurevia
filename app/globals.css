@@ -811,10 +811,20 @@ input,select,textarea,label,
 .hero-aurevia .hero-brand{
   transform:translateY(clamp(-76px,-7vh,-48px));
 }
+.hero-aurevia{
+  min-height:calc(100svh + 78px);
+}
+.hero-aurevia .hero-content{
+  min-height:calc(100svh + 78px);
+}
 .hero-aurevia .hero-brand>small{
   margin-top:5px;
 }
 @media(max-width:700px){
+  .hero-aurevia,
+  .hero-aurevia .hero-content{
+    min-height:calc(100svh + 42px);
+  }
   .hero-aurevia .hero-brand{
     transform:translateY(clamp(-38px,-4vh,-24px));
   }
