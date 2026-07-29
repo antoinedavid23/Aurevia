@@ -333,6 +333,9 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .estimate-case{padding:0 34px 25px;margin:0!important;color:#746f66!important;letter-spacing:.045em;text-align:center;font-size:.9rem!important}
 .estimate-comparison{display:grid!important;grid-template-columns:minmax(0,1fr) 48px minmax(0,1fr);align-items:stretch;gap:18px;padding:28px 34px!important;border-block:1px solid #d8c9ad!important}
 .estimate-comparison div{display:grid!important;grid-template-rows:44px auto;align-items:stretch;border:0!important;padding:0!important;min-width:0}
+.estimate-comparison>div:first-child{justify-items:end;text-align:right}
+.estimate-comparison>div:last-child{justify-items:start;text-align:left}
+.estimate-comparison>div:first-child small{justify-content:flex-end}
 .estimate-comparison small{display:flex;align-items:flex-start;min-height:0;color:#766f64;line-height:1.45}
 .estimate-comparison b{display:block;font-family:var(--font-serif);font-size:1.55rem;line-height:1;margin-top:10px;color:#6d6d68;white-space:nowrap}
 .estimate-comparison strong{display:block!important;align-self:end;border:0!important;padding:0!important;font-size:clamp(2rem,3vw,2.85rem)!important;line-height:1;color:var(--navy);white-space:nowrap}
@@ -394,7 +397,10 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 @media(max-width:800px){
   .identity-heading,.service-detail-intro,.transparency-grid{grid-template-columns:1fr}
   .identity-heading{gap:24px}.identity-grid{grid-auto-rows:280px}
-  .estimate-comparison{grid-template-columns:1fr}.estimate-comparison i{transform:rotate(90deg);width:max-content}
+  .estimate-comparison{grid-template-columns:1fr}
+  .estimate-comparison>div:first-child,.estimate-comparison>div:last-child{justify-items:start;text-align:left}
+  .estimate-comparison>div:first-child small{justify-content:flex-start}
+  .estimate-comparison i{transform:rotate(90deg);width:max-content}
   .method-scroll-shell{height:360vh}.method-scroll-shell .method-scroll{padding-block:90px}
   .admin-entry{align-items:stretch;flex-direction:column}.admin-entry .button{text-align:center}
   .detail-list-grid{grid-template-columns:1fr}.detail-list-grid article:nth-child(odd){border-right:0}.detail-list-grid article:nth-child(even){padding-left:0}
