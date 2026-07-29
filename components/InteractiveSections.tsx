@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Check, Star } from "lucide-react";
 
@@ -13,16 +13,24 @@ const method = [
 
 export function MethodJourney(){
   const [active,setActive]=useState(0);
+  const wheelLock=useRef(0);
   const item=method[active];
-  return <div className="method-journey">
-    <div className="method-tabs" role="tablist" aria-label="Les étapes de la méthode AUREVIA">
-      {method.map((step,index)=><button key={step.title} role="tab" aria-selected={active===index} onClick={()=>setActive(index)}><span>0{index+1}</span><strong>{step.title}</strong><small>{step.time}</small></button>)}
-    </div>
+  function wheel(event:React.WheelEvent){
+    const now=Date.now();
+    if(Math.abs(event.deltaY)<18||now-wheelLock.current<450)return;
+    wheelLock.current=now;
+    setActive(value=>Math.min(3,Math.max(0,value+(event.deltaY>0?1:-1))));
+  }
+  return <div className="method-scroll" onWheel={wheel}>
+    <div className="method-progress" aria-hidden="true">{method.map((_,index)=><i key={index} className={index===active?"active":""}/>)}</div>
     <div className="method-detail" role="tabpanel">
-      <span>Étape 0{active+1}</span><h3>{item.title}</h3><p>{item.text}</p>
+      <div className="method-index"><span>0{active+1}</span><small>/ 04</small></div>
+      <span>{item.time}</span><h3>{item.title}</h3><p>{item.text}</p>
       <ul>{item.points.map(point=><li key={point}><Check size={15}/>{point}</li>)}</ul>
+      <div className="method-controls"><button type="button" disabled={active===0} onClick={()=>setActive(value=>value-1)}>Monter</button><button type="button" disabled={active===3} onClick={()=>setActive(value=>value+1)}>Descendre</button></div>
       <Link className="text-link" href="/valutazione">Parler de mon bien <ArrowRight size={15}/></Link>
     </div>
+    <p className="method-hint">Faites défiler pour parcourir les étapes 1 à 4.</p>
   </div>;
 }
 

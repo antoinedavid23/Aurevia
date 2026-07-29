@@ -18,7 +18,10 @@ const propertySchema = z.object({
 
 export async function GET() {
   try {
-    const rows = await getDb().select().from(managedProperties).where(eq(managedProperties.status,"published")).orderBy(desc(managedProperties.updatedAt));
+    const admin=await getAdminUser();
+    const rows = admin
+      ? await getDb().select().from(managedProperties).orderBy(desc(managedProperties.updatedAt))
+      : await getDb().select().from(managedProperties).where(eq(managedProperties.status,"published")).orderBy(desc(managedProperties.updatedAt));
     return NextResponse.json(rows);
   } catch {
     return NextResponse.json([]);

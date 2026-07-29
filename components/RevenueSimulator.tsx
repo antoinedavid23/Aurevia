@@ -12,6 +12,14 @@ export function RevenueSimulator(){
  const [currentOccupancy,setCurrentOccupancy]=useState(45);
  const [currentNightly,setCurrentNightly]=useState(185);
  const r=useMemo(()=>calculateRevenueEstimate(i),[i]);
+ const projected=useMemo(()=>{
+  const currentAnnual=Math.round(currentNightly*i.days*(currentOccupancy/100));
+  const occupancy=Math.min(80,Math.max(r.occupancy,currentOccupancy+8));
+  const nightly=Math.max(r.nightly,Math.round(currentNightly*1.05));
+  const bookedNights=Math.round(i.days*(occupancy/100));
+  const annual=Math.round(nightly*bookedNights);
+  return {currentAnnual,occupancy,nightly,bookedNights,annual,gain:Math.max(0,annual-currentAnnual),gainRate:currentAnnual?Math.round((annual/currentAnnual-1)*100):0};
+ },[currentNightly,currentOccupancy,i.days,r]);
  const set=(k:keyof SimulatorInput,v:string|number|boolean)=>setI(x=>({...x,[k]:v}));
  return <div className="simulator-layout">
   <form className="form-card" onSubmit={e=>e.preventDefault()}>
@@ -28,21 +36,19 @@ export function RevenueSimulator(){
    <label>Disponibilité annuelle : {i.days} jours<input type="range" min="60" max="365" value={i.days} onChange={e=>set("days",+e.target.value)}/></label>
    <div className="field-row">{([["sea","Vue mer"],["pool","Piscine"],["terrace","Terrasse"],["parking","Parking"]] as const).map(([k,l])=><label key={k}><span><input type="checkbox" checked={i[k]} onChange={e=>set(k,e.target.checked)}/> {l}</span></label>)}</div>
   </form>
-  <motion.aside className="result-panel" key={r.annual} initial={{opacity:.5,y:10}} animate={{opacity:1,y:0}}>
-   <p className="eyebrow dark">Projection indicative</p>
-   <small>Revenus annuels estimés</small><strong>{euro(r.annual)}</strong>
-   <p className="range">{euro(r.low)} — {euro(r.high)}</p>
+  <motion.aside className="result-panel" key={projected.annual} initial={{opacity:.5,y:10}} animate={{opacity:1,y:0}}>
+   <p className="eyebrow dark">Potentiel d’amélioration</p>
+   <small>Progression annuelle estimée</small><strong>+ {euro(projected.gain)}</strong>
+   <p className="range">+ {projected.gainRate}% par rapport à votre situation actuelle</p>
    <div className="result-grid">
-    <div><small>Tarif moyen par nuit</small>{euro(r.nightly)}</div>
-    <div><small>Taux d’occupation</small>{r.occupancy}%</div>
-    <div><small>Nuits réservées estimées</small>{r.bookedNights}</div>
-    <div><small>Moyenne mensuelle</small>{euro(r.monthlyAverage)}</div>
-    <div><small>Haute saison</small>{euro(r.seasonHigh)}/nuit</div>
-    <div><small>Basse saison</small>{euro(r.seasonLow)}/nuit</div>
-    <div><small>Revenu actuel estimé</small>{euro(Math.round(currentNightly*i.days*(currentOccupancy/100)))}</div>
-    <div><small>Potentiel de progression</small>{euro(Math.max(0,r.annual-Math.round(currentNightly*i.days*(currentOccupancy/100))))}</div>
+    <div><small>Revenu actuel estimé</small>{euro(projected.currentAnnual)}</div>
+    <div><small>Revenu optimisé estimé</small>{euro(projected.annual)}</div>
+    <div><small>Tarif actuel / optimisé</small>{euro(currentNightly)} → {euro(projected.nightly)}</div>
+    <div><small>Occupation actuelle / cible</small>{currentOccupancy}% → {projected.occupancy}%</div>
+    <div><small>Nuits supplémentaires</small>+ {Math.max(0,projected.bookedNights-Math.round(i.days*(currentOccupancy/100)))}</div>
+    <div><small>Fourchette de gestion active</small>50 % à 80 %</div>
    </div>
-   <p className="demo-note">Cette projection est purement indicative et ne constitue pas une garantie de revenus. L’estimation définitive nécessite une analyse personnalisée du bien, de sa saisonnalité et de son positionnement.</p>
+   <p className="demo-note">Le potentiel représente une amélioration supposée par rapport aux données actuelles renseignées. Il ne constitue pas une garantie et doit être confirmé par une analyse du bien.</p>
    <Link className="button" href="/valutazione">Recevoir une évaluation personnalisée</Link>
   </motion.aside>
  </div>;

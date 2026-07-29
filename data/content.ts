@@ -23,13 +23,21 @@ export const properties:Property[]=[
 
 export const experiences=[
  ["yacht-e-boat","Yacht privé","La côte ligure vue depuis la mer, avec des itinéraires conçus sur demande."],
- ["jet-prive","Jet privé","Vols privés et transferts aéroport coordonnés selon votre itinéraire."],
+ ["jet-prive","Jet privé","Vols privés, coordination des créneaux, transferts aéroport et assistance bagages selon votre itinéraire."],
  ["chef-privato","Chef privé","Une table intime inspirée par les saveurs de la Ligurie."],
  ["transfer-privato","Transfert privé","Des déplacements coordonnés avec confort et discrétion."],
  ["esperienze-locali","Expériences locales","Des lieux, maisons et rencontres soigneusement sélectionnés."],
  ["wellness","Bien-être","Des soins et moments de détente directement dans la propriété."],
  ["eventi-privati","Événements privés","Des occasions orchestrées avec attention jusque dans les détails."],
-].map(([slug,title,short],i)=>({slug,title,short,tone:i+1,image:["/images/experiences/yacht.webp","/images/experiences/private-transfer.webp","/images/experiences/private-chef.webp","/images/experiences/private-transfer.webp","/images/experiences/liguria-tour.webp","/images/experiences/wellness.webp","/images/experiences/private-event.webp"][i]}));
+].map(([slug,title,short],i)=>({slug,title,short,tone:i+1,image:["/images/experiences/yacht.webp","/images/experiences/private-jet.png","/images/experiences/private-chef.webp","/images/experiences/private-transfer.webp","/images/experiences/liguria-tour.webp","/images/experiences/wellness.webp","/images/experiences/private-event.webp"][i],details:{
+ "yacht-e-boat":["Itinéraire personnalisé","Skipper et équipage","Restauration sur demande"],
+ "jet-prive":["Recherche d’appareil","Coordination aéroport","Transfert porte-à-porte"],
+ "chef-privato":["Menu personnalisé","Approvisionnement local","Service à domicile"],
+ "transfer-privato":["Chauffeur dédié","Suivi des horaires","Accueil personnalisé"],
+ "esperienze-locali":["Sélection locale","Programme privé","Réservations coordonnées"],
+ "wellness":["Praticien sélectionné","Installation à domicile","Planning sur mesure"],
+ "eventi-privati":["Conception de l’événement","Prestataires coordonnés","Suivi opérationnel"],
+ }[slug]||[]}));
 
 export const testimonials=[
  {quote:"Un service précis, discret et toujours présent.",place:"Portofino"},
