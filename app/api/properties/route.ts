@@ -19,9 +19,10 @@ const propertySchema = z.object({
 export async function GET() {
   try {
     const admin=await getAdminUser();
+    const db=await getDb();
     const rows = admin
-      ? await getDb().select().from(managedProperties).orderBy(desc(managedProperties.updatedAt))
-      : await getDb().select().from(managedProperties).where(eq(managedProperties.status,"published")).orderBy(desc(managedProperties.updatedAt));
+      ? await db.select().from(managedProperties).orderBy(desc(managedProperties.updatedAt))
+      : await db.select().from(managedProperties).where(eq(managedProperties.status,"published")).orderBy(desc(managedProperties.updatedAt));
     return NextResponse.json(rows);
   } catch {
     return NextResponse.json([]);
@@ -32,6 +33,7 @@ export async function POST(request: Request) {
   if (!await getAdminUser()) return NextResponse.json({error:"Accès refusé"},{status:403});
   const parsed = propertySchema.safeParse(await request.json());
   if (!parsed.success) return NextResponse.json({error:"Données invalides",details:parsed.error.flatten()},{status:400});
-  const [created] = await getDb().insert(managedProperties).values({...parsed.data,updatedAt:new Date()}).returning();
+  const db=await getDb();
+  const [created] = await db.insert(managedProperties).values({...parsed.data,updatedAt:new Date()}).returning();
   return NextResponse.json(created,{status:201});
 }

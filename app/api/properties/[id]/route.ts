@@ -21,13 +21,15 @@ export async function PATCH(request:Request,{params}:{params:Promise<{id:string}
   const parsed=updateSchema.safeParse(await request.json());
   if(!parsed.success)return NextResponse.json({error:"Données invalides"},{status:400});
   const {id}=await params;
-  const [updated]=await getDb().update(managedProperties).set({...parsed.data,updatedAt:new Date()}).where(eq(managedProperties.id,Number(id))).returning();
+  const db=await getDb();
+  const [updated]=await db.update(managedProperties).set({...parsed.data,updatedAt:new Date()}).where(eq(managedProperties.id,Number(id))).returning();
   return NextResponse.json(updated);
 }
 
 export async function DELETE(_:Request,{params}:{params:Promise<{id:string}>}) {
   if (!await getAdminUser()) return NextResponse.json({error:"Accès refusé"},{status:403});
   const {id}=await params;
-  await getDb().delete(managedProperties).where(eq(managedProperties.id,Number(id)));
+  const db=await getDb();
+  await db.delete(managedProperties).where(eq(managedProperties.id,Number(id)));
   return NextResponse.json({ok:true});
 }
