@@ -720,3 +720,55 @@ input,select,textarea,label,
   .admin-inbox-filters{width:100%}.admin-inbox-filters button{flex:1;justify-content:center}
   .lead-actions{justify-content:stretch;flex-direction:column}.lead-actions button{justify-content:center}
 }
+
+/* Page propriétaires */
+.owner-intro-grid,.owner-transparency-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,8vw,110px);align-items:end}
+.owner-intro-grid h2,.owner-transparency-grid h2{max-width:17ch!important}
+.owner-intro-grid>div:last-child>p{color:#5f625f;font-size:1.03rem;line-height:1.85}
+.owner-pillars{display:grid;grid-template-columns:repeat(4,1fr);margin-top:70px;border-block:1px solid rgba(13,27,42,.16)}
+.owner-pillars>div{padding:32px 28px;border-right:1px solid rgba(13,27,42,.16)}
+.owner-pillars>div:last-child{border-right:0}.owner-pillars svg{color:#a57e36;margin-bottom:28px}
+.owner-pillars span{display:block;font-family:var(--font-serif);font-size:1.1rem;color:var(--navy)}
+.owner-pillars p{font-size:.82rem;line-height:1.65;color:#72736f;margin-bottom:0}
+.owner-comparison{background:#081520}
+.owner-comparison>div>h2{max-width:20ch!important}
+.owner-comparison-grid{gap:16px}
+.owner-comparison-grid>div{border:1px solid var(--line);background:transparent!important;color:var(--ivory)!important;padding:clamp(30px,4vw,52px)}
+.owner-comparison-grid>div:last-child{background:linear-gradient(145deg,rgba(200,161,90,.13),rgba(13,38,58,.55))!important;border-color:rgba(200,161,90,.42)}
+.owner-comparison-grid>div>span{color:var(--gold);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase}
+.owner-comparison-grid h3{font-size:clamp(1.45rem,2.3vw,2.2rem);max-width:20ch;margin:22px 0 30px}
+.owner-comparison-grid li{margin:16px 0;color:#c5cbcd;line-height:1.55}
+.owner-management-heading{display:grid;grid-template-columns:1fr .75fr;gap:18px 80px;align-items:end;max-width:1080px}
+.owner-management-heading .eyebrow{grid-column:1/-1;margin:0}.owner-management-heading h2{max-width:18ch!important}
+.owner-management-heading>p:last-child{color:#686b68;line-height:1.8}
+.owner-phases{display:grid;gap:0;margin-top:75px;border-top:1px solid rgba(13,27,42,.16)}
+.owner-phase{display:grid;grid-template-columns:1fr 1fr;min-height:530px;border-bottom:1px solid rgba(13,27,42,.16)}
+.owner-phase:nth-child(even) .owner-phase-image{order:2}
+.owner-phase-image{background-size:cover;background-position:center}
+.owner-phase-content{padding:clamp(35px,6vw,80px);display:flex;flex-direction:column;justify-content:center}
+.owner-phase-content>span{color:#9d772f;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase}
+.owner-phase-content h3{font-size:clamp(1.6rem,2.6vw,2.6rem);max-width:19ch;margin:22px 0}
+.owner-phase-content>p{color:#666c69;line-height:1.8}
+.owner-phase-content ul{display:grid;gap:13px;padding:22px 0 0;margin:0;border-top:1px solid rgba(13,27,42,.14);list-style:none}
+.owner-phase-content li{display:flex;align-items:center;gap:10px;color:#303b40}.owner-phase-content li svg{color:#a57e36}
+.owner-transparency{background:linear-gradient(135deg,#0a1a27,#0d2940)}
+.owner-deliverables{display:grid;border-top:1px solid var(--line)}
+.owner-deliverables>div{padding:24px 0;border-bottom:1px solid var(--line)}
+.owner-deliverables span{color:var(--soft-gold);font-family:var(--font-serif);font-size:1.05rem}
+.owner-deliverables p{color:#aeb9be;line-height:1.7;margin:8px 0 0}
+.owner-note{margin:60px 0 0;padding-top:24px;border-top:1px solid var(--line);color:#84929a;font-size:.75rem}
+
+@media(max-width:850px){
+  .owner-intro-grid,.owner-transparency-grid,.owner-management-heading{grid-template-columns:1fr}
+  .owner-management-heading .eyebrow{grid-column:auto}
+  .owner-pillars{grid-template-columns:1fr 1fr}
+  .owner-pillars>div:nth-child(2){border-right:0}.owner-pillars>div:nth-child(-n+2){border-bottom:1px solid rgba(13,27,42,.16)}
+  .owner-phase{grid-template-columns:1fr;min-height:0}
+  .owner-phase:nth-child(even) .owner-phase-image{order:0}
+  .owner-phase-image{min-height:370px}
+}
+@media(max-width:520px){
+  .owner-pillars{grid-template-columns:1fr}.owner-pillars>div{border-right:0;border-bottom:1px solid rgba(13,27,42,.16)}
+  .owner-phase-image{min-height:280px}
+  .owner-phase-content{padding:34px 20px}
+}
