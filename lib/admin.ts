@@ -1,6 +1,9 @@
 import { getChatGPTUser } from "@/app/chatgpt-auth";
+import { getInternalAdminUser } from "@/lib/internal-auth";
 
 export async function getAdminUser() {
+  const internalUser = await getInternalAdminUser();
+  if (internalUser) return internalUser;
   const user = await getChatGPTUser();
   if (!user) return null;
   const allowed = (process.env.ADMIN_EMAILS || "").split(",").map(value=>value.trim().toLowerCase()).filter(Boolean);

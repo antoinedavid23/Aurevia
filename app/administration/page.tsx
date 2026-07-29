@@ -1,32 +1,16 @@
-import Link from "next/link";
 import { BarChart3, BellRing, Building2, Database, MailCheck, ShieldCheck } from "lucide-react";
-import { requireChatGPTUser, chatGPTSignOutPath } from "@/app/chatgpt-auth";
+import { redirect } from "next/navigation";
 import { AdminPropertyManager } from "@/components/AdminPropertyManager";
 import { AdminLeadInbox } from "@/components/AdminLeadInbox";
 import { getDb } from "@/db";
 import { leads, managedProperties } from "@/db/schema";
+import { getAdminUser } from "@/lib/admin";
 
 export const dynamic = "force-dynamic";
 
 export default async function Page() {
-  const user = await requireChatGPTUser("/administration");
-  const allowed = (process.env.ADMIN_EMAILS || "")
-    .split(",")
-    .map((value) => value.trim().toLowerCase())
-    .filter(Boolean);
-
-  if (!allowed.includes(user.email.toLowerCase())) {
-    return (
-      <section className="page-hero">
-        <div className="container">
-          <p className="eyebrow">Administration</p>
-          <h1>Accès non autorisé</h1>
-          <p>Ce compte ne fait pas partie des administrateurs AUREVIA.</p>
-          <Link className="button" href="/">Retour au site</Link>
-        </div>
-      </section>
-    );
-  }
+  const user = await getAdminUser();
+  if (!user) redirect("/connexion");
 
   let leadRows: Array<typeof leads.$inferSelect> = [];
   let propertyRows: Array<typeof managedProperties.$inferSelect> = [];
@@ -57,9 +41,9 @@ export default async function Page() {
           </p>
           <div className="admin-session">
             <span>Connecté avec {user.email}</span>
-            <Link className="text-link" href={chatGPTSignOutPath("/")} prefetch={false}>
-              Se déconnecter
-            </Link>
+            <form action="/api/admin/logout" method="post">
+              <button className="text-link" type="submit">Se déconnecter</button>
+            </form>
           </div>
         </div>
       </section>
