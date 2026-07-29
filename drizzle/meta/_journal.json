@@ -8,6 +8,13 @@
       "when": 1785276785453,
       "tag": "0000_green_lethal_legion",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1785354666364,
+      "tag": "0001_amused_longshot",
+      "breakpoints": true
     }
   ]
 }
