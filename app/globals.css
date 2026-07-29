@@ -234,7 +234,7 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 
 /* Symmetrical hero composition */
 .hero-brand{width:min(860px,100%)}
-.hero-logo-crop{height:clamp(244px,28.2vw,340px);margin:0 auto 14px}
+.hero-logo-crop{height:clamp(250px,29vw,360px);margin:0 auto 16px}
 .hero-slogan{width:min(860px,92vw);margin:0 auto;position:static;left:auto;transform:none;text-align:center}
 .hero-brand .actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:min(500px,92vw);gap:12px;margin:32px auto 14px}
 .hero-brand .actions .button{width:100%;min-height:52px}
