@@ -328,12 +328,12 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .estimate-logo-crop{position:relative;display:block!important;width:64px;height:64px;overflow:hidden;flex:0 0 64px}
 .estimate-logo-crop img{position:absolute;width:150px!important;height:150px!important;max-width:none;left:-43px;top:-20px}
 .estimate-case{padding:0 34px 22px;margin:0!important;color:#746f66!important;letter-spacing:.04em}
-.estimate-comparison{display:grid!important;grid-template-columns:1fr auto 1fr;align-items:end;gap:20px;padding:28px 34px!important;border-block:1px solid #d8c9ad!important}
-.estimate-comparison div{display:block!important;border:0!important;padding:0!important}
-.estimate-comparison small{display:block;min-height:36px;color:#766f64}
-.estimate-comparison b{display:block;font-family:var(--font-serif);font-size:1.55rem;margin-top:10px;color:#6d6d68}
-.estimate-comparison strong{display:block!important;border:0!important;padding:0!important;font-size:clamp(2rem,3.4vw,3.25rem)!important;color:var(--navy);white-space:nowrap}
-.estimate-comparison i{font-style:normal;color:var(--gold);font-size:1.5rem;padding-bottom:7px}
+.estimate-comparison{display:grid!important;grid-template-columns:minmax(0,1fr) auto minmax(0,1.3fr);align-items:stretch;gap:22px;padding:28px 34px!important;border-block:1px solid #d8c9ad!important}
+.estimate-comparison div{display:grid!important;grid-template-rows:44px auto;align-items:end;border:0!important;padding:0!important;min-width:0}
+.estimate-comparison small{display:flex;align-items:flex-end;min-height:0;color:#766f64;line-height:1.45}
+.estimate-comparison b{display:block;font-family:var(--font-serif);font-size:1.55rem;line-height:1;margin-top:10px;color:#6d6d68;white-space:nowrap}
+.estimate-comparison strong{display:block!important;align-self:end;border:0!important;padding:0!important;font-size:clamp(2rem,3vw,2.85rem)!important;line-height:1;color:var(--navy);white-space:nowrap}
+.estimate-comparison i{align-self:end;font-style:normal;color:var(--gold);font-size:1.5rem;line-height:1;padding-bottom:2px}
 .estimate-gain{background:var(--navy);color:var(--ivory);padding:18px 34px!important;border:0!important;align-items:center}
 .estimate-gain span{font-size:.67rem;letter-spacing:.12em;text-transform:uppercase}
 .estimate-gain b{font-family:var(--font-serif);font-size:1.55rem;color:var(--soft-gold)}
