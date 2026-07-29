@@ -25,7 +25,7 @@ export function RevenueSimulator(){
  return <div className="simulator-layout">
   <form className="form-card" onSubmit={e=>e.preventDefault()}>
    <p className="eyebrow">Situation actuelle et potentiel</p>
-   <div className="field-row"><label>Taux d’occupation actuel : {currentOccupancy}%<input type="range" min="0" max="100" value={currentOccupancy} onChange={e=>setCurrentOccupancy(+e.target.value)}/></label><label>Tarif actuel par nuit (€)<input type="number" min="0" value={currentNightly} onChange={e=>setCurrentNightly(+e.target.value)}/></label></div>
+   <div className="field-row"><label>Taux d’occupation actuel : {currentOccupancy}%<input className="aurevia-range" style={{background:`linear-gradient(to right, #2f7acb 0%, #2f7acb ${currentOccupancy}%, rgba(255,255,255,.24) ${currentOccupancy}%, rgba(255,255,255,.24) 100%)`}} type="range" min="0" max="100" value={currentOccupancy} onChange={e=>setCurrentOccupancy(+e.target.value)}/></label><label>Tarif actuel par nuit (€)<input type="number" min="0" value={currentNightly} onChange={e=>setCurrentNightly(+e.target.value)}/></label></div>
    <p className="form-hint">Le scénario combine une meilleure occupation, des durées de séjour optimisées et une tarification dynamique. Le tarif moyen par nuit est plafonné à +20 % par rapport à votre tarif actuel.</p>
    <p className="eyebrow simulator-subhead">Caractéristiques du bien</p>
    <div className="field-row">
@@ -34,8 +34,8 @@ export function RevenueSimulator(){
    </div>
    <div className="field-row"><label>Chambres<input type="number" min="1" max="10" value={i.bedrooms} onChange={e=>set("bedrooms",+e.target.value)}/></label><label>Capacité d’accueil<input type="number" min="1" max="20" value={i.guests} onChange={e=>set("guests",+e.target.value)}/></label></div>
    <div className="field-row"><label>Surface en m²<input type="number" min="25" max="1000" value={i.area} onChange={e=>set("area",+e.target.value)}/></label><label>Niveau de finition<select value={i.finish} onChange={e=>set("finish",e.target.value)}>{["Essentiel","Soigné","Premium","Luxe"].map(x=><option key={x}>{x}</option>)}</select></label></div>
-   <label>Disponibilité annuelle : {i.days} jours<input type="range" min="60" max="365" value={i.days} onChange={e=>set("days",+e.target.value)}/></label>
-   <div className="field-row">{([["sea","Vue mer"],["pool","Piscine"],["terrace","Terrasse"],["parking","Parking"]] as const).map(([k,l])=><label key={k}><span><input type="checkbox" checked={i[k]} onChange={e=>set(k,e.target.checked)}/> {l}</span></label>)}</div>
+   <label>Disponibilité annuelle : {i.days} jours<input className="aurevia-range" style={{background:`linear-gradient(to right, #2f7acb 0%, #2f7acb ${((i.days-60)/305)*100}%, rgba(255,255,255,.24) ${((i.days-60)/305)*100}%, rgba(255,255,255,.24) 100%)`}} type="range" min="60" max="365" value={i.days} onChange={e=>set("days",+e.target.value)}/></label>
+   <div className="field-row simulator-amenities">{([["sea","Vue mer"],["pool","Piscine / jacuzzi"],["terrace","Terrasse"],["parking","Parking"]] as const).map(([k,l])=><label key={k}><input type="checkbox" checked={i[k]} onChange={e=>set(k,e.target.checked)}/><span>{l}</span></label>)}</div>
   </form>
   <motion.aside className="result-panel" key={projected.annual} initial={{opacity:.5,y:10}} animate={{opacity:1,y:0}}>
    <p className="eyebrow dark">Potentiel d’amélioration</p>

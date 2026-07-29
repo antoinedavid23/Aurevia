@@ -332,13 +332,20 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .estimate-comparison div{display:block!important;border:0!important;padding:0!important}
 .estimate-comparison small{display:block;min-height:36px;color:#766f64}
 .estimate-comparison b{display:block;font-family:var(--font-serif);font-size:1.55rem;margin-top:10px;color:#6d6d68}
-.estimate-comparison strong{display:block!important;border:0!important;padding:0!important;font-size:clamp(2rem,3.4vw,3.25rem)!important;color:var(--navy)}
+.estimate-comparison strong{display:block!important;border:0!important;padding:0!important;font-size:clamp(2rem,3.4vw,3.25rem)!important;color:var(--navy);white-space:nowrap}
 .estimate-comparison i{font-style:normal;color:var(--gold);font-size:1.5rem;padding-bottom:7px}
 .estimate-gain{background:var(--navy);color:var(--ivory);padding:18px 34px!important;border:0!important;align-items:center}
 .estimate-gain span{font-size:.67rem;letter-spacing:.12em;text-transform:uppercase}
 .estimate-gain b{font-family:var(--font-serif);font-size:1.55rem;color:var(--soft-gold)}
 .estimate-premium>div:not(.estimate-brand):not(.estimate-comparison):not(.estimate-gain){margin-inline:34px}
 .estimate-premium>p:last-child{padding:15px 34px 26px;margin:0!important}
+
+.simulator-amenities label{display:flex;align-items:center;gap:12px;min-height:42px}
+.simulator-amenities input[type="checkbox"]{width:17px;height:17px;flex:0 0 17px;margin:0;accent-color:#2f7acb}
+.simulator-amenities span{line-height:1.3}
+.aurevia-range{appearance:none;-webkit-appearance:none;height:8px;padding:0;border:0;border-radius:999px;cursor:pointer}
+.aurevia-range::-webkit-slider-thumb{-webkit-appearance:none;width:19px;height:19px;border-radius:50%;background:#2f7acb;border:3px solid #f6f1e8;box-shadow:0 0 0 1px #2f7acb}
+.aurevia-range::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:#2f7acb;border:3px solid #f6f1e8;box-shadow:0 0 0 1px #2f7acb}
 
 .identity-heading{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:end}
 .identity-heading h2{margin-bottom:0;max-width:14ch}
