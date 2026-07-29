@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Eye, EyeOff, LockKeyhole } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 
 export function AdminLoginForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -33,12 +33,7 @@ export function AdminLoginForm() {
 
   return (
     <form className="admin-login-form" onSubmit={submit}>
-      <div className="admin-login-mark"><LockKeyhole size={19} /></div>
-      <p className="eyebrow">Accès privé</p>
-      <h1>Administration</h1>
-      <p className="admin-login-copy">
-        Connectez-vous pour gérer les biens et consulter les demandes reçues.
-      </p>
+      <h1 className="sr-only">Connexion à l’administration AUREVIA</h1>
       <label>
         Identifiant
         <input name="username" autoComplete="username" required />
