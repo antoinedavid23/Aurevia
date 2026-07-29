@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cinzel, DM_Sans } from "next/font/google";
+import { Cinzel, Manrope } from "next/font/google";
 import { SiteShell } from "@/components/SiteShell";
 import "./globals.css";
 
@@ -10,7 +10,7 @@ const serif = Cinzel({
   display: "swap",
 });
 
-const sans = DM_Sans({
+const sans = Manrope({
   subsets: ["latin"],
   variable: "--font-sans",
   weight: ["400", "500", "600", "700"],

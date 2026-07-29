@@ -419,13 +419,13 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
   --type-display-tracking:.004em;
   --type-display-leading:1.08;
   --type-copy-tracking:.002em;
-  --type-copy-leading:1.75;
+  --type-copy-leading:1.68;
 }
 body{
   font-family:var(--font-sans);
   font-weight:400;
   line-height:var(--type-copy-leading);
-  letter-spacing:var(--type-copy-tracking);
+  letter-spacing:-.006em;
   font-optical-sizing:auto;
 }
 h1,h2,h3,
@@ -465,10 +465,10 @@ input,select,textarea,label,
 .property-card p{
   font-family:var(--font-sans);
   line-height:var(--type-copy-leading);
-  letter-spacing:var(--type-copy-tracking);
+  letter-spacing:-.008em;
 }
 .prose p:not(.eyebrow),.content-section p{
-  line-height:1.85;
+  line-height:1.76;
 }
 .eyebrow,.breadcrumbs,.button,header nav{
   font-family:var(--font-sans);
@@ -478,7 +478,7 @@ input,select,textarea,label,
 @media(max-width:600px){
   :root{
     --type-display-leading:1.1;
-    --type-copy-leading:1.72;
+    --type-copy-leading:1.7;
   }
   h1{font-size:clamp(2.35rem,10.5vw,3.25rem);line-height:1.1}
   h2{font-size:clamp(1.95rem,8.5vw,2.65rem);line-height:1.16}
