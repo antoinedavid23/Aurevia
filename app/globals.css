@@ -807,6 +807,19 @@ input,select,textarea,label,
 .admin-login-form>.button{width:100%;justify-content:center}.admin-login-error{min-height:1.5em;margin:14px 0 0;color:#e2a49f;font-size:.72rem}
 .admin-recovery .text-link{display:block;text-align:center;margin-top:22px}.admin-session form{margin:0}.admin-session button{border:0;background:transparent;padding:0}
 
+/* Hero accueil — respiration verticale du bloc de marque */
+.hero-aurevia .hero-brand{
+  transform:translateY(clamp(-76px,-7vh,-48px));
+}
+.hero-aurevia .hero-brand>small{
+  margin-top:5px;
+}
+@media(max-width:700px){
+  .hero-aurevia .hero-brand{
+    transform:translateY(clamp(-38px,-4vh,-24px));
+  }
+}
+
 /* Page propriétaires */
 .owner-intro-grid,.owner-transparency-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,8vw,110px);align-items:end}
 .owner-intro-grid h2,.owner-transparency-grid h2{max-width:17ch!important}
