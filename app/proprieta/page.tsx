@@ -10,7 +10,7 @@ export default async function Page() {
   const allowed = (process.env.ADMIN_EMAILS || "").split(",").map(value => value.trim().toLowerCase()).filter(Boolean);
   const isAdmin = !!user && allowed.includes(user.email.toLowerCase());
   return <>
-    <PageHero label="Propriétés" title="Des demeures au caractère affirmé" text="Une collection de démonstration illustrant le niveau de soin AUREVIA." image="/images/home/liguria-coast.webp"/>
+    <PageHero label="Propriétés" title="Des demeures au caractère affirmé" text="Chaque propriété confiée à AUREVIA est veillée, préservée et entourée de la même attention que si elle était la nôtre." image="/images/home/liguria-coast.webp"/>
     <section className="section ivory"><div className="container">
       {isAdmin && <div className="admin-entry"><div><span>Espace privé</span><b>Gérer la collection de biens</b></div><Link className="button" href="/administration">Ouvrir l’administration</Link></div>}
       <PropertyGrid/>
