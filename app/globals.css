@@ -475,7 +475,9 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .experience-text .eyebrow{margin-bottom:10px}
 .experience-text h3{max-width:15ch;font-size:clamp(1.65rem,2.5vw,2.55rem);line-height:1.08;margin:10px 0 18px}.experience-text>p:last-child{max-width:50ch;margin:0;line-height:1.65}
 .experience-text-light{background:#eee6d9;color:var(--navy)}.experience-text-light>p:last-child{color:#66645f}
-.experience-text-dark{background:var(--navy);color:var(--ivory);border-color:var(--line)}.experience-text-dark>p:last-child{color:#b8c1c4}
+.experience-text-dark{justify-content:flex-start;padding-block:clamp(38px,3.4vw,52px);background:var(--navy);color:var(--ivory);border-color:var(--line)}
+.experience-text-dark h3{font-size:clamp(1.6rem,2.35vw,2.4rem);margin-bottom:18px}
+.experience-text-dark>p:last-child{color:#b8c1c4}
 .identity-link{margin-top:34px}
 
 /* Expérience propriétaire — promesse plutôt que galerie */
