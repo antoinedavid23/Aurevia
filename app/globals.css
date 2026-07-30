@@ -184,6 +184,8 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .offer-card-360 .offer-head span,.offer-card-360 .offer-head strong{color:var(--soft-gold)}
 .offer-promise{font-family:var(--font-serif);font-size:1.45rem;line-height:1.35;margin:28px 0 8px}
 .offer-rate,.offer-note{font-size:.75rem;line-height:1.65;color:#74766f}
+.offer-note-commission{margin-top:10px;padding-top:12px;border-top:1px solid rgba(13,27,42,.12)}
+.offer-note-commission strong{font-weight:650;color:var(--navy)}
 .offer-card-360 .offer-rate,.offer-card-360 .offer-note{color:#aeb6b9}
 .offer-groups{display:grid;gap:30px;margin:34px 0}
 .offer-groups h4{font-family:var(--font-sans);font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:#86682f;margin:0 0 15px}
