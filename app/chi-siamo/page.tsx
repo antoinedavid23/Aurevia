@@ -8,7 +8,7 @@ export default function Page() {
 
     <section className="section ivory about-opening"><div className="container about-opening-grid">
       <div><p className="eyebrow dark">Notre raison d’être</p><h2>Prendre soin de ce qui compte.</h2></div>
-      <div className="about-opening-copy"><p className="about-lead">Le calme de ne plus avoir à y penser.</p><p>Une propriété continue de vivre en votre absence. AUREVIA reste sur place, remarque ce qui change et agit avant que le détail ne devienne une contrainte.</p></div>
+      <div className="about-opening-copy"><p className="about-lead">Le calme de ne plus avoir à y penser.</p><p>Votre bien continue de vivre en votre absence. Les saisons passent, les équipements évoluent, une arrivée se prépare et certains détails réclament une attention que la distance rend difficile. AUREVIA reste sur place, apprend les habitudes du lieu, remarque ce qui change et intervient avant qu’un simple détail ne devienne une contrainte. Vous restez pleinement maître de votre bien, sans avoir à en porter chaque préoccupation au quotidien.</p></div>
     </div></section>
 
     <section className="about-story"><div className="container">
