@@ -55,6 +55,6 @@ export default function Home(){
 
   <section className="section ivory"><div className="container"><Reveal><p className="eyebrow dark">La confiance, racontée</p><h2>Une présence discrète et constante</h2></Reveal><ReviewCards/><p className="demo-note">Les portraits et avis définitifs seront publiés uniquement après accord écrit et vérification de leur provenance.</p></div></section>
 
-  <section className="section final-cta"><ShieldCheck/><h2>Votre propriété mérite une gestion à sa hauteur</h2><p>Confiez-nous vos exigences. Nous imaginerons un accompagnement confidentiel, façonné autour de votre propriété.</p><Link className="button" href="/valutazione">Solliciter une étude confidentielle</Link></section>
+  <section className="section final-cta"><ShieldCheck/><h2>Votre propriété mérite une gestion à sa hauteur</h2><p>Parlons de votre propriété et définissons une gestion adaptée à vos besoins.</p><Link className="button" href="/valutazione">Demander une évaluation</Link></section>
  </>;
 }
