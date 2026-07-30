@@ -38,14 +38,14 @@ export default function Home(){
   </div></section>
 
   <section className="section home-gallery ivory"><div className="container">
-   <Reveal className="identity-heading"><div><p className="eyebrow dark">L’expérience propriétaire</p><h2>Votre propriété, parfaitement prise en charge.</h2></div><p>Une propriété d’exception mérite davantage qu’une gestion efficace. Elle exige une présence capable d’anticiper, de décider et d’agir en votre nom, avec la même attention que vous.</p></Reveal>
+   <Reveal className="identity-heading"><div><p className="eyebrow dark">L’expérience propriétaire</p><h2>La liberté d’en profiter. La certitude qu’elle est entre de bonnes mains.</h2></div><div className="identity-copy"><p>Confier sa propriété ne devrait jamais signifier perdre le contrôle. Avec AUREVIA, vous restez informé sans être sollicité pour chaque détail, libre de décider sans avoir à tout coordonner.</p><p>À distance comme sur place, vous savez votre bien veillé, préparé et préservé. Les imprévus sont traités avant de devenir des contraintes. Lorsque vous revenez, tout est simplement à sa place.</p><strong>Moins de charge mentale. Plus de sérénité. Le plaisir intact de votre propriété.</strong></div></Reveal>
    <div className="editorial-grid identity-grid">
-    <div className="visual visual-bedroom"><span><b>01</b> Un interlocuteur qui connaît votre bien</span></div>
-    <div className="visual visual-coast"><span><b>02</b> Une vigilance qui précède les imprévus</span></div>
-    <div className="visual visual-night"><span><b>03</b> Une valeur préservée dans le temps</span></div>
-    <div className="visual visual-key"><span><b>04</b> Votre propriété, toujours prête</span></div>
+    <div className="visual visual-bedroom"><span><b>01</b><i>Connu dans chaque détail<small>Un interlocuteur qui comprend votre bien, vos habitudes et vos exigences.</small></i></span></div>
+    <div className="visual visual-coast"><span><b>02</b><i>Veillé, même à distance<small>Une présence locale qui anticipe et vous tient informé avec justesse.</small></i></span></div>
+    <div className="visual visual-night"><span><b>03</b><i>Préservé dans le temps<small>Chaque décision protège son caractère, son état et sa valeur.</small></i></span></div>
+    <div className="visual visual-key"><span><b>04</b><i>Prêt lorsque vous l’êtes<small>Vous retrouvez une propriété impeccable, accueillante et pleinement disponible.</small></i></span></div>
    </div>
-   <Link className="text-link identity-link" href="/proprietari">Découvrir l’accompagnement propriétaire <ArrowRight size={15}/></Link>
+   <Link className="text-link identity-link" href="/proprietari">Découvrir votre expérience AUREVIA <ArrowRight size={15}/></Link>
   </div></section>
 
   <section className="section ivory"><div className="container"><Reveal><p className="eyebrow dark">Collection de démonstration</p><h2>Propriétés sélectionnées</h2></Reveal><div className="card-grid three">{properties.slice(0,3).map(p=><PropertyCard key={p.slug} property={p}/>)}</div><p className="demo-note">Images et propriétés présentées à titre démonstratif.</p></div></section>
