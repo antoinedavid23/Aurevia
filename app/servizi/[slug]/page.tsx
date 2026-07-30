@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
-import { ArrowRight, Check, CircleDot, FileText, ShieldCheck } from "lucide-react";
-import { PageHero } from "@/components/PageHero";
+import { Check, CircleDot, FileText, ShieldCheck } from "lucide-react";
+import { CTA, PageHero } from "@/components/PageHero";
 import { ServiceJourney, type ServiceJourneyStep } from "@/components/ServiceJourney";
 import { services } from "@/data/content";
 
@@ -180,6 +179,6 @@ export default async function Page({params}:{params:Promise<{slug:string}>}) {
       <div><p className="eyebrow dark">Transparence</p><h2>Ce qui reste séparé est annoncé dès le départ.</h2><p>Le périmètre, les délais de réponse et les règles de validation figurent dans votre proposition personnalisée.</p></div>
       <div className="transparency-card"><p className="eyebrow dark">À savoir</p><h3>Un cadre sans ambiguïté</h3><ul>{detail.notIncluded.map(item=><li key={item}>{item}</li>)}</ul></div>
     </div></section>
-    <section className="section final-cta service-final-cta"><p className="eyebrow">Étude confidentielle</p><h2>{experience.cta}</h2><p>Présentez-nous votre propriété. Nous vous répondrons avec un périmètre clair, adapté à votre situation.</p><Link className="button" href="/valutazione">{experience.cta} <ArrowRight size={16}/></Link></section>
+    <CTA/>
   </>;
 }
