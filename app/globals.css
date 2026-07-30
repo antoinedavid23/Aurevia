@@ -213,7 +213,7 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .service-card-top{display:flex;justify-content:space-between;align-items:center;padding:24px 26px}
 .service-card-top svg{position:static}
 .service-card-copy{padding:54px 26px 28px;background:linear-gradient(180deg,transparent,rgba(5,12,18,.95))}
-.service-card-copy h3{display:-webkit-box;width:100%;max-width:none;min-height:2.3em;margin:0 0 12px;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;font-size:clamp(1.28rem,1.65vw,1.55rem);line-height:1.15}.service-card-copy p{display:-webkit-box;min-height:3.4em;margin-bottom:22px;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;font-size:.9rem;line-height:1.7}
+.service-card-copy h3{display:-webkit-box;width:100%;max-width:none;margin:0 0 5px;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;font-size:clamp(1.28rem,1.65vw,1.55rem);line-height:1.15}.service-card-copy p{display:-webkit-box;min-height:3.4em;margin-bottom:22px;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;font-size:.9rem;line-height:1.7}
 .service-card-copy small{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--soft-gold)}
 .estimate-card{position:relative;border:1px solid rgba(200,161,90,.35);box-shadow:0 26px 70px rgba(0,0,0,.24);overflow:hidden}
 .estimate-card:before{content:"";position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,var(--gold),var(--soft-gold),transparent)}
