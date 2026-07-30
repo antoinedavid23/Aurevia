@@ -4,7 +4,8 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import { localeNames, locales, translate, type Locale } from "@/lib/i18n";
 
 type LocaleContextValue = { locale: Locale; setLocale: (locale: Locale) => void };
-const LocaleContext = createContext<LocaleContextValue>({ locale: "fr", setLocale: () => undefined });
+const DEFAULT_LOCALE: Locale = "it";
+const LocaleContext = createContext<LocaleContextValue>({ locale: DEFAULT_LOCALE, setLocale: () => undefined });
 
 const originals = new WeakMap<Node, string>();
 const originalAttributes = new WeakMap<Element, Map<string, string>>();
@@ -52,7 +53,7 @@ function translateTree(root: ParentNode, locale: Locale) {
 }
 
 export function LocaleController({ children }: { children: React.ReactNode }) {
-  const [locale, updateLocale] = useState<Locale>("fr");
+  const [locale, updateLocale] = useState<Locale>(DEFAULT_LOCALE);
 
   useEffect(() => {
     const stored = localStorage.getItem("aurevia-locale");

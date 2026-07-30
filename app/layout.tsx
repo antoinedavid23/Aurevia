@@ -20,19 +20,19 @@ const sans = Manrope({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
-  title: { default: "AUREVIA | Gestion de propriétés à Gênes et en Ligurie", template: "%s | AUREVIA" },
-  description: "Gestion exclusive de propriétés et hospitalité sur mesure à Gênes et en Ligurie.",
+  title: { default: "AUREVIA | Gestione di proprietà a Genova e in Liguria", template: "%s | AUREVIA" },
+  description: "Gestione esclusiva di proprietà e ospitalità su misura a Genova e in Liguria.",
   openGraph: {
     title: "AUREVIA",
-    description: "L’art de prendre soin de ce qui compte.",
+    description: "L’arte di prendersi cura di ciò che conta.",
     type: "website",
-    locale: "fr_FR",
+    locale: "it_IT",
     images: ["/og.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "AUREVIA",
-    description: "Gestion exclusive à Gênes et en Ligurie.",
+    description: "Gestione esclusiva a Genova e in Liguria.",
     images: ["/og.png"],
   },
   icons: {
@@ -43,5 +43,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="fr"><body className={`${serif.variable} ${sans.variable}`}><LocaleController><SiteShell>{children}</SiteShell></LocaleController></body></html>;
+  return <html lang="it"><body className={`${serif.variable} ${sans.variable}`}><LocaleController><SiteShell>{children}</SiteShell></LocaleController></body></html>;
 }
