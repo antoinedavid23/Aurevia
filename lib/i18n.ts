@@ -166,7 +166,6 @@ export const messages: Record<string, Localized> = {
   "Rendre l’excellence presque invisible.": t("Rendere l’eccellenza quasi invisibile.", "Making excellence feel effortless.", "Hacer que la excelencia parezca invisible.", "Совершенство, которое не требует внимания.", "让卓越自然发生。"),
   "La confiance ne se proclame pas. Elle se vit.": t("La fiducia non si proclama. Si vive.", "Trust is not declared. It is experienced.", "La confianza no se proclama. Se vive.", "Доверие не заявляют — его ощущают.", "信任无需宣告，而在每一次体验中发生。"),
 
-  "Pour les propriétaires": t("Per i proprietari", "For owners", "Para propietarios", "Владельцам", "致业主"),
   "Moins de contraintes. Plus de maîtrise.": t("Meno vincoli. Più controllo.", "Less burden. Greater control.", "Menos carga. Más control.", "Меньше забот. Больше контроля.", "少些负担，多些掌控。"),
   "Ce qui change pour vous": t("Cosa cambia per te", "What changes for you", "Lo que cambia para usted", "Что изменится для вас", "为您带来的改变"),
   "Votre propriété ne dicte plus votre quotidien.": t("Il tuo immobile non detta più le tue giornate.", "Your property no longer dictates your day.", "Su propiedad deja de dictar su día a día.", "Объект больше не управляет вашим временем.", "您的生活，不再被房产事务牵着走。"),
