@@ -15,7 +15,7 @@ export function RevenueSimulator(){
  const projected=useMemo(()=>{
   const currentBookedNights=Math.round(i.days*(currentOccupancy/100));
   const currentAnnual=Math.round(currentNightly*currentBookedNights);
-  const occupancy=Math.min(80,Math.max(60,r.occupancy,currentOccupancy+12));
+  const occupancy=currentOccupancy>80?currentOccupancy:Math.min(80,Math.max(60,r.occupancy,currentOccupancy+12));
   const bookedNights=Math.round(i.days*(occupancy/100));
   const nightlyCeiling=Math.round(currentNightly*1.2);
   const nightly=Math.min(nightlyCeiling,Math.max(currentNightly,r.nightly));
