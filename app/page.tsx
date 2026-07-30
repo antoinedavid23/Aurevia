@@ -38,7 +38,7 @@ export default function Home(){
   </div></section>
 
   <section className="section home-gallery ivory"><div className="container">
-   <Reveal className="identity-heading"><div><p className="eyebrow dark">L’expérience propriétaire</p><h2>Tout est pris en charge. Rien n’est laissé au hasard.</h2></div><p>Une propriété d’exception mérite davantage qu’une gestion efficace. Elle exige une présence capable d’anticiper, de décider et d’agir en votre nom, avec la même attention que vous.</p></Reveal>
+   <Reveal className="identity-heading"><div><p className="eyebrow dark">L’expérience propriétaire</p><h2>Votre propriété, parfaitement prise en charge.</h2></div><p>Une propriété d’exception mérite davantage qu’une gestion efficace. Elle exige une présence capable d’anticiper, de décider et d’agir en votre nom, avec la même attention que vous.</p></Reveal>
    <div className="editorial-grid identity-grid">
     <div className="visual visual-bedroom"><span><b>01</b> Un interlocuteur qui connaît votre bien</span></div>
     <div className="visual visual-coast"><span><b>02</b> Une vigilance qui précède les imprévus</span></div>
