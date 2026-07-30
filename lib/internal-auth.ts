@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 const COOKIE_NAME = "aurevia_admin";
 const SESSION_DURATION_SECONDS = 60 * 60 * 10;
 const INTERNAL_PASSWORD_HASH =
-  "210000:XzuFeHAidB7HQDMTYgXvOA==:p5dNldTHR1m2S9s1g+PJ6gcNUVfazyYmsFMkwntZhVI=";
+  "100000:XzuFeHAidB7HQDMTYgXvOA==:VGs3PNyh3gC/Dl/OMWUhtMlgyYzHRDiwmEBeWnmNBzk=";
 
 function bytesToBase64(bytes: Uint8Array) {
   let binary = "";
