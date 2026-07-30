@@ -2,12 +2,12 @@ export type Service={slug:string;title:string;short:string;number:string;image?:
 export type Property={slug:string;name:string;location:string;bedrooms:number;guests:number;baths:number;tone:number;image:string};
 
 export const services:Service[]=[
- {slug:"gestione-proprieta",title:"Gestion de propriété",short:"Un interlocuteur unique pour coordonner chaque étape opérationnelle.",number:"01"},
- {slug:"concierge",title:"Assistance sur mesure",short:"Des demandes sélectionnées et une assistance entièrement personnalisée.",number:"02"},
- {slug:"accoglienza-voyageurs",title:"Accueil des voyageurs",short:"Une arrivée impeccable, personnalisée et discrète.",number:"03"},
- {slug:"pulizie-biancheria",title:"Ménage et linge",short:"Des standards élevés et un contrôle après chaque séjour.",number:"04"},
- {slug:"manutenzione",title:"Maintenance",short:"Prévention, interventions et réseau local de confiance.",number:"05"},
- {slug:"revenue-management",title:"Optimisation des revenus",short:"Une stratégie tarifaire indicative et une présentation soignée.",number:"06"},
+ {slug:"gestione-proprieta",title:"Gestion de propriété",short:"Une direction unique pour préserver, exploiter et valoriser votre propriété avec une exigence constante.",number:"01"},
+ {slug:"concierge",title:"Assistance sur mesure",short:"Des attentions rares, orchestrées selon vos habitudes, vos invités et chaque circonstance.",number:"02"},
+ {slug:"accoglienza-voyageurs",title:"Accueil des voyageurs",short:"Chaque arrivée devient une expérience fluide, personnelle et parfaitement maîtrisée.",number:"03"},
+ {slug:"pulizie-biancheria",title:"Ménage et linge",short:"Une mise en place irréprochable, contrôlée avant chaque séjour et restaurée après chaque départ.",number:"04"},
+ {slug:"manutenzione",title:"Maintenance",short:"Une vigilance continue et un réseau sélectionné pour intervenir avec justesse, sans perturber le lieu.",number:"05"},
+ {slug:"revenue-management",title:"Optimisation des revenus",short:"Une stratégie dynamique qui conjugue désirabilité, juste prix et performance durable.",number:"06"},
  {slug:"sicurezza",title:"Sécurité",short:"Contrôles, inventaires et procédures clairement définies.",number:"07"},
  {slug:"amministrazione",title:"Administration",short:"Des rapports transparents et une documentation structurée.",number:"08"},
 ].map((service,i)=>({...service,image:["/images/services/property-management.webp","/images/services/concierge-service.webp","/images/services/guest-welcome.webp","/images/services/housekeeping.webp","/images/services/maintenance.webp","/images/services/revenue-management.webp","/images/services/security.webp","/images/services/administration.webp"][i]}));

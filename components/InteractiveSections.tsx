@@ -5,10 +5,10 @@ import Link from "next/link";
 import { ArrowRight, Check, Star } from "lucide-react";
 
 const method = [
-  {title:"Découverte de la propriété",time:"45 min",text:"Visite du bien, échange sur vos objectifs, vos périodes d’occupation et les contraintes opérationnelles.",points:["Analyse du potentiel","Inventaire des besoins","Cadre de collaboration"]},
-  {title:"Définition de la stratégie",time:"2 à 4 jours",text:"Positionnement, calendrier, règles de séjour et scénario tarifaire sont construits autour de votre propriété.",points:["Étude du marché local","Tarifs par saison","Objectifs mesurables"]},
-  {title:"Préparation et valorisation",time:"1 à 3 semaines",text:"Nous coordonnons la présentation, les équipements, le livret d’accueil et les standards de préparation.",points:["Plan de lancement","Mise en scène du bien","Parcours voyageur"]},
-  {title:"Gestion et pilotage",time:"En continu",text:"Réservations, voyageurs, prestataires et performances sont suivis depuis un interlocuteur unique.",points:["Optimisation régulière","Suivi des incidents","Compte rendu propriétaire"]},
+  {title:"Révéler le potentiel du lieu",time:"Premier échange privé · 45 à 60 min",text:"Nous découvrons la propriété dans son ensemble : son caractère, ses usages, vos périodes d’occupation et vos ambitions. Cette lecture attentive pose un cadre fidèle au lieu comme à vos exigences.",points:["Lecture précise du potentiel","Inventaire des attentions essentielles","Définition d’un cadre de confiance"]},
+  {title:"Construire une stratégie singulière",time:"Étude personnalisée · 2 à 4 jours",text:"Positionnement, calendrier, règles de séjour et stratégie tarifaire sont dessinés comme un ensemble cohérent. Chaque décision préserve la désirabilité du bien tout en soutenant sa performance.",points:["Analyse confidentielle du marché local","Tarification pensée selon chaque saison","Objectifs définis et suivis avec clarté"]},
+  {title:"Mettre la propriété en scène",time:"Préparation dédiée · 1 à 3 semaines",text:"Nous préparons chaque détail qui façonne la première impression : présentation, équipements, linge, photographie et parcours d’accueil. La propriété devient immédiatement lisible, désirable et prête à recevoir.",points:["Plan de lancement entièrement personnalisé","Mise en valeur respectueuse de l’identité du lieu","Expérience voyageur pensée sans rupture"]},
+  {title:"Orchestrer, suivre et valoriser",time:"Accompagnement continu",text:"Réservations, voyageurs, prestataires, incidents et performances sont pilotés par un interlocuteur unique. Vous conservez une vision claire de votre propriété sans avoir à en porter le quotidien.",points:["Optimisation attentive et régulière","Supervision discrète de chaque intervention","Compte rendu propriétaire clair et privilégié"]},
 ];
 
 export function MethodJourney(){
@@ -43,10 +43,10 @@ export function MethodJourney(){
         <div className="method-index"><span>0{active+1}</span><small>/ 04</small></div>
         <span>{item.time}</span><h3>{item.title}</h3><p>{item.text}</p>
         <ul>{item.points.map(point=><li key={point}><Check size={15}/>{point}</li>)}</ul>
-        <div className="method-controls"><button type="button" disabled={active===0} onClick={()=>goTo(active-1)}>Monter</button><button type="button" disabled={active===3} onClick={()=>goTo(active+1)}>Descendre</button></div>
-        <Link className="text-link" href="/valutazione">Parler de mon bien <ArrowRight size={15}/></Link>
+        <div className="method-controls"><button type="button" disabled={active===0} onClick={()=>goTo(active-1)}>Étape précédente</button><button type="button" disabled={active===3} onClick={()=>goTo(active+1)}>Étape suivante</button></div>
+        <Link className="text-link" href="/valutazione">Échanger en toute confidentialité <ArrowRight size={15}/></Link>
       </div>
-      <p className="method-hint">{active<3?"Continuez à faire défiler : la section reste en place jusqu’à l’étape 4.":"Étape finale — poursuivez pour découvrir la suite."}</p>
+      <p className="method-hint">{active<3?"Poursuivez votre lecture pour découvrir l’étape suivante.":"Votre accompagnement peut maintenant commencer."}</p>
     </div>
   </div>;
 }
