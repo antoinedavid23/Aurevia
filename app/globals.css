@@ -1091,7 +1091,7 @@ input,select,textarea,label,
 .owner-deliverables>div{padding:24px 0;border-bottom:1px solid var(--line)}
 .owner-deliverables span{color:var(--soft-gold);font-family:var(--font-serif);font-size:1.05rem}
 .owner-deliverables p{color:#aeb9be;line-height:1.7;margin:8px 0 0}
-.owner-note{margin:60px 0 0;padding-top:24px;border-top:1px solid var(--line);color:#84929a;font-size:.75rem}
+.owner-note{margin:22px 0 0!important;padding-top:18px;border-top:1px solid var(--line);color:#84929a!important;font-size:.72rem;line-height:1.65!important;max-width:48ch}
 .owner-clarity-shell{height:360vh;position:relative}
 .owner-clarity-sticky{position:sticky;top:0;min-height:100vh;display:grid;grid-template-columns:minmax(280px,.8fr) 30px minmax(420px,1.2fr);grid-template-rows:auto auto;align-content:center;gap:22px clamp(26px,5vw,70px);padding-block:110px}
 .owner-clarity-heading h2{max-width:16ch!important;font-size:clamp(2.25rem,4vw,4.4rem);margin:20px 0 28px}

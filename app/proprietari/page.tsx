@@ -65,7 +65,7 @@ export default function Page() {
       </article>)}</div>
     </div></section>
 
-    <section className="owner-transparency"><div className="container"><OwnerClarityJourney/><p className="owner-note">Les estimations restent indicatives : aucun rendement n’est garanti. Ménage, linge, consommables et interventions techniques sont facturés au réel, sans marge.</p></div></section>
+    <section className="owner-transparency"><div className="container"><OwnerClarityJourney/></div></section>
     <CTA/>
   </>;
 }

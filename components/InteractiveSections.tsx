@@ -96,6 +96,7 @@ export function OwnerClarityJourney(){
         <p className="eyebrow">Votre tranquillité, concrètement</p>
         <h2>Vous n’avez pas besoin de tout suivre pour tout savoir.</h2>
         <p>AUREVIA filtre le bruit, porte le quotidien et vous rend la bonne information au bon moment.</p>
+        <p className="owner-note">Les estimations restent indicatives : aucun rendement n’est garanti. Ménage, linge, consommables et interventions techniques sont facturés au réel, sans marge.</p>
       </div>
       <div className="owner-clarity-progress" aria-hidden="true">{clarityMoments.map((_,index)=><i key={index} className={index===active?"active":""}/>)}</div>
       <article className="owner-clarity-card">
