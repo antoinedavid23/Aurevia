@@ -230,6 +230,15 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .final-cta:before{content:"AUREVIA";color:var(--gold)}
 .page-hero-image h1{max-width:19ch}.experience-card h3{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .form-hint{font-size:.77rem;color:#aeb6b9;line-height:1.65;margin:-8px 0 12px}.simulator-subhead{margin-top:22px}
+.result-explanation{margin-top:30px;padding-top:24px;border-top:1px solid #d1c2a7}
+.result-explanation>p{font-size:.78rem;line-height:1.65;color:#62645f}
+.result-explanation>div{display:grid;grid-template-columns:minmax(125px,.8fr) 1.2fr;gap:18px;padding:17px 0;border-top:1px solid rgba(139,106,44,.22)}
+.result-explanation>div span{display:grid;grid-template-columns:24px 1fr;align-items:start;gap:8px}
+.result-explanation>div span b{font-family:var(--font-serif);font-size:1.05rem;color:#8b6a2c}
+.result-explanation>div small{color:#62645f;line-height:1.4}
+.result-explanation>div p{margin:0;font-size:.75rem;line-height:1.6}
+.result-explanation b{font-weight:600;color:var(--navy)}
+@media(max-width:600px){.result-explanation>div{grid-template-columns:1fr;gap:8px}}
 .amenities-checks{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.amenities-checks>span{grid-column:1/-1;font-size:.72rem;letter-spacing:.06em}.amenities-checks label{display:flex;grid-template-columns:auto 1fr;align-items:center;gap:8px}.amenities-checks input{width:auto}
 .admin-layout{display:grid;grid-template-columns:1fr 1fr;gap:34px}.admin-list h2,.admin-layout .form-card h2{font-size:2rem;margin-bottom:28px}.admin-list article{display:flex;justify-content:space-between;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}.admin-list article span{color:var(--gold);font-size:.68rem;letter-spacing:.12em}.admin-list article h3{margin:5px 0}.admin-list article p{color:#aeb6b9}.admin-list button{align-self:center;background:transparent;color:var(--gold);border:1px solid var(--line);padding:10px}
 .property-card:hover,.experience-card:hover,.offer-card:hover{transform:none!important}.service-card-image,.property-image,.experience-card{background-size:cover!important}

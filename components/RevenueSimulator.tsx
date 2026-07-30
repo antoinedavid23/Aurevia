@@ -13,13 +13,17 @@ export function RevenueSimulator(){
  const [currentNightly,setCurrentNightly]=useState(185);
  const r=useMemo(()=>calculateRevenueEstimate(i),[i]);
  const projected=useMemo(()=>{
-  const currentAnnual=Math.round(currentNightly*i.days*(currentOccupancy/100));
+  const currentBookedNights=Math.round(i.days*(currentOccupancy/100));
+  const currentAnnual=Math.round(currentNightly*currentBookedNights);
   const occupancy=Math.min(80,Math.max(60,r.occupancy,currentOccupancy+12));
   const bookedNights=Math.round(i.days*(occupancy/100));
   const nightlyCeiling=Math.round(currentNightly*1.2);
   const nightly=Math.min(nightlyCeiling,Math.max(currentNightly,r.nightly));
   const annual=Math.round(nightly*bookedNights);
-  return {currentAnnual,occupancy,nightly,bookedNights,annual,gain:Math.max(0,annual-currentAnnual),gainRate:currentAnnual?Math.round((annual/currentAnnual-1)*100):0,multiplier:currentAnnual?annual/currentAnnual:0};
+  const additionalNights=Math.max(0,bookedNights-currentBookedNights);
+  const occupancyContribution=Math.round(additionalNights*currentNightly);
+  const pricingContribution=Math.round(Math.max(0,nightly-currentNightly)*bookedNights);
+  return {currentAnnual,currentBookedNights,occupancy,nightly,bookedNights,additionalNights,occupancyContribution,pricingContribution,annual,gain:Math.max(0,annual-currentAnnual),gainRate:currentAnnual?Math.round((annual/currentAnnual-1)*100):0,multiplier:currentAnnual?annual/currentAnnual:0};
  },[currentNightly,currentOccupancy,i.days,r]);
  const set=(k:keyof SimulatorInput,v:string|number|boolean)=>setI(x=>({...x,[k]:v}));
  return <div className="simulator-layout">
@@ -46,8 +50,14 @@ export function RevenueSimulator(){
     <div><small>Revenu optimisé estimé</small>{euro(projected.annual)}</div>
     <div><small>Tarif actuel / tarif moyen par nuit (tarification dynamique)</small>{euro(currentNightly)} → {euro(projected.nightly)}</div>
     <div><small>Occupation actuelle / cible</small>{currentOccupancy}% → {projected.occupancy}%</div>
-    <div><small>Nuits supplémentaires</small>+ {Math.max(0,projected.bookedNights-Math.round(i.days*(currentOccupancy/100)))}</div>
+    <div><small>Nuits supplémentaires</small>+ {projected.additionalNights}</div>
     <div><small>Hausse tarifaire maximale</small>+20 % / nuit en moyenne</div>
+   </div>
+   <div className="result-explanation">
+    <p className="eyebrow dark">Pourquoi cet écart&nbsp;?</p>
+    <p>Le potentiel ne vient pas d’une hausse unique appliquée au hasard. Il additionne deux leviers, uniquement sur les <b>{i.days} jours</b> pendant lesquels votre bien est disponible.</p>
+    <div><span><b>01</b><small>Meilleure occupation</small></span><p><b>+ {projected.additionalNights} nuits</b>, soit environ <b>+ {euro(projected.occupancyContribution)}</b> au tarif actuel.</p></div>
+    <div><span><b>02</b><small>Tarification dynamique</small></span><p>Un tarif moyen passant de <b>{euro(currentNightly)}</b> à <b>{euro(projected.nightly)}</b>, soit environ <b>+ {euro(projected.pricingContribution)}</b> sur les nuits projetées.</p></div>
    </div>
    <p className="demo-note">Le potentiel représente une amélioration supposée par rapport aux données actuelles renseignées. Il ne constitue pas une garantie et doit être confirmé par une analyse du bien.</p>
    <Link className="button" href="/valutazione">Recevoir une évaluation personnalisée</Link>
