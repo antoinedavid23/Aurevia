@@ -674,7 +674,7 @@ input,select,textarea,label,
 .about-story-heading .eyebrow{width:100%;text-align:center}
 .about-story-heading h2{max-width:18ch!important;margin-inline:auto}
 .about-story-heading>p:last-child{max-width:720px;margin-inline:auto}
-.about-story-shell{height:360vh;position:relative}
+.about-story-shell{height:360vh;position:relative;margin-top:-140px}
 .about-story-sticky{
   position:sticky;
   top:0;
@@ -823,7 +823,7 @@ input,select,textarea,label,
 
 @media(max-width:800px){
   .about-story-heading,.about-values-heading,.values-manifest{grid-template-columns:1fr}
-  .about-story-shell{height:330vh}
+  .about-story-shell{height:330vh;margin-top:-70px}
   .about-story-sticky{grid-template-columns:28px minmax(0,1fr);gap:14px;padding-block:88px}
   .about-story-card{min-height:500px;padding:30px 26px}
   .about-story-hint{grid-column:1/-1}
@@ -840,6 +840,7 @@ input,select,textarea,label,
   .method-title span+span::before{content:" "}
   .about-story-progress{display:none}
   .about-story-sticky{display:block;padding-block:88px}
+  .about-story-shell{margin-top:-40px}
   .about-story-card{min-height:540px}
   .about-story-hint{margin-top:14px}
   .values-feature{padding:28px 22px}
@@ -848,7 +849,7 @@ input,select,textarea,label,
 }
 
 @media(prefers-reduced-motion:reduce){
-  .about-story-shell{height:auto}
+  .about-story-shell{height:auto;margin-top:0}
   .about-story-sticky{position:relative;min-height:auto;padding-block:70px}
 }
 
