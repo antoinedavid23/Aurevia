@@ -271,7 +271,7 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .footer-premium{padding:0 5vw 26px;background:#050c12;border-top:1px solid rgba(200,161,90,.28)}
 .footer-signature{max-width:1440px;margin:0 auto;min-height:310px;display:grid;grid-template-columns:180px minmax(0,1fr) auto;align-items:center;gap:clamp(35px,7vw,110px);border-bottom:1px solid rgba(200,161,90,.22)}
 .footer-signature>.logo{width:150px;height:150px;margin:0}
-.footer-statement h2{max-width:none;margin:0;color:var(--ivory);font-size:clamp(2rem,3.4vw,3.9rem);line-height:1.12}
+.footer-statement h2{max-width:none;margin:0;color:var(--ivory);font-size:clamp(1.65rem,2.65vw,3rem);line-height:1.16}
 .footer-statement h2 span{display:block;color:inherit;font-size:inherit;letter-spacing:inherit;text-transform:none;white-space:nowrap}
 .final-cta-title{max-width:none}
 .final-cta-title span{display:block;white-space:nowrap}
@@ -296,7 +296,7 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 @media(max-width:600px){
   .footer-premium{padding-inline:24px}
   .footer-signature{grid-template-columns:1fr;justify-items:center;padding:52px 0;text-align:center}
-  .footer-statement h2{font-size:2.1rem}
+  .footer-statement h2{font-size:1.75rem}
   .footer-statement h2 span,.final-cta-title span{white-space:normal}
   .footer-consultation{grid-column:auto;margin-top:0}
   .footer-premium .footer-grid{grid-template-columns:1fr;padding:45px 0 34px}
