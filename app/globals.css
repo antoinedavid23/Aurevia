@@ -395,6 +395,7 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .identity-grid .visual:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(7,16,25,.72));pointer-events:none}
 .identity-grid .visual span{z-index:1;display:flex;align-items:center;gap:14px;font-size:1.35rem}
 .identity-grid .visual b{font-family:var(--font-sans);font-size:.62rem;letter-spacing:.16em;color:var(--soft-gold)}
+.identity-link{margin-top:34px}
 
 /* Expérience propriétaire — promesse plutôt que galerie */
 .signature-section{overflow:hidden}
