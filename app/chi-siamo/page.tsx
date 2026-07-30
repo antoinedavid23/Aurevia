@@ -7,8 +7,8 @@ export default function Page() {
     <PageHero label="À propos" title="Une histoire de présence, de confiance et de lumière" text="Sur la côte ligure, les plus belles propriétés ne demandent pas seulement à être gérées. Elles demandent à être comprises, protégées et racontées." image="/images/about/lighthouse.webp"/>
 
     <section className="section ivory about-opening"><div className="container about-opening-grid">
-      <div><p className="eyebrow dark">Notre raison d’être</p><h2>Prendre soin de ce qui compte, même à distance.</h2></div>
-      <div className="about-opening-copy"><p className="about-lead">Entre la pierre et la mer, une propriété porte toujours davantage qu’une valeur immobilière. Elle abrite des souvenirs, un projet, parfois une histoire familiale.</p><p>AUREVIA est née pour offrir aux propriétaires cette tranquillité rare : savoir qu’une présence attentive veille sur leur bien, anticipe les besoins et protège chaque détail avec la même exigence qu’eux.</p></div>
+      <div><p className="eyebrow dark">Notre raison d’être</p><h2>Prendre soin de ce qui compte.</h2></div>
+      <div className="about-opening-copy"><p className="about-lead">Une propriété n’est jamais simplement vide. En votre absence, elle continue d’exiger une présence, des décisions et une attention constante.</p><p>AUREVIA existe pour tenir cette place : veiller sur ce qui vous appartient, en préserver le caractère et vous permettre de vous en éloigner sans avoir à vous en préoccuper.</p></div>
     </div></section>
 
     <section className="about-story"><div className="container">
