@@ -5,25 +5,25 @@ import { ServiceJourney, type ServiceJourneyStep } from "@/components/ServiceJou
 import { services } from "@/data/content";
 
 const specifics: Record<string,{challenge:string;included:string[];owner:string[];notIncluded:string[]}> = {
-  "gestione-proprieta":{challenge:"Coordonner seul les voyageurs, le calendrier, les prestataires et les imprévus exige une disponibilité constante.",included:["Audit opérationnel du bien","Paramétrage du calendrier et des règles","Coordination des réservations","Suivi des arrivées et départs","Contrôle des prestations","Gestion des incidents","Compte rendu propriétaire","Interlocuteur unique"],owner:["Vision claire de l’activité","Décisions documentées","Disponibilité préservée"],notIncluded:["Ménage et linge facturés selon utilisation","Travaux et pièces sur validation préalable"]},
-  "concierge":{challenge:"Les demandes particulières peuvent rapidement mobiliser plusieurs interlocuteurs et fragiliser l’expérience.",included:["Qualification de la demande","Recherche de solutions adaptées","Sélection des partenaires","Présentation des options et tarifs","Réservation après validation","Coordination des horaires","Suivi de la prestation","Assistance en cas d’ajustement"],owner:["Une réponse centralisée","Des coûts annoncés avant engagement","Un suivi jusqu’à la réalisation"],notIncluded:["Prestations tierces facturées séparément","Services soumis à disponibilité"]},
-  "accoglienza-voyageurs":{challenge:"La première impression se joue avant même l’ouverture de la porte.",included:["Collecte des informations d’arrivée","Instructions personnalisées","Préparation des accès","Contrôle préalable du logement","Accueil ou arrivée autonome encadrée","Présentation des équipements","Disponibilité pendant l’installation","Suivi après l’arrivée"],owner:["Un parcours cohérent","Moins de sollicitations directes","Une image de marque maîtrisée"],notIncluded:["Transferts et bagagerie sur devis","Accueil tardif selon conditions convenues"]},
-  "pulizie-biancheria":{challenge:"La régularité du ménage et du linge conditionne directement la satisfaction des voyageurs.",included:["Planning des rotations","Brief de préparation par pièce","Coordination des équipes","Contrôle visuel","Suivi du linge","Signalement des dégradations","Réassort selon inventaire","Correction des écarts identifiés"],owner:["Standards constants","Traçabilité des anomalies","Bien prêt à chaque arrivée"],notIncluded:["Ménage, blanchisserie et consommables facturés séparément","Nettoyages techniques sur devis"]},
-  "manutenzione":{challenge:"Une petite anomalie non suivie peut devenir une intervention urgente et coûteuse.",included:["Registre des équipements","Contrôles préventifs convenus","Qualification des incidents","Recherche d’un intervenant","Présentation du devis","Planification après accord","Suivi de l’intervention","Compte rendu et justificatifs"],owner:["Décisions prises en connaissance de cause","Historique des interventions","Réseau local coordonné"],notIncluded:["Main-d’œuvre, pièces et matériaux facturés séparément","Urgences traitées selon disponibilité des artisans"]},
-  "revenue-management":{challenge:"Un tarif fixe ne reflète ni la saison, ni la demande, ni les caractéristiques réelles du séjour.",included:["Analyse du positionnement","Segmentation des périodes","Tarifs par saison et événements","Règles de durée de séjour","Ajustements selon la demande","Suivi du rythme des réservations","Tests de présentation","Bilan périodique"],owner:["Stratégie compréhensible","Arbitrages expliqués","Potentiel suivi dans le temps"],notIncluded:["Aucun revenu n’est garanti","Les projections restent indicatives"]},
-  "sicurezza":{challenge:"La protection du bien repose sur des procédures simples, connues et répétées.",included:["Inventaire initial","Gestion des accès","Consignes aux voyageurs","Contrôles après séjour","Signalement documenté","Coordination en cas d’incident","Suivi des équipements sensibles","Mise à jour des procédures"],owner:["Accès mieux maîtrisés","Incidents documentés","Cadre d’intervention clair"],notIncluded:["Assurance et télésurveillance non incluses","Équipements de sécurité sur devis"]},
-  "amministrazione":{challenge:"Sans reporting structuré, le propriétaire manque de visibilité sur l’activité et les décisions prises.",included:["Centralisation des réservations","Suivi des prestations","Classement des justificatifs","Synthèse de l’activité","Historique des incidents","Relevé des décisions","Reporting consolidé","Préparation des éléments utiles au propriétaire"],owner:["Information accessible","Suivi régulier","Un historique exploitable"],notIncluded:["Conseil comptable, fiscal ou juridique non inclus","Documents à valider avec vos professionnels"]},
+  "gestione-proprieta":{challenge:"À distance, votre bien ne devrait pas devenir une succession de messages, de relances et d’imprévus à résoudre.",included:["Découverte complète de votre bien","Mise en place du calendrier et des règles","Suivi des réservations","Organisation des arrivées et des départs","Coordination des intervenants","Prise en charge des imprévus","Compte rendu régulier","Un seul interlocuteur pour tout"],owner:["Une vision claire, sans surcharge","Des décisions prises au bon moment","Le temps de profiter de votre bien"],notIncluded:["Ménage et linge facturés au réel, sans marge","Travaux et pièces engagés après votre accord"]},
+  "concierge":{challenge:"Une attention particulière n’a de valeur que si elle paraît simple, naturelle et parfaitement organisée.",included:["Écoute précise de la demande","Recherche d’options réellement adaptées","Choix de partenaires de confiance","Présentation claire des possibilités et des tarifs","Réservation après votre accord","Organisation des horaires et des accès","Suivi jusqu’au dernier détail","Présence en cas de changement"],owner:["Une demande, un interlocuteur","Des tarifs connus avant de décider","Une expérience suivie jusqu’au bout"],notIncluded:["Prestations des partenaires facturées séparément","Services proposés selon les disponibilités"]},
+  "accoglienza-voyageurs":{challenge:"L’expérience commence avant la porte : dans la fluidité des échanges, la justesse des attentions et le sentiment d’être attendu.",included:["Préparation personnalisée de l’arrivée","Instructions simples et précises","Organisation des accès","Dernier contrôle du bien","Accueil sur place ou arrivée autonome accompagnée","Présentation des essentiels","Disponibilité pendant l’installation","Attention portée aux premières heures"],owner:["Des voyageurs attendus, jamais livrés à eux-mêmes","Moins de sollicitations pour vous","Une qualité d’accueil fidèle à votre bien"],notIncluded:["Transferts et bagagerie proposés sur devis","Arrivées tardives organisées selon les conditions convenues"]},
+  "pulizie-biancheria":{challenge:"Le soin se remarque immédiatement : un linge impeccable, une pièce parfaitement remise en place, rien qui rompe l’harmonie du lieu.",included:["Organisation de chaque rotation","Consignes propres à chaque pièce","Coordination des équipes","Contrôle après intervention","Suivi précis du linge","Repérage des dégradations","Réassort selon l’inventaire","Correction avant la prochaine arrivée"],owner:["Le même niveau de soin à chaque séjour","Les anomalies repérées sans attendre","Un bien toujours prêt à recevoir"],notIncluded:["Ménage, linge et consommables facturés au réel, sans marge","Nettoyages spécifiques proposés sur devis"]},
+  "manutenzione":{challenge:"Un détail remarqué à temps reste un détail. Ignoré, il finit souvent par troubler un séjour ou abîmer le bien.",included:["Suivi des équipements essentiels","Contrôles préventifs convenus","Évaluation rapide de chaque anomalie","Recherche de l’artisan adapté","Devis présenté avant intervention","Organisation après votre accord","Présence pendant l’intervention","Compte rendu avec justificatifs"],owner:["Les bonnes informations pour décider","Une mémoire claire de chaque intervention","Des artisans coordonnés sur place"],notIncluded:["Main-d’œuvre, pièces et matériaux facturés au réel, sans marge","Urgences prises en charge selon la disponibilité des artisans"]},
+  "revenue-management":{challenge:"Le juste prix évolue avec la saison, la demande et la manière dont votre bien est présenté — jamais au détriment de son positionnement.",included:["Lecture du positionnement actuel","Identification des temps forts et des périodes calmes","Tarifs adaptés aux saisons et aux événements","Durées de séjour pensées avec cohérence","Ajustements selon la demande réelle","Suivi du rythme des réservations","Amélioration continue de la présentation","Bilan régulier et lisible"],owner:["Une stratégie que vous comprenez","Chaque ajustement expliqué","Un potentiel suivi dans la durée"],notIncluded:["Aucune promesse de revenu garanti","Toutes les projections restent indicatives"]},
+  "sicurezza":{challenge:"Protéger un bien, c’est d’abord savoir qui y accède, ce qui a changé et quoi faire lorsqu’un détail sort du cadre.",included:["Inventaire de départ","Suivi des clés, badges et accès","Consignes claires aux voyageurs","Vérification après chaque séjour","Signalement précis des écarts","Coordination en cas d’incident","Surveillance des équipements sensibles","Procédures tenues à jour"],owner:["Des accès suivis avec rigueur","Une information rapide en cas d’écart","Une réponse connue à l’avance"],notIncluded:["Assurance et télésurveillance non comprises","Équipements de sécurité proposés sur devis"]},
+  "amministrazione":{challenge:"Vous devez pouvoir comprendre la vie de votre bien sans rechercher une information dans des dizaines de messages.",included:["Réservations réunies au même endroit","Prestations suivies et rapprochées","Justificatifs classés","Synthèse claire de l’activité","Mémoire des incidents","Décisions conservées","Compte rendu consolidé","Éléments utiles préparés pour vous"],owner:["L’essentiel accessible immédiatement","Un point régulier, sans bruit inutile","L’historique de votre bien préservé"],notIncluded:["Conseil comptable, fiscal ou juridique non compris","Documents spécialisés à valider avec vos conseils"]},
 };
 
 const quickHeadlines: Record<string,string> = {
-  "gestione-proprieta":"Tout est sous contrôle.",
-  "concierge":"Une demande. Une réponse.",
-  "accoglienza-voyageurs":"Chaque arrivée compte.",
-  "pulizie-biancheria":"Impeccable, à chaque séjour.",
-  "manutenzione":"Prévenir avant d’intervenir.",
-  "revenue-management":"Le bon prix, au bon moment.",
-  "sicurezza":"Votre bien, sous vigilance.",
-  "amministrazione":"Tout suivre, sans rien chercher.",
+  "gestione-proprieta":"Votre bien suivi, sans avoir à tout suivre.",
+  "concierge":"Une demande particulière, simplement orchestrée.",
+  "accoglienza-voyageurs":"Une arrivée qui donne immédiatement le ton.",
+  "pulizie-biancheria":"Le même niveau d’exigence, à chaque séjour.",
+  "manutenzione":"Agir avant que le détail ne devienne un problème.",
+  "revenue-management":"Le juste prix, au bon moment.",
+  "sicurezza":"Savoir que tout est en ordre.",
+  "amministrazione":"Une gestion lisible, sans documents dispersés.",
 };
 
 type ServiceExperience = {
@@ -37,7 +37,7 @@ type ServiceExperience = {
 
 const experiences: Record<string, ServiceExperience> = {
   "gestione-proprieta": {
-    promise: "Vous conservez la maîtrise des décisions. AUREVIA porte la coordination, le suivi et la continuité opérationnelle.",
+    promise: "Vous gardez la main sur les décisions qui comptent. Nous prenons en charge le quotidien, les échanges et les imprévus, avec la même attention que si vous étiez sur place.",
     steps: [
       {title:"Comprendre le bien",timing:"Visite initiale",text:"Nous étudions les usages, les accès, les équipements et vos périodes d’occupation avant de définir le moindre processus.",points:["Inventaire des besoins","Contraintes et priorités","Niveau de délégation"]},
       {title:"Définir le cadre",timing:"Proposition dédiée",text:"Les responsabilités, validations, délais de réponse et frais séparés sont formalisés dans une proposition lisible.",points:["Périmètre documenté","Règles de validation","Rythme des comptes rendus"]},
@@ -50,7 +50,7 @@ const experiences: Record<string, ServiceExperience> = {
     cta:"Faire analyser la gestion de mon bien",
   },
   "concierge": {
-    promise: "Une demande privée devient un parcours simple : options qualifiées, coûts annoncés et coordination jusqu’à la réalisation.",
+    promise: "Vous nous confiez une envie ou un besoin. Nous trouvons la réponse juste, vous la présentons clairement et veillons à sa réalisation.",
     steps: [
       {title:"Qualifier la demande",timing:"Dès réception",text:"Nous précisons le besoin, les préférences, le calendrier et le niveau de service attendu.",points:["Attentes clarifiées","Contraintes identifiées","Budget indicatif"]},
       {title:"Sélectionner les options",timing:"Recherche ciblée",text:"Nous consultons des partenaires adaptés et vérifions la disponibilité avant de vous présenter une sélection courte.",points:["Partenaires qualifiés","Options comparables","Tarifs annoncés"]},
@@ -63,7 +63,7 @@ const experiences: Record<string, ServiceExperience> = {
     cta:"Définir mon service de conciergerie",
   },
   "accoglienza-voyageurs": {
-    promise: "Chaque arrivée suit un parcours préparé, rassurant et cohérent avec le caractère de votre propriété.",
+    promise: "Chaque voyageur doit sentir qu’il était attendu. Nous préparons une arrivée fluide, attentive et fidèle au caractère de votre bien.",
     steps: [
       {title:"Préparer l’arrivée",timing:"Avant le séjour",text:"Les horaires, profils et besoins utiles sont recueillis afin d’anticiper l’accès et la préparation du logement.",points:["Informations centralisées","Mode d’arrivée défini","Consignes personnalisées"]},
       {title:"Contrôler le bien",timing:"Avant ouverture",text:"Les accès et équipements essentiels sont vérifiés avant que le voyageur ne franchisse la porte.",points:["Contrôle visuel","Accès testés","Équipements prioritaires vérifiés"]},
@@ -76,7 +76,7 @@ const experiences: Record<string, ServiceExperience> = {
     cta:"Concevoir mon parcours d’accueil",
   },
   "pulizie-biancheria": {
-    promise: "Nous ne nous contentons pas de planifier l’entretien : nous définissons le standard attendu et contrôlons son application.",
+    promise: "Nous connaissons la place de chaque chose et le niveau de soin attendu. Après chaque séjour, votre bien retrouve son équilibre.",
     steps: [
       {title:"Définir le standard",timing:"Au démarrage",text:"Chaque pièce, équipement et attention particulière est intégré à une fiche de préparation propre au bien.",points:["Checklist par zone","Inventaire du linge","Niveau de présentation attendu"]},
       {title:"Planifier la rotation",timing:"Selon le calendrier",text:"Les équipes, créneaux et besoins en linge sont coordonnés entre les départs et les prochaines arrivées.",points:["Planning synchronisé","Consignes transmises","Réassort anticipé"]},
@@ -89,7 +89,7 @@ const experiences: Record<string, ServiceExperience> = {
     cta:"Définir le standard de mon bien",
   },
   "manutenzione": {
-    promise: "Chaque anomalie est qualifiée, chaque dépense est encadrée et chaque intervention reste traçable.",
+    promise: "Nous remarquons ce qui change, trouvons la bonne personne et suivons l’intervention. Vous décidez avec une information claire, jamais dans l’urgence.",
     steps: [
       {title:"Qualifier l’anomalie",timing:"Dès le signalement",text:"Nous distinguons l’urgence, l’inconfort et l’entretien planifiable afin d’engager la réponse adaptée.",points:["Niveau de priorité","Premières vérifications","Information structurée"]},
       {title:"Présenter la solution",timing:"Avant engagement",text:"Un intervenant adapté est recherché et le devis vous est présenté lorsque la situation le permet.",points:["Prestataire sélectionné","Coût annoncé","Accord documenté"]},
@@ -102,7 +102,7 @@ const experiences: Record<string, ServiceExperience> = {
     cta:"Évaluer mes besoins de maintenance",
   },
   "revenue-management": {
-    promise: "Une stratégie lisible ajuste tarifs, calendrier et durées de séjour sans dénaturer le positionnement du bien.",
+    promise: "Nous faisons évoluer les tarifs et les conditions de séjour avec mesure, pour mieux valoriser votre bien sans banaliser son image.",
     steps: [
       {title:"Établir la situation",timing:"Analyse initiale",text:"Nous observons le bien, ses disponibilités, son historique et son environnement concurrentiel.",points:["Positionnement actuel","Périodes disponibles","Contraintes d’exploitation"]},
       {title:"Construire la stratégie",timing:"Plan tarifaire",text:"Saisons, événements, durées minimales et règles de réservation sont organisés dans un cadre compréhensible.",points:["Tarifs par période","Règles de séjour","Objectifs suivis"]},
@@ -115,7 +115,7 @@ const experiences: Record<string, ServiceExperience> = {
     cta:"Étudier le potentiel de mon bien",
   },
   "sicurezza": {
-    promise: "Des accès maîtrisés, des contrôles documentés et une procédure connue lorsque quelque chose sort du cadre.",
+    promise: "Les accès sont suivis, les écarts remarqués et les actions connues à l’avance. Vous savez que votre bien reste entre de bonnes mains.",
     steps: [
       {title:"Cartographier les accès",timing:"Inventaire initial",text:"Clés, badges, équipements sensibles et personnes autorisées sont recensés dans un cadre confidentiel.",points:["Accès identifiés","Détenteurs connus","Consignes centralisées"]},
       {title:"Définir les procédures",timing:"Avant exploitation",text:"Les règles d’entrée, de sortie et de signalement sont adaptées aux caractéristiques du bien.",points:["Consignes voyageurs","Contrôles attendus","Chaîne d’alerte"]},
@@ -128,7 +128,7 @@ const experiences: Record<string, ServiceExperience> = {
     cta:"Sécuriser le fonctionnement de mon bien",
   },
   "amministrazione": {
-    promise: "L’activité du bien devient lisible : réservations, prestations, incidents, décisions et justificatifs sont réunis au même endroit.",
+    promise: "Vous retrouvez l’essentiel de la vie de votre bien dans une lecture simple : ce qui a été fait, ce qui mérite votre attention et ce qui vient ensuite.",
     steps: [
       {title:"Centraliser l’activité",timing:"En continu",text:"Les informations utiles sont regroupées afin d’éviter les documents dispersés et les décisions sans contexte.",points:["Réservations suivies","Prestations rapprochées","Incidents historisés"]},
       {title:"Classer les éléments",timing:"Après chaque opération",text:"Justificatifs, validations et comptes rendus sont associés à l’action correspondante.",points:["Documents structurés","Décisions tracées","Historique exploitable"]},
@@ -160,24 +160,24 @@ export default async function Page({params}:{params:Promise<{slug:string}>}) {
       <div className="detail-list-grid">{detail.included.map((item,index)=><article key={item}><span>{String(index+1).padStart(2,"0")}</span><p>{item}</p></article>)}</div>
     </div></section>
     <section className="content-section service-journey-section"><div className="container">
-      <div className="service-section-heading"><p className="eyebrow">Comment cela se passe</p><h2>Quatre étapes. Aucun flou.</h2><p>Sélectionnez une étape pour approfondir notre méthode.</p></div>
+      <div className="service-section-heading"><p className="eyebrow">Notre manière de faire</p><h2>Un déroulement simple, du premier échange au suivi quotidien.</h2><p>Parcourez chaque étape pour voir concrètement comment nous intervenons.</p></div>
       <ServiceJourney steps={experience.steps}/>
     </div></section>
     <section className="content-section ivory"><div className="container">
-      <div className="service-section-heading dark-heading"><p className="eyebrow dark">Responsabilités</p><h2>Un rôle clair pour chaque interlocuteur</h2></div>
+      <div className="service-section-heading dark-heading"><p className="eyebrow dark">Qui fait quoi</p><h2>Vous décidez. Nous coordonnons.</h2></div>
       <div className="responsibility-grid">
-        <article><ShieldCheck/><span>01</span><h3>AUREVIA coordonne</h3><ul>{detail.included.slice(0,3).map(item=><li key={item}><Check size={15}/>{item}</li>)}</ul></article>
+        <article><ShieldCheck/><span>01</span><h3>Nous prenons en charge</h3><ul>{detail.included.slice(0,3).map(item=><li key={item}><Check size={15}/>{item}</li>)}</ul></article>
         <article><CircleDot/><span>02</span><h3>Vous validez</h3><ul>{experience.ownerValidates.map(item=><li key={item}><Check size={15}/>{item}</li>)}</ul></article>
         <article><FileText/><span>03</span><h3>Les partenaires réalisent</h3><ul>{experience.partners.map(item=><li key={item}><Check size={15}/>{item}</li>)}</ul></article>
       </div>
     </div></section>
     <section className="content-section service-proof-section"><div className="container service-proof-grid">
-      <div><p className="eyebrow">Ce que vous recevez</p><h2>Des éléments concrets, pas seulement une promesse.</h2><ul className="service-deliverables">{detail.owner.map(item=><li key={item}><Check size={17}/>{item}</li>)}</ul></div>
+      <div><p className="eyebrow">Pour vous, concrètement</p><h2>Plus de visibilité. Moins de charge au quotidien.</h2><ul className="service-deliverables">{detail.owner.map(item=><li key={item}><Check size={17}/>{item}</li>)}</ul></div>
       <article className="service-scenario"><span>Cas d’usage</span><h3>{experience.scenario.title}</h3><p>{experience.scenario.text}</p><strong>{experience.scenario.result}</strong></article>
     </div></section>
     <section className="content-section ivory"><div className="container transparency-grid">
-      <div><p className="eyebrow dark">Transparence</p><h2>Ce qui reste séparé est annoncé dès le départ.</h2><p>Le périmètre, les délais de réponse et les règles de validation figurent dans votre proposition personnalisée.</p></div>
-      <div className="transparency-card"><p className="eyebrow dark">À savoir</p><h3>Un cadre sans ambiguïté</h3><ul>{detail.notIncluded.map(item=><li key={item}>{item}</li>)}</ul></div>
+      <div><p className="eyebrow dark">En toute clarté</p><h2>Vous savez dès le départ ce qui est compris.</h2><p>Votre proposition précise notre intervention, les délais convenus et les décisions qui nécessitent votre accord.</p></div>
+      <div className="transparency-card"><p className="eyebrow dark">À prévoir séparément</p><h3>Aucune surprise en cours de route</h3><ul>{detail.notIncluded.map(item=><li key={item}>{item}</li>)}</ul></div>
     </div></section>
     <CTA/>
   </>;
