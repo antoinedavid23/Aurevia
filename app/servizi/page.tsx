@@ -23,7 +23,7 @@ export default function Page() {
             <div><h4>Gestion quotidienne incluse</h4><ul><li>Gestion des réservations et du calendrier</li><li>Communication voyageurs 7j/7</li><li>Optimisation régulière des tarifs</li><li>Optimisation du taux d’occupation et des durées de séjour</li><li>Organisation des arrivées et départs</li><li>Gestion des incidents</li><li>Coordination ménage et linge</li><li>Suivi des performances et compte rendu</li></ul></div>
           </div>
           <p className="offer-note">Ménage, linge, consommables et interventions techniques facturés au réel, séparément, sans marge AUREVIA.</p>
-          <p className="offer-note offer-note-commission"><strong>Rétrocommission équitable.</strong> Pour chaque vente additionnelle réalisée auprès des voyageurs, 25&nbsp;% du montant de l’upsell vous sont reversés. Puisque notre rémunération représente 25&nbsp;% des revenus du logement, il nous paraît juste d’appliquer la même règle aux services complémentaires que nous commercialisons. C’est, à nos yeux, une question de transparence, d’honnêteté et de commerce équitable.</p>
+          <p className="offer-note offer-note-commission"><strong>Rétrocommission équitable&nbsp;:</strong> Pour chaque vente additionnelle réalisée auprès des voyageurs, 25&nbsp;% des bénéfices vous sont reversés. Puisque notre rémunération représente 25&nbsp;% des revenus du logement, il nous paraît juste d’appliquer la même règle aux services complémentaires que nous commercialisons. C’est, à nos yeux, une question de transparence, d’honnêteté et de commerce équitable.</p>
           <Link className="button" href="/valutazione">Choisir la solution Sérénité</Link>
         </article>
         <article className="offer-card offer-card-360">
