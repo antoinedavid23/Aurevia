@@ -396,6 +396,34 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .identity-grid .visual span{z-index:1;display:flex;align-items:center;gap:14px;font-size:1.35rem}
 .identity-grid .visual b{font-family:var(--font-sans);font-size:.62rem;letter-spacing:.16em;color:var(--soft-gold)}
 
+/* Expérience propriétaire — promesse plutôt que galerie */
+.signature-section{overflow:hidden}
+.signature-layout{display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:clamp(55px,8vw,125px);align-items:center}
+.signature-visual{position:relative;min-height:720px;background-position:center!important;background-size:cover!important;border:1px solid rgba(13,27,42,.14)}
+.signature-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,16,25,.04) 40%,rgba(7,16,25,.86))}
+.signature-visual>div{position:absolute;z-index:1;left:clamp(26px,4vw,52px);right:clamp(26px,4vw,52px);bottom:clamp(28px,5vw,58px);display:grid;gap:14px;color:var(--ivory)}
+.signature-visual span{font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--soft-gold)}
+.signature-visual strong{max-width:15ch;font-family:var(--font-serif);font-size:clamp(1.8rem,3vw,3rem);font-weight:500;line-height:1.15}
+.signature-content h2{max-width:15ch;margin:18px 0 34px}
+.signature-lead{max-width:58ch;color:#5e5c56;font-size:1.06rem;line-height:1.85}
+.signature-pillars{margin:46px 0 34px;border-top:1px solid rgba(13,27,42,.18)}
+.signature-pillars article{display:grid;grid-template-columns:48px 1fr;gap:22px;padding:26px 0;border-bottom:1px solid rgba(13,27,42,.18)}
+.signature-pillars article>span{padding-top:5px;color:#957333;font-size:.63rem;font-weight:600;letter-spacing:.14em}
+.signature-pillars h3{margin:0 0 8px;font-size:clamp(1.25rem,1.8vw,1.65rem)}
+.signature-pillars p{margin:0;color:#676761;font-size:.92rem;line-height:1.7}
+.signature-link{margin-top:8px}
+@media(max-width:900px){
+  .signature-layout{grid-template-columns:1fr;gap:52px}
+  .signature-visual{min-height:600px}
+  .signature-content{max-width:720px}
+}
+@media(max-width:600px){
+  .signature-visual{min-height:480px}
+  .signature-content h2 br{display:none}
+  .signature-pillars{margin-top:34px}
+  .signature-pillars article{grid-template-columns:34px 1fr;gap:14px}
+}
+
 .method-scroll-shell{height:400vh;position:relative;margin-top:25px}
 .method-scroll-shell .method-scroll{position:sticky;top:0;min-height:100vh;margin:0 auto;align-content:center;padding-block:110px}
 .method-scroll-shell .method-detail{transition:opacity .2s ease}
