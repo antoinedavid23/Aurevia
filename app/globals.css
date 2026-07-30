@@ -205,7 +205,7 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .language-selector{position:relative;color:var(--gold)}
 .language-selector-trigger{display:flex!important;align-items:center;gap:5px!important;width:auto!important;cursor:pointer;padding:8px 0!important;color:var(--gold)!important}
 .language-selector-trigger svg{transition:transform .25s ease}.language-selector.is-open .language-selector-trigger svg{transform:rotate(180deg)}
-.language-selector-menu{position:absolute;right:0;top:38px;width:170px;padding:8px;background:var(--midnight)f5;border:1px solid var(--line);box-shadow:0 18px 45px #0008;z-index:5}
+.language-selector-menu{position:absolute;right:0;top:38px;width:170px;padding:8px;background:#071019;color:var(--ivory);border:1px solid rgba(200,161,90,.35);box-shadow:0 18px 45px #0008;z-index:50}
 .language-selector button{display:flex;width:100%;justify-content:space-between;border:0;background:transparent;color:var(--ivory);padding:9px 10px;text-align:left;font-size:.7rem}
 .language-selector button:hover{background:rgba(200,161,90,.12)}.language-selector button span{opacity:.64}
 .language-selector button[aria-current="true"]{color:var(--gold);background:rgba(200,161,90,.09)}
@@ -917,6 +917,7 @@ input,select,textarea,label,
 .admin-export:hover{border-color:var(--gold);color:var(--gold)}.admin-export:disabled{opacity:.4}
 .admin-toolbar{display:grid;grid-template-columns:minmax(240px,1fr) 210px auto;gap:10px;margin-bottom:22px}
 .admin-toolbar select,.admin-property-filters select{height:48px;border:1px solid var(--line);background:var(--navy);color:var(--ivory);padding:0 14px}
+.admin-toolbar select option,.admin-property-filters select option{background:var(--navy);color:#fff}
 .admin-search{height:48px;display:flex!important;align-items:center;gap:10px;padding:0 14px;border:1px solid var(--line);background:var(--navy)}
 .admin-search svg{color:#819198;flex:0 0 auto}.admin-search input{width:100%;height:auto!important;padding:0!important;border:0!important;background:transparent!important;color:var(--ivory)}
 .admin-inbox-filters{overflow:auto}.admin-inbox-filters button{white-space:nowrap}
