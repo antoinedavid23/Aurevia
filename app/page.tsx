@@ -38,12 +38,14 @@ export default function Home(){
   </div></section>
 
   <section className="section home-gallery ivory"><div className="container">
-   <Reveal className="identity-heading"><div><p className="eyebrow dark">L’expérience propriétaire</p><h2>La liberté d’en profiter. La certitude qu’elle est entre de bonnes mains.</h2></div><div className="identity-copy"><p>Confier sa propriété ne devrait jamais signifier perdre le contrôle. Avec AUREVIA, vous restez informé sans être sollicité pour chaque détail, libre de décider sans avoir à tout coordonner.</p><p>À distance comme sur place, vous savez votre bien veillé, préparé et préservé. Les imprévus sont traités avant de devenir des contraintes. Lorsque vous revenez, tout est simplement à sa place.</p><strong>Moins de charge mentale. Plus de sérénité. Le plaisir intact de votre propriété.</strong></div></Reveal>
-   <div className="editorial-grid identity-grid">
-    <div className="visual visual-bedroom"><span><b>01</b><i>Connu dans chaque détail<small>Un interlocuteur qui comprend votre bien, vos habitudes et vos exigences.</small></i></span></div>
-    <div className="visual visual-coast"><span><b>02</b><i>Veillé, même à distance<small>Une présence locale qui anticipe et vous tient informé avec justesse.</small></i></span></div>
-    <div className="visual visual-night"><span><b>03</b><i>Préservé dans le temps<small>Chaque décision protège son caractère, son état et sa valeur.</small></i></span></div>
-    <div className="visual visual-key"><span><b>04</b><i>Prêt lorsque vous l’êtes<small>Vous retrouvez une propriété impeccable, accueillante et pleinement disponible.</small></i></span></div>
+   <Reveal className="experience-intro"><p className="eyebrow dark">L’expérience propriétaire</p><h2>Vous partez. Elle reste entre de bonnes mains.</h2></Reveal>
+   <div className="experience-mosaic">
+    <div className="visual visual-bedroom experience-visual experience-visual-main"><span><b>01</b><i>Comme si vous étiez là<small>Votre bien est connu, préparé et suivi jusque dans ses habitudes.</small></i></span></div>
+    <Reveal className="experience-text experience-text-light"><p className="eyebrow dark">Ce que vous ressentez</p><h3>Le calme de ne plus avoir à y penser.</h3><p>Une propriété continue de vivre en votre absence. AUREVIA reste sur place, remarque ce qui change et agit avant que le détail ne devienne une contrainte.</p></Reveal>
+    <div className="visual visual-coast experience-visual"><span><b>02</b><i>Présent, sans être envahissant<small>Vous recevez l’information utile, jamais le bruit du quotidien.</small></i></span></div>
+    <Reveal className="experience-text experience-text-dark"><p className="eyebrow">Ce qui reste entre vos mains</p><h3>Les décisions importantes. Rien de plus.</h3><p>Vous gardez la maîtrise de votre propriété. Nous portons les réservations, les prestataires et les imprévus, puis nous revenons vers vous lorsqu’un choix mérite réellement votre attention.</p></Reveal>
+    <div className="visual visual-night experience-visual"><span><b>03</b><i>Veillé dans la durée<small>Chaque action préserve le caractère, l’état et la valeur du lieu.</small></i></span></div>
+    <div className="visual visual-key experience-visual"><span><b>04</b><i>Prêt à vous retrouver<small>À votre retour, la propriété est exactement comme vous souhaitez la retrouver.</small></i></span></div>
    </div>
    <Link className="text-link identity-link" href="/proprietari">Découvrir votre expérience AUREVIA <ArrowRight size={15}/></Link>
   </div></section>
