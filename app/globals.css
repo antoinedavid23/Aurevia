@@ -723,9 +723,9 @@ input,select,textarea,label,
 .about-story-number{display:flex;align-items:baseline;gap:8px;margin-bottom:24px}
 .about-story-number span{font-family:var(--font-serif);font-size:4rem;line-height:1;color:var(--soft-gold)}
 .about-story-number small{color:#829098}
-.about-story-card h3{font-size:clamp(1.75rem,3vw,2.8rem);max-width:18ch;margin:10px 0 24px}
+.about-story-card h3{font-size:clamp(1.75rem,3vw,2.8rem);max-width:20ch;margin:10px 0 24px}
 .about-story-card>p:not(.eyebrow){max-width:680px;color:#c1c8ca;font-size:1.02rem;line-height:1.85}
-.about-story-card blockquote{margin:32px 0 0;padding:22px 0 0;border-top:1px solid var(--line);color:var(--soft-gold);font-size:clamp(1.15rem,1.8vw,1.5rem)}
+.about-story-card blockquote{margin:32px 0 0;padding:22px 0 0;border-top:1px solid var(--line);color:var(--ivory);font-family:var(--font-serif);font-size:clamp(1.08rem,1.65vw,1.38rem);line-height:1.55}
 .about-story-hint{grid-column:2;margin:0;color:#829098;font-size:.7rem;letter-spacing:.08em;text-align:center}
 
 /* À propos — manifeste des valeurs */
@@ -758,9 +758,10 @@ input,select,textarea,label,
   justify-content:center;
 }
 .values-feature>span{color:var(--gold);font-size:.66rem;letter-spacing:.16em}
-.values-feature h3{font-size:clamp(2rem,3.2vw,3.2rem);margin:22px 0}
+.values-feature-name{margin:20px 0 0!important;color:var(--soft-gold)!important;font-family:var(--font-sans);font-size:.7rem!important;letter-spacing:.16em;text-transform:uppercase}
+.values-feature h3{font-size:clamp(1.9rem,3vw,3rem);line-height:1.13;max-width:17ch;margin:16px 0 24px}
 .values-feature p{color:#c3ccd0;font-size:1.02rem;line-height:1.85;max-width:56ch}
-.values-feature strong{display:block;margin-top:30px;padding-top:22px;border-top:1px solid var(--line);color:var(--soft-gold);font-weight:500}
+.values-feature .values-feeling{margin:30px 0 0;padding-top:22px;border-top:1px solid var(--line);color:var(--ivory);font-family:var(--font-serif);font-size:clamp(1.08rem,1.55vw,1.32rem);line-height:1.55}
 .values-selector{display:grid;align-content:start}
 .values-selector button{
   display:grid;

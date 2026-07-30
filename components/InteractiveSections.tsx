@@ -111,11 +111,11 @@ export function OwnerClarityJourney(){
 }
 
 const values = [
-  {title:"Discrétion",text:"Un bien privé exige une présence mesurée. Nous protégeons les habitudes du propriétaire, limitons les informations partagées et choisissons chaque interlocuteur avec soin.",proof:"Vous restez informé, jamais exposé."},
-  {title:"Excellence",text:"La qualité ne dépend pas d’un grand geste ponctuel, mais d’un standard répété. Préparation, contrôle et suivi conservent la même exigence à chaque intervention.",proof:"Le niveau attendu devient une constance."},
-  {title:"Attention",text:"Nous regardons ce qui pourrait devenir un problème avant qu’il ne le devienne : un équipement, une arrivée tardive, un détail de présentation ou un besoin particulier.",proof:"Chaque détail anticipé protège votre sérénité."},
-  {title:"Fiabilité",text:"Une action n’a de valeur que si elle est réalisée, vérifiée et expliquée. Les décisions importantes sont coordonnées et restituées avec clarté.",proof:"Vous savez ce qui a été fait, quand et pourquoi."},
-  {title:"Connaissance locale",text:"Gênes et la Ligurie ont leurs accès, leurs saisons, leurs usages et leurs artisans. Cette connaissance permet d’agir vite sans agir au hasard.",proof:"La bonne réponse vient du bon réseau, au bon moment."},
+  {title:"Discrétion",headline:"Vous nous confiez plus qu’une adresse.",text:"Derrière une porte, il y a vos habitudes, vos souvenirs et une part de votre intimité. Nous entrons dans cet univers avec retenue. Seules les personnes nécessaires savent ce qu’elles doivent savoir, et rien de plus.",feeling:"Votre vie privée reste exactement là où elle doit être : chez vous."},
+  {title:"Excellence",headline:"Vous ne devriez pas avoir à vérifier.",text:"Une maison prête, un linge impeccable, une lumière allumée au bon moment : notre exigence se niche dans les détails que vous n’aurez jamais à réclamer. Nous contrôlons avant que vous ayez besoin de demander.",feeling:"Vous arrivez. Tout est à sa place."},
+  {title:"Attention",headline:"Votre bien ne sera jamais un dossier parmi d’autres.",text:"Nous apprenons ce qui compte pour vous : la fragilité d’un meuble, la façon dont la maison doit être préparée, les attentions réservées à vos proches. Cette mémoire du lieu permet une gestion véritablement personnelle.",feeling:"Vous êtes compris sans devoir tout réexpliquer."},
+  {title:"Fiabilité",headline:"Quand quelque chose arrive, quelqu’un répond.",text:"La confiance se construit lorsque la promesse tient aussi les jours compliqués. Nous prenons la situation en main, coordonnons les bonnes personnes et revenons vers vous avec une réponse claire — pas avec un problème de plus.",feeling:"Même à distance, vous n’êtes jamais seul face à l’imprévu."},
+  {title:"Connaissance locale",headline:"À Gênes, savoir qui appeler change tout.",text:"Un artisan fiable à Castelletto, un accès délicat dans le centre historique, une urgence à Nervi : notre ancrage local donne à votre propriété les bons relais, sans tâtonnement ni intermédiaire inutile.",feeling:"Votre bien est entouré comme s’il était le nôtre."},
 ];
 
 export function ValuesStory(){
@@ -124,9 +124,10 @@ export function ValuesStory(){
   return <div className="values-manifest">
     <div className="values-feature">
       <span>0{active+1} / 05</span>
-      <h3>{value.title}</h3>
+      <p className="values-feature-name">{value.title}</p>
+      <h3>{value.headline}</h3>
       <p>{value.text}</p>
-      <strong>{value.proof}</strong>
+      <p className="values-feeling">{value.feeling}</p>
     </div>
     <div className="values-selector" role="tablist" aria-label="Valeurs AUREVIA">
       {values.map((item,index)=><button key={item.title} type="button" role="tab" aria-selected={active===index} onClick={()=>setActive(index)}><span>0{index+1}</span><b>{item.title}</b><i aria-hidden="true">→</i></button>)}
@@ -135,10 +136,10 @@ export function ValuesStory(){
 }
 
 const storyChapters = [
-  {title:"La distance ne devrait jamais devenir une inquiétude",kicker:"Le point de départ",text:"Une propriété inoccupée ne cesse pas de vivre. Une météo change, un équipement fatigue, une arrivée se prépare. À distance, ces détails prennent une place immense. AUREVIA commence précisément là : lorsque le propriétaire veut retrouver de la sérénité sans perdre le lien avec son bien.",signature:"Remplacer l’incertitude par une présence fiable."},
-  {title:"Comprendre le lieu avant de proposer une méthode",kicker:"L’écoute",text:"Chaque propriété possède son rythme, ses fragilités et son histoire. Nous observons les usages, les périodes d’occupation, les attentes et les contraintes avant de définir le cadre de gestion. La solution se construit autour du lieu — jamais l’inverse.",signature:"Écouter d’abord. Organiser ensuite."},
-  {title:"Faire de l’invisible une véritable signature",kicker:"Le geste juste",text:"Une maison prête au bon moment. Une lumière accueillante. Un linge parfaitement disposé. Une intervention résolue sans bruit. Le luxe AUREVIA se trouve dans cette précision silencieuse qui protège le bien et rend chaque séjour naturellement fluide.",signature:"L’excellence se remarque surtout lorsqu’elle ne se voit pas."},
-  {title:"Installer une confiance qui dure",kicker:"La continuité",text:"La confiance naît de la répétition : une information claire, une décision expliquée, un engagement tenu. Au fil du temps, AUREVIA devient le relais local du propriétaire — une présence constante, attentive et responsable sur la Riviera ligure.",signature:"Vous restez maître de votre bien, sans porter son quotidien."},
+  {title:"Le jour où l’on ferme la porte",kicker:"Le départ",text:"Avant de repartir, le regard revient toujours une dernière fois vers la maison. Une fenêtre a-t-elle bien été fermée ? Que se passera-t-il si l’orage annoncé est plus fort que prévu ? Qui remarquera ce petit bruit que l’on s’était promis de faire vérifier ? La distance commence souvent ainsi : par des questions que l’on emporte avec soi.",signature:"Une propriété peut rester derrière vous sans jamais quitter votre esprit."},
+  {title:"Puis les détails commencent à peser",kicker:"L’absence",text:"Un message arrive au mauvais moment. Un voyageur attend une réponse. Un équipement fatigue, un prestataire doit être relancé, une décision doit être prise depuis un autre pays. Aucun de ces sujets n’est immense. Mais leur accumulation finit par transformer un lieu de plaisir en responsabilité permanente.",signature:"Ce n’est pas la propriété qui pèse. C’est tout ce qu’elle oblige à garder en tête."},
+  {title:"Alors, quelqu’un prend réellement le relais",kicker:"La rencontre",text:"Nous commençons par écouter et regarder. Nous apprenons la maison, ses habitudes, ses fragilités et ce que vous refusez de laisser au hasard. Peu à peu, les appels se raréfient, les imprévus sont traités avant de vous atteindre et chaque personne qui intervient sait précisément ce qu’elle a à faire.",signature:"La confiance naît quand vous n’avez plus besoin de rappeler ce qui compte."},
+  {title:"Et vous revenez simplement chez vous",kicker:"Le retour",text:"La porte s’ouvre sur une maison préparée, vivante et fidèle à elle-même. Rien ne demande votre attention immédiate. Vous retrouvez le lieu pour ce qu’il devait toujours rester : un refuge, un plaisir, une histoire à partager — jamais une liste de choses à régler.",signature:"AUREVIA ne prend pas votre place. Elle vous permet de la retrouver."},
 ];
 
 export function AboutStoryJourney(){
@@ -169,7 +170,7 @@ export function AboutStoryJourney(){
         <p>{chapter.text}</p>
         <blockquote>{chapter.signature}</blockquote>
       </article>
-      <p className="about-story-hint">{active<3?"Faites défiler pour poursuivre l’histoire.":"La confiance est installée — poursuivez la découverte."}</p>
+      <p className="about-story-hint">{active<3?"Faites défiler pour poursuivre le récit.":"Vous êtes revenu chez vous."}</p>
     </div>
   </div>;
 }
