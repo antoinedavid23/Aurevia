@@ -65,6 +65,51 @@ export function ReviewCards(){
   </article>)}</div>;
 }
 
+const clarityMoments = [
+  {kicker:"Dès le départ",title:"Vous savez où nous allons.",text:"Nous posons le cadre, les priorités et les règles de décision avant la première réservation. Vous savez ce qui sera pris en charge, ce qui vous sera soumis et comment votre propriété sera suivie.",signature:"Une direction claire avant la première action."},
+  {kicker:"Au quotidien",title:"Vous n’avez plus à rester disponible.",text:"Les voyageurs, les prestataires et les imprévus passent par AUREVIA. Vous ne recevez plus le bruit de l’exploitation : seulement l’information utile, au moment où elle compte.",signature:"Le quotidien avance sans interrompre le vôtre."},
+  {kicker:"Quand il faut décider",title:"Vous avez les faits, pas l’urgence.",text:"Lorsqu’une dépense, un incident ou un arbitrage exige votre accord, nous vous présentons la situation, les options et notre recommandation. Vous décidez avec une vision complète.",signature:"Votre décision reste souveraine. La pression disparaît."},
+  {kicker:"Dans la durée",title:"Vous voyez ce qui a été fait et pourquoi.",text:"Les actions menées, les performances et les points d’attention sont réunis dans une lecture simple. Vous gardez une vision nette de votre propriété sans reconstituer vous-même son activité.",signature:"Rien à surveiller. Rien à deviner."},
+];
+
+export function OwnerClarityJourney(){
+  const [active,setActive]=useState(0);
+  const shell=useRef<HTMLDivElement>(null);
+  const moment=clarityMoments[active];
+  useEffect(()=>{
+    function update(){
+      const element=shell.current;
+      if(!element)return;
+      const rect=element.getBoundingClientRect();
+      const available=Math.max(1,element.offsetHeight-window.innerHeight);
+      const progress=Math.min(1,Math.max(0,-rect.top/available));
+      setActive(Math.min(clarityMoments.length-1,Math.floor(progress*clarityMoments.length)));
+    }
+    update();
+    window.addEventListener("scroll",update,{passive:true});
+    window.addEventListener("resize",update);
+    return()=>{window.removeEventListener("scroll",update);window.removeEventListener("resize",update)};
+  },[]);
+  return <div className="owner-clarity-shell" ref={shell}>
+    <div className="owner-clarity-sticky">
+      <div className="owner-clarity-heading">
+        <p className="eyebrow">Votre tranquillité, concrètement</p>
+        <h2>Vous n’avez pas besoin de tout suivre pour tout savoir.</h2>
+        <p>AUREVIA filtre le bruit, porte le quotidien et vous rend la bonne information au bon moment.</p>
+      </div>
+      <div className="owner-clarity-progress" aria-hidden="true">{clarityMoments.map((_,index)=><i key={index} className={index===active?"active":""}/>)}</div>
+      <article className="owner-clarity-card">
+        <div><span>0{active+1}</span><small>/ 04</small></div>
+        <p className="eyebrow">{moment.kicker}</p>
+        <h3>{moment.title}</h3>
+        <p>{moment.text}</p>
+        <strong>{moment.signature}</strong>
+      </article>
+      <p className="owner-clarity-hint">{active<3?"Continuez à faire défiler.":"Vous gardez la maîtrise, sans porter la gestion."}</p>
+    </div>
+  </div>;
+}
+
 const values = [
   {title:"Discrétion",text:"Un bien privé exige une présence mesurée. Nous protégeons les habitudes du propriétaire, limitons les informations partagées et choisissons chaque interlocuteur avec soin.",proof:"Vous restez informé, jamais exposé."},
   {title:"Excellence",text:"La qualité ne dépend pas d’un grand geste ponctuel, mais d’un standard répété. Préparation, contrôle et suivi conservent la même exigence à chaque intervention.",proof:"Le niveau attendu devient une constance."},

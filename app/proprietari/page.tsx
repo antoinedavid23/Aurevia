@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Check, FileText, KeyRound, LineChart, ShieldCheck } from "lucide-react";
 import { PageHero, CTA } from "@/components/PageHero";
+import { OwnerClarityJourney } from "@/components/InteractiveSections";
 
 const managementPhases = [
   {
@@ -64,17 +65,7 @@ export default function Page() {
       </article>)}</div>
     </div></section>
 
-    <section className="section owner-transparency"><div className="container">
-      <div className="owner-transparency-grid">
-        <div><p className="eyebrow">Une relation transparente</p><h2>Vous savez toujours où en est votre propriété</h2></div>
-        <div className="owner-deliverables">
-          <div><span>Avant le lancement</span><p>Audit, recommandations, stratégie tarifaire et plan de préparation.</p></div>
-          <div><span>Pendant l’exploitation</span><p>Suivi des réservations, signalement des incidents et coordination opérationnelle.</p></div>
-          <div><span>À intervalles réguliers</span><p>Lecture des performances, actions menées et priorités à venir.</p></div>
-        </div>
-      </div>
-      <p className="owner-note">Les estimations restent indicatives : aucun rendement n’est garanti. Ménage, linge, consommables et interventions techniques sont facturés au réel, sans marge.</p>
-    </div></section>
+    <section className="owner-transparency"><div className="container"><OwnerClarityJourney/><p className="owner-note">Les estimations restent indicatives : aucun rendement n’est garanti. Ménage, linge, consommables et interventions techniques sont facturés au réel, sans marge.</p></div></section>
     <CTA/>
   </>;
 }
