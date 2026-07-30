@@ -443,7 +443,7 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .estimate-logo-crop{position:relative;display:block!important;width:64px;height:64px;overflow:hidden;flex:0 0 64px}
 .estimate-logo-crop img{position:absolute;width:150px!important;height:150px!important;max-width:none;left:-43px;top:-20px}
 .estimate-case{padding:0 34px 25px;margin:0!important;color:#746f66!important;letter-spacing:.045em;text-align:center;font-size:.9rem!important}
-.estimate-comparison{display:grid!important;grid-template-columns:minmax(0,1fr) 48px minmax(0,1fr);align-items:stretch;gap:18px;padding:28px 34px!important;border-block:1px solid #d8c9ad!important}
+.estimate-comparison{display:grid!important;grid-template-columns:minmax(0,1fr) 48px minmax(0,1fr);align-items:stretch;gap:18px;padding:28px 48px 28px 34px!important;border-block:1px solid #d8c9ad!important}
 .estimate-comparison div{display:grid!important;grid-template-rows:44px auto;align-items:stretch;border:0!important;padding:0!important;min-width:0}
 .estimate-comparison>div:first-child,.estimate-comparison>div:last-child{justify-items:center;text-align:center}
 .estimate-comparison>div:first-child small,.estimate-comparison>div:last-child small{justify-content:center}
@@ -477,7 +477,8 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .identity-grid .visual i{display:flex;flex-direction:column;gap:8px;max-width:30ch;font-family:var(--font-serif);font-style:normal;line-height:1.18}
 .identity-grid .visual small{max-width:40ch;font-family:var(--font-sans);font-size:.76rem;font-weight:400;line-height:1.55;color:rgba(252,250,246,.78)}
 .experience-intro{display:grid;grid-template-columns:150px minmax(0,1fr);gap:56px;align-items:center;margin-bottom:clamp(42px,6vw,76px)}
-.experience-intro h2{width:100%;max-width:100%!important;margin:0;font-size:clamp(1.85rem,2.2vw,2.2rem);line-height:1.12;text-wrap:balance}
+.experience-intro h2{width:100%;max-width:100%!important;margin:0;font-size:clamp(2.05rem,2.65vw,2.65rem);line-height:1.1;text-wrap:balance}
+.property-empty{margin:2.5rem 0 0;padding:3.5rem 1.5rem;border-block:1px solid rgba(13,27,42,.16);color:rgba(13,27,42,.7);font-family:var(--font-serif);font-size:clamp(1.35rem,2.2vw,2rem);text-align:center}
 .experience-intro h2 span{display:block;white-space:normal}
 .experience-mosaic{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(230px,26vw,390px);gap:12px}
 .experience-visual{position:relative;border:1px solid rgba(13,27,42,.13)}

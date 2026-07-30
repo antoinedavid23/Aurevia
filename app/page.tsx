@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import {ArrowRight,ShieldCheck} from "lucide-react";
-import {properties,services} from "@/data/content";
+import {services} from "@/data/content";
 import {Reveal} from "@/components/Reveal";
-import {PropertyCard,ServiceCard} from "@/components/Cards";
+import {ServiceCard} from "@/components/Cards";
 import {MethodJourney,ReviewCards} from "@/components/InteractiveSections";
 
 const promises=["Discrétion absolue","Gestion complète","Valeur optimisée","Hospitalité d’excellence","Accompagnement dédié"];
@@ -50,7 +50,7 @@ export default function Home(){
    <Link className="text-link identity-link" href="/proprietari">Découvrir votre expérience AUREVIA <ArrowRight size={15}/></Link>
   </div></section>
 
-  <section className="section ivory"><div className="container"><Reveal><p className="eyebrow dark">Collection de démonstration</p><h2>Propriétés sélectionnées</h2></Reveal><div className="card-grid three">{properties.slice(0,3).map(p=><PropertyCard key={p.slug} property={p}/>)}</div><p className="demo-note">Images et propriétés présentées à titre démonstratif.</p></div></section>
+  <section className="section ivory"><div className="container"><Reveal><p className="eyebrow dark">Collection AUREVIA</p><h2>Nos biens</h2><p className="property-empty">Aucun bien actuellement.</p></Reveal></div></section>
 
   <section className="section process"><div className="container"><Reveal><p className="eyebrow">Notre méthode</p><h2 className="method-title"><span>Votre propriété, orchestrée</span><span>avec précision à chaque étape</span></h2></Reveal><MethodJourney/></div></section>
 

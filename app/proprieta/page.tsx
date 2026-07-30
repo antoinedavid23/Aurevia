@@ -14,7 +14,6 @@ export default async function Page() {
     <section className="section ivory"><div className="container">
       {isAdmin && <div className="admin-entry"><div><span>Espace privé</span><b>Gérer la collection de biens</b></div><Link className="button" href="/administration">Ouvrir l’administration</Link></div>}
       <PropertyGrid/>
-      <p className="demo-note">Propriétés et contenus présentés à titre démonstratif.</p>
     </div></section>
     <CTA/>
   </>;
