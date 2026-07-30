@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ArrowRight, BriefcaseBusiness, Camera, ChevronDown, LogIn, Menu, X } from "lucide-react";
+import { ArrowRight, ChevronDown, LogIn, Menu, X } from "lucide-react";
 
 const nav = [
   ["Services", "/servizi"],
@@ -55,7 +55,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         <div className="footer-brand"><b>AUREVIA</b><p><span>L’art de prendre soin</span><span>de ce qui compte.</span></p><small>Gestion et valorisation de propriétés d’exception.</small></div>
         <div><b>Explorer</b>{nav.map(([name, href]) => <Link key={href} href={href}>{name}</Link>)}</div>
         <div><b>Propriétaires</b><Link href="/proprietari">Gestion AUREVIA</Link><Link href="/valutazione">Évaluation privée</Link><Link href="/faq">Questions fréquentes</Link></div>
-        <div className="footer-contact"><b>Contact privé</b><a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL || "info@aurevia.it"}`}>{process.env.NEXT_PUBLIC_EMAIL || "info@aurevia.it"}</a><span>Gênes, Italie</span><p>Chaque demande est étudiée personnellement et traitée avec la plus grande discrétion.</p><div className="social"><a href={process.env.NEXT_PUBLIC_INSTAGRAM || "#"} aria-label="Instagram"><Camera size={15}/></a><a href={process.env.NEXT_PUBLIC_LINKEDIN || "#"} aria-label="LinkedIn"><BriefcaseBusiness size={15}/></a></div></div>
+        <div className="footer-contact"><b>Contact privé</b><a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL || "info@aurevia.it"}`}>{process.env.NEXT_PUBLIC_EMAIL || "info@aurevia.it"}</a><span>Gênes, Italie</span><p>Chaque demande est étudiée personnellement et traitée avec la plus grande discrétion.</p></div>
       </div>
       <div className="footer-bottom"><span>© {new Date().getFullYear()} AUREVIA</span><Link href="/privacy">Confidentialité</Link><Link href="/cookie-policy">Cookies</Link><Link href="/termini">Conditions</Link></div>
     </footer>
