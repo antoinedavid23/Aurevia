@@ -2,14 +2,14 @@ export type Service={slug:string;title:string;cardTitle?:string;short:string;num
 export type Property={slug:string;name:string;location:string;bedrooms:number;guests:number;baths:number;tone:number;image:string};
 
 export const services:Service[]=[
- {slug:"gestione-proprieta",title:"Gestion de propriété",cardTitle:"Votre bien, toujours préservé",short:"Une présence attentive qui protège sa valeur, jour après jour.",number:"01"},
- {slug:"concierge",title:"Assistance sur mesure",cardTitle:"Vos envies, déjà anticipées",short:"Des attentions discrètes, pensées avant même d’être demandées.",number:"02"},
- {slug:"accoglienza-voyageurs",title:"Accueil des voyageurs",cardTitle:"Chaque arrivée compte",short:"Un accueil fluide qui donne immédiatement le sentiment d’être attendu.",number:"03"},
- {slug:"pulizie-biancheria",title:"Ménage et linge",cardTitle:"Le soin, sans compromis",short:"Chaque pièce retrouve son éclat, chaque séjour commence parfaitement.",number:"04"},
- {slug:"manutenzione",title:"Maintenance",cardTitle:"Toujours impeccable",short:"Une vigilance constante pour que rien ne trouble votre sérénité.",number:"05"},
- {slug:"revenue-management",title:"Optimisation des revenus",cardTitle:"Sa valeur, pleinement révélée",short:"Une stratégie précise qui transforme chaque nuit en opportunité.",number:"06"},
- {slug:"sicurezza",title:"Sécurité",cardTitle:"Protégé, en toute discrétion",short:"Des contrôles réguliers qui vous laissent l’esprit entièrement libre.",number:"07"},
- {slug:"amministrazione",title:"Administration",cardTitle:"Tout devient plus simple",short:"Une gestion lisible qui vous redonne du temps et de la tranquillité.",number:"08"},
+ {slug:"gestione-proprieta",title:"Gestion de propriété",cardTitle:"Gestion intégrale du bien",short:"Un pilotage unique pour préserver le bien et simplifier chaque décision.",number:"01"},
+ {slug:"concierge",title:"Assistance sur mesure",cardTitle:"Conciergerie personnalisée",short:"Chaque demande privée est organisée avec précision, discrétion et réactivité.",number:"02"},
+ {slug:"accoglienza-voyageurs",title:"Accueil des voyageurs",cardTitle:"Accueil des voyageurs",short:"Un parcours d’arrivée fluide, soigné et conforme à vos standards.",number:"03"},
+ {slug:"pulizie-biancheria",title:"Ménage et linge",cardTitle:"Entretien & linge",short:"Une préparation contrôlée avant chaque séjour, jusque dans les moindres détails.",number:"04"},
+ {slug:"manutenzione",title:"Maintenance",cardTitle:"Maintenance coordonnée",short:"Prévention, interventions et suivi assurés par un réseau local sélectionné.",number:"05"},
+ {slug:"revenue-management",title:"Optimisation des revenus",cardTitle:"Performance locative",short:"Tarifs et calendrier pilotés pour valoriser durablement vos revenus.",number:"06"},
+ {slug:"sicurezza",title:"Sécurité",cardTitle:"Sécurité & contrôle",short:"Inventaires, vérifications et procédures claires pour protéger votre bien.",number:"07"},
+ {slug:"amministrazione",title:"Administration",cardTitle:"Suivi administratif",short:"Des comptes rendus structurés pour suivre clairement chaque opération.",number:"08"},
 ].map((service,i)=>({...service,image:["/images/services/property-management.webp","/images/services/concierge-service.webp","/images/services/guest-welcome.webp","/images/services/housekeeping.webp","/images/services/maintenance.webp","/images/services/revenue-management.webp","/images/services/security.webp","/images/services/administration.webp"][i]}));
 
 export const properties:Property[]=[
