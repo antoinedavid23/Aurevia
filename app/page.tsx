@@ -38,7 +38,7 @@ export default function Home(){
   </div></section>
 
   <section className="section home-gallery ivory"><div className="container">
-   <Reveal className="experience-intro"><p className="eyebrow dark">L’expérience propriétaire</p><h2>Vous partez.<br /><span>Elle reste entre de bonnes mains.</span></h2></Reveal>
+   <Reveal className="experience-intro"><p className="eyebrow dark">L’expérience propriétaire</p><h2 style={{fontSize:"clamp(1.85rem, 2.2vw, 2.2rem)",lineHeight:1.12,maxWidth:"100%"}}>Vous partez.<br /><span>Elle reste entre de bonnes mains.</span></h2></Reveal>
    <div className="experience-mosaic">
     <div className="visual visual-bedroom experience-visual experience-visual-main"><span><b>01</b><i>Comme si vous étiez là<small>Votre bien est connu, préparé et suivi jusque dans ses habitudes.</small></i></span></div>
     <Reveal className="experience-text experience-text-light"><p className="eyebrow dark">Ce que vous ressentez</p><h3>Le calme de ne plus avoir à y penser.</h3><p>Une propriété continue de vivre en votre absence. AUREVIA reste sur place, remarque ce qui change et agit avant que le détail ne devienne une contrainte.</p></Reveal>
