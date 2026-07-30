@@ -26,7 +26,7 @@ export default function Page() {
           <Link className="button" href="/valutazione">Choisir la solution Sérénité</Link>
         </article>
         <article className="offer-card offer-card-360">
-          <div className="offer-head"><div><span>Solution 02</span><h3>Solution 360</h3></div><strong>Sur devis</strong></div>
+          <div className="offer-head"><div><span>Solution 02</span><h3>Solution Privilège</h3></div><strong>Sur devis</strong></div>
           <p className="offer-promise">Une formule contractuelle personnalisée pour plusieurs biens ou des services intégrés à la réservation.</p>
           <div className="offer-groups"><div><h4>Cadre multi-biens &amp; services intégrés</h4><ul><li>Tous les services de Sérénité, mise en place comprise</li><li>Contrat et conditions adaptés à plusieurs biens</li><li>Pilotage centralisé du portefeuille</li><li>Services additionnels intégrés à la réservation</li><li>Organisation opérationnelle adaptée</li><li>Reporting consolidé personnalisé</li></ul></div></div>
           <p className="offer-note">Le devis dépend du nombre de biens, des expériences et des services inclus à la réservation.</p>
