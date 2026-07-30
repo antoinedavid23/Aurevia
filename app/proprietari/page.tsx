@@ -47,11 +47,12 @@ export default function Page() {
     </div></section>
 
     <section className="section owner-comparison"><div className="container">
-      <p className="eyebrow">Avant / avec AUREVIA</p>
-      <h2>Passer d’une gestion dispersée à un pilotage structuré</h2>
+      <p className="eyebrow">Ce qui change pour vous</p>
+      <h2>Votre propriété ne dicte plus votre quotidien.</h2>
+      <p className="owner-comparison-intro">Vous gardez les décisions qui comptent. Nous absorbons tout ce qui mobilise votre temps, votre attention et votre disponibilité.</p>
       <div className="comparison owner-comparison-grid">
-        <div><span>Gestion autonome</span><h3>Une charge quotidienne difficile à anticiper</h3><ul><li>Plusieurs interlocuteurs à coordonner</li><li>Disponibilité permanente pour les voyageurs</li><li>Tarifs ajustés de manière irrégulière</li><li>Incidents traités dans l’urgence</li><li>Peu de visibilité sur les actions réalisées</li></ul></div>
-        <div><span>Gestion AUREVIA</span><h3>Un cadre clair et un responsable identifié</h3><ul><li>Un interlocuteur dédié pour l’ensemble du bien</li><li>Communication voyageurs sept jours sur sept</li><li>Tarification dynamique suivie régulièrement</li><li>Procédures définies pour les incidents</li><li>Suivi des performances et compte rendu</li></ul></div>
+        <div><span>Lorsque vous gérez seul</span><h3>Votre bien reste toujours dans un coin de votre tête.</h3><ul><li>Vous surveillez les messages, même lorsque vous devriez décrocher</li><li>Vous coordonnez plusieurs personnes sans savoir qui relancer</li><li>Vous prenez des décisions rapides avec une information incomplète</li><li>Un imprévu suffit à désorganiser votre journée</li><li>Vous vous demandez régulièrement si tout est vraiment sous contrôle</li></ul><strong>Votre propriété devient une responsabilité permanente.</strong></div>
+        <div><span>Avec AUREVIA</span><h3>Vous savez que quelqu’un veille, décide et agit.</h3><ul><li>Une seule personne connaît votre bien et porte chaque sujet</li><li>Vous êtes informé au bon moment, sans être sollicité pour chaque détail</li><li>Les voyageurs, prestataires et incidents sont gérés sans interrompre votre quotidien</li><li>Chaque décision importante vous est présentée clairement</li><li>Vous retrouvez votre propriété prête, suivie et préservée</li></ul><strong>Vous gardez la maîtrise. Vous retrouvez l’esprit libre.</strong></div>
       </div>
     </div></section>
 
