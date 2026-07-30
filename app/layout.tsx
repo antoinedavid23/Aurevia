@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cinzel, Manrope } from "next/font/google";
 import { SiteShell } from "@/components/SiteShell";
+import { LocaleController } from "@/components/LocaleController";
 import "./globals.css";
 
 const serif = Cinzel({
@@ -42,5 +43,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="fr"><body className={`${serif.variable} ${sans.variable}`}><SiteShell>{children}</SiteShell></body></html>;
+  return <html lang="fr"><body className={`${serif.variable} ${sans.variable}`}><LocaleController><SiteShell>{children}</SiteShell></LocaleController></body></html>;
 }

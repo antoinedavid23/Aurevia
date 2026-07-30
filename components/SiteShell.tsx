@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ArrowRight, ChevronDown, LogIn, Menu, X } from "lucide-react";
+import { LanguageOptions, useLocale } from "@/components/LocaleController";
+import { localeNames } from "@/lib/i18n";
 
 const nav = [
   ["Services", "/servizi"],
@@ -19,11 +21,20 @@ export function Logo() {
 }
 
 function LanguageSelector() {
-  const languages = [
-    ["IT", "Italiano"], ["EN", "English"], ["FR", "Français"],
-    ["ES", "Español"], ["RU", "Русский"], ["ZH", "中文"],
-  ];
-  return <details className="language-selector"><summary aria-label="Choisir la langue">FR <ChevronDown size={13}/></summary><div>{languages.map(([code,name])=><button key={code} type="button" lang={code.toLowerCase()}>{code}<span>{name}</span></button>)}</div></details>;
+  const { locale } = useLocale();
+  const [languageOpen, setLanguageOpen] = useState(false);
+  return <div className={`language-selector${languageOpen ? " is-open" : ""}`}>
+    <button
+      type="button"
+      className="language-selector-trigger"
+      aria-label="Choisir la langue"
+      aria-expanded={languageOpen}
+      onClick={() => setLanguageOpen((current) => !current)}
+    >
+      {localeNames[locale].short} <ChevronDown size={13}/>
+    </button>
+    {languageOpen && <div className="language-selector-menu"><LanguageOptions onSelect={() => setLanguageOpen(false)}/></div>}
+  </div>;
 }
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
@@ -43,7 +54,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       <nav>{nav.map(([name, href]) => <Link key={href} href={href}>{name}</Link>)}<LanguageSelector/><Link className="button small" href="/valutazione">Évaluer mon bien</Link><Link className="admin-login" href="/connexion" aria-label="Se connecter à l’administration"><LogIn size={14}/><span>Connexion</span></Link></nav>
       <button className="menu-btn" aria-label="Ouvrir le menu" onClick={() => setOpen(true)}><Menu/></button>
     </header>
-    {open && <div className="mobile-menu"><button aria-label="Fermer le menu" onClick={() => setOpen(false)}><X/></button><Logo/>{nav.map(([name, href]) => <Link onClick={() => setOpen(false)} key={href} href={href}>{name}</Link>)}<Link className="button" onClick={() => setOpen(false)} href="/valutazione">Évaluer mon bien</Link><Link className="mobile-admin-login" onClick={() => setOpen(false)} href="/connexion"><LogIn size={18}/> Connexion administrateur</Link></div>}
+    {open && <div className="mobile-menu"><button aria-label="Fermer le menu" onClick={() => setOpen(false)}><X/></button><Logo/>{nav.map(([name, href]) => <Link onClick={() => setOpen(false)} key={href} href={href}>{name}</Link>)}<div className="mobile-language-options" aria-label="Choisir la langue"><LanguageOptions onSelect={() => setOpen(false)}/></div><Link className="button" onClick={() => setOpen(false)} href="/valutazione">Évaluer mon bien</Link><Link className="mobile-admin-login" onClick={() => setOpen(false)} href="/connexion"><LogIn size={18}/> Connexion administrateur</Link></div>}
     <main>{children}</main>
     <footer className="footer-premium">
       <div className="footer-signature">
