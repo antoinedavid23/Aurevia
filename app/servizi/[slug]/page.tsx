@@ -16,6 +16,17 @@ const specifics: Record<string,{challenge:string;included:string[];owner:string[
   "amministrazione":{challenge:"Sans reporting structuré, le propriétaire manque de visibilité sur l’activité et les décisions prises.",included:["Centralisation des réservations","Suivi des prestations","Classement des justificatifs","Synthèse de l’activité","Historique des incidents","Relevé des décisions","Reporting consolidé","Préparation des éléments utiles au propriétaire"],owner:["Information accessible","Suivi régulier","Un historique exploitable"],notIncluded:["Conseil comptable, fiscal ou juridique non inclus","Documents à valider avec vos professionnels"]},
 };
 
+const quickHeadlines: Record<string,string> = {
+  "gestione-proprieta":"Tout est sous contrôle.",
+  "concierge":"Une demande. Une réponse.",
+  "accoglienza-voyageurs":"Chaque arrivée compte.",
+  "pulizie-biancheria":"Impeccable, à chaque séjour.",
+  "manutenzione":"Prévenir avant d’intervenir.",
+  "revenue-management":"Le bon prix, au bon moment.",
+  "sicurezza":"Votre bien, sous vigilance.",
+  "amministrazione":"Tout suivre, sans rien chercher.",
+};
+
 type ServiceExperience = {
   promise: string;
   steps: ServiceJourneyStep[];
@@ -141,15 +152,16 @@ export default async function Page({params}:{params:Promise<{slug:string}>}) {
   return <>
     <PageHero label="Services" title={service.title} text={service.short} image={service.image}/>
     <section className="content-section ivory"><div className="container service-detail-intro">
-      <div><p className="eyebrow dark">Pourquoi ce service compte</p><h2>{experience.promise}</h2></div>
-      <div><p className="service-lead">{detail.challenge}</p><p>AUREVIA définit avec vous le périmètre, les validations nécessaires et le niveau de compte rendu. Vous savez ce que nous faisons, quand nous intervenons et quels frais peuvent rester séparés.</p></div>
+      <div><p className="eyebrow dark">L’essentiel</p><h2>{quickHeadlines[slug]}</h2></div>
+      <div><p className="service-lead">{experience.promise}</p><p>{detail.challenge}</p></div>
+      <div className="service-at-glance">{detail.owner.map((item,index)=><article key={item}><span>{String(index+1).padStart(2,"0")}</span><strong>{item}</strong></article>)}</div>
     </div></section>
     <section className="content-section"><div className="container">
-      <p className="eyebrow">Prise en charge</p><h2>Ce que nous orchestrons pour vous</h2>
+      <p className="eyebrow">Dans le détail</p><h2>Ce que nous prenons en charge</h2>
       <div className="detail-list-grid">{detail.included.map((item,index)=><article key={item}><span>{String(index+1).padStart(2,"0")}</span><p>{item}</p></article>)}</div>
     </div></section>
     <section className="content-section service-journey-section"><div className="container">
-      <div className="service-section-heading"><p className="eyebrow">Votre parcours</p><h2>Vous savez toujours ce qui se passe ensuite.</h2><p>Explorez les quatre étapes du service pour comprendre précisément notre méthode.</p></div>
+      <div className="service-section-heading"><p className="eyebrow">Comment cela se passe</p><h2>Quatre étapes. Aucun flou.</h2><p>Sélectionnez une étape pour approfondir notre méthode.</p></div>
       <ServiceJourney steps={experience.steps}/>
     </div></section>
     <section className="content-section ivory"><div className="container">
