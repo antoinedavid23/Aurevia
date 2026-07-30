@@ -1,15 +1,15 @@
-export type Service={slug:string;title:string;short:string;number:string;image?:string};
+export type Service={slug:string;title:string;cardTitle?:string;short:string;number:string;image?:string};
 export type Property={slug:string;name:string;location:string;bedrooms:number;guests:number;baths:number;tone:number;image:string};
 
 export const services:Service[]=[
- {slug:"gestione-proprieta",title:"Gestion de propriété",short:"Une direction unique pour votre propriété.",number:"01"},
- {slug:"concierge",title:"Assistance sur mesure",short:"Des attentions façonnées autour de vous.",number:"02"},
- {slug:"accoglienza-voyageurs",title:"Accueil des voyageurs",short:"Une arrivée fluide, personnelle et maîtrisée.",number:"03"},
- {slug:"pulizie-biancheria",title:"Ménage et linge",short:"Une présentation irréprochable à chaque séjour.",number:"04"},
- {slug:"manutenzione",title:"Maintenance",short:"Une vigilance continue, sans perturber le lieu.",number:"05"},
- {slug:"revenue-management",title:"Optimisation des revenus",short:"Le juste prix, au rythme de la demande.",number:"06"},
- {slug:"sicurezza",title:"Sécurité",short:"Des contrôles précis pour préserver chaque bien.",number:"07"},
- {slug:"amministrazione",title:"Administration",short:"Une gestion claire, structurée et transparente.",number:"08"},
+ {slug:"gestione-proprieta",title:"Gestion de propriété",cardTitle:"Votre bien, préservé",short:"Une direction unique pour votre propriété.",number:"01"},
+ {slug:"concierge",title:"Assistance sur mesure",cardTitle:"Vos envies, anticipées",short:"Des attentions façonnées autour de vous.",number:"02"},
+ {slug:"accoglienza-voyageurs",title:"Accueil des voyageurs",cardTitle:"Un accueil mémorable",short:"Une arrivée fluide, personnelle et maîtrisée.",number:"03"},
+ {slug:"pulizie-biancheria",title:"Ménage et linge",cardTitle:"Le soin du détail",short:"Une présentation irréprochable à chaque séjour.",number:"04"},
+ {slug:"manutenzione",title:"Maintenance",cardTitle:"L’esprit tranquille",short:"Une vigilance continue, sans perturber le lieu.",number:"05"},
+ {slug:"revenue-management",title:"Optimisation des revenus",cardTitle:"Votre potentiel révélé",short:"Le juste prix, au rythme de la demande.",number:"06"},
+ {slug:"sicurezza",title:"Sécurité",cardTitle:"Votre bien protégé",short:"Des contrôles précis pour préserver chaque bien.",number:"07"},
+ {slug:"amministrazione",title:"Administration",cardTitle:"Une gestion claire",short:"Des décisions suivies, des comptes transparents.",number:"08"},
 ].map((service,i)=>({...service,image:["/images/services/property-management.webp","/images/services/concierge-service.webp","/images/services/guest-welcome.webp","/images/services/housekeeping.webp","/images/services/maintenance.webp","/images/services/revenue-management.webp","/images/services/security.webp","/images/services/administration.webp"][i]}));
 
 export const properties:Property[]=[
