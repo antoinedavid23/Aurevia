@@ -271,8 +271,10 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .footer-premium{padding:0 5vw 26px;background:#050c12;border-top:1px solid rgba(200,161,90,.28)}
 .footer-signature{max-width:1440px;margin:0 auto;min-height:310px;display:grid;grid-template-columns:180px minmax(0,1fr) auto;align-items:center;gap:clamp(35px,7vw,110px);border-bottom:1px solid rgba(200,161,90,.22)}
 .footer-signature>.logo{width:150px;height:150px;margin:0}
-.footer-statement h2{max-width:19ch;margin:0;color:var(--ivory);font-size:clamp(2rem,3.4vw,3.9rem);line-height:1.12}
-.footer-statement h2 span{display:block;color:inherit;font-size:inherit;letter-spacing:inherit;text-transform:none}
+.footer-statement h2{max-width:none;margin:0;color:var(--ivory);font-size:clamp(2rem,3.4vw,3.9rem);line-height:1.12}
+.footer-statement h2 span{display:block;color:inherit;font-size:inherit;letter-spacing:inherit;text-transform:none;white-space:nowrap}
+.final-cta-title{max-width:none}
+.final-cta-title span{display:block;white-space:nowrap}
 .footer-consultation{display:flex;align-items:center;gap:18px;padding:17px 0;border-block:1px solid rgba(200,161,90,.36);color:var(--soft-gold);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
 .footer-premium .footer-grid{max-width:1440px;margin:0 auto;padding:64px 0 52px;grid-template-columns:1.35fr .8fr .9fr 1.2fr;gap:clamp(30px,5vw,80px)}
 .footer-premium .footer-grid>div{padding-right:20px}
@@ -295,6 +297,7 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
   .footer-premium{padding-inline:24px}
   .footer-signature{grid-template-columns:1fr;justify-items:center;padding:52px 0;text-align:center}
   .footer-statement h2{font-size:2.1rem}
+  .footer-statement h2 span,.final-cta-title span{white-space:normal}
   .footer-consultation{grid-column:auto;margin-top:0}
   .footer-premium .footer-grid{grid-template-columns:1fr;padding:45px 0 34px}
   .footer-premium .footer-grid>div,.footer-premium .footer-grid>div+div{border-left:0;border-top:1px solid rgba(200,161,90,.15);padding:25px 0}
