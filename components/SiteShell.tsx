@@ -48,7 +48,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
     <footer className="footer-premium">
       <div className="footer-signature">
         <Logo/>
-        <div className="footer-statement"><span>Gênes · Riviera ligure</span><h2>Une présence locale.<br/>Une exigence sans compromis.</h2></div>
+        <div className="footer-statement"><h2><span>Une présence locale.</span><span>Une exigence sans compromis.</span></h2></div>
         <Link className="footer-consultation" href="/valutazione">Confier ma propriété <ArrowRight size={17}/></Link>
       </div>
       <div className="footer-grid">
