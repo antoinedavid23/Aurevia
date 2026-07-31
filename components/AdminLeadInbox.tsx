@@ -62,12 +62,35 @@ export function AdminLeadInbox() {
   const [kind, setKind] = useState<"all" | Lead["kind"]>("all");
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch("/api/leads", { cache: "no-store" })
-      .then((response) => (response.ok ? response.json() : []))
-      .then(setLeads)
-      .finally(() => setLoading(false));
+    let active = true;
+    async function refresh(silent = false) {
+      if (!silent) setLoading(true);
+      try {
+        const response = await fetch("/api/leads", { cache: "no-store" });
+        if (!response.ok) throw new Error("Inbox unavailable");
+        const nextLeads = await response.json();
+        if (active) {
+          setLeads(nextLeads);
+          setError("");
+        }
+      } catch {
+        if (active) setError("La boîte de réception n’a pas pu être actualisée.");
+      } finally {
+        if (active && !silent) setLoading(false);
+      }
+    }
+    void refresh();
+    const interval = window.setInterval(() => void refresh(true), 20_000);
+    const onFocus = () => void refresh(true);
+    window.addEventListener("focus", onFocus);
+    return () => {
+      active = false;
+      window.clearInterval(interval);
+      window.removeEventListener("focus", onFocus);
+    };
   }, []);
 
   async function updateStatus(id: number, nextStatus: Lead["status"]) {
@@ -195,6 +218,7 @@ export function AdminLeadInbox() {
         </div>
       </div>
 
+      {error && <p role="alert" className="form-status">{error}</p>}
       {loading ? (
         <p>Chargement des demandes…</p>
       ) : visible.length === 0 ? (
