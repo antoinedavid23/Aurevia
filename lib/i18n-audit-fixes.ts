@@ -38,6 +38,8 @@ export const auditFixMessages: Record<string, Localized> = {
   "Étudier ma propriété": t("Valutare il mio immobile", "Assess my property", "Evaluar mi propiedad", "Оценить мой объект", "评估我的房产"),
   "ÉVALUATION CONFIDENTIELLE": t("VALUTAZIONE RISERVATA", "PRIVATE ASSESSMENT", "VALORACIÓN CONFIDENCIAL", "КОНФИДЕНЦИАЛЬНАЯ ОЦЕНКА", "保密评估"),
   "Excellence": t("Eccellenza", "Excellence", "Excelencia", "Совершенство", "卓越"),
+  "Orchestrer, suivre et valoriser": t("Orchestrare, monitorare e valorizzare", "Coordinate, oversee and enhance", "Coordinar, supervisar y poner en valor", "Координировать, контролировать и повышать ценность", "统筹管理、持续跟进并提升价值"),
+  "Accompagnement continu": t("Assistenza continuativa", "Ongoing support", "Acompañamiento continuo", "Постоянное сопровождение", "持续陪伴与支持"),
   "Confidentialité absolue": t("Riservatezza assoluta", "Absolute confidentiality", "Confidencialidad absoluta", "Абсолютная конфиденциальность", "绝对私密"),
   "Exigence constante": t("Standard costanti", "Uncompromising standards", "Exigencia constante", "Неизменно высокие стандарты", "始终如一的高标准"),
   "Présence attentive": t("Presenza attenta", "Attentive presence", "Presencia atenta", "Внимательное присутствие", "悉心守护"),
