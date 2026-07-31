@@ -1,22 +1,14 @@
 import type { Metadata } from "next";
-import { Cinzel, Manrope } from "next/font/google";
 import { SiteShell } from "@/components/SiteShell";
 import { LocaleController } from "@/components/LocaleController";
+import "@fontsource/cinzel/400.css";
+import "@fontsource/cinzel/500.css";
+import "@fontsource/cinzel/600.css";
+import "@fontsource/manrope/400.css";
+import "@fontsource/manrope/500.css";
+import "@fontsource/manrope/600.css";
+import "@fontsource/manrope/700.css";
 import "./globals.css";
-
-const serif = Cinzel({
-  subsets: ["latin"],
-  variable: "--font-serif",
-  weight: ["400", "500", "600"],
-  display: "swap",
-});
-
-const sans = Manrope({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
@@ -43,5 +35,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="it"><body className={`${serif.variable} ${sans.variable}`}><LocaleController><SiteShell>{children}</SiteShell></LocaleController></body></html>;
+  return <html lang="it"><body><LocaleController><SiteShell>{children}</SiteShell></LocaleController></body></html>;
 }
