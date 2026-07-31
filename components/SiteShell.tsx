@@ -18,6 +18,14 @@ const nav = [
   ["Contact", "/contatti"],
 ];
 
+const primaryNav = nav.filter(([, href]) =>
+  ["/servizi", "/proprietari", "/proprieta", "/chi-siamo"].includes(href),
+);
+
+const secondaryNav = nav.filter(([, href]) =>
+  ["/esperienze", "/simulatore", "/contatti"].includes(href),
+);
+
 export function Logo() {
   return <Link href="/" className="logo logo-legacy-crop" aria-label="Accueil AUREVIA"><Image src="/images/brand/aurevia-logo-transparent-gold.png" width={420} height={420} priority alt="AUREVIA"/></Link>;
 }
@@ -41,6 +49,7 @@ function LanguageSelector() {
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
   const [cookies, setCookies] = useState(false);
   useEffect(() => {
     const frame = requestAnimationFrame(() => setCookies(!localStorage.getItem("aurevia-cookie")));
@@ -59,7 +68,22 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   return <>
     <header>
       <Logo/>
-      <nav>{nav.map(([name, href]) => <Link key={href} href={href}>{name}</Link>)}<LanguageSelector/><Link className="button small" href="/valutazione">Évaluer mon bien</Link><Link className="admin-login" href="/connexion" aria-label="Se connecter à l’administration"><LogIn size={14}/><span>Connexion</span></Link></nav>
+      <nav>
+        {primaryNav.map(([name, href]) => <Link key={href} href={href}>{name}</Link>)}
+        <div className={`nav-more${moreOpen ? " is-open" : ""}`}>
+          <button type="button" aria-expanded={moreOpen} onClick={() => setMoreOpen((current) => !current)}>
+            Plus <ChevronDown size={13}/>
+          </button>
+          {moreOpen && <div className="nav-more-menu">
+            {secondaryNav.map(([name, href]) => <Link key={href} href={href} onClick={() => setMoreOpen(false)}>{name}</Link>)}
+          </div>}
+        </div>
+        <LanguageSelector/>
+        <Link className="button small" href="/valutazione">Évaluer mon bien</Link>
+        <Link className="admin-login" href="/connexion" aria-label="Connexion" title="Connexion">
+          <LogIn size={17}/><span className="sr-only">Connexion</span>
+        </Link>
+      </nav>
       <button className="menu-btn" aria-label="Ouvrir le menu" onClick={() => setOpen(true)}><Menu/></button>
     </header>
     {open && <div className="mobile-menu"><button aria-label="Fermer le menu" onClick={() => setOpen(false)}><X/></button><Logo/>{nav.map(([name, href]) => <Link onClick={() => setOpen(false)} key={href} href={href}>{name}</Link>)}<div className="mobile-language-options" aria-label="Choisir la langue"><LanguageOptions onSelect={() => setOpen(false)}/></div><Link className="button" onClick={() => setOpen(false)} href="/valutazione">Évaluer mon bien</Link><Link className="mobile-admin-login" onClick={() => setOpen(false)} href="/connexion"><LogIn size={18}/> Connexion</Link></div>}

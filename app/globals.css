@@ -203,6 +203,14 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .hero-logo-crop{margin-bottom:-30px}
 .hero-slogan{font-family:var(--font-serif);font-size:clamp(1.25rem,2.1vw,1.75rem);font-weight:500;line-height:1.25;letter-spacing:.15em;margin-top:0;text-shadow:0 2px 18px rgba(0,0,0,.4)}
 .language-selector{position:relative;color:var(--gold)}
+.nav-more{position:relative}
+.nav-more>button{display:flex;align-items:center;gap:5px;border:0;background:transparent;color:inherit;padding:8px 0;font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer;opacity:.8}
+.nav-more>button svg{transition:transform .25s ease}.nav-more.is-open>button svg{transform:rotate(180deg)}
+.nav-more-menu{position:absolute;right:0;top:38px;width:165px;padding:8px;background:#071019;border:1px solid rgba(200,161,90,.35);box-shadow:0 18px 45px #0008;z-index:50}
+.nav-more-menu a{display:block;padding:10px;color:var(--ivory);white-space:nowrap}
+.nav-more-menu a:hover{color:var(--gold);background:rgba(200,161,90,.1)}
+.admin-login{width:34px;height:34px;justify-content:center;border:1px solid rgba(200,161,90,.32);color:var(--soft-gold);transition:border-color .2s ease,background .2s ease}
+.admin-login:hover{border-color:var(--gold);background:rgba(200,161,90,.1)}
 .language-selector-trigger{display:flex!important;align-items:center;gap:5px!important;width:auto!important;cursor:pointer;padding:8px 0!important;color:var(--gold)!important}
 .language-selector-trigger svg{transition:transform .25s ease}.language-selector.is-open .language-selector-trigger svg{transform:rotate(180deg)}
 .language-selector-menu{position:absolute;right:0;top:38px;width:170px;padding:8px;background:#071019;color:var(--ivory);border:1px solid rgba(200,161,90,.35);box-shadow:0 18px 45px #0008;z-index:50}
