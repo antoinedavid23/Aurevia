@@ -1581,14 +1581,18 @@ input,select,textarea,label,
   .footer-premium .footer-contact{
     grid-column:1/-1!important;
     display:grid!important;
-    grid-template-columns:1fr auto!important;
-    gap:8px 16px!important;
+    grid-template-columns:1fr!important;
+    gap:8px!important;
     padding-top:22px!important;
     border-top:1px solid rgba(200,161,90,.18)!important;
   }
   .footer-premium .footer-contact b{grid-column:1/-1!important}
   .footer-premium .footer-contact a{min-width:0;overflow-wrap:anywhere}
-  .footer-premium .footer-contact span{text-align:right}
+  .footer-premium .footer-contact a,
+  .footer-premium .footer-contact span{
+    grid-column:1/-1!important;
+    text-align:left!important;
+  }
   .footer-premium .footer-contact p{display:none!important}
   .footer-premium .footer-bottom{
     display:grid!important;
