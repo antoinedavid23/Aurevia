@@ -11,6 +11,14 @@ async function loadReviewedMessages() {
   return (await import(`data:text/javascript;base64,${Buffer.from(output).toString("base64")}`)).reviewedMessages;
 }
 
+async function loadAuditFixMessages() {
+  const source = await readFile(new URL("../lib/i18n-audit-fixes.ts", import.meta.url), "utf8");
+  const output = ts.transpileModule(source, {
+    compilerOptions: { module: ts.ModuleKind.ES2022, target: ts.ScriptTarget.ES2022 },
+  }).outputText;
+  return (await import(`data:text/javascript;base64,${Buffer.from(output).toString("base64")}`)).auditFixMessages;
+}
+
 test("reviewed public translations cover every supported market", async () => {
   const messages = await loadReviewedMessages();
   const locales = ["it", "en", "es", "ru", "zh"];
@@ -43,5 +51,17 @@ test("critical homepage and owner promises remain explicitly reviewed", async ()
     "J’accepte que mes données soient utilisées afin d’être recontacté au sujet de ma demande.",
   ]) {
     assert.ok(messages[source], `Critical public copy is not reviewed: ${source}`);
+  }
+});
+
+test("rendered-audit corrections cover every supported market", async () => {
+  const messages = await loadAuditFixMessages();
+  const locales = ["it", "en", "es", "ru", "zh"];
+  assert.ok(Object.keys(messages).length >= 70);
+  for (const [source, translations] of Object.entries(messages)) {
+    for (const locale of locales) {
+      assert.equal(typeof translations[locale], "string", `${source}: missing ${locale}`);
+      assert.ok(translations[locale].trim(), `${source}: empty ${locale}`);
+    }
   }
 });
