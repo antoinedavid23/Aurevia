@@ -18,11 +18,40 @@ function ensureSchema(db: RuntimeD1) {
         bedrooms integer DEFAULT 1 NOT NULL,
         guests integer DEFAULT 2 NOT NULL,
         baths integer DEFAULT 1 NOT NULL,
+        property_type text DEFAULT 'Appartement' NOT NULL,
+        surface integer,
+        address text,
+        short_description text DEFAULT '' NOT NULL,
+        description text DEFAULT '' NOT NULL,
+        amenities text DEFAULT '[]' NOT NULL,
         image text DEFAULT '/images/home/hero-concierge.webp' NOT NULL,
+        gallery text DEFAULT '[]' NOT NULL,
         status text DEFAULT 'draft' NOT NULL,
+        featured integer DEFAULT 0 NOT NULL,
+        seo_title text,
+        seo_description text,
         created_at integer NOT NULL,
         updated_at integer NOT NULL
       )`).run();
+      const migrations = [
+        "ALTER TABLE managed_properties ADD COLUMN property_type text DEFAULT 'Appartement' NOT NULL",
+        "ALTER TABLE managed_properties ADD COLUMN surface integer",
+        "ALTER TABLE managed_properties ADD COLUMN address text",
+        "ALTER TABLE managed_properties ADD COLUMN short_description text DEFAULT '' NOT NULL",
+        "ALTER TABLE managed_properties ADD COLUMN description text DEFAULT '' NOT NULL",
+        "ALTER TABLE managed_properties ADD COLUMN amenities text DEFAULT '[]' NOT NULL",
+        "ALTER TABLE managed_properties ADD COLUMN gallery text DEFAULT '[]' NOT NULL",
+        "ALTER TABLE managed_properties ADD COLUMN featured integer DEFAULT 0 NOT NULL",
+        "ALTER TABLE managed_properties ADD COLUMN seo_title text",
+        "ALTER TABLE managed_properties ADD COLUMN seo_description text",
+      ];
+      for (const sql of migrations) {
+        try {
+          await db.prepare(sql).run();
+        } catch (error) {
+          if (!String(error).toLowerCase().includes("duplicate column")) throw error;
+        }
+      }
       await db.prepare(`CREATE TABLE IF NOT EXISTS leads (
         id integer PRIMARY KEY AUTOINCREMENT NOT NULL,
         kind text NOT NULL,
