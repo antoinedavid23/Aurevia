@@ -1460,3 +1460,82 @@ input,select,textarea,label,
   .mobile-two-grid .service-card-copy p,
   .mobile-two-grid .experience-card p{font-size:.69rem!important}
 }
+
+@media(max-width:767px){
+  /* Projection : même composition que sur ordinateur, simplement miniaturisée */
+  .estimate-premium .estimate-brand{
+    min-height:76px!important;
+    padding:14px 16px!important;
+  }
+  .estimate-premium .estimate-brand>span:last-child{
+    font-size:.86rem!important;
+    letter-spacing:.17em!important;
+  }
+  .estimate-premium .estimate-case{
+    padding:11px 10px 15px!important;
+    font-size:.66rem!important;
+    white-space:nowrap;
+  }
+  .estimate-premium .estimate-comparison{
+    grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr)!important;
+    align-items:stretch!important;
+    gap:5px!important;
+    padding:20px 13px!important;
+  }
+  .estimate-premium .estimate-comparison>div{
+    grid-template-rows:34px auto!important;
+    align-content:stretch!important;
+    gap:0!important;
+    justify-items:center!important;
+    text-align:center!important;
+  }
+  .estimate-premium .estimate-comparison small{
+    min-height:0!important;
+    justify-content:center!important;
+    font-size:.58rem!important;
+    line-height:1.25!important;
+  }
+  .estimate-premium .estimate-comparison b{
+    margin-top:7px!important;
+    font-size:1.35rem!important;
+    letter-spacing:-.02em!important;
+  }
+  .estimate-premium .estimate-comparison strong{
+    align-self:end!important;
+    font-size:1.78rem!important;
+    letter-spacing:-.035em!important;
+  }
+  .estimate-premium .estimate-comparison i{
+    align-self:end!important;
+    justify-self:center!important;
+    margin:0 0 1px!important;
+    padding:0!important;
+    transform:none!important;
+    font-size:1.15rem!important;
+  }
+  .estimate-premium .estimate-gain{
+    padding:15px 16px!important;
+  }
+  .estimate-premium .estimate-gain span{font-size:.57rem!important}
+  .estimate-premium .estimate-gain b{font-size:1.3rem!important}
+  .estimate-premium>div:not(.estimate-brand):not(.estimate-comparison):not(.estimate-gain){
+    margin-inline:16px!important;
+    padding:12px 0!important;
+    gap:10px!important;
+  }
+  .estimate-premium>div:not(.estimate-brand):not(.estimate-comparison):not(.estimate-gain) span{
+    max-width:none!important;
+    font-size:.6rem!important;
+    line-height:1.3!important;
+  }
+  .estimate-premium>div:not(.estimate-brand):not(.estimate-comparison):not(.estimate-gain) b{
+    flex:0 0 auto;
+    font-size:.78rem!important;
+    white-space:nowrap;
+  }
+  .estimate-premium>p:last-child{
+    padding:2px 16px 18px!important;
+    font-size:.56rem!important;
+    line-height:1.45!important;
+  }
+}
