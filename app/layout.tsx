@@ -19,13 +19,18 @@ export const metadata: Metadata = {
     description: "L’arte di prendersi cura di ciò che conta.",
     type: "website",
     locale: "it_IT",
-    images: ["/og.png"],
+    images: [{
+      url: "/images/home/hero-concierge.webp",
+      width: 1680,
+      height: 945,
+      alt: "AUREVIA — Gestione esclusiva di proprietà a Genova e in Liguria",
+    }],
   },
   twitter: {
     card: "summary_large_image",
     title: "AUREVIA",
     description: "Gestione esclusiva a Genova e in Liguria.",
-    images: ["/og.png"],
+    images: ["/images/home/hero-concierge.webp"],
   },
   icons: {
     icon: [{ url: "/favicon.png?v=3", type: "image/png" }],
