@@ -1539,3 +1539,224 @@ input,select,textarea,label,
     line-height:1.45!important;
   }
 }
+
+/*
+ * Parcours narratifs mobiles
+ * Ces règles terminales neutralisent les anciens fallbacks qui désactivaient
+ * le sticky et créaient un second défilement à l'intérieur des cartes.
+ */
+@media(max-width:767px){
+  main{
+    overflow-x:clip!important;
+    overflow-y:visible!important;
+  }
+
+  .method-scroll-shell,
+  .about-story-shell,
+  .owner-clarity-shell,
+  .values-scroll-shell{
+    position:relative!important;
+    margin-top:0!important;
+    overflow:visible!important;
+  }
+
+  .method-scroll-shell,
+  .about-story-shell,
+  .owner-clarity-shell{
+    height:400svh!important;
+  }
+
+  .values-scroll-shell{
+    height:500svh!important;
+  }
+
+  .method-scroll-shell .method-scroll,
+  .about-story-shell .about-story-sticky,
+  .owner-clarity-shell .owner-clarity-sticky,
+  .values-scroll-shell .values-manifest{
+    position:sticky!important;
+    top:0!important;
+    width:100%!important;
+    height:100dvh!important;
+    min-height:100dvh!important;
+    max-height:100dvh!important;
+    margin:0!important;
+    padding:64px 0 44px!important;
+    overflow:hidden!important;
+    align-content:center!important;
+  }
+
+  .method-scroll-shell .method-scroll{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+  }
+
+  .method-scroll-shell .method-detail,
+  .about-story-shell .about-story-card,
+  .owner-clarity-shell .owner-clarity-card,
+  .values-scroll-shell .values-feature{
+    min-height:0!important;
+    max-height:none!important;
+    overflow:visible!important;
+    padding:18px 17px!important;
+  }
+
+  .method-scroll-shell .method-progress,
+  .about-story-shell .about-story-progress,
+  .owner-clarity-shell .owner-clarity-progress{
+    display:flex!important;
+    justify-content:center!important;
+    margin:0 0 8px!important;
+  }
+
+  .method-scroll-shell .method-hint,
+  .about-story-shell .about-story-hint,
+  .owner-clarity-shell .owner-clarity-hint{
+    margin:7px 0 0!important;
+    font-size:.55rem!important;
+    line-height:1.35!important;
+    text-align:center!important;
+  }
+
+  .method-index span,
+  .about-story-number span,
+  .owner-clarity-card>div:first-child span{
+    font-size:2.6rem!important;
+    line-height:1!important;
+  }
+
+  .method-detail>span,
+  .method-detail>.eyebrow,
+  .about-story-card>.eyebrow,
+  .owner-clarity-card>.eyebrow,
+  .values-feature-name{
+    margin-top:10px!important;
+    font-size:.55rem!important;
+    line-height:1.35!important;
+    letter-spacing:.12em!important;
+  }
+
+  .method-detail h3,
+  .about-story-card h3,
+  .owner-clarity-card h3,
+  .values-feature h3{
+    margin:9px 0 11px!important;
+    font-size:clamp(1.35rem,6.3vw,1.85rem)!important;
+    line-height:1.12!important;
+  }
+
+  .method-detail>p,
+  .about-story-card>p:not(.eyebrow),
+  .owner-clarity-card>p:not(.eyebrow),
+  .values-feature>p:not(.values-feature-name):not(.values-feeling){
+    margin:0!important;
+    font-size:.78rem!important;
+    line-height:1.52!important;
+  }
+
+  .method-detail ul{
+    gap:5px!important;
+    margin:11px 0!important;
+  }
+
+  .method-detail li{
+    gap:7px!important;
+    font-size:.72rem!important;
+    line-height:1.35!important;
+  }
+
+  .method-controls{
+    gap:6px!important;
+    margin:9px 0!important;
+  }
+
+  .method-controls button{
+    min-height:34px!important;
+    padding:6px 9px!important;
+    font-size:.51rem!important;
+  }
+
+  .method-detail .text-link{
+    margin-top:3px!important;
+    font-size:.61rem!important;
+  }
+
+  .about-story-card blockquote,
+  .owner-clarity-card strong,
+  .values-feeling{
+    margin-top:12px!important;
+    padding-top:12px!important;
+    font-size:.79rem!important;
+    line-height:1.42!important;
+  }
+
+  .owner-clarity-sticky{
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+  }
+
+  .owner-clarity-heading{
+    display:none!important;
+  }
+
+  .values-scroll-shell .values-manifest{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+  }
+
+  .values-scroll-shell .values-selector{
+    display:flex!important;
+    max-width:100%!important;
+    margin:0!important;
+    padding:5px 0!important;
+    gap:5px!important;
+    overflow-x:auto!important;
+    scrollbar-width:none;
+  }
+
+  .values-scroll-shell .values-selector::-webkit-scrollbar{
+    display:none;
+  }
+
+  .values-scroll-shell .values-selector button{
+    flex:0 0 auto!important;
+    min-width:0!important;
+    padding:8px 9px!important;
+  }
+
+  .values-scroll-shell .values-selector button b{
+    font-size:.67rem!important;
+  }
+}
+
+@media(max-width:380px){
+  .method-scroll-shell .method-scroll,
+  .about-story-shell .about-story-sticky,
+  .owner-clarity-shell .owner-clarity-sticky,
+  .values-scroll-shell .values-manifest{
+    padding:56px 0 38px!important;
+  }
+
+  .method-scroll-shell .method-detail,
+  .about-story-shell .about-story-card,
+  .owner-clarity-shell .owner-clarity-card,
+  .values-scroll-shell .values-feature{
+    padding:15px 14px!important;
+  }
+
+  .method-detail h3,
+  .about-story-card h3,
+  .owner-clarity-card h3,
+  .values-feature h3{
+    font-size:1.27rem!important;
+  }
+
+  .method-detail>p,
+  .about-story-card>p:not(.eyebrow),
+  .owner-clarity-card>p:not(.eyebrow),
+  .values-feature>p:not(.values-feature-name):not(.values-feeling){
+    font-size:.72rem!important;
+  }
+}

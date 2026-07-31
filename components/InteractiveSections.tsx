@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Check, Star } from "lucide-react";
+import { useLocale } from "@/components/LocaleController";
+import { translate } from "@/lib/i18n";
 
 const method = [
   {title:"Révéler le potentiel du lieu",time:"Premier échange privé · 45 à 60 min",text:"Nous découvrons la propriété dans son ensemble : son caractère, ses usages, vos périodes d’occupation et vos ambitions. Cette lecture attentive pose un cadre fidèle au lieu comme à vos exigences.",points:["Lecture précise du potentiel","Inventaire des attentions essentielles","Définition d’un cadre de confiance"]},
@@ -12,6 +14,8 @@ const method = [
 ];
 
 export function MethodJourney(){
+  const {locale}=useLocale();
+  const tr=(text:string)=>translate(text,locale);
   const [active,setActive]=useState(0);
   const shell=useRef<HTMLDivElement>(null);
   const item=method[active];
@@ -36,17 +40,17 @@ export function MethodJourney(){
     const available=element.offsetHeight-window.innerHeight;
     window.scrollTo({top:top+(available*(index+.08)/4),behavior:"smooth"});
   }
-  return <div className="method-scroll-shell" ref={shell}>
+  return <div className="method-scroll-shell" ref={shell} data-no-translate>
     <div className="method-scroll">
       <div className="method-progress" aria-hidden="true">{method.map((_,index)=><i key={index} className={index===active?"active":""}/>)}</div>
       <div className="method-detail" role="tabpanel">
         <div className="method-index"><span>0{active+1}</span><small>/ 04</small></div>
-        <span>{item.time}</span><h3>{item.title}</h3><p>{item.text}</p>
-        <ul>{item.points.map(point=><li key={point}><Check size={15}/>{point}</li>)}</ul>
-        <div className="method-controls"><button type="button" disabled={active===0} onClick={()=>goTo(active-1)}>Étape précédente</button><button type="button" disabled={active===3} onClick={()=>goTo(active+1)}>Étape suivante</button></div>
-        <Link className="text-link" href="/valutazione">Échanger en toute confidentialité <ArrowRight size={15}/></Link>
+        <span>{tr(item.time)}</span><h3>{tr(item.title)}</h3><p>{tr(item.text)}</p>
+        <ul>{item.points.map(point=><li key={point}><Check size={15}/>{tr(point)}</li>)}</ul>
+        <div className="method-controls"><button type="button" disabled={active===0} onClick={()=>goTo(active-1)}>{tr("Étape précédente")}</button><button type="button" disabled={active===3} onClick={()=>goTo(active+1)}>{tr("Étape suivante")}</button></div>
+        <Link className="text-link" href="/valutazione">{tr("Échanger en toute confidentialité")} <ArrowRight size={15}/></Link>
       </div>
-      <p className="method-hint">{active<3?"Poursuivez votre lecture pour découvrir l’étape suivante.":"Votre accompagnement peut maintenant commencer."}</p>
+      <p className="method-hint">{tr(active<3?"Poursuivez votre lecture pour découvrir l’étape suivante.":"Votre accompagnement peut maintenant commencer.")}</p>
     </div>
   </div>;
 }
@@ -73,6 +77,8 @@ const clarityMoments = [
 ];
 
 export function OwnerClarityJourney(){
+  const {locale}=useLocale();
+  const tr=(text:string)=>translate(text,locale);
   const [active,setActive]=useState(0);
   const shell=useRef<HTMLDivElement>(null);
   const moment=clarityMoments[active];
@@ -90,23 +96,23 @@ export function OwnerClarityJourney(){
     window.addEventListener("resize",update);
     return()=>{window.removeEventListener("scroll",update);window.removeEventListener("resize",update)};
   },[]);
-  return <div className="owner-clarity-shell" ref={shell}>
+  return <div className="owner-clarity-shell" ref={shell} data-no-translate>
     <div className="owner-clarity-sticky">
       <div className="owner-clarity-heading">
-        <p className="eyebrow">Votre tranquillité, concrètement</p>
-        <h2>Vous n’avez pas besoin de tout suivre pour tout savoir.</h2>
-        <p>AUREVIA filtre le bruit, porte le quotidien et vous rend la bonne information au bon moment.</p>
-        <p className="owner-note">Les estimations restent indicatives : aucun rendement n’est garanti. Ménage, linge, consommables et interventions techniques sont facturés au réel, sans marge.</p>
+        <p className="eyebrow">{tr("Votre tranquillité, concrètement")}</p>
+        <h2>{tr("Vous n’avez pas besoin de tout suivre pour tout savoir.")}</h2>
+        <p>{tr("AUREVIA filtre le bruit, porte le quotidien et vous rend la bonne information au bon moment.")}</p>
+        <p className="owner-note">{tr("Les estimations restent indicatives : aucun rendement n’est garanti. Ménage, linge, consommables et interventions techniques sont facturés au réel, sans marge.")}</p>
       </div>
       <div className="owner-clarity-progress" aria-hidden="true">{clarityMoments.map((_,index)=><i key={index} className={index===active?"active":""}/>)}</div>
       <article className="owner-clarity-card">
         <div><span>0{active+1}</span><small>/ 04</small></div>
-        <p className="eyebrow">{moment.kicker}</p>
-        <h3>{moment.title}</h3>
-        <p>{moment.text}</p>
-        <strong>{moment.signature}</strong>
+        <p className="eyebrow">{tr(moment.kicker)}</p>
+        <h3>{tr(moment.title)}</h3>
+        <p>{tr(moment.text)}</p>
+        <strong>{tr(moment.signature)}</strong>
       </article>
-      <p className="owner-clarity-hint">{active<3?"Continuez à faire défiler.":"Vous gardez la maîtrise, sans porter la gestion."}</p>
+      <p className="owner-clarity-hint">{tr(active<3?"Continuez à faire défiler.":"Vous gardez la maîtrise, sans porter la gestion.")}</p>
     </div>
   </div>;
 }
@@ -120,6 +126,8 @@ const values = [
 ];
 
 export function ValuesStory(){
+  const {locale}=useLocale();
+  const tr=(text:string)=>translate(text,locale);
   const [active,setActive]=useState(0);
   const shell=useRef<HTMLDivElement>(null);
   const value=values[active];
@@ -137,17 +145,17 @@ export function ValuesStory(){
     window.addEventListener("resize",update);
     return()=>{window.removeEventListener("scroll",update);window.removeEventListener("resize",update)};
   },[]);
-  return <div className="values-scroll-shell" ref={shell}>
+  return <div className="values-scroll-shell" ref={shell} data-no-translate>
     <div className="values-manifest">
       <div className="values-feature">
         <span>0{active+1} / 05</span>
-        <p className="values-feature-name">{value.title}</p>
-        <h3>{value.headline}</h3>
-        <p>{value.text}</p>
-        <p className="values-feeling">{value.feeling}</p>
+        <p className="values-feature-name">{tr(value.title)}</p>
+        <h3>{tr(value.headline)}</h3>
+        <p>{tr(value.text)}</p>
+        <p className="values-feeling">{tr(value.feeling)}</p>
       </div>
-      <div className="values-selector" role="tablist" aria-label="Valeurs AUREVIA">
-        {values.map((item,index)=><button key={item.title} type="button" role="tab" aria-selected={active===index} onClick={()=>setActive(index)}><span>0{index+1}</span><b>{item.title}</b><i aria-hidden="true">→</i></button>)}
+      <div className="values-selector" role="tablist" aria-label={tr("Valeurs AUREVIA")}>
+        {values.map((item,index)=><button key={item.title} type="button" role="tab" aria-selected={active===index} onClick={()=>setActive(index)}><span>0{index+1}</span><b>{tr(item.title)}</b><i aria-hidden="true">→</i></button>)}
       </div>
     </div>
   </div>;
@@ -161,6 +169,8 @@ const storyChapters = [
 ];
 
 export function AboutStoryJourney(){
+  const {locale}=useLocale();
+  const tr=(text:string)=>translate(text,locale);
   const [active,setActive]=useState(0);
   const shell=useRef<HTMLDivElement>(null);
   const chapter=storyChapters[active];
@@ -178,17 +188,17 @@ export function AboutStoryJourney(){
     window.addEventListener("resize",update);
     return()=>{window.removeEventListener("scroll",update);window.removeEventListener("resize",update)};
   },[]);
-  return <div className="about-story-shell" ref={shell}>
+  return <div className="about-story-shell" ref={shell} data-no-translate>
     <div className="about-story-sticky">
       <div className="about-story-progress" aria-hidden="true">{storyChapters.map((_,index)=><i key={index} className={index===active?"active":""}/>)}</div>
       <article className="about-story-card">
         <div className="about-story-number"><span>0{active+1}</span><small>/ 04</small></div>
-        <p className="eyebrow">{chapter.kicker}</p>
-        <h3>{chapter.title}</h3>
-        <p>{chapter.text}</p>
-        <blockquote>{chapter.signature}</blockquote>
+        <p className="eyebrow">{tr(chapter.kicker)}</p>
+        <h3>{tr(chapter.title)}</h3>
+        <p>{tr(chapter.text)}</p>
+        <blockquote>{tr(chapter.signature)}</blockquote>
       </article>
-      <p className="about-story-hint">{active<3?"Faites défiler pour poursuivre le récit.":"Vous êtes revenu chez vous."}</p>
+      <p className="about-story-hint">{tr(active<3?"Faites défiler pour poursuivre le récit.":"Vous êtes revenu chez vous.")}</p>
     </div>
   </div>;
 }
