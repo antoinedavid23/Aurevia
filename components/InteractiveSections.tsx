@@ -134,11 +134,11 @@ export function OwnerClarityJourney(){
 }
 
 const values = [
-  {title:"Discrétion",headline:"Vous nous confiez plus qu’une adresse.",text:"Derrière une porte, il y a vos habitudes, vos souvenirs et une part de votre intimité. Nous entrons dans cet univers avec retenue. Seules les personnes nécessaires savent ce qu’elles doivent savoir, et rien de plus.",feeling:"Votre vie privée reste exactement là où elle doit être : chez vous."},
-  {title:"Excellence",headline:"Vous ne devriez pas avoir à vérifier.",text:"Une maison prête, un linge impeccable, une lumière allumée au bon moment : notre exigence se niche dans les détails que vous n’aurez jamais à réclamer. Nous contrôlons avant que vous ayez besoin de demander.",feeling:"Vous arrivez. Tout est à sa place."},
-  {title:"Attention",headline:"Votre bien ne sera jamais un dossier parmi d’autres.",text:"Nous apprenons ce qui compte pour vous : la fragilité d’un meuble, la façon dont la maison doit être préparée, les attentions réservées à vos proches. Cette mémoire du lieu permet une gestion véritablement personnelle.",feeling:"Vous êtes compris sans devoir tout réexpliquer."},
-  {title:"Fiabilité",headline:"Quand quelque chose arrive, quelqu’un répond.",text:"La confiance se construit lorsque la promesse tient aussi les jours compliqués. Nous prenons la situation en main, coordonnons les bonnes personnes et revenons vers vous avec une réponse claire — pas avec un problème de plus.",feeling:"Même à distance, vous n’êtes jamais seul face à l’imprévu."},
-  {title:"Connaissance locale",headline:"À Gênes, savoir qui appeler change tout.",text:"Un artisan fiable à Castelletto, un accès délicat dans le centre historique, une urgence à Nervi : notre ancrage local donne à votre propriété les bons relais, sans tâtonnement ni intermédiaire inutile.",feeling:"Votre bien est entouré comme s’il était le nôtre."},
+  {title:"Discrétion",note:"Confidentialité absolue",headline:"Vous nous confiez plus qu’une adresse.",text:"Derrière une porte, il y a vos habitudes, vos souvenirs et une part de votre intimité. Nous entrons dans cet univers avec retenue. Seules les personnes nécessaires savent ce qu’elles doivent savoir, et rien de plus.",feeling:"Votre vie privée reste exactement là où elle doit être : chez vous."},
+  {title:"Excellence",note:"Exigence constante",headline:"Vous ne devriez pas avoir à vérifier.",text:"Une maison prête, un linge impeccable, une lumière allumée au bon moment : notre exigence se niche dans les détails que vous n’aurez jamais à réclamer. Nous contrôlons avant que vous ayez besoin de demander.",feeling:"Vous arrivez. Tout est à sa place."},
+  {title:"Attention",note:"Présence attentive",headline:"Votre bien ne sera jamais un dossier parmi d’autres.",text:"Nous apprenons ce qui compte pour vous : la fragilité d’un meuble, la façon dont la maison doit être préparée, les attentions réservées à vos proches. Cette mémoire du lieu permet une gestion véritablement personnelle.",feeling:"Vous êtes compris sans devoir tout réexpliquer."},
+  {title:"Fiabilité",note:"Réponse assurée",headline:"Quand quelque chose arrive, quelqu’un répond.",text:"La confiance se construit lorsque la promesse tient aussi les jours compliqués. Nous prenons la situation en main, coordonnons les bonnes personnes et revenons vers vous avec une réponse claire — pas avec un problème de plus.",feeling:"Même à distance, vous n’êtes jamais seul face à l’imprévu."},
+  {title:"Connaissance locale",note:"Ancrage local",headline:"À Gênes, savoir qui appeler change tout.",text:"Un artisan fiable à Castelletto, un accès délicat dans le centre historique, une urgence à Nervi : notre ancrage local donne à votre propriété les bons relais, sans tâtonnement ni intermédiaire inutile.",feeling:"Votre bien est entouré comme s’il était le nôtre."},
 ];
 
 export function ValuesStory(){
@@ -146,17 +146,17 @@ export function ValuesStory(){
   const tr=(text:string)=>translate(text,locale);
   const [active,setActive]=useState(0);
   const value=values[active];
-  return <div className="values-scroll-shell" data-no-translate>
+  return <div className="values-static-shell" data-no-translate>
     <div className="values-manifest">
+      <div className="values-selector" role="tablist" aria-label={tr("Valeurs AUREVIA")}>
+        {values.map((item,index)=><button key={item.title} type="button" role="tab" aria-selected={active===index} onClick={()=>setActive(index)}><span>0{index+1}</span><b>{tr(item.title)}</b><small>{tr(item.note)}</small></button>)}
+      </div>
       <div className="values-feature" key={`value-${active}`} aria-live="polite">
         <span>0{active+1} / 05</span>
         <p className="values-feature-name">{tr(value.title)}</p>
         <h3>{tr(value.headline)}</h3>
         <p>{tr(value.text)}</p>
         <p className="values-feeling">{tr(value.feeling)}</p>
-      </div>
-      <div className="values-selector" role="tablist" aria-label={tr("Valeurs AUREVIA")}>
-        {values.map((item,index)=><button key={item.title} type="button" role="tab" aria-selected={active===index} onClick={()=>setActive(index)}><span>0{index+1}</span><b>{tr(item.title)}</b><i aria-hidden="true">→</i></button>)}
       </div>
     </div>
   </div>;

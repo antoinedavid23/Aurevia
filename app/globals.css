@@ -774,11 +774,11 @@ input,select,textarea,label,
 .about-values-heading>p:last-child{color:#b9c5cd;line-height:1.85;margin:0}
 .values-manifest{
   display:grid;
-  grid-template-columns:1fr .92fr;
-  gap:clamp(35px,7vw,90px);
+  grid-template-columns:1fr;
+  gap:30px;
   margin-top:65px;
   border-top:1px solid var(--line);
-  padding-top:42px;
+  padding-top:0;
 }
 .values-feature{
   min-height:440px;
@@ -797,11 +797,11 @@ input,select,textarea,label,
 .values-selector{display:grid;align-content:start}
 .values-selector button{
   display:grid;
-  grid-template-columns:42px 1fr auto;
-  gap:12px;
+  grid-template-columns:42px minmax(0,1fr) minmax(110px,.34fr);
+  gap:18px;
   align-items:center;
-  min-height:78px;
-  padding:18px 6px;
+  min-height:66px;
+  padding:15px 6px;
   border:0;
   border-bottom:1px solid var(--line);
   background:transparent;
@@ -810,9 +810,23 @@ input,select,textarea,label,
 }
 .values-selector button span{color:var(--gold);font-size:.62rem;letter-spacing:.12em}
 .values-selector button b{font-family:var(--font-serif);font-size:1.18rem;font-weight:500}
-.values-selector button i{font-style:normal;color:var(--gold);opacity:.35;transition:.25s}
+.values-selector button small{color:#91a0a8;font-size:.7rem;line-height:1.35;text-align:right}
 .values-selector button[aria-selected="true"]{padding-left:16px;background:linear-gradient(90deg,rgba(200,161,90,.13),transparent)}
-.values-selector button[aria-selected="true"] i{opacity:1;transform:translateX(3px)}
+.values-selector button[aria-selected="true"] b{color:var(--ivory)}
+
+@media(max-width:600px){
+  .values-static-shell .values-manifest{gap:30px;margin-top:42px}
+  .values-static-shell .values-selector button{
+    grid-template-columns:34px minmax(0,1fr) minmax(82px,.42fr);
+    gap:10px;
+    min-height:66px;
+    padding:10px 4px;
+  }
+  .values-static-shell .values-selector button[aria-selected="true"]{padding-left:10px}
+  .values-static-shell .values-selector button b{font-size:.98rem;line-height:1.15}
+  .values-static-shell .values-selector button small{font-size:.62rem}
+  .values-static-shell .values-feature{min-height:0;padding:28px 22px}
+}
 
 /* Contact — coordonnées professionnelles */
 .contact-intro h2{font-size:clamp(2rem,3.1vw,3.35rem);max-width:18ch!important}
