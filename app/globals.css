@@ -1615,6 +1615,13 @@ input,select,textarea,label,
   .footer-premium .footer-contact span{text-align:left}
 }
 
+.locale-pending body{visibility:hidden;background:#07111b}
+header a[aria-current="page"]{color:var(--soft-gold)}
+header a[aria-current="page"]:not(.button)::after{
+  content:"";display:block;height:1px;margin-top:5px;background:currentColor
+}
+.mobile-menu a[aria-current="page"]{padding-left:12px;border-left:2px solid var(--gold)}
+
 @media(max-width:767px){
   /* Grilles explicites pour garantir deux cartes par rangée sur tous les téléphones */
   .mobile-two-grid{

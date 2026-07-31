@@ -3,7 +3,7 @@ import { PageHero, CTA } from "@/components/PageHero";
 import { ServiceCard } from "@/components/Cards";
 import { services } from "@/data/content";
 
-export const metadata = { title: "Services de gestion de propriété" };
+export const metadata = { title: "Servizi di gestione immobiliare" };
 
 export default function Page() {
   return <>

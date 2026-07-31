@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { ArrowRight, ChevronDown, LogIn, Menu, X } from "lucide-react";
 import { LanguageOptions, useLocale } from "@/components/LocaleController";
 import { localeNames } from "@/lib/i18n";
@@ -48,6 +49,7 @@ function LanguageSelector() {
 }
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
   const [cookies, setCookies] = useState(false);
@@ -69,13 +71,13 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
     <header>
       <Logo/>
       <nav>
-        {primaryNav.map(([name, href]) => <Link key={href} href={href}>{name}</Link>)}
+        {primaryNav.map(([name, href]) => <Link key={href} href={href} aria-current={pathname === href || pathname.startsWith(`${href}/`) ? "page" : undefined}>{name}</Link>)}
         <div className={`nav-more${moreOpen ? " is-open" : ""}`}>
           <button type="button" aria-expanded={moreOpen} onClick={() => setMoreOpen((current) => !current)}>
             Plus <ChevronDown size={13}/>
           </button>
           {moreOpen && <div className="nav-more-menu">
-            {secondaryNav.map(([name, href]) => <Link key={href} href={href} onClick={() => setMoreOpen(false)}>{name}</Link>)}
+            {secondaryNav.map(([name, href]) => <Link key={href} href={href} aria-current={pathname === href || pathname.startsWith(`${href}/`) ? "page" : undefined} onClick={() => setMoreOpen(false)}>{name}</Link>)}
           </div>}
         </div>
         <LanguageSelector/>
@@ -86,7 +88,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       </nav>
       <button className="menu-btn" aria-label="Ouvrir le menu" onClick={() => setOpen(true)}><Menu/></button>
     </header>
-    {open && <div className="mobile-menu"><button aria-label="Fermer le menu" onClick={() => setOpen(false)}><X/></button><Logo/>{nav.map(([name, href]) => <Link onClick={() => setOpen(false)} key={href} href={href}>{name}</Link>)}<div className="mobile-language-options" aria-label="Choisir la langue"><LanguageOptions onSelect={() => setOpen(false)}/></div><Link className="button" onClick={() => setOpen(false)} href="/valutazione">Évaluer mon bien</Link><Link className="mobile-admin-login" onClick={() => setOpen(false)} href="/connexion"><LogIn size={18}/> Connexion</Link></div>}
+    {open && <div className="mobile-menu"><button aria-label="Fermer le menu" onClick={() => setOpen(false)}><X/></button><Logo/>{nav.map(([name, href]) => <Link onClick={() => setOpen(false)} key={href} href={href} aria-current={pathname === href || (href !== "/" && pathname.startsWith(`${href}/`)) ? "page" : undefined}>{name}</Link>)}<div className="mobile-language-options" aria-label="Choisir la langue"><LanguageOptions onSelect={() => setOpen(false)}/></div><Link className="button" onClick={() => setOpen(false)} href="/valutazione">Évaluer mon bien</Link><Link className="mobile-admin-login" onClick={() => setOpen(false)} href="/connexion"><LogIn size={18}/> Connexion</Link></div>}
     <main>{children}</main>
     <footer className="footer-premium">
       <div className="footer-signature">

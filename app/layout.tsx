@@ -11,7 +11,7 @@ import "@fontsource/manrope/700.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://aurevia-private-concierge.grizz802.chatgpt.site"),
   title: { default: "AUREVIA | Gestione di proprietà a Genova e in Liguria", template: "%s | AUREVIA" },
   description: "Gestione esclusiva di proprietà e ospitalità su misura a Genova e in Liguria.",
   openGraph: {
@@ -35,5 +35,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="it"><body><LocaleController><SiteShell>{children}</SiteShell></LocaleController></body></html>;
+  return <html lang="it" className="locale-pending"><body><LocaleController><SiteShell>{children}</SiteShell></LocaleController><noscript><style>{`.locale-pending body{visibility:visible!important}`}</style></noscript></body></html>;
 }
