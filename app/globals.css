@@ -1521,6 +1521,100 @@ input,select,textarea,label,
   .admin-login{font-size:.65rem}
 }
 
+/* Footer mobile — composition unique, compacte et lisible */
+@media(max-width:600px){
+  .footer-premium{
+    padding:34px 20px calc(78px + env(safe-area-inset-bottom))!important;
+  }
+  .footer-signature{
+    min-height:0!important;
+    padding:8px 0 30px!important;
+    gap:18px!important;
+    border-bottom:1px solid rgba(200,161,90,.22)!important;
+  }
+  .footer-signature>.logo,
+  .footer-signature .logo{
+    width:88px!important;
+    height:88px!important;
+    margin:0 0 5px!important;
+  }
+  .footer-statement h2{
+    max-width:300px!important;
+    font-size:clamp(1.28rem,6vw,1.62rem)!important;
+    line-height:1.16!important;
+  }
+  .footer-consultation{
+    width:100%!important;
+    min-height:48px!important;
+    margin-top:4px!important;
+    padding:13px 16px!important;
+    justify-content:space-between!important;
+    font-size:.66rem!important;
+  }
+  .footer-premium .footer-grid,
+  .footer-grid{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+    gap:30px 24px!important;
+    margin:0!important;
+    padding:30px 0 26px!important;
+  }
+  .footer-premium .footer-grid>div,
+  .footer-premium .footer-grid>div+div{
+    grid-column:auto!important;
+    padding:0!important;
+    border:0!important;
+    gap:9px!important;
+    font-size:.78rem!important;
+    line-height:1.45!important;
+  }
+  .footer-premium .footer-brand{display:none!important}
+  .footer-premium .footer-grid>div:nth-child(2) a:nth-of-type(6),
+  .footer-premium .footer-grid>div:nth-child(2) a:nth-of-type(7),
+  .footer-premium .footer-grid>div:nth-child(2) a:nth-of-type(8){
+    display:none!important;
+  }
+  .footer-premium .footer-grid b{
+    margin-bottom:7px!important;
+    font-size:.65rem!important;
+  }
+  .footer-premium .footer-contact{
+    grid-column:1/-1!important;
+    display:grid!important;
+    grid-template-columns:1fr auto!important;
+    gap:8px 16px!important;
+    padding-top:22px!important;
+    border-top:1px solid rgba(200,161,90,.18)!important;
+  }
+  .footer-premium .footer-contact b{grid-column:1/-1!important}
+  .footer-premium .footer-contact a{min-width:0;overflow-wrap:anywhere}
+  .footer-premium .footer-contact span{text-align:right}
+  .footer-premium .footer-contact p{display:none!important}
+  .footer-premium .footer-bottom{
+    display:grid!important;
+    grid-template-columns:repeat(3,auto)!important;
+    justify-content:space-between!important;
+    align-items:center!important;
+    margin:0!important;
+    padding-top:18px!important;
+    gap:13px!important;
+    font-size:.6rem!important;
+  }
+  .footer-premium .footer-bottom>span{
+    grid-column:1/-1!important;
+    margin:0!important;
+  }
+}
+
+@media(max-width:360px){
+  .footer-premium{padding-inline:16px!important}
+  .footer-premium .footer-grid,.footer-grid{gap:26px 16px!important}
+  .footer-premium .footer-contact{
+    grid-template-columns:1fr!important;
+  }
+  .footer-premium .footer-contact span{text-align:left}
+}
+
 @media(max-width:767px){
   /* Grilles explicites pour garantir deux cartes par rangée sur tous les téléphones */
   .mobile-two-grid{
