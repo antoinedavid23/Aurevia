@@ -1606,6 +1606,191 @@ input,select,textarea,label,
 }
 
 /*
+ * Parcours narratifs mobiles — composition originelle restaurée.
+ * Le défilement de la page pilote les étapes ; la carte elle-même ne crée
+ * jamais de second scroll.
+ */
+@media(max-width:767px){
+  .method-scroll-shell,
+  .about-story-shell,
+  .owner-clarity-shell{
+    height:400svh!important;
+  }
+
+  .values-scroll-shell{
+    height:500svh!important;
+  }
+
+  .method-scroll-shell .method-scroll,
+  .about-story-shell .about-story-sticky,
+  .owner-clarity-shell .owner-clarity-sticky,
+  .values-scroll-shell .values-manifest{
+    height:100dvh!important;
+    min-height:100dvh!important;
+    max-height:100dvh!important;
+    padding:72px 6px 38px!important;
+    align-content:center!important;
+  }
+
+  .method-scroll-shell .method-detail,
+  .about-story-shell .about-story-card,
+  .owner-clarity-shell .owner-clarity-card,
+  .values-scroll-shell .values-feature{
+    width:100%!important;
+    min-height:min(62dvh,560px)!important;
+    padding:clamp(26px,7vw,40px)!important;
+    overflow:hidden!important;
+    border:1px solid var(--line)!important;
+    border-radius:0!important;
+    background:var(--navy)!important;
+  }
+
+  .method-scroll-shell .method-progress,
+  .about-story-shell .about-story-progress,
+  .owner-clarity-shell .owner-clarity-progress{
+    display:flex!important;
+    justify-content:center!important;
+    align-items:center!important;
+    gap:8px!important;
+    margin:0 0 20px!important;
+  }
+
+  .method-scroll-shell .method-progress i,
+  .about-story-shell .about-story-progress i,
+  .owner-clarity-shell .owner-clarity-progress i{
+    width:24px!important;
+    height:3px!important;
+    border-radius:3px!important;
+  }
+
+  .method-scroll-shell .method-progress i.active,
+  .about-story-shell .about-story-progress i.active,
+  .owner-clarity-shell .owner-clarity-progress i.active{
+    width:48px!important;
+    height:3px!important;
+  }
+
+  .method-scroll-shell .method-hint,
+  .about-story-shell .about-story-hint,
+  .owner-clarity-shell .owner-clarity-hint{
+    margin:14px 0 0!important;
+  }
+
+  .method-index span,
+  .about-story-number span,
+  .owner-clarity-card>div:first-child span{
+    font-size:3.45rem!important;
+  }
+
+  .method-detail h3,
+  .about-story-card h3,
+  .owner-clarity-card h3,
+  .values-feature h3{
+    margin:16px 0 20px!important;
+    font-size:clamp(1.65rem,7.2vw,2.25rem)!important;
+    line-height:1.16!important;
+  }
+
+  .method-detail>p,
+  .about-story-card>p:not(.eyebrow),
+  .owner-clarity-card>p:not(.eyebrow),
+  .values-feature>p:not(.values-feature-name):not(.values-feeling){
+    font-size:.9rem!important;
+    line-height:1.72!important;
+  }
+
+  .about-story-card blockquote,
+  .owner-clarity-card strong,
+  .values-feeling{
+    margin-top:24px!important;
+    padding-top:20px!important;
+    color:var(--soft-gold)!important;
+    font-size:1rem!important;
+    line-height:1.55!important;
+  }
+
+  .values-scroll-shell .values-manifest{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    grid-template-rows:auto auto!important;
+    gap:0!important;
+    padding-inline:6px!important;
+  }
+
+  .values-scroll-shell .values-feature{
+    min-height:min(53dvh,470px)!important;
+    justify-content:center!important;
+  }
+
+  .values-scroll-shell .values-selector{
+    display:flex!important;
+    width:100%!important;
+    margin:44px 0 0!important;
+    padding:0!important;
+    gap:4px!important;
+    overflow-x:auto!important;
+    overscroll-behavior-inline:contain;
+    scroll-snap-type:x proximity;
+    scrollbar-width:none;
+  }
+
+  .values-scroll-shell .values-selector button{
+    flex:0 0 42%!important;
+    min-width:42%!important;
+    min-height:80px!important;
+    padding:18px 14px!important;
+    grid-template-columns:34px 1fr!important;
+    gap:8px!important;
+    border:1px solid var(--line)!important;
+    background:rgba(255,255,255,.015)!important;
+    scroll-snap-align:center;
+  }
+
+  .values-scroll-shell .values-selector button[aria-selected="true"]{
+    padding-left:14px!important;
+    border-color:var(--gold)!important;
+    box-shadow:inset 0 0 0 1px var(--gold);
+    background:rgba(200,161,90,.08)!important;
+  }
+
+  .values-scroll-shell .values-selector button b{
+    font-family:var(--font-sans)!important;
+    font-size:.82rem!important;
+    font-weight:500!important;
+  }
+
+  .values-scroll-shell .values-selector button i{
+    display:none!important;
+  }
+}
+
+@media(max-width:380px){
+  .method-scroll-shell .method-scroll,
+  .about-story-shell .about-story-sticky,
+  .owner-clarity-shell .owner-clarity-sticky,
+  .values-scroll-shell .values-manifest{
+    padding-top:60px!important;
+    padding-bottom:28px!important;
+  }
+
+  .method-scroll-shell .method-detail,
+  .about-story-shell .about-story-card,
+  .owner-clarity-shell .owner-clarity-card,
+  .values-scroll-shell .values-feature{
+    min-height:min(60dvh,500px)!important;
+    padding:24px 20px!important;
+  }
+
+  .values-scroll-shell .values-feature{
+    min-height:min(50dvh,430px)!important;
+  }
+
+  .values-scroll-shell .values-selector{
+    margin-top:28px!important;
+  }
+}
+
+/*
  * Parcours narratifs mobiles
  * Ces règles terminales neutralisent les anciens fallbacks qui désactivaient
  * le sticky et créaient un second défilement à l'intérieur des cartes.

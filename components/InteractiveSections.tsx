@@ -130,6 +130,7 @@ export function ValuesStory(){
   const tr=(text:string)=>translate(text,locale);
   const [active,setActive]=useState(0);
   const shell=useRef<HTMLDivElement>(null);
+  const selector=useRef<HTMLDivElement>(null);
   const value=values[active];
   useEffect(()=>{
     function update(){
@@ -145,6 +146,13 @@ export function ValuesStory(){
     window.addEventListener("resize",update);
     return()=>{window.removeEventListener("scroll",update);window.removeEventListener("resize",update)};
   },[]);
+  useEffect(()=>{
+    const container=selector.current;
+    const button=container?.querySelector<HTMLButtonElement>(`button:nth-child(${active+1})`);
+    if(!container||!button)return;
+    const left=button.offsetLeft-(container.clientWidth-button.clientWidth)/2;
+    container.scrollTo({left:Math.max(0,left),behavior:"smooth"});
+  },[active]);
   return <div className="values-scroll-shell" ref={shell} data-no-translate>
     <div className="values-manifest">
       <div className="values-feature">
@@ -154,7 +162,7 @@ export function ValuesStory(){
         <p>{tr(value.text)}</p>
         <p className="values-feeling">{tr(value.feeling)}</p>
       </div>
-      <div className="values-selector" role="tablist" aria-label={tr("Valeurs AUREVIA")}>
+      <div className="values-selector" ref={selector} role="tablist" aria-label={tr("Valeurs AUREVIA")}>
         {values.map((item,index)=><button key={item.title} type="button" role="tab" aria-selected={active===index} onClick={()=>setActive(index)}><span>0{index+1}</span><b>{tr(item.title)}</b><i aria-hidden="true">→</i></button>)}
       </div>
     </div>
