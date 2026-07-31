@@ -2027,14 +2027,15 @@ input,select,textarea,label,
 
   .values-scroll-shell .values-selector button{
     display:grid!important;
-    grid-template-columns:28px 1fr!important;
+    grid-template-columns:40px 1fr!important;
     align-items:center!important;
     width:100%!important;
-    min-height:32px!important;
-    padding:6px 9px!important;
+    min-height:52px!important;
+    padding:11px 6px!important;
     border:0!important;
     border-bottom:1px solid rgba(201,164,87,.24)!important;
     text-align:left!important;
+    background:transparent!important;
   }
 
   .values-scroll-shell .values-selector button:first-child{
@@ -2042,22 +2043,65 @@ input,select,textarea,label,
   }
 
   .values-scroll-shell .values-selector button[aria-selected="true"]{
-    background:rgba(201,164,87,.09)!important;
-    border-left:2px solid var(--gold)!important;
-    color:var(--gold)!important;
+    padding-left:12px!important;
+    background:linear-gradient(90deg,rgba(201,164,87,.11),transparent)!important;
+    color:var(--ivory)!important;
   }
 
   .values-scroll-shell .values-selector button span{
-    font-size:.56rem!important;
+    font-size:.6rem!important;
   }
 
   .values-scroll-shell .values-selector button b{
-    font-size:.7rem!important;
-    line-height:1.15!important;
+    font-family:var(--font-serif)!important;
+    font-size:.96rem!important;
+    font-weight:500!important;
+    line-height:1.2!important;
   }
 
   .values-scroll-shell .values-selector button i{
     display:none!important;
+  }
+
+  .service-journey-nav{
+    display:grid!important;
+    gap:0!important;
+    padding:0!important;
+    overflow:visible!important;
+    border-top:1px solid rgba(200,161,90,.2)!important;
+    scroll-snap-type:none!important;
+  }
+
+  .service-journey-nav button{
+    display:grid!important;
+    grid-template-columns:34px minmax(0,1fr) auto!important;
+    gap:10px!important;
+    align-items:center!important;
+    width:100%!important;
+    min-width:0!important;
+    min-height:66px!important;
+    padding:15px 4px!important;
+    border:0!important;
+    border-bottom:1px solid rgba(200,161,90,.2)!important;
+    background:transparent!important;
+    scroll-snap-align:none!important;
+  }
+
+  .service-journey-nav button.is-active{
+    padding-left:10px!important;
+    background:linear-gradient(90deg,rgba(200,161,90,.11),transparent)!important;
+  }
+
+  .service-journey-nav button strong{
+    font-size:1rem!important;
+    line-height:1.18!important;
+  }
+
+  .service-journey-nav button small{
+    grid-column:auto!important;
+    max-width:90px!important;
+    text-align:right!important;
+    line-height:1.25!important;
   }
 }
 
