@@ -1899,6 +1899,18 @@ input,select,textarea,label,
     gap:8px!important;
   }
 
+  .about-story-shell .about-story-sticky{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+  }
+
+  .about-story-shell .about-story-progress,
+  .about-story-shell .about-story-card,
+  .about-story-shell .about-story-hint{
+    grid-column:1!important;
+  }
+
   .method-scroll-shell .method-detail,
   .about-story-shell .about-story-card,
   .owner-clarity-shell .owner-clarity-card,
