@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Check } from "lucide-react";
+import { useLocale } from "@/components/LocaleController";
+import { translate } from "@/lib/i18n";
 
 export type ServiceJourneyStep = {
   title: string;
@@ -12,12 +14,14 @@ export type ServiceJourneyStep = {
 };
 
 export function ServiceJourney({ steps }: { steps: ServiceJourneyStep[] }) {
+  const { locale } = useLocale();
+  const tr = (text: string) => translate(text, locale);
   const [active, setActive] = useState(0);
   const step = steps[active];
 
   return (
     <div className="service-journey">
-      <nav className="service-journey-nav" aria-label="Étapes du service">
+      <nav className="service-journey-nav" aria-label={tr("Étapes du service")}>
         {steps.map((item, index) => (
           <button
             type="button"
@@ -27,8 +31,8 @@ export function ServiceJourney({ steps }: { steps: ServiceJourneyStep[] }) {
             aria-current={active === index ? "step" : undefined}
           >
             <span>{String(index + 1).padStart(2, "0")}</span>
-            <strong>{item.title}</strong>
-            <small>{item.timing}</small>
+            <strong>{tr(item.title)}</strong>
+            <small>{tr(item.timing)}</small>
           </button>
         ))}
       </nav>
@@ -45,12 +49,12 @@ export function ServiceJourney({ steps }: { steps: ServiceJourneyStep[] }) {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
           >
-            <p className="eyebrow">Étape {String(active + 1).padStart(2, "0")}</p>
-            <h3>{step.title}</h3>
-            <p>{step.text}</p>
+            <p className="eyebrow">{tr("Étape")} {String(active + 1).padStart(2, "0")}</p>
+            <h3>{tr(step.title)}</h3>
+            <p>{tr(step.text)}</p>
             <ul>
               {step.points.map((point) => (
-                <li key={point}><Check size={16} />{point}</li>
+                <li key={point}><Check size={16} />{tr(point)}</li>
               ))}
             </ul>
           </motion.article>

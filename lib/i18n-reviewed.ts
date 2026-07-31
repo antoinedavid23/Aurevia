@@ -152,4 +152,7 @@ export const reviewedMessages:Record<string,Localized> = {
   "Lancer la location":t("Avviare la locazione","Launch the rental","Poner en marcha el alquiler","Запустить аренду","启动出租"),
   "Objectif principal":t("Obiettivo principale","Primary objective","Objetivo principal","Основная цель","主要目标"),
   "J’accepte que mes données soient utilisées afin d’être recontacté au sujet de ma demande.":t("Acconsento all’utilizzo dei miei dati per essere ricontattato in merito alla mia richiesta.","I agree that my data may be used to contact me regarding my enquiry.","Acepto que mis datos se utilicen para contactarme en relación con mi solicitud.","Я согласен на использование моих данных для связи со мной по моему запросу.","我同意使用我的数据，以便就本次咨询与我联系。"),
+  "Étape":t("Fase","Step","Etapa","Этап","步骤"),
+  "Piloter au quotidien":t("Gestire l’operatività quotidiana","Manage day-to-day operations","Gestionar la operativa diaria","Управлять повседневной работой","统筹日常运营"),
+  "En continu":t("In modo continuativo","Ongoing","De forma continua","На постоянной основе","持续进行"),
 };
