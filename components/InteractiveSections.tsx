@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Check, Star } from "lucide-react";
 import { useLocale } from "@/components/LocaleController";
@@ -13,33 +13,64 @@ const method = [
   {title:"Orchestrer, suivre et valoriser",time:"Accompagnement continu",text:"Réservations, voyageurs, prestataires, incidents et performances sont pilotés par un interlocuteur unique. Vous conservez une vision claire de votre propriété sans avoir à en porter le quotidien.",points:["Optimisation attentive et régulière","Supervision discrète de chaque intervention","Compte rendu propriétaire clair et privilégié"]},
 ];
 
+function useScrollStage<T extends HTMLElement>(count: number, mobileOnly = false) {
+  const shell = useRef<T>(null);
+  const [active, setActive] = useState(0);
+
+  const goTo = useCallback((index: number) => {
+    const element = shell.current;
+    if (!element) return;
+    const viewport = window.visualViewport?.height ?? window.innerHeight;
+    const top = window.scrollY + element.getBoundingClientRect().top;
+    const available = Math.max(1, element.offsetHeight - viewport);
+    const target = Math.min(count - 1, Math.max(0, index));
+    window.scrollTo({
+      top: top + available * ((target + 0.5) / count),
+      behavior: "smooth",
+    });
+  }, [count]);
+
+  useEffect(() => {
+    let frame = 0;
+    const update = () => {
+      if (mobileOnly && !window.matchMedia("(max-width: 767px)").matches) return;
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const element = shell.current;
+        if (!element) return;
+        const viewport = window.visualViewport?.height ?? window.innerHeight;
+        const rect = element.getBoundingClientRect();
+        const available = Math.max(1, element.offsetHeight - viewport);
+        const travelled = Math.min(available, Math.max(0, -rect.top));
+        const next = Math.min(count - 1, Math.floor((travelled / available) * count));
+        setActive((current) => current === next ? current : next);
+      });
+    };
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    window.addEventListener("orientationchange", update);
+    window.visualViewport?.addEventListener("scroll", update, { passive: true });
+    window.visualViewport?.addEventListener("resize", update);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+      window.removeEventListener("orientationchange", update);
+      window.visualViewport?.removeEventListener("scroll", update);
+      window.visualViewport?.removeEventListener("resize", update);
+    };
+  }, [count, mobileOnly]);
+
+  return { shell, active, setActive, goTo };
+}
+
 export function MethodJourney(){
   const {locale}=useLocale();
   const tr=(text:string)=>translate(text,locale);
-  const [active,setActive]=useState(0);
-  const shell=useRef<HTMLDivElement>(null);
+  const {shell,active,goTo}=useScrollStage<HTMLDivElement>(method.length);
   const item=method[active];
-  useEffect(()=>{
-    function update(){
-      const element=shell.current;
-      if(!element)return;
-      const rect=element.getBoundingClientRect();
-      const available=Math.max(1,element.offsetHeight-window.innerHeight);
-      const progress=Math.min(1,Math.max(0,-rect.top/available));
-      setActive(Math.min(3,Math.floor(progress*4)));
-    }
-    update();
-    window.addEventListener("scroll",update,{passive:true});
-    window.addEventListener("resize",update);
-    return()=>{window.removeEventListener("scroll",update);window.removeEventListener("resize",update)};
-  },[]);
-  function goTo(index:number){
-    const element=shell.current;
-    if(!element)return;
-    const top=window.scrollY+element.getBoundingClientRect().top;
-    const available=element.offsetHeight-window.innerHeight;
-    window.scrollTo({top:top+(available*(index+.08)/4),behavior:"smooth"});
-  }
   return <div className="method-scroll-shell" ref={shell} data-no-translate>
     <div className="method-scroll">
       <div className="method-progress" aria-hidden="true">{method.map((_,index)=><i key={index} className={index===active?"active":""}/>)}</div>
@@ -79,23 +110,8 @@ const clarityMoments = [
 export function OwnerClarityJourney(){
   const {locale}=useLocale();
   const tr=(text:string)=>translate(text,locale);
-  const [active,setActive]=useState(0);
-  const shell=useRef<HTMLDivElement>(null);
+  const {shell,active}=useScrollStage<HTMLDivElement>(clarityMoments.length);
   const moment=clarityMoments[active];
-  useEffect(()=>{
-    function update(){
-      const element=shell.current;
-      if(!element)return;
-      const rect=element.getBoundingClientRect();
-      const available=Math.max(1,element.offsetHeight-window.innerHeight);
-      const progress=Math.min(1,Math.max(0,-rect.top/available));
-      setActive(Math.min(clarityMoments.length-1,Math.floor(progress*clarityMoments.length)));
-    }
-    update();
-    window.addEventListener("scroll",update,{passive:true});
-    window.addEventListener("resize",update);
-    return()=>{window.removeEventListener("scroll",update);window.removeEventListener("resize",update)};
-  },[]);
   return <div className="owner-clarity-shell" ref={shell} data-no-translate>
     <div className="owner-clarity-sticky">
       <div className="owner-clarity-heading">
@@ -128,24 +144,9 @@ const values = [
 export function ValuesStory(){
   const {locale}=useLocale();
   const tr=(text:string)=>translate(text,locale);
-  const [active,setActive]=useState(0);
-  const shell=useRef<HTMLDivElement>(null);
+  const {shell,active,setActive}=useScrollStage<HTMLDivElement>(values.length, true);
   const selector=useRef<HTMLDivElement>(null);
   const value=values[active];
-  useEffect(()=>{
-    function update(){
-      if(!window.matchMedia("(max-width: 767px)").matches)return;
-      const element=shell.current;
-      if(!element)return;
-      const available=Math.max(1,element.offsetHeight-window.innerHeight);
-      const progress=Math.min(1,Math.max(0,-element.getBoundingClientRect().top/available));
-      setActive(Math.min(values.length-1,Math.floor(progress*values.length)));
-    }
-    update();
-    window.addEventListener("scroll",update,{passive:true});
-    window.addEventListener("resize",update);
-    return()=>{window.removeEventListener("scroll",update);window.removeEventListener("resize",update)};
-  },[]);
   useEffect(()=>{
     const container=selector.current;
     const button=container?.querySelector<HTMLButtonElement>(`button:nth-child(${active+1})`);
@@ -179,23 +180,8 @@ const storyChapters = [
 export function AboutStoryJourney(){
   const {locale}=useLocale();
   const tr=(text:string)=>translate(text,locale);
-  const [active,setActive]=useState(0);
-  const shell=useRef<HTMLDivElement>(null);
+  const {shell,active}=useScrollStage<HTMLDivElement>(storyChapters.length);
   const chapter=storyChapters[active];
-  useEffect(()=>{
-    function update(){
-      const element=shell.current;
-      if(!element)return;
-      const rect=element.getBoundingClientRect();
-      const available=Math.max(1,element.offsetHeight-window.innerHeight);
-      const progress=Math.min(1,Math.max(0,-rect.top/available));
-      setActive(Math.min(storyChapters.length-1,Math.floor(progress*storyChapters.length)));
-    }
-    update();
-    window.addEventListener("scroll",update,{passive:true});
-    window.addEventListener("resize",update);
-    return()=>{window.removeEventListener("scroll",update);window.removeEventListener("resize",update)};
-  },[]);
   return <div className="about-story-shell" ref={shell} data-no-translate>
     <div className="about-story-sticky">
       <div className="about-story-progress" aria-hidden="true">{storyChapters.map((_,index)=><i key={index} className={index===active?"active":""}/>)}</div>

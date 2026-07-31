@@ -1390,12 +1390,25 @@ input,select,textarea,label,
 .mobile-services-link{display:none}
 
 @media(max-width:767px){
+  .feature-list{
+    grid-template-columns:1fr;
+    gap:14px;
+    margin:24px 0 28px;
+  }
+  .feature-list li{
+    line-height:1.5;
+  }
+  .prose>.text-link{
+    width:100%;
+    justify-content:space-between;
+  }
+
   /* Accueil allégé : l’essentiel d’abord, le catalogue complet ensuite */
   .home-services .card-grid.three,
   .card-grid:has(> .service-card),
   .card-grid:has(> .experience-card){
-    grid-template-columns:repeat(2,minmax(0,1fr))!important;
-    gap:10px!important;
+    grid-template-columns:1fr!important;
+    gap:18px!important;
   }
   .home-services .service-card:nth-child(n+4){display:flex}
   .mobile-services-link{display:none}
@@ -1498,17 +1511,17 @@ input,select,textarea,label,
   /* Grilles explicites pour garantir deux cartes par rangée sur tous les téléphones */
   .mobile-two-grid{
     display:grid!important;
-    grid-template-columns:repeat(2,minmax(0,1fr))!important;
-    gap:10px!important;
+    grid-template-columns:1fr!important;
+    gap:18px!important;
   }
   .mobile-two-grid .service-card,
   .mobile-two-grid .experience-card{
     width:100%!important;
     min-width:0!important;
-    min-height:285px!important;
+    min-height:390px!important;
   }
-  .mobile-two-grid .experience-card ul{display:none}
-  .mobile-two-grid .experience-card>small{font-size:.48rem;letter-spacing:.08em}
+  .mobile-two-grid .experience-card ul{display:grid}
+  .mobile-two-grid .experience-card>small{font-size:.58rem;letter-spacing:.11em}
 
   /* Menu mobile épuré, sans barres intermédiaires */
   .mobile-menu>a:not(.logo):not(.button):not(.mobile-admin-login){
@@ -1523,15 +1536,15 @@ input,select,textarea,label,
 }
 
 @media(max-width:380px){
-  .mobile-two-grid{gap:8px!important}
+  .mobile-two-grid{gap:16px!important}
   .mobile-two-grid .service-card,
-  .mobile-two-grid .experience-card{min-height:270px!important}
-  .mobile-two-grid .service-card-copy{padding:15px 11px 13px!important}
-  .mobile-two-grid .experience-card{padding:14px 11px!important}
+  .mobile-two-grid .experience-card{min-height:360px!important}
+  .mobile-two-grid .service-card-copy{padding:20px 16px 18px!important}
+  .mobile-two-grid .experience-card{padding:20px 16px!important}
   .mobile-two-grid .service-card-copy h3,
-  .mobile-two-grid .experience-card h3{font-size:.94rem!important}
+  .mobile-two-grid .experience-card h3{font-size:1.15rem!important}
   .mobile-two-grid .service-card-copy p,
-  .mobile-two-grid .experience-card p{font-size:.69rem!important}
+  .mobile-two-grid .experience-card p{font-size:.75rem!important}
 }
 
 @media(max-width:767px){
@@ -1610,6 +1623,42 @@ input,select,textarea,label,
     padding:2px 16px 18px!important;
     font-size:.56rem!important;
     line-height:1.45!important;
+  }
+}
+
+/* Parcours au scroll : le recadrage horizontal ne doit jamais devenir
+   le conteneur de défilement des scènes sticky sur mobile. */
+@media(max-width:767px){
+  html,
+  body{
+    overflow-x:clip!important;
+  }
+
+  .method-scroll-shell .method-detail,
+  .about-story-shell .about-story-card,
+  .owner-clarity-shell .owner-clarity-card,
+  .values-scroll-shell .values-feature{
+    animation:mobile-scroll-stage-in .42s cubic-bezier(.22,1,.36,1) both;
+  }
+}
+
+@keyframes mobile-scroll-stage-in{
+  from{
+    opacity:.28;
+    transform:translateY(18px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .method-scroll-shell .method-detail,
+  .about-story-shell .about-story-card,
+  .owner-clarity-shell .owner-clarity-card,
+  .values-scroll-shell .values-feature{
+    animation:none;
   }
 }
 

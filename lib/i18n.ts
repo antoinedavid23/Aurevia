@@ -2,6 +2,7 @@ export const locales = ["fr", "it", "en", "es", "ru", "zh"] as const;
 import { supplementalMessages } from "./i18n-supplement";
 import { publicMessages } from "./i18n-public";
 import { generatedMessages } from "./i18n-generated";
+import { reviewedMessages } from "./i18n-reviewed";
 export type Locale = (typeof locales)[number];
 
 export const localeNames: Record<Locale, { short: string; native: string }> = {
@@ -64,6 +65,12 @@ export const messages: Record<string, Localized> = {
   "Valeur optimisée": t("Valore ottimizzato", "Optimised value", "Valor optimizado", "Рост ценности", "价值优化"),
   "Hospitalité d’excellence": t("Ospitalità d’eccellenza", "Exceptional hospitality", "Hospitalidad excelente", "Безупречное гостеприимство", "卓越款待"),
   "Accompagnement dédié": t("Assistenza dedicata", "Dedicated stewardship", "Atención dedicada", "Персональное сопровождение", "专属陪伴"),
+  "Un interlocuteur unique": t("Un unico referente", "One dedicated point of contact", "Un único interlocutor", "Единый персональный контакт", "专属对接人"),
+  "Une présence locale à Gênes": t("Presenza locale a Genova", "A local presence in Genoa", "Presencia local en Génova", "Местное присутствие в Генуе", "扎根热那亚"),
+  "Tarification dynamique": t("Tariffe dinamiche", "Dynamic pricing", "Tarificación dinámica", "Динамическое ценообразование", "动态定价"),
+  "Prestataires coordonnés": t("Fornitori coordinati", "Trusted partners, coordinated", "Proveedores coordinados", "Координация подрядчиков", "服务商统一协调"),
+  "Suivi propriétaire clair": t("Report chiari per il proprietario", "Clear owner reporting", "Seguimiento claro para el propietario", "Прозрачная отчётность для владельца", "清晰的业主报告"),
+  "Votre bien préservé": t("Il tuo immobile, sempre tutelato", "Your home, carefully preserved", "Su propiedad, siempre cuidada", "Бережная забота о вашей собственности", "悉心守护您的房产"),
   "Pour les propriétaires": t("Per i proprietari", "For property owners", "Para propietarios", "Владельцам", "致业主"),
   "Un partenaire de confiance pour votre propriété": t("Un referente di fiducia per il tuo immobile", "A trusted steward for your home", "Un aliado de confianza para su propiedad", "Надёжный партнёр для вашего дома", "值得托付的宅邸管家"),
   "AUREVIA accompagne les propriétaires exigeants qui souhaitent valoriser leur bien sans en gérer les contraintes quotidiennes.": t("AUREVIA affianca proprietari esigenti che desiderano valorizzare il proprio immobile senza portarne il peso quotidiano.", "AUREVIA gives discerning owners the confidence to enhance their property without carrying its daily demands.", "AUREVIA acompaña a propietarios exigentes que desean valorizar su bien sin asumir la carga diaria.", "AUREVIA помогает взыскательным владельцам раскрыть потенциал объекта, не погружаясь в повседневные заботы.", "AUREVIA 帮助重视品质的业主提升房产价值，同时卸下日常管理的繁琐。"),
@@ -183,9 +190,9 @@ export function translate(source: string, locale: Locale) {
     .replace(/\s+/g, " ")
     .replace(/\s+([:;?!])/g, "$1")
     .trim();
-  const direct = publicMessages[source] ?? supplementalMessages[source] ?? messages[source] ?? generatedMessages[source];
+  const direct = reviewedMessages[source] ?? publicMessages[source] ?? supplementalMessages[source] ?? messages[source] ?? generatedMessages[source];
   if (direct) return direct[locale];
-  const normalizedEntry = Object.entries({ ...generatedMessages, ...messages, ...supplementalMessages, ...publicMessages })
+  const normalizedEntry = Object.entries({ ...generatedMessages, ...messages, ...supplementalMessages, ...publicMessages, ...reviewedMessages })
     .find(([key]) => key.replace(/\u00a0/g, " ").replace(/\s+/g, " ").replace(/\s+([:;?!])/g, "$1").trim() === normalized);
   return normalizedEntry?.[1][locale] ?? source;
 }

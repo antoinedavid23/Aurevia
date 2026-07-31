@@ -5,6 +5,7 @@ import { localeNames, locales, translate, type Locale } from "@/lib/i18n";
 
 type LocaleContextValue = { locale: Locale; setLocale: (locale: Locale) => void };
 const DEFAULT_LOCALE: Locale = "it";
+const HYDRATION_LOCALE: Locale = "fr";
 const LocaleContext = createContext<LocaleContextValue>({ locale: DEFAULT_LOCALE, setLocale: () => undefined });
 
 const originals = new WeakMap<Node, string>();
@@ -53,25 +54,35 @@ function translateTree(root: ParentNode, locale: Locale) {
 }
 
 export function LocaleController({ children }: { children: React.ReactNode }) {
-  const [locale, updateLocale] = useState<Locale>(DEFAULT_LOCALE);
+  const [locale, updateLocale] = useState<Locale>(HYDRATION_LOCALE);
 
   useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get("lang");
     const stored = localStorage.getItem("aurevia-locale");
-    if (stored && locales.includes(stored as Locale)) {
-      const frame = requestAnimationFrame(() => updateLocale(stored as Locale));
-      return () => cancelAnimationFrame(frame);
-    }
+    const initial = requested && locales.includes(requested as Locale)
+      ? requested as Locale
+      : stored && locales.includes(stored as Locale)
+        ? stored as Locale
+        : DEFAULT_LOCALE;
+    const frame = requestAnimationFrame(() => updateLocale(initial));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   useEffect(() => {
-    translateTree(document.body, locale);
-    const observer = new MutationObserver((mutations) => {
-      if (translating) return;
-      const needsTranslation = mutations.some((mutation) => mutation.addedNodes.length > 0 || mutation.type === "characterData");
-      if (needsTranslation) requestAnimationFrame(() => translateTree(document.body, locale));
-    });
-    observer.observe(document.body, { childList: true, subtree: true, characterData: true });
-    return () => observer.disconnect();
+    let observer: MutationObserver | undefined;
+    const hydrationDelay = window.setTimeout(() => {
+      translateTree(document.body, locale);
+      observer = new MutationObserver((mutations) => {
+        if (translating) return;
+        const needsTranslation = mutations.some((mutation) => mutation.addedNodes.length > 0 || mutation.type === "characterData");
+        if (needsTranslation) requestAnimationFrame(() => translateTree(document.body, locale));
+      });
+      observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+    }, 250);
+    return () => {
+      window.clearTimeout(hydrationDelay);
+      observer?.disconnect();
+    };
   }, [locale]);
 
   const setLocale = useCallback((next: Locale) => {
