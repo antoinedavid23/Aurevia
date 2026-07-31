@@ -43,7 +43,7 @@ export function MethodJourney(){
   return <div className="method-scroll-shell" ref={shell} data-no-translate>
     <div className="method-scroll">
       <div className="method-progress" aria-hidden="true">{method.map((_,index)=><i key={index} className={index===active?"active":""}/>)}</div>
-      <div className="method-detail" role="tabpanel">
+      <div className="method-detail" role="tabpanel" key={`method-${active}`} aria-live="polite">
         <div className="method-index"><span>0{active+1}</span><small>/ 04</small></div>
         <span>{tr(item.time)}</span><h3>{tr(item.title)}</h3><p>{tr(item.text)}</p>
         <ul>{item.points.map(point=><li key={point}><Check size={15}/>{tr(point)}</li>)}</ul>
@@ -105,7 +105,7 @@ export function OwnerClarityJourney(){
         <p className="owner-note">{tr("Les estimations restent indicatives : aucun rendement n’est garanti. Ménage, linge, consommables et interventions techniques sont facturés au réel, sans marge.")}</p>
       </div>
       <div className="owner-clarity-progress" aria-hidden="true">{clarityMoments.map((_,index)=><i key={index} className={index===active?"active":""}/>)}</div>
-      <article className="owner-clarity-card">
+      <article className="owner-clarity-card" key={`clarity-${active}`} aria-live="polite">
         <div><span>0{active+1}</span><small>/ 04</small></div>
         <p className="eyebrow">{tr(moment.kicker)}</p>
         <h3>{tr(moment.title)}</h3>
@@ -155,7 +155,7 @@ export function ValuesStory(){
   },[active]);
   return <div className="values-scroll-shell" ref={shell} data-no-translate>
     <div className="values-manifest">
-      <div className="values-feature">
+      <div className="values-feature" key={`value-${active}`} aria-live="polite">
         <span>0{active+1} / 05</span>
         <p className="values-feature-name">{tr(value.title)}</p>
         <h3>{tr(value.headline)}</h3>
@@ -199,7 +199,7 @@ export function AboutStoryJourney(){
   return <div className="about-story-shell" ref={shell} data-no-translate>
     <div className="about-story-sticky">
       <div className="about-story-progress" aria-hidden="true">{storyChapters.map((_,index)=><i key={index} className={index===active?"active":""}/>)}</div>
-      <article className="about-story-card">
+      <article className="about-story-card" key={`story-${active}`} aria-live="polite">
         <div className="about-story-number"><span>0{active+1}</span><small>/ 04</small></div>
         <p className="eyebrow">{tr(chapter.kicker)}</p>
         <h3>{tr(chapter.title)}</h3>
