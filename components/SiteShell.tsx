@@ -8,7 +8,9 @@ import { LanguageOptions, useLocale } from "@/components/LocaleController";
 import { localeNames } from "@/lib/i18n";
 
 const nav = [
+  ["Accueil", "/"],
   ["Services", "/servizi"],
+  ["Accompagnement", "/proprietari"],
   ["Propriétés", "/proprieta"],
   ["Expériences", "/esperienze"],
   ["À propos", "/chi-siamo"],

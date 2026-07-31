@@ -1310,7 +1310,7 @@ input,select,textarea,label,
   h2{font-size:clamp(1.85rem,9.5vw,2.45rem)}
   .hero-logo-crop{width:min(280px,88vw);height:215px}
   .hero-slogan{max-width:300px;font-size:.72rem}
-  .service-card-image,.experience-card{min-height:360px}
+  .service-card-image,.experience-card{min-height:290px}
   .estimate-comparison strong,.estimate-comparison b{font-size:clamp(1.45rem,7.8vw,2rem)!important}
 }
 
@@ -1318,8 +1318,35 @@ input,select,textarea,label,
 
 @media(max-width:767px){
   /* Accueil allégé : l’essentiel d’abord, le catalogue complet ensuite */
-  .home-services .service-card:nth-child(n+4){display:none}
-  .mobile-services-link{display:inline-flex;margin-top:26px}
+  .home-services .card-grid.three,
+  .card-grid:has(> .service-card),
+  .card-grid:has(> .experience-card){
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:10px!important;
+  }
+  .home-services .service-card:nth-child(n+4){display:flex}
+  .mobile-services-link{display:none}
+  .service-card-image,.experience-card{min-height:310px!important}
+  .service-card-top{padding:15px 14px!important}
+  .service-card-copy{padding:18px 14px 15px!important}
+  .service-card-copy h3,.experience-card h3{
+    font-size:clamp(.98rem,4.7vw,1.24rem)!important;
+    line-height:1.08!important;
+    margin-bottom:5px!important;
+  }
+  .service-card-copy p,.experience-card p{
+    display:-webkit-box;
+    min-height:0!important;
+    margin:5px 0 11px!important;
+    overflow:hidden;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:3;
+    font-size:.74rem!important;
+    line-height:1.42!important;
+  }
+  .service-card-copy small{font-size:.5rem!important;letter-spacing:.09em!important}
+  .experience-card{padding:16px 13px!important}
+  .experience-card span{font-size:.51rem!important;letter-spacing:.12em!important}
 
   /* Logo du hero : composition complète, nette et sans débordement */
   .hero-logo-crop{width:min(270px,76vw);height:222px;margin:0 auto 2px}
@@ -1380,6 +1407,7 @@ input,select,textarea,label,
 }
 
 @media(max-width:420px){
+  .service-card-image,.experience-card{min-height:285px!important}
   .estimate-premium .estimate-comparison b,
   .estimate-premium .estimate-comparison strong{font-size:clamp(1.4rem,7.4vw,1.9rem)!important}
   .footer-grid{grid-template-columns:1fr!important}
