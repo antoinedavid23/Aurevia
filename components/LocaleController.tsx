@@ -77,6 +77,15 @@ export function LocaleController({ children }: { children: React.ReactNode }) {
       document.documentElement.classList.remove("locale-pending");
       observer = new MutationObserver((mutations) => {
         if (translating) return;
+        mutations.forEach((mutation) => {
+          if (mutation.type !== "characterData") return;
+          const node = mutation.target;
+          const current = node.textContent ?? "";
+          const base = originals.get(node);
+          if (base !== undefined && current !== translate(base.trim(), locale)) {
+            originals.set(node, current);
+          }
+        });
         const needsTranslation = mutations.some((mutation) => mutation.addedNodes.length > 0 || mutation.type === "characterData");
         if (needsTranslation) requestAnimationFrame(() => translateTree(document.body, locale));
       });
