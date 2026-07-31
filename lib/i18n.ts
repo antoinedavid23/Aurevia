@@ -1,6 +1,7 @@
 export const locales = ["fr", "it", "en", "es", "ru", "zh"] as const;
 import { supplementalMessages } from "./i18n-supplement";
 import { publicMessages } from "./i18n-public";
+import { generatedMessages } from "./i18n-generated";
 export type Locale = (typeof locales)[number];
 
 export const localeNames: Record<Locale, { short: string; native: string }> = {
@@ -182,9 +183,9 @@ export function translate(source: string, locale: Locale) {
     .replace(/\s+/g, " ")
     .replace(/\s+([:;?!])/g, "$1")
     .trim();
-  const direct = publicMessages[source] ?? supplementalMessages[source] ?? messages[source];
+  const direct = publicMessages[source] ?? supplementalMessages[source] ?? messages[source] ?? generatedMessages[source];
   if (direct) return direct[locale];
-  const normalizedEntry = Object.entries({ ...messages, ...supplementalMessages, ...publicMessages })
+  const normalizedEntry = Object.entries({ ...generatedMessages, ...messages, ...supplementalMessages, ...publicMessages })
     .find(([key]) => key.replace(/\u00a0/g, " ").replace(/\s+/g, " ").replace(/\s+([:;?!])/g, "$1").trim() === normalized);
   return normalizedEntry?.[1][locale] ?? source;
 }
