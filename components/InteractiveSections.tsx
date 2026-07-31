@@ -121,17 +121,34 @@ const values = [
 
 export function ValuesStory(){
   const [active,setActive]=useState(0);
+  const shell=useRef<HTMLDivElement>(null);
   const value=values[active];
-  return <div className="values-manifest">
-    <div className="values-feature">
-      <span>0{active+1} / 05</span>
-      <p className="values-feature-name">{value.title}</p>
-      <h3>{value.headline}</h3>
-      <p>{value.text}</p>
-      <p className="values-feeling">{value.feeling}</p>
-    </div>
-    <div className="values-selector" role="tablist" aria-label="Valeurs AUREVIA">
-      {values.map((item,index)=><button key={item.title} type="button" role="tab" aria-selected={active===index} onClick={()=>setActive(index)}><span>0{index+1}</span><b>{item.title}</b><i aria-hidden="true">→</i></button>)}
+  useEffect(()=>{
+    function update(){
+      if(!window.matchMedia("(max-width: 767px)").matches)return;
+      const element=shell.current;
+      if(!element)return;
+      const available=Math.max(1,element.offsetHeight-window.innerHeight);
+      const progress=Math.min(1,Math.max(0,-element.getBoundingClientRect().top/available));
+      setActive(Math.min(values.length-1,Math.floor(progress*values.length)));
+    }
+    update();
+    window.addEventListener("scroll",update,{passive:true});
+    window.addEventListener("resize",update);
+    return()=>{window.removeEventListener("scroll",update);window.removeEventListener("resize",update)};
+  },[]);
+  return <div className="values-scroll-shell" ref={shell}>
+    <div className="values-manifest">
+      <div className="values-feature">
+        <span>0{active+1} / 05</span>
+        <p className="values-feature-name">{value.title}</p>
+        <h3>{value.headline}</h3>
+        <p>{value.text}</p>
+        <p className="values-feeling">{value.feeling}</p>
+      </div>
+      <div className="values-selector" role="tablist" aria-label="Valeurs AUREVIA">
+        {values.map((item,index)=><button key={item.title} type="button" role="tab" aria-selected={active===index} onClick={()=>setActive(index)}><span>0{index+1}</span><b>{item.title}</b><i aria-hidden="true">→</i></button>)}
+      </div>
     </div>
   </div>;
 }

@@ -44,6 +44,12 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
     const frame = requestAnimationFrame(() => setCookies(!localStorage.getItem("aurevia-cookie")));
     return () => cancelAnimationFrame(frame);
   }, []);
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
   function saveCookieChoice(choice: "accepted" | "refused") {
     localStorage.setItem("aurevia-cookie", choice);
     setCookies(false);
