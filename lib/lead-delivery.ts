@@ -52,7 +52,10 @@ async function sendLeadEmail(kind: LeadKind, payload: LeadPayload) {
       html: `<div style="font-family:Arial,sans-serif;color:#0d1b2a"><h1 style="font-family:Georgia,serif">Nouvelle demande AUREVIA</h1><p>Une demande a été envoyée depuis aurevia-genova.com.</p><table style="width:100%;border-collapse:collapse">${rows}</table></div>`,
     }),
   });
-  if (!response.ok) throw new Error(`Resend a refusé l’envoi (${response.status}).`);
+  if (!response.ok) {
+    const details = await response.text();
+    throw new Error(`Resend a refusé l’envoi (${response.status}) : ${details.slice(0, 500)}`);
+  }
   const result = await response.json() as { id?: string };
   if (!result.id) throw new Error("Resend n’a pas confirmé l’envoi.");
   return result.id;
