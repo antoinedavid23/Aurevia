@@ -436,8 +436,8 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .footer-brand{align-items:center!important;text-align:center}
 .footer-brand p{display:flex;flex-direction:column;align-items:center;gap:3px;line-height:1.45;width:100%}
 
-.home-owner{background-image:url("/images/home/key-detail-branded.png")}
-.visual-key{background-image:linear-gradient(180deg,transparent 48%,rgba(7,16,25,.62)),url("/images/home/key-detail-branded.png")}
+.home-owner{background-image:url("/images/home/key-detail-branded.webp")}
+.visual-key{background-image:linear-gradient(180deg,transparent 48%,rgba(7,16,25,.62)),url("/images/home/key-detail-branded.webp")}
 
 .service-card-image,.experience-card,.property-image,.visual{
   background-position:center!important;

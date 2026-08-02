@@ -9,7 +9,7 @@ const managementPhases = [
     label: "Mise en valeur",
     title: "Préparer un bien qui inspire immédiatement confiance",
     text: "Avant toute mise en location, nous examinons le positionnement, les équipements et le parcours d’arrivée. La présentation est construite pour valoriser les qualités réelles du bien sans créer de promesse artificielle.",
-    image: "/images/owners/preparation-aurevia.png",
+    image: "/images/owners/preparation-aurevia.webp",
     items: ["Audit du bien et de son positionnement", "Conseils décoration et équipements", "Création ou optimisation de l’annonce", "Recommandations pour la séance photo"],
   },
   {
@@ -17,7 +17,7 @@ const managementPhases = [
     label: "Exécution",
     title: "Un niveau de préparation vérifié avant chaque séjour",
     text: "Ménage, linge, inventaire et consommables suivent un cadre précis. Les prestataires sont coordonnés, les points sensibles sont contrôlés et les anomalies sont signalées avant qu’elles ne deviennent un incident voyageur.",
-    image: "/images/owners/controle-inventaire-aurevia.png",
+    image: "/images/owners/controle-inventaire-aurevia.webp",
     items: ["Coordination du ménage et du linge", "Contrôle visuel après intervention", "Suivi des stocks et de l’inventaire", "Organisation des maintenances nécessaires"],
   },
   {
@@ -25,7 +25,7 @@ const managementPhases = [
     label: "Pilotage",
     title: "Chaque décision expliquée, chaque performance suivie",
     text: "La gestion ne s’arrête pas à remplir un calendrier. Nous suivons les tarifs, l’occupation, les durées de séjour et les retours voyageurs afin d’ajuster la stratégie avec méthode et de rendre compte clairement au propriétaire.",
-    image: "/images/owners/reporting-aurevia.png",
+    image: "/images/owners/reporting-aurevia.webp",
     items: ["Tarification dynamique et calendrier", "Suivi de l’occupation et des séjours", "Compte rendu propriétaire régulier", "Recommandations d’amélioration documentées"],
   },
 ];

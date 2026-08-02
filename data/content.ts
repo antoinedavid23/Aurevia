@@ -30,7 +30,7 @@ export const experiences=[
  ["wellness","Bien-être","Des soins et moments de détente directement dans la propriété."],
  ["eventi-privati","Événements privés","Des occasions orchestrées avec attention jusque dans les détails."],
  ["securite-privee","Sécurité privée","Une présence discrète et coordonnée pour protéger vos déplacements, vos événements et votre tranquillité."],
-].map(([slug,title,short],i)=>({slug,title,short,tone:i+1,image:["/images/experiences/yacht.webp","/images/experiences/private-jet.png","/images/experiences/private-chef.webp","/images/experiences/private-transfer.webp","/images/experiences/liguria-tour.webp","/images/experiences/wellness.webp","/images/experiences/private-event.webp","/images/services/security.webp"][i],details:{
+].map(([slug,title,short],i)=>({slug,title,short,tone:i+1,image:["/images/experiences/yacht.webp","/images/experiences/private-jet.webp","/images/experiences/private-chef.webp","/images/experiences/private-transfer.webp","/images/experiences/liguria-tour.webp","/images/experiences/wellness.webp","/images/experiences/private-event.webp","/images/services/security.webp"][i],details:{
  "yacht-e-boat":["Itinéraire personnalisé","Skipper et équipage","Restauration sur demande"],
  "jet-prive":["Recherche d’appareil","Coordination aéroport","Transfert porte-à-porte"],
  "chef-privato":["Menu personnalisé","Approvisionnement local","Service à domicile"],

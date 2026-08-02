@@ -24,6 +24,7 @@ export default function Home(){
  return <>
   <section className="hero hero-aurevia">
    <video className="hero-video" autoPlay muted loop playsInline preload="auto" poster="/images/home/hero-concierge.webp" aria-hidden="true">
+    <source src="/videos/genova-hero-mobile.mp4" type="video/mp4" media="(max-width: 767px)"/>
     <source src="/videos/genova-hero.mp4" type="video/mp4"/>
    </video>
    <div className="container hero-content"><Reveal className="hero-brand">
