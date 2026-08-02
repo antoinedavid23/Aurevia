@@ -1690,6 +1690,7 @@ header a[aria-current="page"]:not(.button)::after{
 .experience-card-details li:before{content:"—";margin-right:7px;color:var(--gold)}
 @media(min-width:768px){.hero-aurevia .hero-brand{transform:translateY(-52px)!important}}
 @media(min-width:768px){.feature-list li{white-space:nowrap}}
+.service-card-copy p{margin-top:0!important}
 @media(max-width:767px){
   .hero-aurevia{background-image:url("/images/home/hero-mobile-motion.webp")!important;background-size:cover!important;background-position:center!important}
   .hero-aurevia .hero-video{display:block!important;opacity:0;transition:opacity .18s linear}
