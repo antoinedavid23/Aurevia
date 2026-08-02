@@ -83,8 +83,11 @@ export function LocaleController({ children }: { children: React.ReactNode }) {
             const node = mutation.target;
             const current = node.textContent ?? "";
             const base = originals.get(node);
-            if (base !== undefined && current !== translate(base.trim(), locale)) {
-              originals.set(node, current);
+            if (base !== undefined) {
+              const leading = base.match(/^\s*/)?.[0] ?? "";
+              const trailing = base.match(/\s*$/)?.[0] ?? "";
+              const expected = `${leading}${translate(base.trim(), locale)}${trailing}`;
+              if (current !== expected) originals.set(node, current);
             }
             if (node.parentElement) roots.add(node.parentElement);
             return;
