@@ -33,7 +33,7 @@ export const messages: Record<string, Localized> = {
   "Contact": t("Contatti", "Contact", "Contacto", "Связаться", "联系我们"),
   "Connexion": t("Accesso", "Sign in", "Acceso", "Войти", "登录"),
   "Connexion administrateur": t("Accesso amministratore", "Administrator sign-in", "Acceso de administración", "Вход администратора", "管理员登录"),
-  "Évaluer mon bien": t("Valuta il mio immobile", "Assess my property", "Valorar mi propiedad", "Оценить объект", "评估我的房产"),
+  "Évaluer mon bien": t("Valutare il mio immobile", "Assess my property", "Valorar mi propiedad", "Оценить объект", "评估我的房产"),
   "Confier ma propriété": t("Affidaci il tuo immobile", "Entrust your property", "Confiar mi propiedad", "Доверить объект", "委托我的房产"),
   "Découvrir nos services": t("Scopri i nostri servizi", "Explore our services", "Descubrir nuestros servicios", "Наши услуги", "探索我们的服务"),
   "Découvrir le service": t("Scopri il servizio", "Explore the service", "Descubrir el servicio", "Подробнее", "了解服务"),
