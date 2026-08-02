@@ -455,6 +455,7 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .estimate-brand span{letter-spacing:.2em;text-transform:uppercase;color:#8a6b32}
 .estimate-brand>span:last-child{position:absolute;left:50%;transform:translateX(-50%);font-size:1.08rem;font-weight:500;white-space:nowrap}
 .estimate-logo-crop{position:relative;display:block!important;width:64px;height:64px;overflow:hidden;flex:0 0 64px}
+.estimate-logo-crop{background:url("/images/brand/aurevia-logo-transparent-gold.png") center 18%/150px 150px no-repeat}
 .estimate-logo-crop img{position:absolute;width:150px!important;height:150px!important;max-width:none;left:-43px;top:-20px}
 .estimate-case{padding:0 34px 25px;margin:0!important;color:#746f66!important;letter-spacing:.045em;text-align:center;font-size:.9rem!important}
 .estimate-comparison{display:grid!important;grid-template-columns:minmax(0,1fr) 48px minmax(0,1fr);align-items:stretch;gap:18px;padding:28px 66px 28px 34px!important;border-block:1px solid #d8c9ad!important}
@@ -1988,6 +1989,13 @@ header a[aria-current="page"]:not(.button)::after{
  * le sticky et créaient un second défilement à l'intérieur des cartes.
  */
 @media(max-width:767px){
+  /* Le viewport mobile change de hauteur quand les barres du navigateur se
+     replient. Une hauteur stable évite les recalculs visibles pendant le geste. */
+  html{scroll-behavior:auto}
+  header{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  .hero-video{display:block;object-position:center center}
+  .trust-track{will-change:auto}
+
   main{
     overflow-x:clip!important;
     overflow-y:visible!important;
@@ -2019,9 +2027,9 @@ header a[aria-current="page"]:not(.button)::after{
     position:sticky!important;
     top:0!important;
     width:100%!important;
-    height:100dvh!important;
-    min-height:100dvh!important;
-    max-height:100dvh!important;
+    height:100svh!important;
+    min-height:100svh!important;
+    max-height:100svh!important;
     margin:0!important;
     padding:64px 0 44px!important;
     overflow:hidden!important;
@@ -2250,6 +2258,44 @@ header a[aria-current="page"]:not(.button)::after{
     text-align:right!important;
     line-height:1.25!important;
   }
+}
+
+/* Simulateur mobile — lecture en deux temps, contrôles tactiles et résultat hiérarchisé. */
+@media(max-width:767px){
+  .simulator-intro{gap:18px!important}
+  .simulator-brand-image{height:190px!important;margin-bottom:4px}
+  .simulator-layout{gap:18px!important}
+  .simulator-form{padding:0!important;background:transparent!important;border:0!important;gap:14px!important}
+  .simulator-form-section{display:grid;gap:15px;padding:22px 18px;background:linear-gradient(145deg,#102334,#0b1824);border:1px solid rgba(200,161,90,.3)}
+  .simulator-form-section>.eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 3px!important;color:var(--ivory);font-size:.66rem!important}
+  .simulator-form-section>.eyebrow span{display:grid;place-items:center;width:28px;height:28px;border:1px solid var(--gold);color:var(--soft-gold);font-size:.56rem;letter-spacing:.08em}
+  .simulator-form label{position:relative;gap:8px;color:#c8d0d2;font-size:.65rem;letter-spacing:.075em;text-transform:uppercase}
+  .simulator-form label output{position:absolute;right:0;top:-2px;color:var(--soft-gold);font-family:var(--font-serif);font-size:.9rem;letter-spacing:0;text-transform:none}
+  .simulator-form input:not([type="range"]):not([type="checkbox"]),
+  .simulator-form select{min-height:50px;padding:13px 14px;border-color:rgba(200,161,90,.28);background:rgba(255,255,255,.035);font-size:1rem;letter-spacing:0;text-transform:none}
+  .simulator-form input:focus,.simulator-form select:focus{background:rgba(200,161,90,.06);box-shadow:inset 3px 0 0 var(--gold)}
+  .simulator-form .simulator-compact-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+  .simulator-form .form-hint{margin:0;padding:12px 0 0;border-top:1px solid rgba(200,161,90,.18);font-size:.62rem;line-height:1.55;color:#89969b}
+  .simulator-form .aurevia-range{height:20px;margin-top:3px;background-clip:content-box!important;padding-block:7px;border-radius:0}
+  .simulator-amenities{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+  .simulator-amenities label{min-height:48px;padding:10px 11px;border:1px solid rgba(200,161,90,.22);background:rgba(255,255,255,.025);font-size:.62rem;text-transform:none}
+  .simulator-amenities label:has(input:checked){border-color:var(--gold);background:rgba(200,161,90,.1);color:var(--ivory)}
+
+  .simulator-layout .result-panel{padding:24px 18px!important;border-top:3px solid var(--gold);box-shadow:0 20px 55px rgba(0,0,0,.22);text-align:center}
+  .result-panel>.eyebrow{margin-bottom:14px!important}
+  .result-panel>small{display:block;color:#756c5f;font-size:.63rem;letter-spacing:.08em;text-transform:uppercase}
+  .result-panel>strong{margin:5px 0 10px;font-size:clamp(2.45rem,13vw,3.35rem)!important;color:#8b6a2c}
+  .result-panel>.range{margin:0 auto 22px;padding-bottom:20px;border-bottom:1px solid #d8c9ad;font-size:1.2rem;line-height:1.35}
+  .result-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;text-align:left}
+  .result-grid div{min-height:86px;padding:12px!important;border:1px solid #ded4c3!important;background:#fbf8f2;font-family:var(--font-serif);font-size:.9rem;line-height:1.35}
+  .result-grid small{min-height:32px;margin-bottom:8px;font-family:var(--font-sans);font-size:.55rem;line-height:1.35;text-transform:uppercase}
+  .result-explanation{margin-top:22px!important;padding:20px 0 0!important;text-align:left}
+  .result-explanation>p:not(.eyebrow){font-size:.72rem;line-height:1.65}
+  .result-explanation>div{display:block!important;margin-top:9px;padding:14px!important;background:rgba(200,161,90,.08);border:0!important;border-left:2px solid var(--gold)!important}
+  .result-explanation>div span{max-width:none!important}
+  .result-explanation>div p{margin:8px 0 0;font-size:.7rem;line-height:1.55}
+  .result-panel>.demo-note{margin:18px 0!important;text-align:left;font-size:.6rem;line-height:1.55}
+  .result-panel>.button{width:100%;min-height:52px;padding-inline:12px;font-size:.65rem}
 }
 
 @media(max-width:380px){

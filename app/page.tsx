@@ -23,7 +23,7 @@ const essentialServices=services.filter(({slug})=>[
 export default function Home(){
  return <>
   <section className="hero hero-aurevia">
-   <video className="hero-video" autoPlay muted loop playsInline preload="metadata" poster="/images/home/hero-concierge.webp" aria-hidden="true">
+   <video className="hero-video" autoPlay muted loop playsInline preload="auto" poster="/images/home/hero-concierge.webp" aria-hidden="true">
     <source src="/videos/genova-hero.mp4" type="video/mp4"/>
    </video>
    <div className="container hero-content"><Reveal className="hero-brand">

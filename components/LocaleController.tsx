@@ -61,9 +61,9 @@ export function LocaleController({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const requested = new URLSearchParams(window.location.search).get("lang");
     const stored = localStorage.getItem("aurevia-locale");
-    const initial = requested && locales.includes(requested as Locale)
+    const initial = requested && locales.some((code) => code === requested)
       ? requested as Locale
-      : stored && locales.includes(stored as Locale)
+      : stored && locales.some((code) => code === stored)
         ? stored as Locale
         : DEFAULT_LOCALE;
     const frame = requestAnimationFrame(() => updateLocale(initial));

@@ -51,14 +51,12 @@ function useScrollStage<T extends HTMLElement>(count: number, mobileOnly = false
     window.addEventListener("scroll", update, { passive: true });
     window.addEventListener("resize", update);
     window.addEventListener("orientationchange", update);
-    window.visualViewport?.addEventListener("scroll", update, { passive: true });
     window.visualViewport?.addEventListener("resize", update);
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
       window.removeEventListener("orientationchange", update);
-      window.visualViewport?.removeEventListener("scroll", update);
       window.visualViewport?.removeEventListener("resize", update);
     };
   }, [count, mobileOnly]);

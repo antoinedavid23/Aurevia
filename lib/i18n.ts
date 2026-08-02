@@ -1,10 +1,10 @@
-export const locales = ["fr", "it", "en", "es", "ru", "zh"] as const;
 import { supplementalMessages } from "./i18n-supplement";
 import { publicMessages } from "./i18n-public";
 import { generatedMessages } from "./i18n-generated";
 import { reviewedMessages } from "./i18n-reviewed";
 import { auditFixMessages } from "./i18n-audit-fixes";
-export type Locale = (typeof locales)[number];
+export type Locale = "fr" | "it" | "en" | "es" | "ru" | "zh";
+export const locales = ["fr", "it", "en"] as const;
 
 export const localeNames: Record<Locale, { short: string; native: string }> = {
   fr: { short: "FR", native: "Français" },
