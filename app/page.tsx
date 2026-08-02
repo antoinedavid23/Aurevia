@@ -9,8 +9,8 @@ import {HeroVideo} from "@/components/HeroVideo";
 import type {Metadata} from "next";
 
 export const metadata:Metadata={
- title:"Gestione di proprietÃ  a Genova e in Liguria",
- description:"AUREVIA cura, valorizza e gestisce proprietÃ  esclusive a Genova e in Liguria con un interlocutore unico e servizi su misura.",
+ title:"Gestione immobiliare a Genova e in Liguria",
+ description:"AUREVIA cura e valorizza proprietà di pregio, seconde case e affitti brevi a Genova e in Liguria con un interlocutore unico.",
  alternates:{canonical:"/"},
 };
 
