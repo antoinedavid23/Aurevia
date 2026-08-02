@@ -1,1 +1,10 @@
-import {LegalPage} from "@/components/LegalPage";export default function Page(){return <LegalPage title="Conditions générales"/>}
+import {LegalLayout} from "@/components/LegalPage";
+export const metadata={title:"Conditions d’utilisation"};
+export default function Page(){return <LegalLayout title="Conditions d’utilisation" intro="Le cadre applicable à la consultation du site et aux demandes transmises à AUREVIA.">
+  <h2>1. Objet</h2><p>Les présentes conditions encadrent l’accès au site aurevia-genova.com, l’utilisation de ses formulaires et la consultation des informations relatives aux services AUREVIA.</p>
+  <h2>2. Nature des informations</h2><p>Le site présente l’approche et les services d’AUREVIA. L’envoi d’un formulaire, une estimation ou un premier échange ne forme pas un contrat et n’oblige aucune partie à conclure. Toute prestation fera l’objet d’une proposition et de conditions contractuelles distinctes, adaptées au bien et au service retenu.</p>
+  <h2>3. Simulateur et projections</h2><p>Les résultats du simulateur et les exemples financiers sont des estimations non contractuelles établies à partir des informations saisies et d’hypothèses générales. Les performances réelles dépendent notamment du marché, de la saison, de l’état du bien, des restrictions réglementaires, des charges et de la fiscalité. Aucun revenu ni taux d’occupation n’est garanti.</p>
+  <h2>4. Utilisation du site</h2><p>L’utilisateur s’engage à fournir des informations exactes, à ne pas perturber le fonctionnement du site, contourner ses protections, accéder sans autorisation à l’administration ou transmettre un contenu illicite ou portant atteinte aux droits de tiers.</p>
+  <h2>5. Disponibilité et liens externes</h2><p>AUREVIA peut modifier, suspendre ou interrompre une fonctionnalité pour des raisons de maintenance, sécurité ou évolution du service. Les sites externes restent sous la responsabilité de leurs éditeurs.</p>
+  <h2>6. Droit applicable</h2><p>Les présentes conditions sont soumises au droit italien, sous réserve des règles impératives protégeant les consommateurs. En cas de difficulté, les parties chercheront d’abord une solution amiable. La juridiction compétente sera déterminée conformément aux règles légales applicables ; aucune clause du site ne prive un consommateur de ses droits impératifs.</p>
+</LegalLayout>}
