@@ -1298,7 +1298,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "快速评估每个异常情况"
   },
   "Évaluer mes besoins de maintenance": {
-    "it": "Valuti le mie esigenze di manutenzione",
+    "it": "Valuta le mie esigenze di manutenzione",
     "en": "Evaluate my maintenance needs",
     "es": "Evaluar mis necesidades de mantenimiento",
     "ru": "Оцените мои потребности в обслуживании",
