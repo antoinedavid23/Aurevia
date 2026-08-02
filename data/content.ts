@@ -8,7 +8,7 @@ export const services:Service[]=[
  {slug:"pulizie-biancheria",title:"Ménage et linge",cardTitle:"Entretien & linge",short:"Une préparation contrôlée avant chaque séjour, jusque dans les moindres détails.",number:"04"},
  {slug:"manutenzione",title:"Maintenance",cardTitle:"Maintenance coordonnée",short:"Prévention, interventions et suivi assurés par un réseau local sélectionné.",number:"05"},
  {slug:"revenue-management",title:"Optimisation des revenus",cardTitle:"Performance locative",short:"Tarifs et calendrier pilotés pour valoriser durablement vos revenus.",number:"06"},
- {slug:"sicurezza",title:"Sécurité",cardTitle:"Sécurité & contrôle",short:"Inventaires, vérifications et procédures claires pour protéger votre bien.",number:"07"},
+ {slug:"sicurezza",title:"Sécurité du bien",cardTitle:"Protection anti-vol",short:"Contrôle des accès, vérification des fermetures et procédures claires pour protéger votre propriété.",number:"07"},
  {slug:"amministrazione",title:"Administration",cardTitle:"Suivi administratif",short:"Des comptes rendus structurés pour suivre clairement chaque opération.",number:"08"},
 ].map((service,i)=>({...service,image:["/images/services/property-management.webp","/images/services/concierge-service.webp","/images/services/guest-welcome.webp","/images/services/housekeeping.webp","/images/services/maintenance.webp","/images/services/revenue-management.webp","/images/services/security.webp","/images/services/administration.webp"][i]}));
 
@@ -30,7 +30,7 @@ export const experiences=[
  ["wellness","Bien-être","Des soins et moments de détente directement dans la propriété."],
  ["eventi-privati","Événements privés","Des occasions orchestrées avec attention jusque dans les détails."],
  ["securite-privee","Sécurité privée","Une présence discrète et coordonnée pour protéger vos déplacements, vos événements et votre tranquillité."],
-].map(([slug,title,short],i)=>({slug,title,short,tone:i+1,image:["/images/experiences/yacht.webp","/images/experiences/private-jet.webp","/images/experiences/private-chef.webp","/images/experiences/private-transfer.webp","/images/experiences/liguria-tour.webp","/images/experiences/wellness.webp","/images/experiences/private-event.webp","/images/services/security.webp"][i],details:{
+].map(([slug,title,short],i)=>({slug,title,short,tone:i+1,image:["/images/experiences/yacht.webp","/images/experiences/private-jet.webp","/images/experiences/private-chef.webp","/images/experiences/private-transfer.webp","/images/experiences/liguria-tour.webp","/images/experiences/wellness.webp","/images/experiences/private-event.webp","/images/experiences/private-security.webp"][i],details:{
  "yacht-e-boat":["Itinéraire personnalisé","Skipper et équipage","Restauration sur demande"],
  "jet-prive":["Recherche d’appareil","Coordination aéroport","Transfert porte-à-porte"],
  "chef-privato":["Menu personnalisé","Approvisionnement local","Service à domicile"],
