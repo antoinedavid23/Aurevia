@@ -75,6 +75,7 @@ export function HeroVideo() {
       loop
       playsInline
       preload="auto"
+      poster="/images/home/hero-mobile-poster.webp"
       disablePictureInPicture
       controlsList="nodownload noplaybackrate noremoteplayback"
       aria-hidden="true"
