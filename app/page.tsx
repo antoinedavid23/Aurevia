@@ -5,6 +5,7 @@ import {services} from "@/data/content";
 import {Reveal} from "@/components/Reveal";
 import {ServiceCard} from "@/components/Cards";
 import {MethodJourney,ReviewCards} from "@/components/InteractiveSections";
+import {HeroVideo} from "@/components/HeroVideo";
 
 const promises=[
  "Un interlocuteur unique",
@@ -23,10 +24,7 @@ const essentialServices=services.filter(({slug})=>[
 export default function Home(){
  return <>
   <section className="hero hero-aurevia">
-   <video className="hero-video" autoPlay muted loop playsInline preload="auto" poster="/images/home/hero-concierge.webp" aria-hidden="true">
-    <source src="/videos/genova-hero-mobile.mp4" type="video/mp4" media="(max-width: 767px)"/>
-    <source src="/videos/genova-hero.mp4" type="video/mp4"/>
-   </video>
+   <HeroVideo/>
    <div className="container hero-content"><Reveal className="hero-brand">
     <div className="hero-logo-crop"><Image className="hero-logo" src="/images/brand/aurevia-logo-transparent-gold.png" width={720} height={720} priority alt="AUREVIA"/></div>
     <h1 className="sr-only">AUREVIA</h1>
