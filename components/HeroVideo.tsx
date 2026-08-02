@@ -18,17 +18,25 @@ export function HeroVideo() {
       }
     };
 
+    const removeGestureListeners = () => {
+      document.removeEventListener("touchstart", play);
+      document.removeEventListener("pointerdown", play);
+    };
+
     play();
     video.addEventListener("canplay", play);
     window.addEventListener("pageshow", play);
     document.addEventListener("visibilitychange", play);
-    document.addEventListener("touchstart", play, { passive: true, once: true });
+    document.addEventListener("touchstart", play, { passive: true });
+    document.addEventListener("pointerdown", play, { passive: true });
+    video.addEventListener("playing", removeGestureListeners);
 
     return () => {
       video.removeEventListener("canplay", play);
       window.removeEventListener("pageshow", play);
       document.removeEventListener("visibilitychange", play);
-      document.removeEventListener("touchstart", play);
+      removeGestureListeners();
+      video.removeEventListener("playing", removeGestureListeners);
     };
   }, []);
 
@@ -41,7 +49,8 @@ export function HeroVideo() {
       loop
       playsInline
       preload="metadata"
-      poster="/images/home/hero-concierge.webp"
+      disablePictureInPicture
+      controlsList="nodownload noplaybackrate noremoteplayback"
       aria-hidden="true"
     >
       <source src="/videos/genova-hero-mobile.mp4" type="video/mp4" media="(max-width: 767px)" />

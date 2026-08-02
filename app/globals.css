@@ -9,7 +9,7 @@ form{display:grid;gap:18px}.field-row{display:grid;grid-template-columns:1fr 1fr
 @media(max-width:600px){.container{width:min(100% - 30px,1180px)}h1{font-size:3.25rem}.hero{min-height:92svh}.actions{flex-direction:column}.trust{grid-template-columns:1fr}.trust span:last-child{grid-column:auto}.card-grid.three,.steps,.comparison,.footer-grid,.field-row{grid-template-columns:1fr}.image-placeholder{height:390px;box-shadow:16px 16px 0 #ece2d3}.estimate-card{padding:25px}.estimate-card>strong{font-size:2.3rem}.page-hero{padding-top:150px}.footer-bottom{flex-wrap:wrap}.cookie{font-size:.72rem}}
 
 /* AUREVIA editorial photography */
-.hero-aurevia{background-image:url("/images/home/hero-concierge.webp");background-size:cover;background-position:center}
+.hero-aurevia{background-color:var(--navy);background-image:none;background-size:cover;background-position:center}
 .hero-aurevia:after{background:linear-gradient(90deg,rgba(7,16,25,.92) 0%,rgba(7,16,25,.58) 48%,rgba(7,16,25,.14) 100%)}
 .image-photo{background-size:cover;background-position:center;position:relative}
 .image-photo:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(7,16,25,.82))}
@@ -611,7 +611,7 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 48%;z-index:0;background:transparent}
 .hero-aurevia:after{z-index:1;background:linear-gradient(90deg,rgba(4,10,16,.16),rgba(4,10,16,.04) 56%,rgba(4,10,16,.02)),linear-gradient(180deg,rgba(4,10,16,.18),rgba(4,10,16,.08) 48%,rgba(4,10,16,.3))}
 @media(max-width:700px){.hero-video{object-position:center center}.hero-aurevia:after{background:linear-gradient(180deg,rgba(4,10,16,.22),rgba(4,10,16,.1) 48%,rgba(4,10,16,.36))}}
-@media(prefers-reduced-motion:reduce){.hero-video{display:none}.hero-aurevia{background-image:url("/images/home/hero-concierge.webp")}}
+@media(prefers-reduced-motion:reduce){.hero-video{display:block}.hero-aurevia{background-image:none}}
 
 /* Système typographique AUREVIA — plus éditorial et plus respirant */
 :root{
