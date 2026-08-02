@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "AUREVIA, presenza locale a Genova",
-  description: "Scopri AUREVIA e il nostro approccio alla cura e alla valorizzazione di proprietà esclusive a Genova e in Liguria.",
+  description: "Scopra AUREVIA e il nostro approccio alla cura e alla valorizzazione di proprietà esclusive a Genova e in Liguria.",
   alternates: { canonical: "/chi-siamo" },
 };
 import { AboutStoryJourney, ValuesStory } from "@/components/InteractiveSections";

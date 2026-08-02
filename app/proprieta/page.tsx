@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Proprietà esclusive in Liguria",
-  description: "Scopri le proprietà affidate alla gestione AUREVIA a Genova e nelle località più prestigiose della Riviera Ligure.",
+  description: "Scopra le proprietà affidate alla gestione AUREVIA a Genova e nelle località più prestigiose della Riviera Ligure.",
   alternates: { canonical: "/proprieta" },
 };
 import { PropertyGrid } from "@/components/PropertyGrid";
