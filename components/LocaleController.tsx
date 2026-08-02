@@ -139,7 +139,7 @@ export function LanguageOptions({ onSelect }: { onSelect?: () => void }) {
     <button
       key={code}
       type="button"
-      lang={code === "zh" ? "zh-CN" : code}
+      lang={code}
       aria-current={locale === code ? "true" : undefined}
       onClick={() => { setLocale(code); onSelect?.(); }}
     >
