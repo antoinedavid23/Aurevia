@@ -19,6 +19,9 @@ export default function Page() {
             <div className="service-card-copy">
               <h3>{experience.title}</h3>
               <p>{experience.short}</p>
+              <ul className="experience-card-details">
+                {experience.details.map((detail) => <li key={detail}>{detail}</li>)}
+              </ul>
               <small>Découvrir l’expérience</small>
             </div>
           </Link>
