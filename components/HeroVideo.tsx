@@ -22,6 +22,8 @@ export function HeroVideo() {
       document.removeEventListener("touchstart", play);
       document.removeEventListener("pointerdown", play);
     };
+    const showVideo = () => video.classList.add("is-playing");
+    const showFallback = () => video.classList.remove("is-playing");
 
     play();
     video.addEventListener("canplay", play);
@@ -30,6 +32,8 @@ export function HeroVideo() {
     document.addEventListener("touchstart", play, { passive: true });
     document.addEventListener("pointerdown", play, { passive: true });
     video.addEventListener("playing", removeGestureListeners);
+    video.addEventListener("playing", showVideo);
+    video.addEventListener("pause", showFallback);
 
     return () => {
       video.removeEventListener("canplay", play);
@@ -37,6 +41,8 @@ export function HeroVideo() {
       document.removeEventListener("visibilitychange", play);
       removeGestureListeners();
       video.removeEventListener("playing", removeGestureListeners);
+      video.removeEventListener("playing", showVideo);
+      video.removeEventListener("pause", showFallback);
     };
   }, []);
 
