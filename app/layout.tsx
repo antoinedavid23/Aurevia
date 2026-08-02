@@ -12,7 +12,6 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://aurevia-genova.com"),
-  alternates: { canonical: "/" },
   title: { default: "AUREVIA | Gestione di proprietà a Genova e in Liguria", template: "%s | AUREVIA" },
   description: "Gestione esclusiva di proprietà e ospitalità su misura a Genova e in Liguria.",
   openGraph: {
@@ -42,5 +41,28 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="it" className="locale-pending"><body><LocaleController><SiteShell>{children}</SiteShell></LocaleController><noscript><style>{`.locale-pending body{visibility:visible!important}`}</style></noscript></body></html>;
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://aurevia-genova.com/#organization",
+        name: "AUREVIA",
+        url: "https://aurevia-genova.com",
+        logo: "https://aurevia-genova.com/images/brand/aurevia-logo-transparent-gold.png",
+        email: "contatto@aurevia-genova.com",
+        description: "Gestione esclusiva di proprietà e ospitalità su misura a Genova e in Liguria.",
+        areaServed: ["Genova", "Liguria", "Riviera Ligure"],
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://aurevia-genova.com/#website",
+        url: "https://aurevia-genova.com",
+        name: "AUREVIA",
+        inLanguage: "it",
+        publisher: { "@id": "https://aurevia-genova.com/#organization" },
+      },
+    ],
+  };
+  return <html lang="it" className="locale-pending"><body><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(structuredData)}}/><LocaleController><SiteShell>{children}</SiteShell></LocaleController><noscript><style>{`.locale-pending body{visibility:visible!important}`}</style></noscript></body></html>;
 }

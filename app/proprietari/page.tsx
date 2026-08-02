@@ -1,6 +1,13 @@
 import Link from "next/link";
 import { ArrowRight, Check, FileText, KeyRound, LineChart, ShieldCheck } from "lucide-react";
 import { PageHero, CTA } from "@/components/PageHero";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Gestione immobiliare per proprietari",
+  description: "Un interlocutore unico per valorizzare, proteggere e gestire la tua proprietà a Genova e sulla Riviera Ligure, anche a distanza.",
+  alternates: { canonical: "/proprietari" },
+};
 import { OwnerClarityJourney } from "@/components/InteractiveSections";
 
 const managementPhases = [

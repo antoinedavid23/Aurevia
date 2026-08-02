@@ -3,6 +3,8 @@ import { Check, CircleDot, FileText, ShieldCheck } from "lucide-react";
 import { CTA, PageHero } from "@/components/PageHero";
 import { ServiceJourney, type ServiceJourneyStep } from "@/components/ServiceJourney";
 import { services } from "@/data/content";
+import type { Metadata } from "next";
+import { translate } from "@/lib/i18n";
 
 const specifics: Record<string,{challenge:string;included:string[];owner:string[];notIncluded:string[]}> = {
   "gestione-proprieta":{challenge:"À distance, votre bien ne devrait pas devenir une succession de messages, de relances et d’imprévus à résoudre.",included:["Découverte complète de votre bien","Mise en place du calendrier et des règles","Suivi des réservations","Organisation des arrivées et des départs","Coordination des intervenants","Prise en charge des imprévus","Compte rendu régulier","Un seul interlocuteur pour tout"],owner:["Une vision claire, sans surcharge","Des décisions prises au bon moment","Le temps de profiter de votre bien"],notIncluded:["Ménage et linge facturés au réel, sans marge","Travaux et pièces engagés après votre accord"]},
@@ -141,6 +143,13 @@ const experiences: Record<string, ServiceExperience> = {
     cta:"Organiser le suivi de ma propriété",
   },
 };
+
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{
+  const {slug}=await params;
+  const service=services.find(item=>item.slug===slug);
+  if(!service)return {};
+  return {title:translate(service.title,"it"),description:translate(service.short,"it"),alternates:{canonical:`/servizi/${slug}`}};
+}
 
 export default async function Page({params}:{params:Promise<{slug:string}>}) {
   const {slug}=await params;

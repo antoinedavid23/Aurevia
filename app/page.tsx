@@ -6,6 +6,13 @@ import {Reveal} from "@/components/Reveal";
 import {ServiceCard} from "@/components/Cards";
 import {MethodJourney,ReviewCards} from "@/components/InteractiveSections";
 import {HeroVideo} from "@/components/HeroVideo";
+import type {Metadata} from "next";
+
+export const metadata:Metadata={
+ title:"Gestione di proprietÃ  a Genova e in Liguria",
+ description:"AUREVIA cura, valorizza e gestisce proprietÃ  esclusive a Genova e in Liguria con un interlocutore unico e servizi su misura.",
+ alternates:{canonical:"/"},
+};
 
 const promises=[
  "Un interlocuteur unique",

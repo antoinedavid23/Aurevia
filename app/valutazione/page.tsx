@@ -1,4 +1,6 @@
 import Link from "next/link";
 import {PageHero} from "@/components/PageHero";
 import {ValuationForm} from "@/components/ValuationForm";
+import type {Metadata} from "next";
+export const metadata:Metadata={title:"Valutazione riservata della proprietà",description:"Presenta la tua proprietà ad AUREVIA e richiedi una prima valutazione riservata, gratuita e senza impegno.",alternates:{canonical:"/valutazione"}};
 export default function Page(){return <><PageHero label="Évaluation privée" title="Faisons connaissance avec votre propriété" text="Présentez-nous votre projet. Vos informations seront traitées en toute confidentialité." image="/images/owners/property-care.webp"/><section className="section"><div className="container split"><div><p className="eyebrow">Évaluation confidentielle</p><h2>Un premier échange, sans engagement</h2><p className="dark-copy">Trois étapes essentielles pour comprendre votre propriété, votre projet et le niveau de service souhaité.</p><p className="demo-note">Évaluation confidentielle, gratuite et sans engagement.</p></div><div className="form-card"><ValuationForm/><p className="form-privacy">Consultez notre <Link href="/privacy">politique de confidentialité</Link> pour connaître l’utilisation de vos données et vos droits.</p></div></div></section></>}

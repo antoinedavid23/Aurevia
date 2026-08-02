@@ -1,6 +1,13 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { PageHero, CTA } from "@/components/PageHero";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Esperienze esclusive in Liguria",
+  description: "Esperienze private e servizi su misura per soggiorni esclusivi a Genova, Portofino e sulla Riviera Ligure.",
+  alternates: { canonical: "/esperienze" },
+};
 import { experiences } from "@/data/content";
 
 export default function Page() {

@@ -3,7 +3,11 @@ import { PageHero, CTA } from "@/components/PageHero";
 import { ServiceCard } from "@/components/Cards";
 import { services } from "@/data/content";
 
-export const metadata = { title: "Services de gestion immobilière" };
+export const metadata = {
+  title: "Servizi di gestione immobiliare a Genova",
+  description: "Gestione completa della proprietà, accoglienza, manutenzione, sicurezza e ottimizzazione dei ricavi a Genova e in Liguria.",
+  alternates: { canonical: "/servizi" },
+};
 
 export default function Page() {
   return <>

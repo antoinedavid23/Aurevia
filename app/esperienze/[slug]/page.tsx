@@ -2,6 +2,15 @@ import { notFound } from "next/navigation";
 import { PageHero, CTA } from "@/components/PageHero";
 import { ServiceJourney, type ServiceJourneyStep } from "@/components/ServiceJourney";
 import { experiences } from "@/data/content";
+import type { Metadata } from "next";
+import { translate } from "@/lib/i18n";
+
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{
+  const {slug}=await params;
+  const experience=experiences.find(item=>item.slug===slug);
+  if(!experience)return {};
+  return {title:translate(experience.title,"it"),description:translate(experience.short,"it"),alternates:{canonical:`/esperienze/${slug}`}};
+}
 
 export default async function Page({params}:{params:Promise<{slug:string}>}) {
   const {slug}=await params;

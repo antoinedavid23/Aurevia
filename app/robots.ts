@@ -1,1 +1,10 @@
-import type{MetadataRoute}from"next";export default function robots():MetadataRoute.Robots{return{rules:{userAgent:"*",allow:"/",disallow:["/administration","/connexion","/api/"]},sitemap:`${process.env.NEXT_PUBLIC_SITE_URL||"https://aurevia-genova.com"}/sitemap.xml`}}
+import type { MetadataRoute } from "next";
+
+export default function robots(): MetadataRoute.Robots {
+  const base = "https://aurevia-genova.com";
+  return {
+    rules: { userAgent: "*", allow: "/", disallow: ["/administration", "/connexion", "/api/", "/grazie"] },
+    sitemap: `${base}/sitemap.xml`,
+    host: base,
+  };
+}
