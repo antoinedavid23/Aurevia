@@ -3,6 +3,7 @@ import { publicMessages } from "./i18n-public";
 import { generatedMessages } from "./i18n-generated";
 import { reviewedMessages } from "./i18n-reviewed";
 import { auditFixMessages } from "./i18n-audit-fixes";
+import { qualityMessages } from "./i18n-quality";
 export type Locale = "fr" | "it" | "en" | "es" | "ru" | "zh";
 export const locales = ["fr", "it", "en"] as const;
 
@@ -192,9 +193,9 @@ export function translate(source: string, locale: Locale) {
     .replace(/\s+/g, " ")
     .replace(/\s+([:;?!])/g, "$1")
     .trim();
-  const direct = auditFixMessages[source] ?? reviewedMessages[source] ?? publicMessages[source] ?? supplementalMessages[source] ?? messages[source] ?? generatedMessages[source];
+  const direct = qualityMessages[source] ?? auditFixMessages[source] ?? reviewedMessages[source] ?? publicMessages[source] ?? supplementalMessages[source] ?? messages[source] ?? generatedMessages[source];
   if (direct) return direct[locale];
-  const normalizedEntry = Object.entries({ ...generatedMessages, ...messages, ...supplementalMessages, ...publicMessages, ...reviewedMessages, ...auditFixMessages })
+  const normalizedEntry = Object.entries({ ...generatedMessages, ...messages, ...supplementalMessages, ...publicMessages, ...reviewedMessages, ...auditFixMessages, ...qualityMessages })
     .find(([key]) => key.replace(/\u00a0/g, " ").replace(/\s+/g, " ").replace(/\s+([:;?!])/g, "$1").trim().toLocaleLowerCase("fr") === normalized.toLocaleLowerCase("fr"));
   return normalizedEntry?.[1][locale] ?? source;
 }
