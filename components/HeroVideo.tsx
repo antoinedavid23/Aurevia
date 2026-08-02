@@ -8,6 +8,10 @@ export function HeroVideo() {
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+    const hero = video.closest(".hero-aurevia");
+    const usesOperaFallback = /OPiOS|Opera|OPR\//i.test(navigator.userAgent);
+
+    if (usesOperaFallback) hero?.classList.add("opera-fallback");
 
     video.muted = true;
     video.defaultMuted = true;
@@ -36,6 +40,7 @@ export function HeroVideo() {
     video.addEventListener("pause", showFallback);
 
     return () => {
+      hero?.classList.remove("opera-fallback");
       video.removeEventListener("canplay", play);
       window.removeEventListener("pageshow", play);
       document.removeEventListener("visibilitychange", play);
