@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { leadSchema } from "@/lib/validation";
-import { storeLead } from "@/lib/lead-storage";
+import { deliverLead } from "@/lib/lead-delivery";
 
 export async function POST(req: Request) {
   try {
@@ -11,12 +11,12 @@ export async function POST(req: Request) {
         { status: 400 },
       );
     }
-    const lead = await storeLead("contact", parsed.data);
-    return NextResponse.json({ ok: true, reference: lead.id }, { status: 201 });
+    const delivery = await deliverLead("contact", parsed.data);
+    return NextResponse.json({ ok: true, ...delivery }, { status: 201 });
   } catch (error) {
-    console.error("AUREVIA contact storage failed", error);
+    console.error("AUREVIA contact delivery failed", error);
     return NextResponse.json(
-      { ok: false, error: "La demande n’a pas pu être enregistrée." },
+      { ok: false, error: "L’envoi n’a pas abouti. Réessayez dans un instant." },
       { status: 500 },
     );
   }
