@@ -11,20 +11,16 @@ import { localeNames } from "@/lib/i18n";
 const nav = [
   ["Accueil", "/"],
   ["Services", "/servizi"],
+  ["Expériences", "/esperienze"],
   ["Accompagnement", "/proprietari"],
   ["Propriétés", "/proprieta"],
-  ["Expériences", "/esperienze"],
-  ["À propos", "/chi-siamo"],
   ["Simulateur", "/simulatore"],
+  ["À propos", "/chi-siamo"],
   ["Contact", "/contatti"],
 ];
 
 const primaryNav = nav.filter(([, href]) =>
-  ["/servizi", "/proprietari", "/proprieta", "/esperienze"].includes(href),
-);
-
-const secondaryNav = nav.filter(([, href]) =>
-  ["/simulatore", "/chi-siamo", "/contatti"].includes(href),
+  href !== "/",
 );
 
 export function Logo() {
@@ -51,7 +47,6 @@ function LanguageSelector() {
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [moreOpen, setMoreOpen] = useState(false);
   const [headerHidden, setHeaderHidden] = useState(false);
   const [cookies, setCookies] = useState(false);
   useEffect(() => {
@@ -64,13 +59,16 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       document.body.style.overflow = "";
     };
   }, [open]);
-  useEffect(() => { setOpen(false); setMoreOpen(false); }, [pathname]);
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => setOpen(false));
+    return () => cancelAnimationFrame(frame);
+  }, [pathname]);
   useEffect(() => {
     let lastY = window.scrollY;
     let ticking = false;
     const updateHeader = () => {
       const currentY = window.scrollY;
-      if (open || moreOpen || currentY < 100) setHeaderHidden(false);
+      if (open || currentY < 100) setHeaderHidden(false);
       else if (currentY > lastY + 6) setHeaderHidden(true);
       else if (currentY < lastY - 6) setHeaderHidden(false);
       lastY = currentY;
@@ -81,7 +79,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [open, moreOpen]);
+  }, [open]);
   useEffect(() => {
     const closeOnEscape = (event: KeyboardEvent) => event.key === "Escape" && setOpen(false);
     document.addEventListener("keydown", closeOnEscape);
@@ -96,10 +94,6 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       <Logo/>
       <nav className="desktop-navigation" aria-label="Navigation principale">
         {primaryNav.map(([name, href]) => <Link key={href} href={href} aria-current={pathname === href || pathname.startsWith(`${href}/`) ? "page" : undefined}>{name}</Link>)}
-        <div className={`premium-nav-more${moreOpen ? " is-open" : ""}`}>
-          <button type="button" aria-expanded={moreOpen} onClick={() => setMoreOpen((current) => !current)}>Plus <ChevronDown size={13}/></button>
-          {moreOpen && <div className="premium-nav-more-menu">{secondaryNav.map(([name, href]) => <Link key={href} href={href} aria-current={pathname === href || pathname.startsWith(`${href}/`) ? "page" : undefined}>{name}<ArrowRight size={13}/></Link>)}</div>}
-        </div>
       </nav>
       <div className="header-actions">
         <LanguageSelector/>
