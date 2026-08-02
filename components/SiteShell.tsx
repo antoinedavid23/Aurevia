@@ -24,7 +24,7 @@ const primaryNav = nav.filter(([, href]) =>
 );
 
 export function Logo() {
-  return <Link href="/" className="logo logo-legacy-crop" aria-label="Accueil AUREVIA"><Image src="/images/brand/aurevia-logo-transparent-gold.png" width={420} height={420} priority alt="AUREVIA"/></Link>;
+  return <Link href="/" className="logo logo-legacy-crop" aria-label="Accueil AUREVIA"><Image src="/images/brand/aurevia-logo-transparent-gold.png" width={420} height={420} sizes="137px" priority alt="AUREVIA"/></Link>;
 }
 
 function LanguageSelector() {

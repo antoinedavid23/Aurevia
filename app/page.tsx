@@ -32,8 +32,8 @@ export default function Home(){
  return <>
   <section className="hero hero-aurevia">
    <HeroVideo/>
-   <div className="container hero-content"><Reveal className="hero-brand">
-    <div className="hero-logo-crop"><Image className="hero-logo" src="/images/brand/aurevia-logo-transparent-gold.png" width={720} height={720} priority alt="AUREVIA"/></div>
+   <div className="container hero-content"><Reveal className="hero-brand" eager>
+    <div className="hero-logo-crop"><Image className="hero-logo" src="/images/brand/aurevia-logo-transparent-gold.png" width={720} height={720} sizes="(max-width: 767px) 310px, 480px" priority alt="AUREVIA"/></div>
     <h1 className="sr-only">AUREVIA</h1>
     <p className="hero-slogan"><span>L’art de prendre soin</span><span>de ce qui compte.</span></p>
     <div className="actions"><Link className="button" href="/valutazione">Évaluer mon bien <ArrowRight size={16}/></Link><Link className="button ghost" href="/servizi">Découvrir nos services</Link></div>
