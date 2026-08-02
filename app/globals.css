@@ -1689,6 +1689,7 @@ header a[aria-current="page"]:not(.button)::after{
 .experience-card-details{display:grid;gap:3px;margin:0 0 16px;padding:0;list-style:none;color:#d8dddc;font-size:.74rem;line-height:1.45}
 .experience-card-details li:before{content:"—";margin-right:7px;color:var(--gold)}
 @media(min-width:768px){.hero-aurevia .hero-brand{transform:translateY(-52px)!important}}
+@media(min-width:768px){.feature-list li{white-space:nowrap}}
 
 /* Navigation AUREVIA — composition éditoriale premium */
 .site-header{

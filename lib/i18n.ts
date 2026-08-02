@@ -79,7 +79,7 @@ export const messages: Record<string, Localized> = {
   "Une relation privilégiée": t("Un rapporto privilegiato", "One privileged relationship", "Una relación privilegiada", "Особые доверительные отношения", "专属信任关系"),
   "Une prise en charge intégrale": t("Una gestione completa", "Complete stewardship", "Una gestión integral", "Полная ответственность", "全方位托管"),
   "Des standards d’exception": t("Standard d’eccezione", "Exceptional standards", "Estándares excepcionales", "Исключительные стандарты", "卓越标准"),
-  "Une gestion sur mesure": t("Una gestione su misura", "Management shaped around you", "Una gestión a medida", "Индивидуальное управление", "量身定制"),
+  "Une gestion sur mesure": t("Una gestione su misura", "Tailored management", "Una gestión a medida", "Индивидуальное управление", "量身定制"),
   "Découvrir l’approche AUREVIA": t("Scopri l’approccio AUREVIA", "Discover the AUREVIA approach", "Descubrir el enfoque AUREVIA", "Подход AUREVIA", "了解 AUREVIA 方式"),
   "L’excellence dans chaque détail": t("L’eccellenza in ogni dettaglio", "Excellence, down to the last detail", "Excelencia en cada detalle", "Совершенство в каждой детали", "卓越，尽在细节"),
   "Simulateur privé": t("Simulatore riservato", "Private estimator", "Simulador privado", "Персональный расчёт", "专属收益测算"),
