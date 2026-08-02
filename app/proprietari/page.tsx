@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Gestione immobiliare per proprietari",
-  description: "Un interlocutore unico per valorizzare, proteggere e gestire la tua proprietà a Genova e sulla Riviera Ligure, anche a distanza.",
+  description: "Un interlocutore unico per valorizzare, proteggere e gestire la Sua proprietà a Genova e sulla Riviera Ligure, anche a distanza.",
   alternates: { canonical: "/proprietari" },
 };
 import { OwnerClarityJourney } from "@/components/InteractiveSections";

@@ -38,14 +38,14 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "每次旋转时"
   },
   "À distance, la moindre question peut rester en tête. Votre bien mérite une présence capable de veiller, de vérifier et d’agir sur place.": {
-    "it": "Da lontano, la minima domanda può rimanere in mente. Il tuo immobile merita una presenza capace di monitorare, verificare e intervenire sul posto.",
+    "it": "Da lontano, la minima domanda può rimanere in mente. Il Suo immobile merita una presenza capace di monitorare, verificare e intervenire sul posto.",
     "en": "From a distance, the slightest question can stay in mind. Your property deserves a presence capable of monitoring, verifying and acting on site.",
     "es": "Desde la distancia, la más mínima pregunta puede quedar en la mente. Su propiedad merece una presencia capaz de monitorear, verificar y actuar in situ.",
     "ru": "На расстоянии малейший вопрос может остаться в вашей голове. Ваша собственность заслуживает присутствия, способного осуществлять мониторинг, проверку и действия на месте.",
     "zh": "从远处看，最轻微的问题都可以留在脑海中。您的财产值得拥有能够在现场进行监控、验证和采取行动的人员。"
   },
   "À distance, votre bien ne devrait pas devenir une succession de messages, de relances et d’imprévus à résoudre.": {
-    "it": "Da remoto, il tuo immobile non deve diventare un susseguirsi di messaggi, promemoria ed imprevisti da risolvere.",
+    "it": "Da remoto, il Suo immobile non deve diventare un susseguirsi di messaggi, promemoria ed imprevisti da risolvere.",
     "en": "Remotely, your property should not become a succession of messages, reminders and unforeseen events to resolve.",
     "es": "De forma remota, tu propiedad no debe convertirse en una sucesión de mensajes, recordatorios e imprevistos que resolver.",
     "ru": "На расстоянии ваша собственность не должна превращаться в череду сообщений, напоминаний и непредвиденных событий, которые необходимо разрешить.",
@@ -73,7 +73,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "停留结束时，不会返回访问权限。触发商定的协议并记录必要的操作。"
   },
   "À votre arrivée, tout est prêt, suivi et fidèle à vos attentes. Vous profitez de votre bien au lieu de reprendre sa gestion.": {
-    "it": "Al tuo arrivo tutto è pronto, seguito e fedele alle tue aspettative. Beneficiate del vostro immobile invece di assumerne la gestione.",
+    "it": "Al Suo arrivo tutto è pronto, seguito e fedele alle Sue aspettative. Beneficia del Suo immobile invece di assumerne la gestione.",
     "en": "When you arrive, everything is ready, followed and true to your expectations. You benefit from your property instead of taking over its management.",
     "es": "Cuando llegas, todo está listo, seguido y fiel a tus expectativas. Usted se beneficia de su propiedad en lugar de hacerse cargo de su gestión.",
     "ru": "Когда вы приедете, все будет готово, соблюдается и соответствует вашим ожиданиям. Вы получаете выгоду от своей собственности вместо того, чтобы брать на себя управление ею.",
@@ -234,7 +234,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "验证后"
   },
   "Après votre accord": {
-    "it": "Dopo il tuo accordo",
+    "it": "Dopo il Suo accordo",
     "en": "After your agreement",
     "es": "Después de su acuerdo",
     "ru": "После вашего согласия",
@@ -311,7 +311,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "AUREVIA 通过单一联系人协调开发、旅客、服务提供商和表演。"
   },
   "AUREVIA filtre le bruit, porte le quotidien et vous rend la bonne information au bon moment.": {
-    "it": "AUREVIA filtra il rumore, copre la vita di tutti i giorni e ti dà le informazioni giuste al momento giusto.",
+    "it": "AUREVIA filtra il rumore, copre la vita di tutti i giorni e Le dà le informazioni giuste al momento giusto.",
     "en": "AUREVIA filters the noise, covers everyday life and gives you the right information at the right time.",
     "es": "AUREVIA filtra el ruido, cubre la vida cotidiana y te brinda la información adecuada en el momento adecuado.",
     "ru": "AUREVIA фильтрует шум, освещает повседневную жизнь и предоставляет вам нужную информацию в нужное время.",
@@ -451,7 +451,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "委托给 AUREVIA 的每项财产都得到像我们自己的财产一样的照顾、保存和关注。"
   },
   "Chaque voyageur doit sentir qu’il était attendu. Nous préparons une arrivée fluide, attentive et fidèle au caractère de votre bien.": {
-    "it": "Ogni viaggiatore deve sentirsi atteso. Prepariamo un arrivo tranquillo, attento e fedele al carattere della vostra proprietà.",
+    "it": "Ogni viaggiatore deve sentirsi atteso. Prepariamo un arrivo tranquillo, attento e fedele al carattere della Sua proprietà.",
     "en": "Every traveler must feel that they are expected. We prepare a smooth, attentive arrival that is faithful to the character of your property.",
     "es": "Todo viajero debe sentirse esperado. Preparamos una llegada tranquila, atenta y fiel al carácter de su propiedad.",
     "ru": "Каждый путешественник должен чувствовать, что его ждут. Мы подготовим плавный и внимательный приезд, который будет соответствовать характеру вашего объекта.",
@@ -465,7 +465,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "专用驱动程序"
   },
   "Choisir la langue": {
-    "it": "Scegli la lingua",
+    "it": "Scelga la lingua",
     "en": "Choose language",
     "es": "Elige idioma",
     "ru": "Выберите язык",
@@ -500,7 +500,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "需要多长时间才能开始？"
   },
   "Comment gérez-vous la maintenance ?": {
-    "it": "Come gestisci la manutenzione?",
+    "it": "Come gestisce la manutenzione?",
     "en": "How do you manage maintenance?",
     "es": "¿Cómo gestionáis el mantenimiento?",
     "ru": "Как вы осуществляете техническое обслуживание?",
@@ -563,14 +563,14 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "活动设计"
   },
   "Concevoir l’expérience": {
-    "it": "Progetta l'esperienza",
+    "it": "Progetti l'esperienza",
     "en": "Design the experience",
     "es": "Diseña la experiencia",
     "ru": "Создайте впечатления",
     "zh": "设计体验"
   },
   "Concevoir mon parcours d’accueil": {
-    "it": "Progetta il mio viaggio di benvenuto",
+    "it": "Progetti il mio viaggio di benvenuto",
     "en": "Design my welcome journey",
     "es": "Diseñar mi viaje de bienvenida",
     "ru": "Создайте мое долгожданное путешествие",
@@ -612,7 +612,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "书面确认"
   },
   "Confirmer l’installation": {
-    "it": "Conferma l'installazione",
+    "it": "Confermi l'installazione",
     "en": "Confirm installation",
     "es": "Confirmar instalación",
     "ru": "Подтвердите установку",
@@ -654,21 +654,21 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "建造价格和条件"
   },
   "Construire la stratégie": {
-    "it": "Costruisci la strategia",
+    "it": "Costruisca la strategia",
     "en": "Build the strategy",
     "es": "Construir la estrategia",
     "ru": "Разработайте стратегию",
     "zh": "制定策略"
   },
   "Construire une stratégie singulière": {
-    "it": "Costruisci una strategia unica",
+    "it": "Costruisca una strategia unica",
     "en": "Build a unique strategy",
     "es": "Construye una estrategia única",
     "ru": "Создайте уникальную стратегию",
     "zh": "制定独特的策略"
   },
   "Continuez à faire défiler.": {
-    "it": "Continua a scorrere.",
+    "it": "Continui a scorrere.",
     "en": "Keep scrolling.",
     "es": "Sigue desplazándote.",
     "ru": "Продолжайте прокручивать.",
@@ -731,28 +731,28 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "干预后目视检查"
   },
   "Contrôler et archiver": {
-    "it": "Controlla e archivia",
+    "it": "Controlli e archivi",
     "en": "Check and archive",
     "es": "Comprobar y archivar",
     "ru": "Проверить и заархивировать",
     "zh": "检查并存档"
   },
   "Contrôler le bien": {
-    "it": "Controlla la risorsa",
+    "it": "Controlli la risorsa",
     "en": "Check the asset",
     "es": "Verificar el activo",
     "ru": "Проверьте объект",
     "zh": "检查资产"
   },
   "Contrôler le résultat": {
-    "it": "Controlla il risultato",
+    "it": "Controlli il risultato",
     "en": "Check the result",
     "es": "Comprueba el resultado",
     "ru": "Проверьте результат",
     "zh": "检查结果"
   },
   "Contrôler les mouvements": {
-    "it": "Controlla i movimenti",
+    "it": "Controlli i movimenti",
     "en": "Control movements",
     "es": "Controlar movimientos",
     "ru": "Контролируйте движения",
@@ -892,21 +892,21 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "追踪的决定"
   },
   "Découverte complète de votre bien": {
-    "it": "Scoperta completa del tuo immobile",
+    "it": "Scoperta completa del Suo immobile",
     "en": "Complete discovery of your property",
     "es": "Descubrimiento completo de su propiedad",
     "ru": "Полное обнаружение вашей собственности",
     "zh": "彻底发现您的财产"
   },
   "Découvrez le potentiel de votre propriété": {
-    "it": "Scopri le potenzialità del tuo immobile",
+    "it": "Scopra le potenzialità del Suo immobile",
     "en": "Discover the potential of your property",
     "es": "Descubra el potencial de su propiedad",
     "ru": "Откройте для себя потенциал вашей недвижимости",
     "zh": "发现您的财产的潜力"
   },
   "Définir le cadre": {
-    "it": "Definisci cornice",
+    "it": "Definisca cornice",
     "en": "Define frame",
     "es": "Definir marco",
     "ru": "Определить рамку",
@@ -920,7 +920,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "定义标准"
   },
   "Définir le standard de mon bien": {
-    "it": "Definisci lo standard della mia proprietà",
+    "it": "Definisca lo standard della mia proprietà",
     "en": "Define the standard of my property",
     "es": "Definir el estándar de mi propiedad",
     "ru": "Определите стандарты моей собственности",
@@ -934,7 +934,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "定义程序"
   },
   "Définir mon service de conciergerie": {
-    "it": "Definisci il mio servizio di portineria",
+    "it": "Definisca il mio servizio di portineria",
     "en": "Define my concierge service",
     "es": "Definir mi servicio de conserjería",
     "ru": "Определите мою консьерж-службу",
@@ -969,7 +969,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "最后一次检查房产"
   },
   "Derrière une porte, il y a vos habitudes, vos souvenirs et une part de votre intimité. Nous entrons dans cet univers avec retenue. Seules les personnes nécessaires savent ce qu’elles doivent savoir, et rien de plus.": {
-    "it": "Dietro una porta ci sono le tue abitudini, i tuoi ricordi e una parte della tua privacy. Entriamo in questo universo con moderazione. Solo le persone necessarie sanno quello che devono sapere e niente di più.",
+    "it": "Dietro una porta ci sono le Sue abitudini, i Suoi ricordi e una parte della Sua privacy. Entriamo in questo universo con moderazione. Solo le persone necessarie sanno quello che devono sapere e niente di più.",
     "en": "Behind a door, there are your habits, your memories and a part of your privacy. We enter this universe with restraint. Only the necessary people know what they need to know, and nothing more.",
     "es": "Detrás de una puerta, están tus hábitos, tus recuerdos y una parte de tu privacidad. Entramos en este universo con moderación. Sólo las personas necesarias saben lo que necesitan saber y nada más.",
     "ru": "За дверью — ваши привычки, ваши воспоминания и часть вашей личной жизни. Мы входим в эту вселенную сдержанно. Только нужные люди знают то, что им нужно знать, и не более того.",
@@ -1137,7 +1137,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "可用性、限制、租赁历史、具体期望……"
   },
   "Documents spécialisés à valider avec vos conseils": {
-    "it": "Documenti specializzati da convalidare con la vostra consulenza",
+    "it": "Documenti specializzati da convalidare con la Sua consulenza",
     "en": "Specialized documents to be validated with your advice",
     "es": "Documentos especializados a validar con tu asesoramiento",
     "ru": "Специализированные документы, которые необходимо проверить по вашему совету.",
@@ -1200,7 +1200,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "精准监听请求"
   },
   "Éléments utiles préparés pour vous": {
-    "it": "Elementi utili preparati per te",
+    "it": "Elementi utili preparati per Lei",
     "en": "Useful elements prepared for you",
     "es": "Elementos útiles preparados para ti",
     "ru": "Полезные элементы подготовлены для вас",
@@ -1214,14 +1214,14 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "如果发生事故"
   },
   "Envoyer la demande confidentielle": {
-    "it": "Invia richiesta riservata",
+    "it": "Invii richiesta riservata",
     "en": "Send confidential request",
     "es": "Enviar solicitud confidencial",
     "ru": "Отправить конфиденциальный запрос",
     "zh": "发送保密请求"
   },
   "Envoyer le message": {
-    "it": "Invia messaggio",
+    "it": "Invii messaggio",
     "en": "Send message",
     "es": "Enviar mensaje",
     "ru": "Отправить сообщение",
@@ -1298,7 +1298,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "快速评估每个异常情况"
   },
   "Évaluer mes besoins de maintenance": {
-    "it": "Valuta le mie esigenze di manutenzione",
+    "it": "Valuti le mie esigenze di manutenzione",
     "en": "Evaluate my maintenance needs",
     "es": "Evaluar mis necesidades de mantenimiento",
     "ru": "Оцените мои потребности в обслуживании",
@@ -1354,7 +1354,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "分析我的财产管理情况"
   },
   "Faisons connaissance avec votre propriété": {
-    "it": "Conosciamo meglio il tuo immobile",
+    "it": "Conosciamo meglio il Suo immobile",
     "en": "Let’s get to know your property",
     "es": "Conozcamos su propiedad",
     "ru": "Давайте познакомимся с вашим объектом недвижимости",
@@ -1368,7 +1368,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "向下滚动以继续故事。"
   },
   "Fermer le menu": {
-    "it": "Chiudi il menu",
+    "it": "Chiuda il menu",
     "en": "Close menu",
     "es": "Cerrar menú",
     "ru": "Закрыть меню",
@@ -1571,7 +1571,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "亚麻库存"
   },
   "Inventaires, vérifications et procédures claires pour protéger votre bien.": {
-    "it": "Inventari, verifiche e procedure chiare per tutelare il tuo immobile.",
+    "it": "Inventari, verifiche e procedure chiare per tutelare il Suo immobile.",
     "en": "Inventories, verifications and clear procedures to protect your property.",
     "es": "Inventarios, verificaciones y procedimientos claros para proteger su propiedad.",
     "ru": "Инвентаризация, проверки и четкие процедуры для защиты вашей собственности.",
@@ -1669,7 +1669,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "体验在门前开始：交流的流畅性、注意力的准确性和被期待的感觉。"
   },
   "L’historique de votre bien préservé": {
-    "it": "La storia del tuo bene preservato",
+    "it": "La storia del Suo bene preservato",
     "en": "The history of your preserved property",
     "es": "La historia de su propiedad preservada",
     "ru": "История вашей сохранившейся собственности",
@@ -1690,7 +1690,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "提供的选项和价格"
   },
   "La confiance se construit lorsque la promesse tient aussi les jours compliqués. Nous prenons la situation en main, coordonnons les bonnes personnes et revenons vers vous avec une réponse claire — pas avec un problème de plus.": {
-    "it": "La fiducia si costruisce quando la promessa mantiene anche nei giorni complicati. Prendiamo in carico la situazione, coordiniamo le persone giuste e torniamo da te con una risposta chiara, senza un altro problema.",
+    "it": "La fiducia si costruisce quando la promessa mantiene anche nei giorni complicati. Prendiamo in carico la situazione, coordiniamo le persone giuste e torniamo da Lei con una risposta chiara, senza un altro problema.",
     "en": "Trust is built when the promise also keeps on complicated days. We take charge of the situation, coordinate the right people and come back to you with a clear answer — not one more problem.",
     "es": "La confianza se construye cuando la promesa también se cumple en los días complicados. Nos hacemos cargo de la situación, coordinamos a las personas adecuadas y regresamos a usted con una respuesta clara: ni un problema más.",
     "ru": "Доверие строится, когда обещание выполняется и в трудные дни. Мы берем ситуацию на себя, координируем нужных людей и возвращаемся к вам с четким ответом — и не еще одной проблемой.",
@@ -1830,7 +1830,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "技术诊断"
   },
   "Le juste prix évolue avec la saison, la demande et la manière dont votre bien est présenté — jamais au détriment de son positionnement.": {
-    "it": "Il prezzo giusto cambia con la stagione, la domanda e il modo in cui viene presentata la tua proprietà, mai a scapito del suo posizionamento.",
+    "it": "Il prezzo giusto cambia con la stagione, la domanda e il modo in cui viene presentata la Sua proprietà, mai a scapito del suo posizionamento.",
     "en": "The right price evolves with the season, demand and the way your property is presented — never to the detriment of its positioning.",
     "es": "El precio adecuado evoluciona con la temporada, la demanda y la forma de presentar su propiedad, nunca en detrimento de su posicionamiento.",
     "ru": "Правильная цена меняется в зависимости от сезона, спроса и способа представления вашей недвижимости — никогда не в ущерб ее позиционированию.",
@@ -1921,7 +1921,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "业主立即知道发生了什么事并采取了哪些措施。"
   },
   "Le quotidien avance sans interrompre le vôtre.": {
-    "it": "La vita quotidiana va avanti senza interrompere la tua.",
+    "it": "La vita quotidiana va avanti senza interrompere la Sua.",
     "en": "Daily life moves forward without interrupting yours.",
     "es": "La vida diaria avanza sin interrumpir la tuya.",
     "ru": "Повседневная жизнь движется вперед, не прерывая вашу.",
@@ -1991,7 +1991,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "配制标准"
   },
   "Le temps de profiter de votre bien": {
-    "it": "È ora di goderti la tua proprietà",
+    "it": "È ora di godersi la Sua proprietà",
     "en": "Time to enjoy your property",
     "es": "Hora de disfrutar de tu propiedad",
     "ru": "Время наслаждаться своей собственностью",
@@ -2040,21 +2040,21 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "检查商定的访问权限和敏感点，并记录任何偏差。"
   },
   "Les accès sont suivis, les écarts remarqués et les actions connues à l’avance. Vous savez que votre bien reste entre de bonnes mains.": {
-    "it": "L'accesso è monitorato, le deviazioni rilevate e le azioni conosciute in anticipo. Sai che la tua proprietà rimane in buone mani.",
+    "it": "L'accesso è monitorato, le deviazioni rilevate e le azioni conosciute in anticipo. Sa che la Sua proprietà rimane in buone mani.",
     "en": "Access is monitored, deviations noted and actions known in advance. You know that your property remains in good hands.",
     "es": "Se monitoriza el acceso, se anotan las desviaciones y se conocen con antelación las actuaciones. Usted sabe que su propiedad permanece en buenas manos.",
     "ru": "Доступ контролируется, отклонения отмечаются, а действия известны заранее. Вы знаете, что ваше имущество остается в надежных руках.",
     "zh": "访问受到监控，偏差被记录并提前知道操作。您知道您的财产仍然掌握在良好的人手中。"
   },
   "Les actions à venir sont identifiées sans empiéter sur le rôle de vos conseils comptables, fiscaux ou juridiques.": {
-    "it": "Le azioni future vengono identificate senza invadere il ruolo dei tuoi consulenti contabili, fiscali o legali.",
+    "it": "Le azioni future vengono identificate senza invadere il ruolo dei Suoi consulenti contabili, fiscali o legali.",
     "en": "Future actions are identified without encroaching on the role of your accounting, tax or legal advisors.",
     "es": "Se identifican acciones futuras sin invadir el papel de sus asesores contables, fiscales o jurídicos.",
     "ru": "Будущие действия определяются без посягательства на роль вашего бухгалтерского, налогового или юридического консультанта.",
     "zh": "在不影响您的会计、税务或法律顾问角色的情况下确定未来的行动。"
   },
   "Les actions menées, les performances et les points d’attention sont réunis dans une lecture simple. Vous gardez une vision nette de votre propriété sans reconstituer vous-même son activité.": {
-    "it": "Le azioni compiute, le performance ed i punti di attenzione sono raccolti in una lettura semplice. Mantieni una visione chiara della tua proprietà senza ricostruirne tu stesso l'attività.",
+    "it": "Le azioni compiute, le performance ed i punti di attenzione sono raccolti in una lettura semplice. Mantiene una visione chiara della Sua proprietà senza ricostruirne Lei stesso l'attività.",
     "en": "The actions carried out, the performances and the points of attention are brought together in a simple reading. You keep a clear view of your property without reconstructing its activity yourself.",
     "es": "Las acciones realizadas, las actuaciones y los puntos de atención se recogen en una lectura sencilla. Mantendrá una visión clara de su propiedad sin reconstruir usted mismo su actividad.",
     "ru": "Выполненные действия, выступления и моменты внимания собраны воедино в простом чтении. Вы сохраняете четкое представление о своей собственности, не реконструируя ее деятельность самостоятельно.",
@@ -2243,7 +2243,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "可能保留外部服务"
   },
   "Les voyageurs, les prestataires et les imprévus passent par AUREVIA. Vous ne recevez plus le bruit de l’exploitation : seulement l’information utile, au moment où elle compte.": {
-    "it": "Viaggiatori, fornitori di servizi e imprevisti passano da AUREVIA. Non ricevi più rumore di funzionamento: solo informazioni utili, quando contano.",
+    "it": "Viaggiatori, fornitori di servizi e imprevisti passano da AUREVIA. Non riceve più rumore di funzionamento: solo informazioni utili, quando contano.",
     "en": "Travelers, service providers and unforeseen events go through AUREVIA. You no longer receive operational noise: only useful information, when it counts.",
     "es": "Por AUREVIA pasan viajeros, proveedores de servicios e imprevistos. Ya no recibe ruido operativo: solo información útil, cuando es necesario.",
     "ru": "Путешественники, поставщики услуг и непредвиденные события проходят через AUREVIA. Вы больше не получаете операционного шума: только полезная информация, когда она имеет значение.",
@@ -2257,7 +2257,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "当发现差异时，会在资产可用之前组织纠正措施。"
   },
   "Lorsqu’une dépense, un incident ou un arbitrage exige votre accord, nous vous présentons la situation, les options et notre recommandation. Vous décidez avec une vision complète.": {
-    "it": "Quando una spesa, un incidente o un arbitrato richiedono il tuo consenso, ti presentiamo la situazione, le opzioni e la nostra raccomandazione. Decidi tu con una visione completa.",
+    "it": "Quando una spesa, un incidente o un arbitrato richiedono il Suo consenso, Le presentiamo la situazione, le opzioni e la nostra raccomandazione. Decide Lei con una visione completa.",
     "en": "When an expense, an incident or an arbitration requires your agreement, we present the situation, the options and our recommendation to you. You decide with complete vision.",
     "es": "Cuando un gasto, una incidencia o un arbitraje requiere de tu acuerdo, te presentamos la situación, las opciones y nuestra recomendación. Tú decides con visión completa.",
     "ru": "Если расходы, инцидент или арбитраж требуют вашего согласия, мы представляем вам ситуацию, варианты и наши рекомендации. Вы решаете, обладая полным видением.",
@@ -2285,7 +2285,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "独立屋"
   },
   "Même à distance, vous n’êtes jamais seul face à l’imprévu.": {
-    "it": "Anche a distanza, non sei mai solo di fronte all'inaspettato.",
+    "it": "Anche a distanza, non è mai solo di fronte all'inaspettato.",
     "en": "Even from a distance, you are never alone when faced with the unexpected.",
     "es": "Incluso desde la distancia, nunca estás solo cuando te enfrentas a lo inesperado.",
     "ru": "Даже на расстоянии вы никогда не останетесь одиноки, столкнувшись с неожиданностью.",
@@ -2334,14 +2334,14 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "自定义菜单"
   },
   "Mesurer et décider": {
-    "it": "Misura e decidi",
+    "it": "Misuri e decida",
     "en": "Measure and decide",
     "es": "Mide y decide",
     "ru": "Измеряй и решай",
     "zh": "衡量并决定"
   },
   "Mettre la propriété en scène": {
-    "it": "Metti in scena la proprietà",
+    "it": "Metta in scena la proprietà",
     "en": "Stage the property",
     "es": "Preparar la propiedad",
     "ru": "Подготовьте недвижимость",
@@ -2390,14 +2390,14 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "到达模式已定义"
   },
   "Moins de sollicitations pour vous": {
-    "it": "Meno richieste per te",
+    "it": "Meno richieste per Lei",
     "en": "Fewer requests for you",
     "es": "Menos solicitudes para ti",
     "ru": "Меньше запросов к вам",
     "zh": "对您的请求减少"
   },
   "Ne plus subir chaque imprévu": {
-    "it": "Non sopporti più ogni evento inaspettato",
+    "it": "Non sopporta più ogni evento inaspettato",
     "en": "No longer endure every unexpected event",
     "es": "Ya no aguantas cada imprevisto",
     "ru": "Больше не нужно терпеть каждое неожиданное событие.",
@@ -2453,14 +2453,14 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "我们的财产得到了我们无法再单独提供的关注。"
   },
   "Nous apprenons ce qui compte pour vous : la fragilité d’un meuble, la façon dont la maison doit être préparée, les attentions réservées à vos proches. Cette mémoire du lieu permet une gestion véritablement personnelle.": {
-    "it": "Impariamo ciò che conta per te: la fragilità di un mobile, come deve essere allestita la casa, le attenzioni riservate ai tuoi cari. Questa memoria del luogo permette una gestione davvero personale.",
+    "it": "Impariamo ciò che conta per Lei: la fragilità di un mobile, come deve essere allestita la casa, le attenzioni riservate ai Suoi cari. Questa memoria del luogo permette una gestione davvero personale.",
     "en": "We learn what matters to you: the fragility of a piece of furniture, the way the house should be prepared, the attention given to your loved ones. This memory of the place allows truly personal management.",
     "es": "Aprendemos lo que te importa: la fragilidad de un mueble, la forma en que debe estar preparada la casa, la atención que se brinda a tus seres queridos. Esta memoria del lugar permite una gestión verdaderamente personal.",
     "ru": "Мы узнаем, что для вас важно: хрупкость предмета мебели, то, как должен быть подготовлен дом, внимание, уделяемое вашим близким. Эта память о месте позволяет по-настоящему персонализировать управление.",
     "zh": "我们了解对您来说重要的事情：一件家具的脆弱性、房屋的准备方式、对您所爱之人的关注。这种对地方的记忆可以实现真正的个人管理。"
   },
   "Nous apprenons vos exigences et les particularités du lieu. Vous êtes informé lorsqu’une décision compte, sans être sollicité pour chaque détail.": {
-    "it": "Impariamo le vostre esigenze e le particolarità della location. Sai quando una decisione è importante, senza essere pressato per ogni dettaglio.",
+    "it": "Impariamo le Sue esigenze e le particolarità della location. Sa quando una decisione è importante, senza essere pressato per ogni dettaglio.",
     "en": "We learn your requirements and the particularities of the location. You know when a decision matters, without being pressed for every detail.",
     "es": "Conocemos sus requerimientos y las particularidades de la ubicación. Sabes cuándo una decisión es importante, sin que te presionen para cada detalle.",
     "ru": "Узнаем Ваши требования и особенности локации. Вы знаете, когда решение имеет значение, и вам не нужно вдаваться в подробности.",
@@ -2481,7 +2481,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "我们重新获得了预订、维护和定价决策的可见性。"
   },
   "Nous connaissons la place de chaque chose et le niveau de soin attendu. Après chaque séjour, votre bien retrouve son équilibre.": {
-    "it": "Conosciamo il luogo in cui si trova ogni cosa e il livello di assistenza previsto. Dopo ogni soggiorno, la tua struttura ritrova il suo equilibrio.",
+    "it": "Conosciamo il luogo in cui si trova ogni cosa e il livello di assistenza previsto. Dopo ogni soggiorno, la Sua struttura ritrova il suo equilibrio.",
     "en": "We know the place of everything and the level of care expected. After each stay, your property regains its balance.",
     "es": "Sabemos el lugar de cada cosa y el nivel de atención esperado. Después de cada estancia, su propiedad recupera su equilibrio.",
     "ru": "Мы знаем место всего и ожидаемый уровень ухода. После каждого пребывания баланс вашего имущества восстанавливается.",
@@ -2495,7 +2495,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "在向您提供简短的选择之前，我们会咨询合适的合作伙伴并检查可用性。"
   },
   "Nous coordonnons l’activité, documentons les décisions et vous informons sans multiplier les sollicitations.": {
-    "it": "Coordiniamo l'attività, documentiamo le decisioni e vi informiamo senza moltiplicare le richieste.",
+    "it": "Coordiniamo l'attività, documentiamo le decisioni e La informiamo senza moltiplicare le richieste.",
     "en": "We coordinate the activity, document the decisions and inform you without multiplying requests.",
     "es": "Coordinamos la actividad, documentamos las decisiones y te informamos sin multiplicar solicitudes.",
     "ru": "Мы координируем деятельность, документируем решения и информируем вас, не умножая запросы.",
@@ -2509,14 +2509,14 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "我们根据与业主商定的程序与当地专业人员协调检查和干预措施。"
   },
   "Nous découvrons la propriété dans son ensemble : son caractère, ses usages, vos périodes d’occupation et vos ambitions. Cette lecture attentive pose un cadre fidèle au lieu comme à vos exigences.": {
-    "it": "Scopriamo la proprietà nel suo insieme: il suo carattere, i suoi usi, i tuoi periodi di occupazione e le tue ambizioni. Questa lettura attenta stabilisce un quadro fedele al luogo e alle vostre esigenze.",
+    "it": "Scopriamo la proprietà nel suo insieme: il suo carattere, i suoi usi, i Suoi periodi di occupazione e le Sue ambizioni. Questa lettura attenta stabilisce un quadro fedele al luogo e alle Sue esigenze.",
     "en": "We discover the property as a whole: its character, its uses, your periods of occupation and your ambitions. This attentive reading establishes a framework faithful to the place and to your requirements.",
     "es": "Descubrimos la propiedad en su conjunto: su carácter, sus usos, sus periodos de ocupación y sus ambiciones. Esta lectura atenta establece un marco fiel al lugar y a sus exigencias.",
     "ru": "Мы раскрываем недвижимость в целом: ее характер, использование, периоды вашего проживания и ваши амбиции. Такое внимательное чтение создает основу, соответствующую месту и вашим требованиям.",
     "zh": "我们从整体上发现该财产：其特征、用途、您的职业时期和您的抱负。这种细心的阅读建立了一个忠实于当地和您的要求的框架。"
   },
   "Nous déterminons ce qui sera proposé aux voyageurs, à quel moment et dans quelles conditions, en cohérence avec votre bien.": {
-    "it": "Determiniamo cosa verrà offerto ai viaggiatori, quando e a quali condizioni, in linea con la tua struttura.",
+    "it": "Determiniamo cosa verrà offerto ai viaggiatori, quando e a quali condizioni, in linea con la Sua struttura.",
     "en": "We determine what will be offered to travelers, when and under what conditions, consistent with your property.",
     "es": "Determinamos qué se ofrecerá a los viajeros, cuándo y bajo qué condiciones, de acuerdo con su propiedad.",
     "ru": "Мы определяем, что будет предложено путешественникам, когда и на каких условиях в соответствии с вашим объектом размещения.",
@@ -2537,7 +2537,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "在定义任何流程之前，我们会研究用途、访问权限、设备和您的占用时间。"
   },
   "Nous faisons évoluer les tarifs et les conditions de séjour avec mesure, pour mieux valoriser votre bien sans banaliser son image.": {
-    "it": "Modifichiamo attentamente le tariffe e le condizioni di soggiorno, per promuovere al meglio il tuo immobile senza banalizzarne l'immagine.",
+    "it": "Modifichiamo attentamente le tariffe e le condizioni di soggiorno, per promuovere al meglio il Suo immobile senza banalizzarne l'immagine.",
     "en": "We change the rates and conditions of stay carefully, to better promote your property without trivializing its image.",
     "es": "Cambiamos cuidadosamente las tarifas y condiciones de estancia, para promocionar mejor su propiedad sin banalizar su imagen.",
     "ru": "Мы тщательно изменяем тарифы и условия проживания, чтобы лучше продвигать ваш объект, не унижая его имидж.",
@@ -2565,7 +2565,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "我们观察该房产、其可用性、历史及其竞争环境。"
   },
   "Nous posons le cadre, les priorités et les règles de décision avant la première réservation. Vous savez ce qui sera pris en charge, ce qui vous sera soumis et comment votre propriété sera suivie.": {
-    "it": "Stabiliamo il quadro, le priorità e le regole decisionali prima della prima prenotazione. Sai di cosa ci occuperemo, cosa ti verrà sottoposto e come verrà monitorata la tua proprietà.",
+    "it": "Stabiliamo il quadro, le priorità e le regole decisionali prima della prima prenotazione. Sa di cosa ci occuperemo, cosa Le verrà sottoposto e come verrà monitorata la Sua proprietà.",
     "en": "We establish the framework, priorities and decision rules before the first reservation. You know what will be taken care of, what will be submitted to you and how your property will be monitored.",
     "es": "Establecemos el marco, prioridades y reglas de decisión antes de la primera reserva. Usted sabe qué se cuidará, qué se le enviará y cómo se monitoreará su propiedad.",
     "ru": "Мы устанавливаем структуру, приоритеты и правила принятия решений до первой оговорки. Вы знаете, о чем позаботятся, что будет передано вам и как будет контролироваться ваша собственность.",
@@ -2586,7 +2586,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "我们准备了塑造第一印象的每一个细节：演示、设备、亚麻布、摄影和欢迎路线。该房产立即变得可见、令人向往并准备好接收。"
   },
   "Nous remarquons ce qui change, trouvons la bonne personne et suivons l’intervention. Vous décidez avec une information claire, jamais dans l’urgence.": {
-    "it": "Notiamo cosa cambia, troviamo la persona giusta e seguiamo l'intervento. Decidi con informazioni chiare, mai con fretta.",
+    "it": "Notiamo cosa cambia, troviamo la persona giusta e seguiamo l'intervento. Decide con informazioni chiare, mai con fretta.",
     "en": "We notice what changes, find the right person and follow the intervention. You decide with clear information, never in a hurry.",
     "es": "Notamos qué cambios, encontramos a la persona adecuada y seguimos la intervención. Tú decides con información clara, nunca con prisas.",
     "ru": "Замечаем изменения, находим нужного человека и следим за вмешательством. Вы принимаете решения, имея четкую информацию и никогда не торопясь.",
@@ -2628,7 +2628,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "收入优化"
   },
   "Organisation après votre accord": {
-    "it": "Organizzazione dopo il vostro accordo",
+    "it": "Organizzazione dopo il Suo accordo",
     "en": "Organization after your agreement",
     "es": "Organización después de su acuerdo",
     "ru": "Организация по вашему согласию",
@@ -2670,28 +2670,28 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "组织对我的财产的监控"
   },
   "Oui. Vos périodes d’occupation sont intégrées à la stratégie de gestion.": {
-    "it": "Sì. I tuoi periodi di occupazione sono integrati nella strategia di gestione.",
+    "it": "Sì. I Suoi periodi di occupazione sono integrati nella strategia di gestione.",
     "en": "Yes. Your occupancy periods are integrated into the management strategy.",
     "es": "Sí. Sus períodos de ocupación están integrados en la estrategia de gestión.",
     "ru": "Да. Периоды проживания интегрированы в стратегию управления.",
     "zh": "是的。您的入住期已纳入管理策略中。"
   },
   "Ouvrir le menu": {
-    "it": "Apri il menu",
+    "it": "Apra il menu",
     "en": "Open menu",
     "es": "Abrir menú",
     "ru": "Открыть меню",
     "zh": "打开菜单"
   },
   "Parlez-nous du bien, de sa situation actuelle et de votre objectif.": {
-    "it": "Raccontaci della proprietà, della sua situazione attuale e del tuo obiettivo.",
+    "it": "Ci racconti della proprietà, della sua situazione attuale e del Suo obiettivo.",
     "en": "Tell us about the property, its current situation and your objective.",
     "es": "Cuéntanos sobre el inmueble, su situación actual y tu objetivo.",
     "ru": "Расскажите нам об объекте недвижимости, его текущем состоянии и вашей цели.",
     "zh": "请告诉我们该房产、其现状和您的目标。"
   },
   "Parlons de votre propriété": {
-    "it": "Parliamo della tua proprietà",
+    "it": "Parliamo della Sua proprietà",
     "en": "Let's talk about your property",
     "es": "Hablemos de tu propiedad",
     "ru": "Давайте поговорим о вашей собственности",
@@ -2733,7 +2733,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "完全个性化的启动计划"
   },
   "Planifier la rotation": {
-    "it": "Pianifica la rotazione",
+    "it": "Pianifichi la rotazione",
     "en": "Plan rotation",
     "es": "Rotación de planes",
     "ru": "Ротация плана",
@@ -2768,7 +2768,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "定位、日历、停留规则和定价策略被视为一个连贯的整体。每个决定都保留了房产的吸引力，同时支持其绩效。"
   },
   "Poursuivez votre lecture pour découvrir l’étape suivante.": {
-    "it": "Continua a leggere per scoprire il passaggio successivo.",
+    "it": "Continui a leggere per scoprire il passaggio successivo.",
     "en": "Continue reading to discover the next step.",
     "es": "Continúa leyendo para descubrir el siguiente paso.",
     "ru": "Продолжайте читать, чтобы узнать следующий шаг.",
@@ -2810,21 +2810,21 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "个性化的抵达准备"
   },
   "Préparer l’arrivée": {
-    "it": "Preparati per l'arrivo",
+    "it": "Si prepari per l'arrivo",
     "en": "Prepare for arrival",
     "es": "Prepárate para la llegada",
     "ru": "Приготовьтесь к приезду",
     "zh": "准备抵达"
   },
   "Préparer la suite": {
-    "it": "Preparati per il resto",
+    "it": "Si prepari per il resto",
     "en": "Prepare for the rest",
     "es": "Prepárate para el resto",
     "ru": "Приготовьтесь к остальному",
     "zh": "为剩下的做好准备"
   },
   "Préparer un bien qui inspire immédiatement confiance": {
-    "it": "Prepara un prodotto che ispiri immediatamente fiducia",
+    "it": "Prepari un prodotto che ispiri immediatamente fiducia",
     "en": "Prepare a product that immediately inspires confidence",
     "es": "Preparar un producto que inspire confianza inmediatamente",
     "ru": "Подготовьте продукт, который сразу внушает доверие",
@@ -2880,7 +2880,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "提出解决方案"
   },
   "Présentez-nous votre projet. Vos informations seront traitées en toute confidentialité.": {
-    "it": "Presentaci il tuo progetto. Le tue informazioni saranno trattate in modo confidenziale.",
+    "it": "Ci presenti il Suo progetto. Le Sue informazioni saranno trattate in modo confidenziale.",
     "en": "Present your project to us. Your information will be treated confidentially.",
     "es": "Preséntanos tu proyecto. Su información será tratada de forma confidencial.",
     "ru": "Представьте нам свой проект. Ваша информация будет обработана конфиденциально.",
@@ -3034,7 +3034,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "限定请求"
   },
   "Quand il faut décider": {
-    "it": "Quando devi decidere",
+    "it": "Quando deve decidere",
     "en": "When you have to decide",
     "es": "Cuando tienes que decidir",
     "ru": "Когда вам нужно решить",
@@ -3048,7 +3048,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "当事情发生时，有人会做出回应。"
   },
   "Quels types de propriétés gérez-vous ?": {
-    "it": "Che tipologie di immobili gestisci?",
+    "it": "Che tipologie di immobili gestisce?",
     "en": "What types of properties do you manage?",
     "es": "¿Qué tipo de inmuebles gestionáis?",
     "ru": "Какими типами объектов недвижимости вы управляете?",
@@ -3062,7 +3062,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "常见问题解答"
   },
   "Quitter votre bien sans l’emporter avec vous": {
-    "it": "Lasciare il tuo immobile senza portarlo con te",
+    "it": "Lasciare il Suo immobile senza portarlo con Lei",
     "en": "Leaving your property without taking it with you",
     "es": "Salir de tu propiedad sin llevártela",
     "ru": "Оставить свое имущество, не забрав его с собой",
@@ -3104,14 +3104,14 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "设备搜索"
   },
   "Recherche d’options réellement adaptées": {
-    "it": "Cerca le opzioni veramente adatte",
+    "it": "Cerchi le opzioni veramente adatte",
     "en": "Search for truly suitable options",
     "es": "Búsqueda de opciones realmente adecuadas",
     "ru": "Поиск действительно подходящих вариантов",
     "zh": "搜索真正合适的选项"
   },
   "Recherche de l’artisan adapté": {
-    "it": "Cerca l'artigiano giusto",
+    "it": "Cerchi l'artigiano giusto",
     "en": "Search for the right craftsman",
     "es": "Búsqueda del artesano adecuado",
     "ru": "Ищем подходящего мастера",
@@ -3146,7 +3146,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "验证规则"
   },
   "Remise des accès": {
-    "it": "Accedi alla consegna",
+    "it": "Acceda alla consegna",
     "en": "Access delivery",
     "es": "Acceso a entrega",
     "ru": "Доставка доступа",
@@ -3167,7 +3167,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "回答第一个问题"
   },
   "Réservation après votre accord": {
-    "it": "Prenotazione dopo il vostro accordo",
+    "it": "Prenotazione dopo il Suo accordo",
     "en": "Reservation after your agreement",
     "es": "Reserva después de su acuerdo",
     "ru": "Бронирование после вашего согласия",
@@ -3202,7 +3202,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "预订、维护和技术干预产生了多次交流。 AUREVIA 将它们整合到一个结构化的综合体中。"
   },
   "Réservations, voyageurs, prestataires, incidents et performances sont pilotés par un interlocuteur unique. Vous conservez une vision claire de votre propriété sans avoir à en porter le quotidien.": {
-    "it": "Prenotazioni, viaggiatori, fornitori di servizi, incidenti e prestazioni sono gestiti da un unico contatto. Mantieni una visione chiara del tuo immobile senza doverlo occupare quotidianamente.",
+    "it": "Prenotazioni, viaggiatori, fornitori di servizi, incidenti e prestazioni sono gestiti da un unico contatto. Mantiene una visione chiara del Suo immobile senza doverlo occupare quotidianamente.",
     "en": "Reservations, travelers, service providers, incidents and performances are managed by a single contact. You maintain a clear vision of your property without having to deal with it on a daily basis.",
     "es": "Reservas, viajeros, proveedores de servicios, incidencias y actuaciones se gestionan desde un único contacto. Mantendrá una visión clara de su propiedad sin tener que lidiar con ella a diario.",
     "ru": "Бронированием, путешественниками, поставщиками услуг, инцидентами и выступлениями управляет один контакт. Вы сохраняете четкое представление о своей собственности без необходимости иметь с ней дело ежедневно.",
@@ -3237,7 +3237,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "返回访问权限"
   },
   "Retrouver votre bien, simplement": {
-    "it": "Trova il tuo immobile, semplicemente",
+    "it": "Trovi il Suo immobile, semplicemente",
     "en": "Find your property, simply",
     "es": "Encuentra tu propiedad, simplemente",
     "ru": "Просто найдите свою недвижимость",
@@ -3300,14 +3300,14 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "本地选择"
   },
   "Sélectionner les options": {
-    "it": "Seleziona le opzioni",
+    "it": "Selezioni le opzioni",
     "en": "Select options",
     "es": "Seleccionar opciones",
     "ru": "Выберите параметры",
     "zh": "选择选项"
   },
   "Sélectionner les partenaires": {
-    "it": "Seleziona partner",
+    "it": "Selezioni partner",
     "en": "Select partners",
     "es": "Seleccionar socios",
     "ru": "Выберите партнеров",
@@ -3405,7 +3405,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "监控重要设备"
   },
   "Suivi des horaires": {
-    "it": "Pianifica il monitoraggio",
+    "it": "Pianifichi il monitoraggio",
     "en": "Schedule tracking",
     "es": "Seguimiento de horarios",
     "ru": "Отслеживание расписания",
@@ -3538,7 +3538,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "公布价格"
   },
   "Tarifs et calendrier pilotés pour valoriser durablement vos revenus.": {
-    "it": "Prezzi e calendario sono riusciti ad aumentare in modo sostenibile le tue entrate.",
+    "it": "Prezzi e calendario sono riusciti ad aumentare in modo sostenibile le Sue entrate.",
     "en": "Prices and calendar managed to sustainably enhance your income.",
     "es": "Precios y calendario lograron potenciar de manera sostenible tus ingresos.",
     "ru": "Цены и календарь позволили устойчиво повысить ваш доход.",
@@ -3601,7 +3601,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "透明度和数据保护。"
   },
   "Travaux et pièces engagés après votre accord": {
-    "it": "Lavori e parti eseguiti dopo il vostro accordo",
+    "it": "Lavori e parti eseguiti dopo il Suo accordo",
     "en": "Work and parts undertaken after your agreement",
     "es": "Trabajos y piezas realizadas tras su acuerdo",
     "ru": "Работы и запчасти выполняются после вашего согласия",
@@ -3615,7 +3615,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "缺少访问权限，未经近似处理"
   },
   "Un artisan fiable à Castelletto, un accès délicat dans le centre historique, une urgence à Nervi : notre ancrage local donne à votre propriété les bons relais, sans tâtonnement ni intermédiaire inutile.": {
-    "it": "Un artigiano affidabile a Castelletto, accessi delicati in centro storico, emergenza a Nervi: il nostro ancoraggio locale dà al tuo immobile i contatti giusti, senza tentativi ed errori o intermediari inutili.",
+    "it": "Un artigiano affidabile a Castelletto, accessi delicati in centro storico, emergenza a Nervi: il nostro ancoraggio locale dà al Suo immobile i contatti giusti, senza tentativi ed errori o intermediari inutili.",
     "en": "A reliable craftsman in Castelletto, delicate access in the historic center, an emergency in Nervi: our local anchorage gives your property the right contacts, without trial and error or unnecessary intermediaries.",
     "es": "Un artesano de confianza en Castelletto, un acceso delicado en el centro histórico, una emergencia en Nervi: nuestro anclaje local proporciona a su propiedad los contactos adecuados, sin ensayo y error ni intermediarios innecesarios.",
     "ru": "Надежный мастер в Кастеллетто, деликатный доступ в исторический центр, чрезвычайная ситуация в Нерви: наша местная стоянка дает вашей собственности правильные контакты без проб и ошибок или ненужных посредников.",
@@ -3650,7 +3650,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "及时注意到的细节仍然是细节。如果忽视，它往往最终会扰乱住宿或损坏财产。"
   },
   "Un échange confidentiel pour comprendre vos besoins, vos objectifs et les caractéristiques de votre bien.": {
-    "it": "Uno scambio confidenziale per comprendere le tue esigenze, i tuoi obiettivi e le caratteristiche del tuo immobile.",
+    "it": "Uno scambio confidenziale per comprendere le Sue esigenze, i Suoi obiettivi e le caratteristiche del Suo immobile.",
     "en": "A confidential exchange to understand your needs, your objectives and the characteristics of your property.",
     "es": "Un intercambio confidencial para entender sus necesidades, sus objetivos y las características de su propiedad.",
     "ru": "Конфиденциальный обмен информацией для понимания ваших потребностей, целей и характеристик вашей недвижимости.",
@@ -3664,7 +3664,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "不可预见的事件，一次接触"
   },
   "Un intervenant adapté est recherché et le devis vous est présenté lorsque la situation le permet.": {
-    "it": "Si cerca un fornitore adatto e vi viene presentato il preventivo quando la situazione lo consente.",
+    "it": "Si cerca un fornitore adatto e Le viene presentato il preventivo quando la situazione lo consente.",
     "en": "A suitable provider is sought and the quote is presented to you when the situation allows it.",
     "es": "Se busca un proveedor adecuado y se le presenta el presupuesto cuando la situación lo permite.",
     "ru": "Подходящий поставщик ищется, и предложение предоставляется вам, когда ситуация позволяет это.",
@@ -3685,7 +3685,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "每次入住前检查准备程度"
   },
   "Un parcours d’arrivée fluide, soigné et conforme à vos standards.": {
-    "it": "Un percorso di arrivo fluido e attento che soddisfa i tuoi standard.",
+    "it": "Un percorso di arrivo fluido e attento che soddisfa i Suoi standard.",
     "en": "A smooth, careful arrival route that meets your standards.",
     "es": "Una ruta de llegada suave, cuidada y que cumple con tus estándares.",
     "ru": "Плавный и осторожный маршрут прибытия, соответствующий вашим стандартам.",
@@ -3748,7 +3748,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "一位旅行者想要在没有事先通知的情况下享受一顿私人晚餐。我们会限定需求，提供可用选项，并在验证后协调对房产的访问。"
   },
   "Une anomalie est signalée entre deux séjours. AUREVIA qualifie la situation, organise la réponse, sollicite votre validation si nécessaire et suit sa résolution.": {
-    "it": "Viene segnalata un'anomalia tra due soggiorni. AUREVIA qualifica la situazione, organizza la risposta, richiede la vostra validazione se necessario e ne monitora la risoluzione.",
+    "it": "Viene segnalata un'anomalia tra due soggiorni. AUREVIA qualifica la situazione, organizza la risposta, richiede la Sua validazione se necessario e ne monitora la risoluzione.",
     "en": "An anomaly is reported between two stays. AUREVIA qualifies the situation, organizes the response, requests your validation if necessary and monitors its resolution.",
     "es": "Se reporta una anomalía entre dos estancias. AUREVIA califica la situación, organiza la respuesta, solicita su validación si es necesario y supervisa su resolución.",
     "ru": "Между двумя пребываниями зарегистрирована аномалия. AUREVIA оценивает ситуацию, организует реагирование, при необходимости запрашивает вашу проверку и контролирует ее разрешение.",
@@ -3839,7 +3839,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "出现偏差时快速提供信息"
   },
   "Une maison prête, un linge impeccable, une lumière allumée au bon moment : notre exigence se niche dans les détails que vous n’aurez jamais à réclamer. Nous contrôlons avant que vous ayez besoin de demander.": {
-    "it": "La casa pronta, il bucato impeccabile, la luce accesa al momento giusto: i nostri standard sono nei dettagli che non dovrai mai chiedere. Controlliamo prima che tu abbia bisogno di chiedere.",
+    "it": "La casa pronta, il bucato impeccabile, la luce accesa al momento giusto: i nostri standard sono nei dettagli che non dovrà mai chiedere. Controlliamo prima che Lei abbia bisogno di chiedere.",
     "en": "A house ready, impeccable laundry, a light on at the right time: our standards are in the details that you will never have to ask for. We check before you need to ask.",
     "es": "Una casa lista, una colada impecable, una luz encendida en el momento justo: nuestros estándares están en los detalles que nunca tendrás que pedir. Lo comprobamos antes de que tengas que preguntar.",
     "ru": "Готовый дом, безупречная стирка, свет, включенный в нужный момент: наши стандарты заключаются в деталях, о которых вам никогда не придется просить. Мы проверяем, прежде чем вам нужно будет спросить.",
@@ -3867,7 +3867,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "每次入住前的受控准备工作，细致到最小的细节。"
   },
   "Une qualité d’accueil fidèle à votre bien": {
-    "it": "Una qualità di accoglienza fedele alla tua struttura",
+    "it": "Una qualità di accoglienza fedele alla Sua struttura",
     "en": "A quality of welcome faithful to your property",
     "es": "Una calidad de acogida fiel a su propiedad",
     "ru": "Качество приветствия, преданное вашей собственности",
@@ -3881,7 +3881,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "事先已知的响应"
   },
   "Une stratégie que vous comprenez": {
-    "it": "Una strategia che capisci",
+    "it": "Una strategia che capisce",
     "en": "A strategy you understand",
     "es": "Una estrategia que entiendes",
     "ru": "Стратегия, которую вы понимаете",
@@ -3923,7 +3923,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "验证并预订"
   },
   "Vérification après chaque séjour": {
-    "it": "Verifica dopo ogni soggiorno",
+    "it": "Verifichi dopo ogni soggiorno",
     "en": "Verification after each stay",
     "es": "Verificación después de cada estancia",
     "ru": "Проверка после каждого пребывания",
@@ -3937,84 +3937,84 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "检查可用性和截止日期"
   },
   "Vols privés, coordination des créneaux, transferts aéroport et assistance bagages selon votre itinéraire.": {
-    "it": "Voli privati, coordinamento slot, trasferimenti aeroportuali e assistenza bagagli in base al tuo itinerario.",
+    "it": "Voli privati, coordinamento slot, trasferimenti aeroportuali e assistenza bagagli in base al Suo itinerario.",
     "en": "Private flights, slot coordination, airport transfers and baggage assistance according to your itinerary.",
     "es": "Vuelos privados, coordinación de slots, traslados al aeropuerto y asistencia de equipaje según su itinerario.",
     "ru": "Частные рейсы, координация слотов, трансфер из аэропорта и помощь с багажом в соответствии с вашим маршрутом.",
     "zh": "根据您的行程提供私人航班、航班时刻协调、机场接送和行李协助。"
   },
   "Vos préférences de confidentialité": {
-    "it": "Le tue preferenze sulla privacy",
+    "it": "Le Sue preferenze sulla privacy",
     "en": "Your privacy preferences",
     "es": "Tus preferencias de privacidad",
     "ru": "Ваши настройки конфиденциальности",
     "zh": "您的隐私偏好设置"
   },
   "Votre accompagnement peut maintenant commencer.": {
-    "it": "Il tuo supporto ora può iniziare.",
+    "it": "Il Suo supporto ora può iniziare.",
     "en": "Your support can now begin.",
     "es": "Su soporte ahora puede comenzar.",
     "ru": "Теперь ваша поддержка может начаться.",
     "zh": "您的支持现在可以开始了。"
   },
   "Votre bien est entouré comme s’il était le nôtre.": {
-    "it": "La tua proprietà è circondata come se fosse la nostra.",
+    "it": "La Sua proprietà è circondata come se fosse la nostra.",
     "en": "Your property is surrounded as if it were ours.",
     "es": "Su propiedad está rodeada como si fuera nuestra.",
     "ru": "Ваша собственность окружена так, как будто она наша.",
     "zh": "您的财产就像我们的财产一样被包围。"
   },
   "Votre bien ne sera jamais un dossier parmi d’autres.": {
-    "it": "La tua proprietà non sarà mai solo un file tra gli altri.",
+    "it": "La Sua proprietà non sarà mai solo un file tra gli altri.",
     "en": "Your property will never be just one file among others.",
     "es": "Tu propiedad nunca será un archivo más entre otros.",
     "ru": "Ваша собственность никогда не будет просто одним файлом среди других.",
     "zh": "您的财产永远不会只是众多文件中的一个。"
   },
   "Votre bien reste suivi, sans devenir une préoccupation.": {
-    "it": "La tua proprietà resta monitorata, senza diventare una preoccupazione.",
+    "it": "La Sua proprietà resta monitorata, senza diventare una preoccupazione.",
     "en": "Your property remains monitored, without becoming a concern.",
     "es": "Su propiedad permanece monitoreada, sin convertirse en una preocupación.",
     "ru": "Ваша собственность остается под наблюдением и не вызывает беспокойства.",
     "zh": "您的财产仍受到监控，不会成为问题。"
   },
   "Votre bien suivi, sans avoir à tout suivre.": {
-    "it": "Il tuo immobile monitorato, senza dover tracciare tutto.",
+    "it": "Il Suo immobile monitorato, senza dover tracciare tutto.",
     "en": "Your property tracked, without having to track everything.",
     "es": "Seguimiento de su propiedad, sin tener que realizar un seguimiento de todo.",
     "ru": "Ваша собственность отслеживается, без необходимости отслеживать все.",
     "zh": "您的财产已被跟踪，而无需跟踪所有内容。"
   },
   "Votre décision reste souveraine. La pression disparaît.": {
-    "it": "La ​​tua decisione rimane sovrana. La pressione scompare.",
+    "it": "La ​​Sua decisione rimane sovrana. La pressione scompare.",
     "en": "Your decision remains sovereign. The pressure disappears.",
     "es": "Tu decisión sigue siendo soberana. La presión desaparece.",
     "ru": "Ваше решение остается независимым. Давление исчезает.",
     "zh": "您的决定仍然具有主权。压力消失。"
   },
   "Votre propriété bénéficie d’une attention exclusive : un interlocuteur dédié orchestre sa valorisation, son exploitation et chaque détail de son quotidien.": {
-    "it": "Il tuo immobile beneficia di attenzioni esclusive: un referente dedicato ne orchestra la valutazione, il funzionamento e ogni dettaglio della sua vita quotidiana.",
+    "it": "Il Suo immobile beneficia di attenzioni esclusive: un referente dedicato ne orchestra la valutazione, il funzionamento e ogni dettaglio della sua vita quotidiana.",
     "en": "Your property benefits from exclusive attention: a dedicated contact orchestrates its valuation, its operation and every detail of its daily life.",
     "es": "Su propiedad se beneficia de una atención exclusiva: un contacto dedicado organiza su valoración, su funcionamiento y cada detalle de su vida diaria.",
     "ru": "Ваша собственность пользуется исключительным вниманием: ее оценку, эксплуатацию и каждую деталь повседневной жизни организует специальный контакт.",
     "zh": "您的房产受益于独家关注：专门的联系人负责协调其估值、运营及其日常生活的每一个细节。"
   },
   "Votre propriété pilotée avec méthode, même à distance": {
-    "it": "Il tuo immobile gestito con metodo, anche da remoto",
+    "it": "Il Suo immobile gestito con metodo, anche da remoto",
     "en": "Your property managed methodically, even remotely",
     "es": "Su propiedad gestionada metódicamente, incluso de forma remota",
     "ru": "Ваша собственность управляется методично, даже удаленно",
     "zh": "您的财产管理有条不紊，甚至可以远程管理"
   },
   "Votre tranquillité, concrètement": {
-    "it": "La tua tranquillità, concretamente",
+    "it": "La Sua tranquillità, concretamente",
     "en": "Your peace of mind, concretely",
     "es": "Tu tranquilidad, concretamente",
     "ru": "Ваше спокойствие, конкретно",
     "zh": "具体而言，您安心无忧"
   },
   "Votre vie privée reste exactement là où elle doit être : chez vous.": {
-    "it": "La tua privacy rimane esattamente al posto a cui appartiene: a casa.",
+    "it": "La Sua privacy rimane esattamente al posto a cui appartiene: a casa.",
     "en": "Your privacy remains exactly where it belongs: at home.",
     "es": "Tu privacidad permanece exactamente donde pertenece: en casa.",
     "ru": "Ваша конфиденциальность остается там, где ей и место: дома.",
@@ -4028,49 +4028,49 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "您即将到达。一切都各就其位。"
   },
   "Vous avez les faits, pas l’urgence.": {
-    "it": "Hai i fatti, non l'urgenza.",
+    "it": "Ha i fatti, non l'urgenza.",
     "en": "You have the facts, not the urgency.",
     "es": "Tienes los hechos, no la urgencia.",
     "ru": "У вас есть факты, а не срочность.",
     "zh": "你掌握的是事实，而不是紧迫性。"
   },
   "Vous devez pouvoir comprendre la vie de votre bien sans rechercher une information dans des dizaines de messages.": {
-    "it": "Devi riuscire a capire la vita del tuo immobile senza cercare informazioni in decine di messaggi.",
+    "it": "Deve riuscire a capire la vita del Suo immobile senza cercare informazioni in decine di messaggi.",
     "en": "You must be able to understand the life of your property without searching for information in dozens of messages.",
     "es": "Debes poder entender la vida de tu propiedad sin buscar información en decenas de mensajes.",
     "ru": "Вы должны уметь разбираться в жизни вашего объекта, не ища информацию в десятках сообщений.",
     "zh": "您必须能够了解您的财产的寿命，而无需在数十条消息中搜索信息。"
   },
   "Vous êtes compris sans devoir tout réexpliquer.": {
-    "it": "Sei capito senza dover spiegare tutto di nuovo.",
+    "it": "È capito senza dover spiegare tutto di nuovo.",
     "en": "You are understood without having to explain everything again.",
     "es": "Se te entiende sin tener que volver a explicarlo todo.",
     "ru": "Вас поймут без необходимости объяснять все заново.",
     "zh": "您无需再次解释一切即可理解。"
   },
   "Vous êtes revenu chez vous.": {
-    "it": "Sei tornato a casa.",
+    "it": "È tornato a casa.",
     "en": "You have returned home.",
     "es": "Has vuelto a casa.",
     "ru": "Вы вернулись домой.",
     "zh": "您已回家。"
   },
   "Vous gardez la main sur les décisions qui comptent. Nous prenons en charge le quotidien, les échanges et les imprévus, avec la même attention que si vous étiez sur place.": {
-    "it": "Mantieni il controllo delle decisioni che contano. Ci prendiamo cura della quotidianità, degli scambi e degli imprevisti, con la stessa attenzione come se fossi sul posto.",
+    "it": "Mantiene il controllo delle decisioni che contano. Ci prendiamo cura della quotidianità, degli scambi e degli imprevisti, con la stessa attenzione come se fosse sul posto.",
     "en": "You keep control of the decisions that matter. We take care of everyday life, exchanges and unforeseen events, with the same attention as if you were on site.",
     "es": "Mantienes el control de las decisiones que importan. Nos ocupamos del día a día, de los intercambios y de los imprevistos, con la misma atención que si estuvieras in situ.",
     "ru": "Вы сохраняете контроль над важными решениями. Мы позаботимся о повседневной жизни, обменах и непредвиденных событиях с таким же вниманием, как если бы вы были на месте.",
     "zh": "您可以掌控重要的决策。我们像您在现场一样关注日常生活、交流和不可预见的事件。"
   },
   "Vous gardez la maîtrise, sans porter la gestion.": {
-    "it": "Mantieni il controllo, senza essere al comando.",
+    "it": "Mantiene il controllo, senza essere al comando.",
     "en": "You maintain control, without being in charge.",
     "es": "Mantienes el control, sin estar a cargo.",
     "ru": "Вы сохраняете контроль, но не берете на себя ответственность.",
     "zh": "您保持控制，但不负责。"
   },
   "Vous gardez la maîtrise. Nous portons le quotidien.": {
-    "it": "Mantieni il controllo. Portiamo la vita di tutti i giorni.",
+    "it": "Mantiene il controllo. Portiamo la vita di tutti i giorni.",
     "en": "You remain in control. We carry everyday life.",
     "es": "Tú mantienes el control. Llevamos la vida cotidiana.",
     "ru": "Вы сохраняете контроль. Мы несем повседневную жизнь.",
@@ -4084,49 +4084,49 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "您无需遵循所有内容即可了解所有内容。"
   },
   "Vous n’avez plus à rester disponible.": {
-    "it": "Non sei più obbligato a rimanere disponibile.",
+    "it": "Non è più obbligato a rimanere disponibile.",
     "en": "You no longer have to remain available.",
     "es": "Ya no tienes que permanecer disponible.",
     "ru": "Вам больше не обязательно оставаться на связи.",
     "zh": "您不必再保持空闲状态。"
   },
   "Vous ne devriez pas avoir à vérifier.": {
-    "it": "Non dovresti controllare.",
+    "it": "Non dovrebbe controllare.",
     "en": "You shouldn't have to check.",
     "es": "No deberías tener que comprobarlo.",
     "ru": "Вам не обязательно проверять.",
     "zh": "您不必检查。"
   },
   "Vous nous confiez plus qu’une adresse.": {
-    "it": "Ci affidi più di un indirizzo.",
+    "it": "Lei ci affida più di un indirizzo.",
     "en": "You entrust us with more than an address.",
     "es": "Nos confías más que una dirección.",
     "ru": "Вы доверяете нам больше, чем просто адрес.",
     "zh": "您委托给我们的不仅仅是一个地址。"
   },
   "Vous nous confiez une envie ou un besoin. Nous trouvons la réponse juste, vous la présentons clairement et veillons à sa réalisation.": {
-    "it": "Ci affidi un desiderio o un bisogno. Troviamo la risposta giusta, te la presentiamo chiaramente e ci assicuriamo che venga raggiunta.",
+    "it": "Lei ci affida un desiderio o un bisogno. Troviamo la risposta giusta, Gliela presentiamo chiaramente e ci assicuriamo che venga raggiunta.",
     "en": "You entrust us with a desire or a need. We find the right answer, present it clearly to you and ensure it is achieved.",
     "es": "Nos confías un deseo o una necesidad. Encontramos la respuesta correcta, se la presentamos claramente y nos aseguramos de que se logre.",
     "ru": "Вы доверяете нам свое желание или потребность. Мы находим правильный ответ, ясно представляем его вам и обеспечиваем его достижение.",
     "zh": "您将愿望或需求托付给我们。我们找到正确的答案，将其清楚地呈现给您并确保实现。"
   },
   "Vous partez. Votre tranquillité reste intacte.": {
-    "it": "Te ne stai andando. La tua tranquillità rimane intatta.",
+    "it": "Se ne sta andando. La Sua tranquillità rimane intatta.",
     "en": "You are leaving. Your peace of mind remains intact.",
     "es": "Te vas. Tu tranquilidad permanece intacta.",
     "ru": "Вы уходите. Ваше душевное спокойствие остается неизменным.",
     "zh": "你要离开。您内心的平静依然完好无损。"
   },
   "Vous recevez une information claire et le bien reste prêt, sans avoir à coordonner plusieurs personnes.": {
-    "it": "Ricevi informazioni chiare e l'immobile rimane pronto, senza dover coordinare più persone.",
+    "it": "Riceve informazioni chiare e l'immobile rimane pronto, senza dover coordinare più persone.",
     "en": "You receive clear information and the property remains ready, without having to coordinate several people.",
     "es": "Recibes información clara y el inmueble queda listo, sin necesidad de coordinar varias personas.",
     "ru": "Вы получаете четкую информацию, и объект остается готовым, без необходимости координации нескольких человек.",
     "zh": "您会收到明确的信息，并且财产保持就绪状态，而无需协调多个人。"
   },
   "Vous retrouvez l’essentiel de la vie de votre bien dans une lecture simple : ce qui a été fait, ce qui mérite votre attention et ce qui vient ensuite.": {
-    "it": "Troverai in una semplice lettura gli elementi essenziali della vita del tuo immobile: cosa è stato fatto, cosa merita la tua attenzione e cosa verrà dopo.",
+    "it": "Troverà in una semplice lettura gli elementi essenziali della vita del Suo immobile: cosa è stato fatto, cosa merita la Sua attenzione e cosa verrà dopo.",
     "en": "You find the essentials of the life of your property in a simple reading: what has been done, what deserves your attention and what comes next.",
     "es": "Encuentras lo esencial de la vida de tu propiedad en una lectura sencilla: qué se ha hecho, qué merece tu atención y qué viene después.",
     "ru": "В простом чтении вы найдете все самое необходимое для жизни вашего объекта: что было сделано, что заслуживает вашего внимания и что будет дальше.",
@@ -4140,7 +4140,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "你回家了。没有什么可追赶的。"
   },
   "Vous savez où nous allons.": {
-    "it": "Sai dove stiamo andando.",
+    "it": "Sa dove stiamo andando.",
     "en": "You know where we are going.",
     "es": "Ya sabes hacia dónde vamos.",
     "ru": "Ты знаешь, куда мы идем.",
@@ -4154,7 +4154,7 @@ export const generatedMessages: Record<string, GeneratedLocalized> = {
     "zh": "您可以看到做了什么以及为什么。"
   },
   "Voyageurs, équipements et prestataires demandent une attention continue. Nous absorbons cette charge avant qu’elle n’interrompe votre quotidien.": {
-    "it": "I viaggiatori, i fornitori di attrezzature e servizi richiedono un'attenzione continua. Assorbiamo questo carico prima che interrompa la tua vita quotidiana.",
+    "it": "I viaggiatori, i fornitori di attrezzature e servizi richiedono un'attenzione continua. Assorbiamo questo carico prima che interrompa la Sua vita quotidiana.",
     "en": "Travelers, equipment and service providers require continued attention. We absorb this load before it interrupts your daily life.",
     "es": "Los viajeros, los proveedores de equipos y servicios requieren una atención continua. Absorbemos esta carga antes de que interrumpa tu vida diaria.",
     "ru": "Путешественники, поставщики оборудования и услуг требуют постоянного внимания. Мы поглощаем эту нагрузку до того, как она нарушит вашу повседневную жизнь.",
