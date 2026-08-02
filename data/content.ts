@@ -8,7 +8,7 @@ export const services:Service[]=[
  {slug:"pulizie-biancheria",title:"Ménage et linge",cardTitle:"Entretien & linge",short:"Une préparation contrôlée avant chaque séjour, jusque dans les moindres détails.",number:"04"},
  {slug:"manutenzione",title:"Maintenance",cardTitle:"Maintenance coordonnée",short:"Prévention, interventions et suivi assurés par un réseau local sélectionné.",number:"05"},
  {slug:"revenue-management",title:"Optimisation des revenus",cardTitle:"Performance locative",short:"Tarifs et calendrier pilotés pour valoriser durablement vos revenus.",number:"06"},
- {slug:"sicurezza",title:"Sécurité du bien",cardTitle:"Sécurité du logement",short:"Contrôle des accès, vérification des fermetures et procédures claires pour protéger votre propriété.",number:"07"},
+ {slug:"sicurezza",title:"Sécurité du bien",cardTitle:"Sécurité du bien",short:"Contrôle des accès, vérification des fermetures et procédures claires pour protéger votre propriété.",number:"07"},
  {slug:"amministrazione",title:"Administration",cardTitle:"Suivi administratif",short:"Des comptes rendus structurés pour suivre clairement chaque opération.",number:"08"},
 ].map((service,i)=>({...service,image:["/images/services/property-management.webp","/images/services/concierge-service.webp","/images/services/guest-welcome.webp","/images/services/housekeeping.webp","/images/services/maintenance.webp","/images/services/revenue-management.webp","/images/services/security.webp","/images/services/administration.webp"][i]}));
 
