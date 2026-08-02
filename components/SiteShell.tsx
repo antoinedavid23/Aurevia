@@ -30,7 +30,7 @@ export function Logo() {
 function LanguageSelector() {
   const { locale } = useLocale();
   const [languageOpen, setLanguageOpen] = useState(false);
-  return <div className={`language-selector${languageOpen ? " is-open" : ""}`}>
+  return <div className={`language-selector${languageOpen ? " is-open" : ""}`} data-no-translate>
     <button
       type="button"
       className="language-selector-trigger"
@@ -102,7 +102,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       </div>
       <button className="menu-btn" aria-label="Ouvrir le menu" aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(true)}><span>Menu</span><Menu/></button>
     </header>
-    {open && <div className="mobile-menu" id="mobile-navigation" role="dialog" aria-modal="true" aria-label="Navigation"><div className="mobile-menu-head"><Logo/><button aria-label="Fermer le menu" onClick={() => setOpen(false)}><span>Fermer le menu</span><X/></button></div><nav aria-label="Navigation mobile">{nav.map(([name, href], index) => <Link onClick={() => setOpen(false)} key={href} href={href} aria-current={pathname === href || (href !== "/" && pathname.startsWith(`${href}/`)) ? "page" : undefined}><span>{String(index + 1).padStart(2,"0")}</span>{name}<ArrowRight size={16}/></Link>)}</nav><div className="mobile-menu-footer"><div className="mobile-language-options" aria-label="Choisir la langue"><LanguageOptions onSelect={() => setOpen(false)}/></div><Link className="mobile-consultation" onClick={() => setOpen(false)} href="/valutazione">Évaluer mon bien <ArrowRight size={16}/></Link><Link className="mobile-admin-login" onClick={() => setOpen(false)} href="/connexion"><LogIn size={16}/> Gestion des biens</Link></div></div>}
+    {open && <div className="mobile-menu" id="mobile-navigation" role="dialog" aria-modal="true" aria-label="Navigation"><div className="mobile-menu-head"><Logo/><button aria-label="Fermer le menu" onClick={() => setOpen(false)}><span>Fermer le menu</span><X/></button></div><nav aria-label="Navigation mobile">{nav.map(([name, href], index) => <Link onClick={() => setOpen(false)} key={href} href={href} aria-current={pathname === href || (href !== "/" && pathname.startsWith(`${href}/`)) ? "page" : undefined}><span>{String(index + 1).padStart(2,"0")}</span>{name}<ArrowRight size={16}/></Link>)}</nav><div className="mobile-menu-footer"><div className="mobile-language-options" aria-label="Choisir la langue" data-no-translate><LanguageOptions onSelect={() => setOpen(false)}/></div><Link className="mobile-consultation" onClick={() => setOpen(false)} href="/valutazione">Évaluer mon bien <ArrowRight size={16}/></Link><Link className="mobile-admin-login" onClick={() => setOpen(false)} href="/connexion"><LogIn size={16}/> Gestion des biens</Link></div></div>}
     <main>{children}</main>
     <footer className="footer-premium">
       <div className="footer-signature">
