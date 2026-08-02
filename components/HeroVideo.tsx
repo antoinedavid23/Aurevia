@@ -15,6 +15,11 @@ export function HeroVideo() {
 
     video.muted = true;
     video.defaultMuted = true;
+    video.volume = 0;
+    video.setAttribute("muted", "");
+    video.setAttribute("autoplay", "");
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
 
     const play = () => {
       if (document.visibilityState === "visible" && video.paused) {
@@ -29,9 +34,14 @@ export function HeroVideo() {
     const showVideo = () => video.classList.add("is-playing");
     const showFallback = () => video.classList.remove("is-playing");
 
+    const retryTimers = [250, 700, 1500, 3000].map((delay) => window.setTimeout(play, delay));
     play();
+    video.addEventListener("loadedmetadata", play);
+    video.addEventListener("loadeddata", play);
     video.addEventListener("canplay", play);
+    video.addEventListener("canplaythrough", play);
     window.addEventListener("pageshow", play);
+    window.addEventListener("focus", play);
     document.addEventListener("visibilitychange", play);
     document.addEventListener("touchstart", play, { passive: true });
     document.addEventListener("pointerdown", play, { passive: true });
@@ -41,8 +51,13 @@ export function HeroVideo() {
 
     return () => {
       hero?.classList.remove("opera-fallback");
+      retryTimers.forEach((timer) => window.clearTimeout(timer));
+      video.removeEventListener("loadedmetadata", play);
+      video.removeEventListener("loadeddata", play);
       video.removeEventListener("canplay", play);
+      video.removeEventListener("canplaythrough", play);
       window.removeEventListener("pageshow", play);
+      window.removeEventListener("focus", play);
       document.removeEventListener("visibilitychange", play);
       removeGestureListeners();
       video.removeEventListener("playing", removeGestureListeners);
@@ -59,7 +74,7 @@ export function HeroVideo() {
       muted
       loop
       playsInline
-      preload="metadata"
+      preload="auto"
       disablePictureInPicture
       controlsList="nodownload noplaybackrate noremoteplayback"
       aria-hidden="true"
