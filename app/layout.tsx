@@ -11,10 +11,12 @@ import "@fontsource/manrope/700.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://aurevia-private-concierge.grizz802.chatgpt.site"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://aurevia-genova.com"),
+  alternates: { canonical: "/" },
   title: { default: "AUREVIA | Gestione di proprietà a Genova e in Liguria", template: "%s | AUREVIA" },
   description: "Gestione esclusiva di proprietà e ospitalità su misura a Genova e in Liguria.",
   openGraph: {
+    url: "https://aurevia-genova.com",
     title: "AUREVIA",
     description: "L’arte di prendersi cura di ciò che conta.",
     type: "website",

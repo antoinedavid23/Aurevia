@@ -5,7 +5,7 @@ import { reviewedMessages } from "./i18n-reviewed";
 import { auditFixMessages } from "./i18n-audit-fixes";
 import { qualityMessages } from "./i18n-quality";
 export type Locale = "fr" | "it" | "en" | "es" | "ru" | "zh";
-export const locales = ["fr", "it", "en"] as const;
+export const locales = ["it", "en", "fr"] as const;
 
 export const localeNames: Record<Locale, { short: string; native: string }> = {
   fr: { short: "FR", native: "Français" },
