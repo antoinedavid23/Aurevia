@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /administration
+Disallow: /connexion
+Disallow: /api/
+Disallow: /grazie
+
+Sitemap: https://aurevia-genova.com/sitemap.xml
+Host: https://aurevia-genova.com
