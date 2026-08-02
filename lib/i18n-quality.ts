@@ -3,6 +3,7 @@ const q=(it:string,en:string):Localized=>({it,en,es:"",ru:"",zh:""});
 
 /** Human-reviewed FR → IT/EN copy. This layer overrides generated translations. */
 export const qualityMessages:Record<string,Localized>={
+  "Sécurité du logement":q("Sicurezza dell’immobile","Property security"),
   "Récupération":q("Recupero","Recovery"),
   "Mot de passe oublié":q("Password dimenticata","Forgotten password"),
   "Pour ce compte administrateur unique, la réinitialisation est traitée uniquement depuis l’adresse de récupération autorisée.":q("Per questo account amministratore, la reimpostazione viene gestita esclusivamente dall’indirizzo di recupero autorizzato.","For this administrator account, reset requests are handled exclusively through the authorised recovery address."),
