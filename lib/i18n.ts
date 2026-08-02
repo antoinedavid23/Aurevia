@@ -136,6 +136,7 @@ export const messages: Record<string, Localized> = {
   "Expériences locales": t("Esperienze locali", "Local experiences", "Experiencias locales", "Местные впечатления", "本地体验"),
   "Bien-être": t("Benessere", "Wellbeing", "Bienestar", "Велнес", "身心康养"),
   "Événements privés": t("Eventi privati", "Private events", "Eventos privados", "Частные события", "私人活动"),
+  "Protection rapprochée": t("Protezione ravvicinata", "Close protection", "Protección cercana", "Личная охрана", "贴身保护"),
 
   "Parlons de votre propriété": t("Parliamo del tuo immobile", "Let’s discuss your property", "Hablemos de su propiedad", "Обсудим ваш объект", "让我们聊聊您的房产"),
   "Premier échange": t("Primo incontro", "A first conversation", "Primera conversación", "Первый разговор", "初次沟通"),
