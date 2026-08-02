@@ -13,7 +13,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://aurevia-genova.com"),
   title: { default: "AUREVIA | Gestione immobiliare a Genova e in Liguria", template: "%s | AUREVIA" },
-  description: "Gestione immobiliare e servizi su misura per proprietà di pregio, seconde case e affitti brevi a Genova e in Liguria.",
+  description: "Property management e gestione immobiliare su misura per proprietà di pregio, seconde case e affitti brevi a Genova e in Liguria.",
   openGraph: {
     url: "https://aurevia-genova.com",
     title: "AUREVIA",

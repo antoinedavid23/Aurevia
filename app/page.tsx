@@ -10,7 +10,7 @@ import type {Metadata} from "next";
 
 export const metadata:Metadata={
  title:"Gestione immobiliare a Genova e in Liguria",
- description:"AUREVIA cura e valorizza proprietà di pregio, seconde case e affitti brevi a Genova e in Liguria con un interlocutore unico.",
+ description:"Property management e gestione immobiliare per proprietà di pregio, seconde case e affitti brevi a Genova e in Liguria.",
  alternates:{canonical:"/"},
 };
 
