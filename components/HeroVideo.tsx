@@ -8,7 +8,6 @@ export function HeroVideo() {
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    if (window.matchMedia("(max-width: 767px)").matches) return;
     const hero = video.closest(".hero-aurevia");
     const usesOperaFallback = /OPiOS|Opera|OPR\//i.test(navigator.userAgent);
 
@@ -80,7 +79,8 @@ export function HeroVideo() {
       controlsList="nodownload noplaybackrate noremoteplayback"
       aria-hidden="true"
     >
-      <source src="/videos/genova-hero.mp4" type="video/mp4" media="(min-width: 768px)" />
+      <source src="/videos/genova-hero-mobile.mp4" type="video/mp4" media="(max-width: 767px)" />
+      <source src="/videos/genova-hero.mp4" type="video/mp4" />
     </video>
   );
 }
