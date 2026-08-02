@@ -4,6 +4,7 @@ import { generatedMessages } from "./i18n-generated";
 import { reviewedMessages } from "./i18n-reviewed";
 import { auditFixMessages } from "./i18n-audit-fixes";
 import { qualityMessages } from "./i18n-quality";
+import { formalizeItalian } from "./i18n-formal-it";
 export type Locale = "fr" | "it" | "en" | "es" | "ru" | "zh";
 export const locales = ["it", "en", "fr"] as const;
 
@@ -194,8 +195,9 @@ export function translate(source: string, locale: Locale) {
     .replace(/\s+([:;?!])/g, "$1")
     .trim();
   const direct = qualityMessages[source] ?? auditFixMessages[source] ?? reviewedMessages[source] ?? publicMessages[source] ?? supplementalMessages[source] ?? messages[source] ?? generatedMessages[source];
-  if (direct) return direct[locale];
+  if (direct) return locale === "it" ? formalizeItalian(direct.it) : direct[locale];
   const normalizedEntry = Object.entries({ ...generatedMessages, ...messages, ...supplementalMessages, ...publicMessages, ...reviewedMessages, ...auditFixMessages, ...qualityMessages })
     .find(([key]) => key.replace(/\u00a0/g, " ").replace(/\s+/g, " ").replace(/\s+([:;?!])/g, "$1").trim().toLocaleLowerCase("fr") === normalized.toLocaleLowerCase("fr"));
-  return normalizedEntry?.[1][locale] ?? source;
+  const result = normalizedEntry?.[1][locale] ?? source;
+  return locale === "it" ? formalizeItalian(result) : result;
 }
