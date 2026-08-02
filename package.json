@@ -11,6 +11,7 @@
     "start": "vinext start",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
     "test:i18n": "node --test tests/i18n-reviewed.test.mjs",
+    "generate:i18n-runtime": "node scripts/generate-runtime-i18n.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate"
   },

@@ -50,7 +50,7 @@ function translateTree(root: ParentNode, locale: Locale) {
       }
     });
   });
-  document.documentElement.lang = locale === "zh" ? "zh-CN" : locale;
+  document.documentElement.lang = locale;
   translating = false;
 }
 
@@ -110,13 +110,13 @@ export function LocaleController({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const section = pathname.split("/").filter(Boolean)[0] || "home";
     const titles: Record<string, Record<Locale, string>> = {
-      home: { fr:"AUREVIA | Gestion de propriétés à Gênes et en Ligurie", it:"AUREVIA | Gestione di proprietà a Genova e in Liguria", en:"AUREVIA | Property management in Genoa and Liguria", es:"AUREVIA | Gestión de propiedades en Génova y Liguria", ru:"AUREVIA | Управление недвижимостью в Генуе и Лигурии", zh:"AUREVIA | 热那亚与利古里亚房产管理" },
-      servizi: { fr:"Services de gestion de propriété | AUREVIA", it:"Servizi di gestione immobiliare | AUREVIA", en:"Property management services | AUREVIA", es:"Servicios de gestión inmobiliaria | AUREVIA", ru:"Услуги по управлению недвижимостью | AUREVIA", zh:"房产管理服务 | AUREVIA" },
-      esperienze: { fr:"Expériences sur mesure | AUREVIA", it:"Esperienze su misura | AUREVIA", en:"Tailored experiences | AUREVIA", es:"Experiencias a medida | AUREVIA", ru:"Индивидуальные впечатления | AUREVIA", zh:"专属定制体验 | AUREVIA" },
-      "chi-siamo": { fr:"Notre histoire | AUREVIA", it:"La nostra storia | AUREVIA", en:"Our story | AUREVIA", es:"Nuestra historia | AUREVIA", ru:"О нас | AUREVIA", zh:"关于我们 | AUREVIA" },
-      proprietari: { fr:"Accompagnement des propriétaires | AUREVIA", it:"Servizi per proprietari | AUREVIA", en:"Owner services | AUREVIA", es:"Servicios para propietarios | AUREVIA", ru:"Услуги для владельцев | AUREVIA", zh:"业主服务 | AUREVIA" },
-      contatti: { fr:"Contact privé | AUREVIA", it:"Contatto riservato | AUREVIA", en:"Private contact | AUREVIA", es:"Contacto privado | AUREVIA", ru:"Конфиденциальная связь | AUREVIA", zh:"私密咨询 | AUREVIA" },
-      valutazione: { fr:"Évaluation confidentielle | AUREVIA", it:"Valutazione riservata | AUREVIA", en:"Private property assessment | AUREVIA", es:"Valoración confidencial | AUREVIA", ru:"Конфиденциальная оценка | AUREVIA", zh:"私密房产评估 | AUREVIA" },
+      home: { fr:"AUREVIA | Gestion de propriétés à Gênes et en Ligurie", it:"AUREVIA | Gestione di proprietà a Genova e in Liguria", en:"AUREVIA | Property management in Genoa and Liguria" },
+      servizi: { fr:"Services de gestion de propriété | AUREVIA", it:"Servizi di gestione immobiliare | AUREVIA", en:"Property management services | AUREVIA" },
+      esperienze: { fr:"Expériences sur mesure | AUREVIA", it:"Esperienze su misura | AUREVIA", en:"Tailored experiences | AUREVIA" },
+      "chi-siamo": { fr:"Notre histoire | AUREVIA", it:"La nostra storia | AUREVIA", en:"Our story | AUREVIA" },
+      proprietari: { fr:"Accompagnement des propriétaires | AUREVIA", it:"Servizi per proprietari | AUREVIA", en:"Owner services | AUREVIA" },
+      contatti: { fr:"Contact privé | AUREVIA", it:"Contatto riservato | AUREVIA", en:"Private contact | AUREVIA" },
+      valutazione: { fr:"Évaluation confidentielle | AUREVIA", it:"Valutazione riservata | AUREVIA", en:"Private property assessment | AUREVIA" },
     };
     document.title = (titles[section] || titles.home)[locale];
   }, [locale, pathname]);
