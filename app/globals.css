@@ -1702,7 +1702,7 @@ header a[aria-current="page"]:not(.button)::after{
 .site-header.is-hidden{transform:translateY(calc(-100% - 2px))}
 .site-header>.logo{width:112px;height:78px;flex-basis:auto;justify-self:start}
 .site-header>.logo img{width:102px!important;height:76px!important;max-width:102px!important;margin:1px auto!important}
-.site-header>.logo-legacy-crop img{width:92px!important;height:92px!important;max-width:92px!important;transform:translateY(5px) scale(1.1)}
+.site-header>.logo-legacy-crop img{width:92px!important;height:92px!important;max-width:92px!important;transform:translateY(-6px) scale(1.1)}
 .desktop-navigation{
   justify-self:center;
   display:flex;
@@ -1800,7 +1800,7 @@ header a[aria-current="page"]:not(.button)::after{
   .site-header{height:78px;grid-template-columns:104px 1fr;padding:0 20px;background:rgba(5,14,22,.96)}
   .site-header>.logo{width:96px;height:70px}
   .site-header>.logo img{width:86px!important;height:70px!important;max-width:86px!important}
-  .site-header>.logo-legacy-crop img{width:78px!important;height:78px!important;max-width:78px!important;transform:translateY(4px) scale(1.08)}
+  .site-header>.logo-legacy-crop img{width:78px!important;height:78px!important;max-width:78px!important;transform:translateY(-4px) scale(1.08)}
   .desktop-navigation,.header-actions{display:none}
   .site-header .menu-btn{display:flex;justify-self:end;width:auto;height:44px;margin:0;padding:0 2px;color:var(--ivory)}
 }
