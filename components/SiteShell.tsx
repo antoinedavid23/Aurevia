@@ -11,7 +11,7 @@ import { localeNames } from "@/lib/i18n";
 const nav = [
   ["Accueil", "/"],
   ["Services", "/servizi"],
-  ["Accompagnement", "/proprietari"],
+  ["Propriétaires", "/proprietari"],
   ["Propriétés", "/proprieta"],
   ["Expériences", "/esperienze"],
   ["À propos", "/chi-siamo"],
@@ -20,11 +20,7 @@ const nav = [
 ];
 
 const primaryNav = nav.filter(([, href]) =>
-  ["/servizi", "/proprietari", "/proprieta", "/chi-siamo"].includes(href),
-);
-
-const secondaryNav = nav.filter(([, href]) =>
-  ["/esperienze", "/simulatore", "/contatti"].includes(href),
+  ["/servizi", "/proprietari", "/proprieta", "/esperienze", "/chi-siamo"].includes(href),
 );
 
 export function Logo() {
@@ -51,7 +47,6 @@ function LanguageSelector() {
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [moreOpen, setMoreOpen] = useState(false);
   const [cookies, setCookies] = useState(false);
   useEffect(() => {
     const frame = requestAnimationFrame(() => setCookies(!localStorage.getItem("aurevia-cookie")));
@@ -63,32 +58,32 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       document.body.style.overflow = "";
     };
   }, [open]);
+  useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => {
+    const closeOnEscape = (event: KeyboardEvent) => event.key === "Escape" && setOpen(false);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, []);
   function saveCookieChoice(choice: "accepted" | "refused") {
     localStorage.setItem("aurevia-cookie", choice);
     setCookies(false);
   }
   return <>
-    <header>
+    <header className="site-header">
       <Logo/>
-      <nav>
+      <nav className="desktop-navigation" aria-label="Navigation principale">
         {primaryNav.map(([name, href]) => <Link key={href} href={href} aria-current={pathname === href || pathname.startsWith(`${href}/`) ? "page" : undefined}>{name}</Link>)}
-        <div className={`nav-more${moreOpen ? " is-open" : ""}`}>
-          <button type="button" aria-expanded={moreOpen} onClick={() => setMoreOpen((current) => !current)}>
-            Plus <ChevronDown size={13}/>
-          </button>
-          {moreOpen && <div className="nav-more-menu">
-            {secondaryNav.map(([name, href]) => <Link key={href} href={href} aria-current={pathname === href || pathname.startsWith(`${href}/`) ? "page" : undefined} onClick={() => setMoreOpen(false)}>{name}</Link>)}
-          </div>}
-        </div>
+      </nav>
+      <div className="header-actions">
         <LanguageSelector/>
-        <Link className="button small" href="/valutazione">Évaluer mon bien</Link>
+        <Link className="header-consultation" href="/valutazione">Évaluer mon bien <ArrowRight size={14}/></Link>
         <Link className="admin-login" href="/connexion" aria-label="Connexion" title="Connexion">
           <LogIn size={17}/><span className="sr-only">Connexion</span>
         </Link>
-      </nav>
-      <button className="menu-btn" aria-label="Ouvrir le menu" onClick={() => setOpen(true)}><Menu/></button>
+      </div>
+      <button className="menu-btn" aria-label="Ouvrir le menu" aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(true)}><span>Menu</span><Menu/></button>
     </header>
-    {open && <div className="mobile-menu"><button aria-label="Fermer le menu" onClick={() => setOpen(false)}><X/></button><Logo/>{nav.map(([name, href]) => <Link onClick={() => setOpen(false)} key={href} href={href} aria-current={pathname === href || (href !== "/" && pathname.startsWith(`${href}/`)) ? "page" : undefined}>{name}</Link>)}<div className="mobile-language-options" aria-label="Choisir la langue"><LanguageOptions onSelect={() => setOpen(false)}/></div><Link className="button" onClick={() => setOpen(false)} href="/valutazione">Évaluer mon bien</Link><Link className="mobile-admin-login" onClick={() => setOpen(false)} href="/connexion"><LogIn size={18}/> Connexion</Link></div>}
+    {open && <div className="mobile-menu" id="mobile-navigation" role="dialog" aria-modal="true" aria-label="Navigation"><div className="mobile-menu-head"><Logo/><button aria-label="Fermer le menu" onClick={() => setOpen(false)}><span>Fermer le menu</span><X/></button></div><nav aria-label="Navigation mobile">{nav.map(([name, href], index) => <Link onClick={() => setOpen(false)} key={href} href={href} aria-current={pathname === href || (href !== "/" && pathname.startsWith(`${href}/`)) ? "page" : undefined}><span>{String(index + 1).padStart(2,"0")}</span>{name}<ArrowRight size={16}/></Link>)}</nav><div className="mobile-menu-footer"><div className="mobile-language-options" aria-label="Choisir la langue"><LanguageOptions onSelect={() => setOpen(false)}/></div><Link className="mobile-consultation" onClick={() => setOpen(false)} href="/valutazione">Évaluer mon bien <ArrowRight size={16}/></Link><Link className="mobile-admin-login" onClick={() => setOpen(false)} href="/connexion"><LogIn size={16}/> Connexion</Link></div></div>}
     <main>{children}</main>
     <footer className="footer-premium">
       <div className="footer-signature">

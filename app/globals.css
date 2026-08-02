@@ -1675,7 +1675,129 @@ header a[aria-current="page"]:not(.button)::after{
   .mobile-two-grid .service-card-copy h3,
   .mobile-two-grid .experience-card h3{font-size:1.15rem!important}
   .mobile-two-grid .service-card-copy p,
-  .mobile-two-grid .experience-card p{font-size:.75rem!important}
+.mobile-two-grid .experience-card p{font-size:.75rem!important}
+}
+
+/* Navigation AUREVIA — composition éditoriale premium */
+.site-header{
+  height:88px;
+  padding:0 clamp(24px,3.4vw,58px);
+  display:grid;
+  grid-template-columns:132px minmax(0,1fr) auto;
+  align-items:center;
+  gap:clamp(24px,3vw,52px);
+  background:rgba(5,14,22,.92);
+  border-bottom:1px solid rgba(200,161,90,.18);
+  box-shadow:0 12px 40px rgba(0,0,0,.12);
+}
+.site-header>.logo{width:112px;height:78px;flex-basis:auto;justify-self:start}
+.site-header>.logo img{width:102px!important;height:76px!important;max-width:102px!important;margin:1px auto!important}
+.site-header>.logo-legacy-crop img{width:92px!important;height:92px!important;max-width:92px!important;transform:translateY(5px) scale(1.1)}
+.desktop-navigation{
+  justify-self:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(18px,2vw,34px);
+  min-width:0;
+}
+.desktop-navigation>a{
+  position:relative;
+  padding:34px 0 31px;
+  color:rgba(247,242,233,.76);
+  font-size:.64rem;
+  font-weight:500;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  white-space:nowrap;
+  transition:color .2s ease;
+}
+.desktop-navigation>a:hover,.desktop-navigation>a[aria-current="page"]{color:var(--ivory)}
+.desktop-navigation>a:after{
+  content:"";
+  position:absolute;
+  left:0;right:100%;bottom:22px;
+  height:1px;
+  background:var(--gold);
+  transition:right .25s ease;
+}
+.desktop-navigation>a:hover:after,.desktop-navigation>a[aria-current="page"]:after{right:0}
+.header-actions{display:flex;align-items:center;justify-content:flex-end;gap:14px}
+.header-actions .language-selector{padding-right:14px;border-right:1px solid rgba(200,161,90,.2)}
+.header-consultation{
+  min-height:42px;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:0 18px;
+  border:1px solid rgba(200,161,90,.62);
+  color:var(--soft-gold);
+  font-size:.61rem;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  white-space:nowrap;
+  transition:background .2s ease,color .2s ease;
+}
+.header-consultation:hover{background:var(--gold);color:var(--midnight)}
+.header-actions .admin-login{width:38px;height:38px;display:grid;place-items:center;color:rgba(247,242,233,.62)}
+.header-actions .admin-login:hover{color:var(--gold)}
+.site-header .menu-btn{align-items:center;gap:10px;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase}
+.site-header a:focus-visible,.site-header button:focus-visible,.mobile-menu a:focus-visible,.mobile-menu button:focus-visible{outline:1px solid var(--gold);outline-offset:4px}
+
+.mobile-menu{
+  z-index:100;
+  padding:0;
+  gap:0;
+  background:radial-gradient(circle at 100% 0,rgba(200,161,90,.09),transparent 28%),#071019;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+}
+.mobile-menu-head{
+  min-height:86px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 24px;
+  border-bottom:1px solid rgba(200,161,90,.18);
+}
+.mobile-menu-head .logo{width:100px;height:76px;margin:0}
+.mobile-menu-head .logo img{width:90px!important;height:90px!important;max-width:90px!important}
+.mobile-menu-head>button{display:flex;align-items:center;gap:9px;border:0;background:none;color:var(--ivory);font-size:.59rem;letter-spacing:.13em;text-transform:uppercase}
+.mobile-menu>nav{display:grid;padding:18px 24px 8px}
+.mobile-menu>nav>a{
+  display:grid;
+  grid-template-columns:34px 1fr auto;
+  align-items:center;
+  min-height:58px;
+  border-bottom:1px solid rgba(200,161,90,.12);
+  color:var(--ivory);
+  font-family:var(--font-serif);
+  font-size:clamp(1.35rem,5.5vw,1.8rem);
+  line-height:1;
+}
+.mobile-menu>nav>a>span{color:var(--gold);font-family:var(--font-sans);font-size:.55rem;letter-spacing:.12em}
+.mobile-menu>nav>a>svg{color:rgba(200,161,90,.42)}
+.mobile-menu>nav>a[aria-current="page"]{color:var(--soft-gold);padding-left:0;border-left:0}
+.mobile-menu>nav>a[aria-current="page"]>svg{color:var(--gold)}
+.mobile-menu-footer{display:grid;gap:12px;padding:18px 24px max(28px,env(safe-area-inset-bottom))}
+.mobile-menu-footer .mobile-language-options{margin:0;padding:0 0 16px;border:0;border-bottom:1px solid rgba(200,161,90,.15);grid-template-columns:repeat(3,1fr)}
+.mobile-menu-footer .mobile-language-options button{min-height:38px}
+.mobile-consultation{min-height:50px;display:flex;align-items:center;justify-content:space-between;padding:0 17px;background:var(--gold);color:var(--midnight);font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.mobile-menu-footer .mobile-admin-login{margin:0!important;padding:10px 0 0;border:0;font-size:.65rem!important}
+
+@media(max-width:1100px){
+  .site-header{height:78px;grid-template-columns:104px 1fr;padding:0 20px;background:rgba(5,14,22,.96)}
+  .site-header>.logo{width:96px;height:70px}
+  .site-header>.logo img{width:86px!important;height:70px!important;max-width:86px!important}
+  .site-header>.logo-legacy-crop img{width:78px!important;height:78px!important;max-width:78px!important;transform:translateY(4px) scale(1.08)}
+  .desktop-navigation,.header-actions{display:none}
+  .site-header .menu-btn{display:flex;justify-self:end;width:auto;height:44px;margin:0;padding:0 2px;color:var(--ivory)}
+}
+
+@media(min-width:700px) and (max-width:1100px){
+  .mobile-menu>nav{grid-template-columns:1fr 1fr;column-gap:42px;padding-inline:8vw}
+  .mobile-menu-head,.mobile-menu-footer{padding-inline:8vw}
 }
 
 @media(max-width:767px){
