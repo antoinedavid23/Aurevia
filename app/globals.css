@@ -296,6 +296,7 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
 .method-hint{grid-column:2;margin:0;color:#829098;font-size:.7rem;letter-spacing:.08em}
 .experience-card{min-height:460px;padding:26px}.experience-card h3{margin:3px 0 -3px;font-size:clamp(1.55rem,2.2vw,2rem);line-height:1}.experience-card p{min-height:0;margin:0 0 8px;line-height:1.45}.experience-card ul{display:grid;gap:3px;list-style:none;padding:0;margin:0 0 14px;font-size:.74rem;color:#d8dddc}.experience-card li:before{content:"—";color:var(--gold);margin-right:7px}.experience-card>small{font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--soft-gold)}
 .experience-card.experience-card-securite-privee{background-position:72% center!important}
+.experience-service-card-securite-privee{background-position:72% center!important}
 .service-card-image.service-card-sicurezza{background-position:76% center!important}
 .service-card,.service-card *,.experience-card,.experience-card *,.property-card,.property-card *{transform:none!important}
 .service-card,.experience-card,.property-image{background-position:center!important;transition:none!important;animation:none!important}
@@ -1681,6 +1682,9 @@ header a[aria-current="page"]:not(.button)::after{
   .mobile-two-grid .service-card-copy p,
 .mobile-two-grid .experience-card p{font-size:.75rem!important}
 }
+
+/* Cadrage spécifique : garder l'agent visible dans la carte de protection rapprochée. */
+.service-card-image.experience-service-card-securite-privee{background-position:72% center!important}
 
 /* Navigation AUREVIA — composition éditoriale premium */
 .site-header{
