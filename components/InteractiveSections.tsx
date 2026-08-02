@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Check, Star } from "lucide-react";
+import { ArrowRight, Check, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { useLocale } from "@/components/LocaleController";
 import { translate } from "@/lib/i18n";
 
@@ -88,14 +88,32 @@ const reviews = [
   {initials:"MP",place:"Portofino",date:"Séjour pilote",quote:"La présentation, les informations voyageurs et le suivi sont enfin réunis dans un seul échange.",source:"Témoignage propriétaire à faire valider avant publication"},
   {initials:"CR",place:"Gênes",date:"Mise en gestion",quote:"Nous avons retrouvé de la visibilité sur les réservations, l’entretien et les décisions tarifaires.",source:"Témoignage propriétaire à faire valider avant publication"},
   {initials:"AL",place:"Riviera ligure",date:"Accompagnement",quote:"L’équipe anticipe les détails opérationnels et nous tient informés sans multiplier les messages.",source:"Témoignage propriétaire à faire valider avant publication"},
+  {initials:"FV",place:"Portofino",date:"Suivi privé",quote:"Un service précis, discret et toujours présent.",source:"Témoignage propriétaire à faire valider avant publication"},
+  {initials:"GM",place:"Gênes",date:"Gestion du bien",quote:"Notre propriété est entretenue avec une attention que nous ne pouvions plus assurer seuls.",source:"Témoignage propriétaire à faire valider avant publication"},
+  {initials:"RL",place:"Riviera ligure",date:"Coordination",quote:"Nous avons enfin un interlocuteur unique pour tout coordonner.",source:"Témoignage propriétaire à faire valider avant publication"},
 ];
 
 export function ReviewCards(){
-  return <div className="review-grid">{reviews.map(review=><article className="review-card" key={review.initials}>
-    <div className="review-head"><div className="review-avatar" aria-label={`Portrait temporaire de ${review.initials}`}>{review.initials}</div><div><strong>Propriétaire vérifié·e</strong><span>{review.place} · {review.date}</span></div></div>
-    <div className="review-stars" aria-label="5 étoiles">{Array.from({length:5}).map((_,i)=><Star key={i} size={15} fill="currentColor"/>)}</div>
-    <blockquote>“{review.quote}”</blockquote><small>{review.source}</small>
-  </article>)}</div>;
+  const [active,setActive]=useState(0);
+  const [visibleCount,setVisibleCount]=useState(3);
+  useEffect(()=>{
+    const media=window.matchMedia("(max-width: 900px)");
+    const update=()=>setVisibleCount(media.matches?1:3);
+    update();
+    media.addEventListener("change",update);
+    return ()=>media.removeEventListener("change",update);
+  },[]);
+  const visible=Array.from({length:visibleCount},(_,offset)=>reviews[(active+offset)%reviews.length]);
+  const move=(direction:number)=>setActive(current=>(current+direction+reviews.length)%reviews.length);
+  return <div className="review-carousel">
+    <button className="review-arrow review-arrow-left" type="button" onClick={()=>move(-1)} aria-label="Voir les avis précédents"><ChevronLeft/></button>
+    <div className="review-grid" aria-live="polite">{visible.map((review,index)=><article className="review-card" key={`${review.initials}-${active}-${index}`}>
+      <div className="review-head"><div className="review-avatar" aria-label={`Portrait temporaire de ${review.initials}`}>{review.initials}</div><div><strong>Propriétaire vérifié·e</strong><span>{review.place} · {review.date}</span></div></div>
+      <div className="review-stars" aria-label="5 étoiles">{Array.from({length:5}).map((_,i)=><Star key={i} size={15} fill="currentColor"/>)}</div>
+      <blockquote>“{review.quote}”</blockquote><small>{review.source}</small>
+    </article>)}</div>
+    <button className="review-arrow review-arrow-right" type="button" onClick={()=>move(1)} aria-label="Voir les avis suivants"><ChevronRight/></button>
+  </div>;
 }
 
 const clarityMoments = [
