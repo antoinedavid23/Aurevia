@@ -138,6 +138,8 @@ header>.logo img{display:block;width:136px!important;height:88px!important;max-w
   .card-grid{gap:24px}
 }
 
+.form-success{color:#45c98a}
+
 /* Pages légales */
 .legal-content{max-width:920px;color:#26323b}.legal-content h2{margin:55px 0 16px;color:var(--navy);font-size:clamp(1.65rem,3vw,2.35rem)}.legal-content h3{margin-top:32px;color:var(--navy)}.legal-content p,.legal-content li{line-height:1.8}.legal-content a,.form-privacy a{color:#876829;text-decoration:underline;text-underline-offset:3px}.legal-content ul{padding-left:22px}.legal-updated{color:#757b7f;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}.legal-content .legal-note{margin:24px 0;padding:16px;border-left:2px solid var(--gold);background:rgba(200,161,90,.08);color:#3f3b32}.legal-table{margin:24px 0;border:1px solid #d9d0c1}.legal-table>div{display:grid;grid-template-columns:1.1fr 1fr 1fr;border-bottom:1px solid #d9d0c1}.legal-table>div:last-child{border:0}.legal-table span,.legal-table b{padding:16px}.legal-table>div:first-child{background:var(--navy);color:var(--ivory)}.legal-contact{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;margin-top:65px;padding:24px;border-top:1px solid #cfc3b0;border-bottom:1px solid #cfc3b0}.legal-inline-links{display:flex;flex-wrap:wrap;gap:18px}.form-privacy{margin:18px 0 0;font-size:.72rem;line-height:1.6;color:#b9bdbe}
 @media(max-width:700px){.legal-content h2{margin-top:42px}.legal-table>div{grid-template-columns:1fr}.legal-table>div:first-child{display:none}.legal-table span,.legal-table b{padding:10px 14px}.legal-table span:first-child{padding-top:18px;font-weight:700;color:var(--navy)}.legal-table span:last-child{padding-bottom:18px}.legal-contact{align-items:flex-start;flex-direction:column}}
@@ -2482,4 +2484,28 @@ header a[aria-current="page"]:not(.button)::after{
   .values-feature>p:not(.values-feature-name):not(.values-feeling){
     font-size:.72rem!important;
   }
+}
+/* Page de confirmation — Gênes au bleu du soir */
+.grazie-hero{
+  background-image:url("/images/contact/thank-you-background.webp");
+  background-size:cover;
+  background-position:center;
+}
+.grazie-hero:after{
+  background:
+    linear-gradient(90deg,rgba(4,10,16,.94) 0%,rgba(4,10,16,.84) 34%,rgba(4,10,16,.36) 63%,rgba(4,10,16,.14) 100%),
+    linear-gradient(180deg,rgba(4,10,16,.28),rgba(4,10,16,.48));
+}
+.grazie-hero .hero-content{width:min(1180px,calc(100% - 48px))}
+.grazie-hero h1{max-width:760px}
+.grazie-hero .hero-copy{max-width:650px;text-shadow:0 2px 20px rgba(0,0,0,.65)}
+@media(max-width:700px){
+  .grazie-hero{background-position:66% center}
+  .grazie-hero:after{
+    background:
+      linear-gradient(90deg,rgba(4,10,16,.93),rgba(4,10,16,.67)),
+      linear-gradient(180deg,rgba(4,10,16,.38),rgba(4,10,16,.7));
+  }
+  .grazie-hero .hero-content{width:min(100% - 34px,1180px);padding-top:110px}
+  .grazie-hero .actions{flex-direction:column;align-items:stretch;max-width:360px}
 }
