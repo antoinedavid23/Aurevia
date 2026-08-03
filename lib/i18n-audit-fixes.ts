@@ -144,7 +144,6 @@ export const auditFixMessages: Record<string, Localized> = {
   "L’envoi n’a pas abouti. Réessayez dans un instant.": t("L’invio non è andato a buon fine. Riprovi tra un istante.", "The message could not be sent. Please try again in a moment.", "El mensaje no se ha podido enviar. Inténtelo de nuevo en unos instantes.", "Не удалось отправить сообщение. Повторите попытку через несколько секунд.", "消息未能发送，请稍后重试。"),
   "Demande bien enregistrée.": t("Richiesta correttamente inviata.", "Your enquiry has been sent.", "Solicitud enviada correctamente.", "Запрос успешно отправлен.", "申请已成功发送。"),
   "La demande n’a pas pu être enregistrée. Réessayez.": t("Non è stato possibile registrare la richiesta. Riprova.", "The enquiry could not be saved. Please try again.", "No se ha podido guardar la solicitud. Inténtelo de nuevo.", "Не удалось сохранить запрос. Повторите попытку.", "未能保存申请，请重试。"),
-  "Demande bien enregistrée.": t("Richiesta registrata correttamente.", "Enquiry saved successfully.", "Solicitud guardada correctamente.", "Запрос успешно сохранён.", "申请已成功保存。"),
   "Confidentialité absolue": t("Riservatezza assoluta", "Absolute confidentiality", "Confidencialidad absoluta", "Абсолютная конфиденциальность", "绝对私密"),
   "Exigence constante": t("Standard costanti", "Uncompromising standards", "Exigencia constante", "Неизменно высокие стандарты", "始终如一的高标准"),
   "Présence attentive": t("Presenza attenta", "Attentive presence", "Presencia atenta", "Внимательное присутствие", "悉心守护"),
