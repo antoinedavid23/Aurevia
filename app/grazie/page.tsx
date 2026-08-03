@@ -1,1 +1,15 @@
-import Link from "next/link";export default function Page(){return <section className="hero"><div className="container hero-content"><p className="eyebrow">Demande reçue</p><h1>Merci pour votre demande</h1><p className="hero-copy">Notre équipe examinera vos informations et vous recontactera de manière confidentielle.</p><div className="actions"><Link className="button" href="/">Retour à l’accueil</Link><Link className="button ghost" href="/servizi">Découvrir les services</Link></div></div></section>}
+import Link from "next/link";
+
+export default function Page(){
+  return <section className="hero grazie-hero">
+    <div className="container hero-content">
+      <p className="eyebrow">Demande reçue</p>
+      <h1>Merci pour votre demande</h1>
+      <p className="hero-copy">Notre équipe examinera vos informations et vous recontactera de manière confidentielle.</p>
+      <div className="actions">
+        <Link className="button" href="/">Retour à l’accueil</Link>
+        <Link className="button ghost" href="/servizi">Découvrir les services</Link>
+      </div>
+    </div>
+  </section>;
+}
