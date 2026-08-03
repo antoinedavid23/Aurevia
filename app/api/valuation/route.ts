@@ -7,7 +7,7 @@ export async function POST(req: Request) {
     const parsed = leadSchema.safeParse(await req.json());
     if (!parsed.success) {
       return NextResponse.json(
-        { ok: false, error: "Les informations transmises sont incomplètes." },
+        { ok: false, code: "invalid_payload" },
         { status: 400 },
       );
     }
@@ -16,7 +16,7 @@ export async function POST(req: Request) {
   } catch (error) {
     console.error("AUREVIA valuation delivery failed", error);
     return NextResponse.json(
-      { ok: false, error: "L’envoi n’a pas abouti. Réessayez dans un instant." },
+      { ok: false, code: "delivery_failed" },
       { status: 500 },
     );
   }
