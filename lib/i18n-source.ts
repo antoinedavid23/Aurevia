@@ -106,7 +106,7 @@ export const messages: Record<string, Localized> = {
   "Votre propriété mérite": t("Il Suo immobile merita", "Your property deserves", "Su propiedad merece", "Ваш объект достоин", "您的房产值得"),
   "une gestion à sa hauteur": t("una gestione all’altezza", "management of equal distinction", "una gestión a su altura", "управления соответствующего уровня", "与之匹配的卓越管理"),
 
-  "Gestion de propriété": t("Gestione della proprietà", "Property management", "Gestión de la propiedad", "Управление объектом", "房产管理"),
+  "Gestion de locations courte durée": t("Gestione di affitti brevi", "Short-term rental management", "Gestión de alquileres de corta duración", "Управление краткосрочной арендой", "短租管理"),
   "Gestion intégrale du bien": t("Gestione integrale del bene", "Complete property stewardship", "Gestión integral del bien", "Комплексное управление", "全方位房产托管"),
   "Assistance sur mesure": t("Assistenza su misura", "Bespoke assistance", "Asistencia a medida", "Персональный сервис", "专属礼宾服务"),
   "Conciergerie personnalisée": t("Concierge personalizzata", "Bespoke concierge", "Conserjería personalizada", "Персональный консьерж", "定制礼宾"),

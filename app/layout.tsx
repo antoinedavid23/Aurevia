@@ -12,8 +12,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://aurevia-genova.com"),
-  title: { default: "AUREVIA | Gestione immobiliare a Genova e in Liguria", template: "%s | AUREVIA" },
-  description: "Property management e gestione immobiliare su misura per proprietà di pregio, seconde case e affitti brevi a Genova e in Liguria.",
+  title: { default: "AUREVIA | Gestione di affitti brevi a Genova e in Liguria", template: "%s | AUREVIA" },
+  description: "Gestione di affitti brevi e property management su misura per proprietà di pregio e seconde case a Genova e in Liguria.",
   openGraph: {
     url: "https://aurevia-genova.com",
     title: "AUREVIA",
@@ -51,7 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         url: "https://aurevia-genova.com",
         logo: "https://aurevia-genova.com/images/brand/aurevia-logo-transparent-gold.png",
         email: "contatto@aurevia-genova.com",
-        description: "Gestione immobiliare e servizi su misura per proprietà di pregio a Genova e in Liguria.",
+        description: "Gestione di affitti brevi e servizi su misura per proprietà di pregio a Genova e in Liguria.",
         areaServed: ["Genova", "Liguria", "Riviera Ligure"],
       },
       {

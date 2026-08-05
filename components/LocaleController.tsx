@@ -110,8 +110,8 @@ export function LocaleController({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const section = pathname.split("/").filter(Boolean)[0] || "home";
     const titles: Record<string, Record<Locale, string>> = {
-      home: { fr:"AUREVIA | Gestion de propriétés à Gênes et en Ligurie", it:"AUREVIA | Gestione di proprietà a Genova e in Liguria", en:"AUREVIA | Property management in Genoa and Liguria" },
-      servizi: { fr:"Services de gestion de propriété | AUREVIA", it:"Servizi di gestione immobiliare | AUREVIA", en:"Property management services | AUREVIA" },
+      home: { fr:"AUREVIA | Gestion de locations courte durée à Gênes", it:"AUREVIA | Gestione di affitti brevi a Genova", en:"AUREVIA | Short-term rental property management in Genoa" },
+      servizi: { fr:"Gestion de locations courte durée | AUREVIA", it:"Gestione di affitti brevi | AUREVIA", en:"Short-term rental management | AUREVIA" },
       esperienze: { fr:"Expériences sur mesure | AUREVIA", it:"Esperienze su misura | AUREVIA", en:"Tailored experiences | AUREVIA" },
       "chi-siamo": { fr:"Notre histoire | AUREVIA", it:"La nostra storia | AUREVIA", en:"Our story | AUREVIA" },
       proprietari: { fr:"Accompagnement des propriétaires | AUREVIA", it:"Servizi per proprietari | AUREVIA", en:"Owner services | AUREVIA" },

@@ -4,7 +4,7 @@ import { PageHero, CTA } from "@/components/PageHero";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Gestione immobiliare per proprietari",
+  title: "Gestione di affitti brevi per proprietari",
   description: "Un interlocutore unico per valorizzare, proteggere e gestire la Sua proprietà a Genova e sulla Riviera Ligure, anche a distanza.",
   alternates: { canonical: "/proprietari" },
 };

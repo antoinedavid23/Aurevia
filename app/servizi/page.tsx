@@ -4,8 +4,8 @@ import { ServiceCard } from "@/components/Cards";
 import { services } from "@/data/content";
 
 export const metadata = {
-  title: "Property management e gestione immobiliare a Genova",
-  description: "Property management, gestione completa della proprietà, accoglienza, manutenzione e ottimizzazione dei ricavi a Genova e in Liguria.",
+  title: "Gestione di affitti brevi e property management a Genova",
+  description: "Gestione completa degli affitti brevi, accoglienza, manutenzione e ottimizzazione dei ricavi a Genova e in Liguria.",
   alternates: { canonical: "/servizi" },
 };
 
