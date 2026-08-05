@@ -46,6 +46,7 @@ function LanguageSelector() {
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const isPrivateStrategy = pathname.startsWith("/administration/strategia");
   const [open, setOpen] = useState(false);
   const [headerHidden, setHeaderHidden] = useState(false);
   const [cookies, setCookies] = useState(false);
@@ -89,6 +90,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
     localStorage.setItem("aurevia-cookie", choice);
     setCookies(false);
   }
+  if (isPrivateStrategy) return <main>{children}</main>;
   return <>
     <header className={`site-header${headerHidden ? " is-hidden" : ""}`}>
       <Logo/>

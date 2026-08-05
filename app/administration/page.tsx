@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import Link from "next/link";
 import { AdminPropertyManager } from "@/components/AdminPropertyManager";
 import { getAdminUser } from "@/lib/admin";
 
@@ -26,6 +27,7 @@ export default async function Page() {
           <p className="eyebrow">Collection</p>
           <h2>Propriétés AUREVIA</h2>
           <p className="admin-section-copy">Ajoutez un bien, préparez sa fiche puis publiez-la lorsque toutes les informations sont prêtes.</p>
+          <Link className="button small" href="/administration/strategia">Apri la strategia privata</Link>
           <AdminPropertyManager />
         </section>
       </div>
