@@ -1,2 +1,6 @@
-import {PageHero,CTA} from "@/components/PageHero";import {faqs} from "@/data/content";
-export default function Page(){return <><PageHero label="Questions fréquentes" title="Des réponses claires avant de commencer" text="Les questions les plus fréquentes sur la gestion, l’évaluation et la méthode AUREVIA."/><section className="section ivory"><div className="container faq">{faqs.map(([q,a])=><details key={q}><summary>{q}</summary><p>{a}</p></details>)}</div></section><CTA/></>}
+import { PageHero, CTA } from "@/components/PageHero";
+import { faqs } from "@/data/content";
+
+export default function Page() {
+  return <><PageHero label="Questions fréquentes" title="Des réponses claires avant de commencer" text="Zone d’intervention, suivi, frais séparés, estimation et démarrage : les principaux points à clarifier avec Velyo." image="/images/about/genova-architecture.webp" /><section className="section ivory"><div className="container faq">{faqs.map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div></section><CTA /></>;
+}

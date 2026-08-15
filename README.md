@@ -1,45 +1,37 @@
-# AUREVIA
+# Velyo Property Manager
 
-Site complet de démonstration pour une conciergerie immobilière haut de gamme à Genova et en Liguria. L’expérience est pensée pour convertir des propriétaires vers une évaluation privée.
+Cette branche est une transformation directe du projet Aurevia : même architecture multi-pages, mêmes routes fonctionnelles, mêmes formulaires, simulateur, administration et structure de contenu — avec une nouvelle identité Velyo et un standing plus accessible.
 
-## Lancer le projet
+## Direction Velyo
+
+- sans vidéo dans le hero ;
+- paysages liés à Genova ;
+- noir, crème et or utilisés avec plus de légèreté ;
+- typographie Manrope uniquement ;
+- langage plus direct et orienté service ;
+- expériences locales liées à Genova ;
+- propriétés de démonstration clairement identifiées.
+
+## Démarrage
 
 ```bash
 npm install
 npm run dev
 ```
 
-Vérifications :
+Puis ouvrir `http://localhost:3000`.
 
-```bash
-npm run lint
-npm run build
-```
+## Routes principales
 
-## Fonctionnalités
-
-- Pages éditoriales, services et fiches dynamiques
-- Propriétés et expériences de démonstration
-- Simulateur de revenus indicatif documenté dans `lib/simulator.ts`
-- Formulaires contact et évaluation avec validation client/serveur et honeypot
-- API routes prêtes à connecter à Resend
-- SEO, Open Graph, sitemap, robots et données structurables
-- Animations respectant `prefers-reduced-motion`
-- Responsive mobile, tablette et desktop
-- Logo, symboles, favicon et carte sociale
-
-## Variables
-
-Copier `.env.example` vers `.env.local`, puis remplacer les coordonnées. Sans clé Resend, les routes valident la demande et enregistrent uniquement un événement non sensible dans les logs.
-
-## Images
-
-Les emplacements sont préparés sous `public/images`. Les prompts de production sont dans `IMAGE_PROMPTS.md`. Les aplats éditoriaux servent de placeholders élégants jusqu’à l’arrivée des photographies finales.
-
-## Avant publication
-
-- Remplacer coordonnées, témoignages, propriétés et photos démonstratives
-- Faire valider les pages légales et la politique cookies
-- Configurer le destinataire email et Resend
-- Compléter les données de l’entreprise et les réseaux sociaux
-- Vérifier les coefficients du simulateur avec l’équipe commerciale
+- `/`
+- `/servizi` et `/servizi/[slug]`
+- `/esperienze` et `/esperienze/[slug]`
+- `/proprietari`
+- `/proprieta` et `/proprieta/[slug]`
+- `/simulatore`
+- `/chi-siamo`
+- `/contatti`
+- `/valutazione`
+- `/faq`
+- `/connexion`
+- administration, API et pages légales conservées depuis la base Aurevia.

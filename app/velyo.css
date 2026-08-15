@@ -1,0 +1,1043 @@
+:root {
+  --velyo-ink: #111318;
+  --velyo-ink-soft: #2f3338;
+  --velyo-gold: #c9a24b;
+  --velyo-gold-dark: #9b742f;
+  --velyo-cream: #f7f3ec;
+  --velyo-paper: #fffdf9;
+  --velyo-sand: #e8e1d6;
+  --velyo-sage: #7d8a78;
+  --velyo-blue: #536b76;
+  --velyo-line: rgba(17, 19, 24, .12);
+  --velyo-shadow: 0 22px 65px rgba(17, 19, 24, .1);
+}
+
+html,
+body {
+  background: var(--velyo-paper);
+  color: var(--velyo-ink);
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: "Manrope", system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+.logo,
+.button,
+.desktop-navigation,
+.eyebrow {
+  font-family: "Manrope", system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -.045em;
+}
+
+body::selection {
+  background: rgba(201, 162, 75, .28);
+}
+
+.velyo-header.site-header {
+  min-height: 82px;
+  padding: 0 clamp(20px, 4vw, 64px);
+  background: rgba(255, 253, 249, .95);
+  border-bottom: 1px solid var(--velyo-line);
+  color: var(--velyo-ink);
+  backdrop-filter: blur(18px);
+}
+
+.velyo-logo {
+  width: 190px;
+  height: 62px;
+  overflow: visible;
+}
+
+.velyo-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.velyo-header .desktop-navigation {
+  gap: clamp(16px, 1.6vw, 28px);
+}
+
+.velyo-header .desktop-navigation a {
+  position: relative;
+  color: #34373b;
+  font-size: .66rem;
+  font-weight: 650;
+  letter-spacing: .065em;
+  text-transform: uppercase;
+}
+
+.velyo-header .desktop-navigation a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -8px;
+  height: 2px;
+  background: var(--velyo-gold);
+  transition: right .2s ease;
+}
+
+.velyo-header .desktop-navigation a:hover::after,
+.velyo-header .desktop-navigation a[aria-current="page"]::after {
+  right: 0;
+}
+
+.velyo-header .header-consultation {
+  min-height: 42px;
+  padding: 0 17px;
+  border: 1px solid var(--velyo-gold);
+  border-radius: 10px;
+  background: var(--velyo-gold);
+  color: var(--velyo-ink);
+  font-size: .67rem;
+  letter-spacing: .06em;
+  box-shadow: none;
+}
+
+.velyo-header .admin-login {
+  border-color: var(--velyo-line);
+  color: var(--velyo-ink);
+}
+
+.home-velyo-hero {
+  position: relative;
+  min-height: min(820px, calc(100vh - 82px));
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--velyo-ink);
+}
+
+.velyo-hero-image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.velyo-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(17, 19, 24, .95) 0%, rgba(17, 19, 24, .83) 38%, rgba(17, 19, 24, .32) 72%, rgba(17, 19, 24, .08) 100%),
+    linear-gradient(0deg, rgba(17, 19, 24, .42), transparent 55%);
+}
+
+.home-velyo-hero .hero-content {
+  position: relative;
+  z-index: 2;
+  width: min(1280px, calc(100vw - 56px));
+  min-height: inherit;
+  padding-top: 90px;
+  display: flex;
+  align-items: center;
+}
+
+.velyo-hero-brand {
+  width: min(720px, 62vw);
+  margin: 0;
+  text-align: left;
+}
+
+.velyo-hero-brand .eyebrow {
+  margin-bottom: 22px;
+  color: #e8bf6e;
+  letter-spacing: .18em;
+}
+
+.velyo-hero-brand h1 {
+  max-width: 780px;
+  margin: 0 0 28px;
+  color: #fff;
+  font-size: clamp(3.3rem, 6.3vw, 6.9rem);
+  font-weight: 510;
+  line-height: .99;
+  text-transform: none;
+}
+
+.velyo-hero-brand h1 span {
+  color: #e5bc6a;
+}
+
+.velyo-hero-brand .hero-slogan {
+  max-width: 650px;
+  margin: 0 0 30px;
+  color: rgba(255, 255, 255, .76);
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.velyo-hero-brand .actions {
+  justify-content: flex-start;
+}
+
+.velyo-hero-brand .button {
+  min-width: 190px;
+  border-radius: 10px;
+}
+
+.velyo-hero-brand .button.ghost {
+  border-color: rgba(255, 255, 255, .42);
+  background: rgba(17, 19, 24, .18);
+  color: white;
+}
+
+.velyo-hero-reassurance {
+  margin-top: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  color: rgba(255, 255, 255, .67);
+  font-size: .76rem;
+}
+
+.velyo-hero-reassurance span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.velyo-hero-reassurance svg {
+  color: #e8bf6e;
+}
+
+.velyo-location {
+  position: absolute;
+  right: 0;
+  bottom: 30px;
+  padding: 9px 13px;
+  border: 1px solid rgba(255, 255, 255, .28);
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(17, 19, 24, .58);
+  color: white;
+  font-size: .72rem;
+  backdrop-filter: blur(8px);
+}
+
+.trust-marquee {
+  background: var(--velyo-gold);
+  color: var(--velyo-ink);
+}
+
+.trust-track span {
+  font-weight: 650;
+}
+
+.trust-track i {
+  color: rgba(17, 19, 24, .48);
+}
+
+.section {
+  padding-top: clamp(78px, 8vw, 124px);
+  padding-bottom: clamp(78px, 8vw, 124px);
+}
+
+.ivory {
+  background: var(--velyo-cream);
+}
+
+.eyebrow,
+.eyebrow.dark {
+  color: var(--velyo-gold-dark);
+  font-weight: 700;
+}
+
+.prose h2,
+.home-services h2,
+.experience-intro h2,
+.owner-intro h2,
+.owner-management h2,
+.about-opening h2,
+.about-story h2,
+.about-territory h2,
+.about-promise h2,
+.about-values h2 {
+  color: var(--velyo-ink);
+  font-family: "Manrope", system-ui, sans-serif;
+  font-weight: 560;
+}
+
+.prose p,
+.section-intro,
+.owner-intro p,
+.owner-management p,
+.about-opening p,
+.about-territory p {
+  color: #5c6065;
+}
+
+.button {
+  border-radius: 10px;
+  border-color: var(--velyo-gold);
+  background: var(--velyo-gold);
+  color: var(--velyo-ink);
+  box-shadow: none;
+}
+
+.button:hover {
+  background: #d5af5c;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(155, 116, 47, .2);
+}
+
+.button.ghost {
+  border-color: rgba(17, 19, 24, .24);
+  background: transparent;
+  color: var(--velyo-ink);
+}
+
+.text-link {
+  color: var(--velyo-ink);
+  border-bottom-color: var(--velyo-gold);
+}
+
+.velyo-owner-visual {
+  position: relative;
+  min-height: 580px;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: var(--velyo-shadow);
+}
+
+.velyo-owner-visual img {
+  object-fit: cover;
+}
+
+.velyo-owner-visual > div {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  padding: 22px;
+  border-radius: 16px;
+  background: rgba(255, 253, 249, .93);
+  color: var(--velyo-ink);
+  backdrop-filter: blur(14px);
+}
+
+.velyo-owner-visual span,
+.velyo-owner-visual strong {
+  display: block;
+}
+
+.velyo-owner-visual span {
+  color: var(--velyo-gold-dark);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.velyo-owner-visual strong {
+  margin-top: 7px;
+  font-size: 1.15rem;
+}
+
+.feature-list li::before {
+  color: var(--velyo-gold-dark);
+}
+
+.home-services {
+  background: var(--velyo-paper);
+  color: var(--velyo-ink);
+}
+
+.service-card {
+  border: 1px solid var(--velyo-line);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 14px 38px rgba(17, 19, 24, .07);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--velyo-shadow);
+}
+
+.service-card-image {
+  min-height: 440px;
+}
+
+.service-card-top span,
+.service-card-copy small,
+.experience-service-card .service-card-top span {
+  color: #e8bf6e;
+}
+
+.service-card-copy h3 {
+  font-family: "Manrope", system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -.035em;
+}
+
+.service-card-copy p,
+.experience-card-details {
+  color: rgba(255, 255, 255, .72);
+}
+
+.velyo-simulator-teaser {
+  background-image: linear-gradient(90deg, rgba(17, 19, 24, .96), rgba(17, 19, 24, .65)), url('/images/home/genova-night.webp');
+  background-position: center;
+  background-size: cover;
+}
+
+.velyo-simulator-teaser h2,
+.velyo-simulator-teaser p {
+  color: white;
+}
+
+.velyo-simulator-teaser > .container > div:first-child > p:not(.eyebrow) {
+  color: rgba(255, 255, 255, .72);
+}
+
+.velyo-estimate-card {
+  border-radius: 22px;
+  background: rgba(255, 253, 249, .94);
+  color: var(--velyo-ink);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .24);
+}
+
+.velyo-estimate-card .estimate-brand img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.velyo-estimate-card .estimate-comparison strong,
+.velyo-estimate-card .estimate-gain b {
+  color: var(--velyo-gold-dark);
+}
+
+.velyo-experience-mosaic .visual {
+  border-radius: 18px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+.experience-text-light {
+  background: var(--velyo-paper);
+  color: var(--velyo-ink);
+  border: 1px solid var(--velyo-line);
+  border-radius: 18px;
+}
+
+.experience-text-dark {
+  background: var(--velyo-blue);
+  border-radius: 18px;
+}
+
+.property-disclaimer {
+  max-width: 780px;
+  color: #666a6f;
+}
+
+.velyo-property-preview {
+  margin-top: 42px;
+}
+
+.property-card {
+  border: 1px solid var(--velyo-line);
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--velyo-paper);
+  box-shadow: 0 14px 38px rgba(17, 19, 24, .06);
+}
+
+.property-card h3,
+.property-card .facts {
+  padding-left: 22px;
+  padding-right: 22px;
+}
+
+.process {
+  background: var(--velyo-ink);
+}
+
+.process .method-title,
+.process .method-title span {
+  color: white;
+}
+
+.velyo-method .method-scroll {
+  border-color: rgba(255, 255, 255, .14);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, .035);
+}
+
+.velyo-method .method-progress button {
+  width: 32px;
+  height: 4px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .2);
+  cursor: pointer;
+}
+
+.velyo-method .method-progress button.active {
+  background: var(--velyo-gold);
+}
+
+.velyo-method .method-detail h3,
+.velyo-method .method-detail p,
+.velyo-method .method-detail li,
+.velyo-method .method-detail > span {
+  color: white;
+}
+
+.review-card {
+  border-radius: 18px;
+  border-color: var(--velyo-line);
+  background: var(--velyo-paper);
+  box-shadow: none;
+}
+
+.review-stars,
+.review-avatar {
+  color: var(--velyo-gold-dark);
+}
+
+.review-arrow {
+  border-color: var(--velyo-line);
+  background: var(--velyo-paper);
+  color: var(--velyo-ink);
+}
+
+.final-cta,
+.velyo-final-cta {
+  background: var(--velyo-blue);
+  color: white;
+}
+
+.final-cta h2,
+.final-cta p,
+.final-cta-title span {
+  color: white;
+}
+
+.velyo-page-hero {
+  min-height: 600px;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 74px;
+  background-color: var(--velyo-ink);
+  background-position: center;
+  background-size: cover;
+}
+
+.velyo-page-hero .container {
+  max-width: 920px;
+  margin-left: max(28px, calc((100vw - 1240px) / 2));
+}
+
+.velyo-page-hero h1 {
+  max-width: 930px;
+  color: white;
+  font-family: "Manrope", system-ui, sans-serif;
+  font-size: clamp(3.1rem, 5.8vw, 6.2rem);
+  font-weight: 520;
+  text-transform: none;
+}
+
+.velyo-page-hero > .container > p:not(.eyebrow) {
+  max-width: 720px;
+  color: rgba(255, 255, 255, .75);
+  font-size: 1.05rem;
+}
+
+.velyo-page-hero .eyebrow {
+  color: #e8bf6e;
+}
+
+.offers-section,
+.owner-intro,
+.owner-management,
+.about-opening,
+.about-territory {
+  background: var(--velyo-cream);
+}
+
+.offer-card,
+.owner-pillars > div,
+.transparency-card,
+.service-quick-card,
+.contact-panel,
+.form-card,
+.legal-content {
+  border-radius: 18px;
+  border-color: var(--velyo-line);
+  box-shadow: 0 14px 42px rgba(17, 19, 24, .07);
+}
+
+.offer-card-360 {
+  background: var(--velyo-ink);
+}
+
+.offer-card-360 h3,
+.offer-card-360 p,
+.offer-card-360 li,
+.offer-card-360 strong {
+  color: white;
+}
+
+.service-detail-intro,
+.service-detail-grid,
+.transparency-grid {
+  gap: clamp(36px, 6vw, 90px);
+}
+
+.service-at-glance article,
+.detail-list-grid article {
+  border-color: var(--velyo-line);
+  background: var(--velyo-paper);
+  border-radius: 14px;
+}
+
+.service-at-glance span,
+.detail-list-grid span,
+.service-quick-card svg,
+.transparency-card svg {
+  color: var(--velyo-gold-dark);
+}
+
+.service-journey-section {
+  background: var(--velyo-ink);
+}
+
+.service-journey-nav button.is-active,
+.service-journey-stage {
+  border-color: var(--velyo-gold);
+}
+
+.service-journey-progress span {
+  background: var(--velyo-gold);
+}
+
+.experience-page-intro {
+  max-width: 880px;
+  margin-bottom: 46px;
+}
+
+.experience-page-intro p:not(.eyebrow) {
+  color: #62666b;
+}
+
+.owner-comparison {
+  background: var(--velyo-paper);
+  color: var(--velyo-ink);
+}
+
+.owner-comparison h2,
+.owner-comparison h3,
+.owner-comparison p,
+.owner-comparison li,
+.owner-comparison strong {
+  color: var(--velyo-ink);
+}
+
+.owner-comparison-grid > div {
+  border: 1px solid var(--velyo-line);
+  border-radius: 20px;
+  background: var(--velyo-cream);
+}
+
+.owner-comparison-grid > div:last-child {
+  background: var(--velyo-blue);
+}
+
+.owner-comparison-grid > div:last-child h3,
+.owner-comparison-grid > div:last-child p,
+.owner-comparison-grid > div:last-child li,
+.owner-comparison-grid > div:last-child strong {
+  color: white;
+}
+
+.owner-phase {
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid var(--velyo-line);
+  background: var(--velyo-paper);
+}
+
+.owner-phase-content > span {
+  color: var(--velyo-gold-dark);
+}
+
+.owner-transparency {
+  background: var(--velyo-ink);
+  padding: clamp(80px, 8vw, 120px) 0;
+}
+
+.owner-clarity-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(255, 255, 255, .16);
+  border-left: 1px solid rgba(255, 255, 255, .16);
+}
+
+.owner-clarity-grid article {
+  min-height: 310px;
+  padding: 30px;
+  border-right: 1px solid rgba(255, 255, 255, .16);
+  border-bottom: 1px solid rgba(255, 255, 255, .16);
+}
+
+.owner-clarity-grid article > span,
+.owner-clarity-grid .eyebrow {
+  color: #e8bf6e;
+}
+
+.owner-clarity-grid h3 {
+  margin-top: 42px;
+  color: white;
+}
+
+.owner-clarity-grid article > p:last-child {
+  color: rgba(255, 255, 255, .64);
+}
+
+.about-story {
+  background: var(--velyo-ink);
+}
+
+.about-story-heading h2,
+.about-story-heading p,
+.about-story-grid h3,
+.about-story-grid p {
+  color: white;
+}
+
+.about-story-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(255, 255, 255, .16);
+  border-left: 1px solid rgba(255, 255, 255, .16);
+}
+
+.about-story-grid article {
+  min-height: 300px;
+  padding: 32px;
+  border-right: 1px solid rgba(255, 255, 255, .16);
+  border-bottom: 1px solid rgba(255, 255, 255, .16);
+}
+
+.about-story-grid span {
+  color: #e8bf6e;
+}
+
+.about-story-grid h3 {
+  margin-top: 60px;
+}
+
+.about-promise {
+  background: var(--velyo-blue);
+}
+
+.about-promise h2,
+.about-promise p,
+.about-promise .text-link {
+  color: white;
+}
+
+.about-values {
+  background: var(--velyo-paper);
+  color: var(--velyo-ink);
+}
+
+.about-values h2,
+.about-values p {
+  color: var(--velyo-ink);
+}
+
+.velyo-values {
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--velyo-cream);
+}
+
+.velyo-values .values-selector button {
+  border-color: var(--velyo-line);
+  color: var(--velyo-ink);
+}
+
+.velyo-values .values-selector button[aria-selected="true"] {
+  background: var(--velyo-gold);
+  color: var(--velyo-ink);
+}
+
+.velyo-values .values-feature {
+  background: var(--velyo-blue);
+  color: white;
+}
+
+.velyo-values .values-feature h3,
+.velyo-values .values-feature p {
+  color: white;
+}
+
+.property-filters button.active {
+  border-color: var(--velyo-gold);
+  background: var(--velyo-gold);
+  color: var(--velyo-ink);
+}
+
+.property-public-detail,
+.admin-entry {
+  border-radius: 20px;
+}
+
+.simulator-intro {
+  position: relative;
+}
+
+.velyo-simulator-brand {
+  background-image: url('/images/brand/velyo-logo-dark.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.aurevia-range {
+  accent-color: var(--velyo-gold);
+}
+
+.result-panel {
+  border-radius: 22px;
+  background: var(--velyo-cream);
+  color: var(--velyo-ink);
+}
+
+.result-panel strong,
+.result-panel b {
+  color: var(--velyo-gold-dark);
+}
+
+.contact-heading span:nth-child(2) {
+  color: var(--velyo-gold-dark);
+}
+
+.contact-panel-head svg,
+.contact-icon,
+.contact-primary > svg {
+  color: var(--velyo-gold-dark);
+}
+
+.contact-feature-image {
+  border-radius: 20px;
+  background-image: linear-gradient(180deg, rgba(17, 19, 24, .02), rgba(17, 19, 24, .28)), url('/images/about/interior-detail.webp');
+}
+
+.form-card input:focus,
+.form-card textarea:focus,
+.form-card select:focus {
+  border-color: var(--velyo-gold-dark);
+  box-shadow: 0 0 0 3px rgba(201, 162, 75, .14);
+}
+
+.faq details {
+  border-color: var(--velyo-line);
+  border-radius: 14px;
+  background: var(--velyo-paper);
+}
+
+.faq summary {
+  color: var(--velyo-ink);
+}
+
+.legal-content {
+  background: var(--velyo-paper);
+}
+
+.velyo-footer.footer-premium {
+  background: var(--velyo-ink);
+}
+
+.velyo-footer .footer-signature,
+.velyo-footer .footer-grid,
+.velyo-footer .footer-bottom {
+  border-color: rgba(255, 255, 255, .14);
+}
+
+.velyo-footer .footer-statement h2,
+.velyo-footer .footer-statement span {
+  color: white;
+  font-family: "Manrope", system-ui, sans-serif;
+}
+
+.velyo-footer .footer-consultation {
+  border-radius: 10px;
+  background: var(--velyo-gold);
+  color: var(--velyo-ink);
+}
+
+.velyo-footer b {
+  color: #e8bf6e;
+}
+
+.velyo-footer a,
+.velyo-footer p,
+.velyo-footer span,
+.velyo-footer small {
+  color: rgba(255, 255, 255, .68);
+}
+
+.sticky-cta {
+  border-radius: 10px;
+  background: var(--velyo-gold);
+  color: var(--velyo-ink);
+}
+
+.velyo-cookie.cookie {
+  border-radius: 16px;
+  background: rgba(17, 19, 24, .97);
+}
+
+.velyo-cookie .cookie-mark {
+  background: var(--velyo-gold);
+  color: var(--velyo-ink);
+}
+
+.cookie-secondary {
+  min-height: 40px;
+  padding: 0 15px;
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 8px;
+  background: transparent;
+  color: white;
+}
+
+.velyo-mobile-menu {
+  background: var(--velyo-ink);
+}
+
+.velyo-mobile-menu nav a[aria-current="page"] {
+  color: #e8bf6e;
+}
+
+.locale-static {
+  border: 0;
+  background: transparent;
+}
+
+@media (max-width: 1180px) {
+  .velyo-header .desktop-navigation {
+    gap: 14px;
+  }
+  .velyo-header .desktop-navigation a {
+    font-size: .61rem;
+  }
+  .velyo-logo {
+    width: 168px;
+  }
+}
+
+@media (max-width: 1020px) {
+  .velyo-header .desktop-navigation,
+  .velyo-header .header-actions {
+    display: none;
+  }
+  .velyo-header .menu-btn {
+    display: inline-flex;
+    color: var(--velyo-ink);
+  }
+  .owner-clarity-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .velyo-header.site-header {
+    min-height: 70px;
+    padding-inline: 18px;
+  }
+  .velyo-logo {
+    width: 154px;
+    height: 50px;
+  }
+  .home-velyo-hero {
+    min-height: 760px;
+  }
+  .home-velyo-hero .hero-content {
+    width: calc(100vw - 34px);
+    padding-top: 64px;
+    align-items: flex-end;
+    padding-bottom: 70px;
+  }
+  .velyo-hero-overlay {
+    background: linear-gradient(0deg, rgba(17, 19, 24, .96) 0%, rgba(17, 19, 24, .68) 63%, rgba(17, 19, 24, .2) 100%);
+  }
+  .velyo-hero-brand {
+    width: 100%;
+  }
+  .velyo-hero-brand h1 {
+    font-size: clamp(2.9rem, 12vw, 4.5rem);
+  }
+  .velyo-location {
+    right: auto;
+    left: 0;
+    bottom: 22px;
+  }
+  .velyo-owner-visual {
+    min-height: 430px;
+  }
+  .velyo-page-hero {
+    min-height: 560px;
+    padding-bottom: 46px;
+  }
+  .velyo-page-hero .container {
+    margin-left: auto;
+    max-width: none;
+  }
+  .velyo-page-hero h1 {
+    font-size: clamp(2.8rem, 12vw, 4.5rem);
+  }
+  .owner-clarity-grid,
+  .about-story-grid {
+    grid-template-columns: 1fr;
+  }
+  .owner-clarity-grid article,
+  .about-story-grid article {
+    min-height: 230px;
+  }
+}
+
+@media (max-width: 560px) {
+  .velyo-hero-brand .actions {
+    display: grid;
+  }
+  .velyo-hero-brand .button {
+    width: 100%;
+  }
+  .velyo-hero-reassurance {
+    display: grid;
+  }
+  .service-card-image {
+    min-height: 400px;
+  }
+  .velyo-estimate-card {
+    padding: 24px;
+  }
+  .velyo-cookie.cookie {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+  }
+}

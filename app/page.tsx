@@ -1,79 +1,98 @@
-import Link from "next/link";
 import Image from "next/image";
-import {ArrowRight,ShieldCheck} from "lucide-react";
-import {services} from "@/data/content";
-import {Reveal} from "@/components/Reveal";
-import {ServiceCard} from "@/components/Cards";
-import {MethodJourney,ReviewCards} from "@/components/InteractiveSections";
-import {HeroVideo} from "@/components/HeroVideo";
-import type {Metadata} from "next";
+import Link from "next/link";
+import { ArrowRight, CheckCircle2, MapPin, ShieldCheck } from "lucide-react";
+import { services, properties } from "@/data/content";
+import { Reveal } from "@/components/Reveal";
+import { PropertyCard, ServiceCard } from "@/components/Cards";
+import { MethodJourney, ReviewCards } from "@/components/InteractiveSections";
+import type { Metadata } from "next";
 
-export const metadata:Metadata={
- title:"Gestione di affitti brevi a Genova e in Liguria",
- description:"Gestione di affitti brevi e property management per proprietà di pregio e seconde case a Genova e in Liguria.",
- alternates:{canonical:"/"},
+export const metadata: Metadata = {
+  title: "Gestion locative et property management à Genova",
+  description: "Gestion des réservations, accueil voyageurs, entretien et suivi propriétaire à Genova.",
+  alternates: { canonical: "/" },
 };
 
-const promises=[
- "Un interlocuteur unique",
- "Une présence locale à Gênes",
- "Tarification dynamique",
- "Prestataires coordonnés",
- "Suivi propriétaire clair",
- "Votre bien préservé",
+const promises = [
+  "Un interlocuteur local",
+  "Des responsabilités claires",
+  "Un suivi propriétaire régulier",
+  "Des prestataires coordonnés",
+  "Une assistance voyageurs 7j/7",
+  "Un bien suivi entre les séjours",
 ];
-const essentialServices=services.filter(({slug})=>[
- "gestione-proprieta",
- "accoglienza-voyageurs",
- "revenue-management",
-].includes(slug));
 
-export default function Home(){
- return <>
-  <section className="hero hero-aurevia">
-   <HeroVideo/>
-   <div className="container hero-content"><Reveal className="hero-brand" eager>
-    <div className="hero-logo-crop"><Image className="hero-logo" src="/images/brand/aurevia-logo-transparent-gold.png" width={720} height={720} sizes="(max-width: 767px) 310px, 480px" priority alt="AUREVIA"/></div>
-    <h1 className="sr-only">AUREVIA</h1>
-    <p className="hero-slogan"><span>L’art de prendre soin</span><span>de ce qui compte.</span></p>
-    <div className="actions"><Link className="button" href="/valutazione">Évaluer mon bien <ArrowRight size={16}/></Link><Link className="button ghost" href="/servizi">Découvrir nos services</Link></div>
-    <small>Évaluation confidentielle, gratuite et sans engagement.</small>
-   </Reveal></div>
-  </section>
+const essentialServices = services.filter(({ slug }) => ["gestione-proprieta", "accoglienza-voyageurs", "pulizie-biancheria"].includes(slug));
 
-  <section className="trust-marquee" aria-label="Les engagements AUREVIA"><div className="trust-track">{[...promises,...promises].map((x,i)=><span key={`${x}-${i}`}>{x}<i>◆</i></span>)}</div></section>
+export default function Home() {
+  return (
+    <>
+      <section className="hero hero-aurevia home-velyo-hero">
+        <Image className="velyo-hero-image" src="/images/home/genova-night.webp" fill priority sizes="100vw" alt="Vue d’ambiance de Genova au coucher du soleil" />
+        <div className="velyo-hero-overlay" />
+        <div className="container hero-content">
+          <Reveal className="hero-brand velyo-hero-brand" eager>
+            <p className="eyebrow">Property Manager à Genova</p>
+            <h1>Votre bien, <span>bien géré.</span><br />Vos voyageurs, bien accueillis.</h1>
+            <p className="hero-slogan">Réservations, accueil, entretien et suivi : Velyo simplifie la gestion quotidienne de votre location.</p>
+            <div className="actions">
+              <Link className="button" href="/valutazione">Estimer mon bien <ArrowRight size={16} /></Link>
+              <Link className="button ghost" href="/servizi">Découvrir les services</Link>
+            </div>
+            <div className="velyo-hero-reassurance">
+              <span><CheckCircle2 size={16} /> Présence locale</span>
+              <span><CheckCircle2 size={16} /> Suivi transparent</span>
+              <span><CheckCircle2 size={16} /> Sans engagement au premier échange</span>
+            </div>
+          </Reveal>
+          <div className="velyo-location"><MapPin size={15} /> Genova, Italie</div>
+        </div>
+      </section>
 
-  <section className="section ivory"><div className="container split">
-   <Reveal className="editorial-card"><div className="image-placeholder image-photo home-owner"><span>Le soin jusque dans les détails</span></div></Reveal>
-   <Reveal className="prose"><p className="eyebrow dark">Pour les propriétaires</p><h2>Un partenaire de confiance pour votre propriété</h2><p>AUREVIA accompagne les propriétaires exigeants qui souhaitent valoriser leur bien sans en gérer les contraintes quotidiennes.</p><ul className="feature-list"><li>Une relation privilégiée</li><li>Une prise en charge intégrale</li><li>Des standards d’exception</li><li>Une gestion sur mesure</li></ul><Link className="text-link" href="/proprietari">Découvrir l’approche AUREVIA <ArrowRight size={15}/></Link></Reveal>
-  </div></section>
+      <section className="trust-marquee" aria-label="Les engagements Velyo">
+        <div className="trust-track">{[...promises, ...promises].map((item, index) => <span key={`${item}-${index}`}>{item}<i>•</i></span>)}</div>
+      </section>
 
-  <section className="section home-services"><div className="container"><Reveal><p className="eyebrow">Services</p><h2>L’excellence dans chaque détail</h2></Reveal><div className="card-grid three mobile-two-grid">{essentialServices.map(s=><ServiceCard key={s.slug} service={s}/>)}</div><Link className="text-link mobile-services-link" href="/servizi">Voir tous les services <ArrowRight size={15}/></Link></div></section>
+      <section className="section ivory"><div className="container split">
+        <Reveal className="editorial-card velyo-owner-visual"><Image src="/images/about/genova-architecture.webp" fill sizes="(max-width: 800px) 100vw, 50vw" alt="Architecture de Genova" /><div><span>Présence locale</span><strong>Quelqu’un sur place quand vous ne l’êtes pas.</strong></div></Reveal>
+        <Reveal className="prose"><p className="eyebrow dark">Pour les propriétaires</p><h2>La gestion locative sans les complications inutiles.</h2><p>Velyo accompagne les propriétaires qui souhaitent louer sereinement sans perdre la visibilité sur leur bien. Nous portons le quotidien ; vous gardez les décisions importantes.</p><ul className="feature-list"><li>Un interlocuteur unique</li><li>Un périmètre défini au départ</li><li>Des interventions documentées</li><li>Une communication au bon niveau</li></ul><Link className="text-link" href="/proprietari">Découvrir l’accompagnement Velyo <ArrowRight size={15} /></Link></Reveal>
+      </div></section>
 
-  <section className="section simulator-teaser simulator-photo"><div className="container split">
-   <Reveal><p className="eyebrow">Simulateur privé</p><h2>Découvrez le potentiel de votre propriété</h2><p>Obtenez une première projection selon la localisation, le standing, les équipements et la période de disponibilité.</p><Link className="button" href="/simulatore">Essayer le simulateur <ArrowRight size={16}/></Link></Reveal>
-   <Reveal className="estimate-card estimate-premium"><div className="estimate-brand"><span className="estimate-logo-crop" aria-hidden="true"><Image src="/images/brand/aurevia-logo-transparent-gold.png" width={160} height={160} alt=""/></span><span>Projection AUREVIA</span></div><p className="estimate-case">Cas illustratif · appartement 2 chambres à Gênes</p><div className="estimate-comparison"><div><small>Situation estimée avant gestion</small><b>29 800 €</b></div><i>→</i><div><small>Potentiel optimisé</small><strong>50 900 €</strong></div></div><div className="estimate-gain"><span>Progression indicative</span><b>+ 71 %</b></div><div><small>Tarif moyen par nuit (tarification dynamique)</small><b>265 € / nuit</b></div><div><small>Occupation projetée</small><b>64 % · 192 nuits</b></div><p>Projection illustrative avant frais, fiscalité et interventions. Une analyse personnalisée reste indispensable.</p></Reveal>
-  </div></section>
+      <section className="section home-services"><div className="container">
+        <Reveal><p className="eyebrow">Services</p><h2>Tout ce qu’il faut pour gérer le bien au quotidien.</h2><p className="section-intro">Une structure complète, avec une expérience plus directe, plus claire et moins cérémonielle.</p></Reveal>
+        <div className="card-grid three mobile-two-grid">{essentialServices.map((service) => <ServiceCard key={service.slug} service={service} />)}</div>
+        <Link className="text-link mobile-services-link" href="/servizi">Voir tous les services <ArrowRight size={15} /></Link>
+      </div></section>
 
-  <section className="section home-gallery ivory"><div className="container">
-   <Reveal className="experience-intro"><p className="eyebrow dark">L’expérience propriétaire</p><h2>Vous partez.<br /><span>Elle reste entre de bonnes mains.</span></h2></Reveal>
-   <div className="experience-mosaic">
-    <div className="visual visual-bedroom experience-visual experience-visual-main"><span><b>01</b><i>Comme si vous étiez là<small>Votre bien est connu, préparé et suivi jusque dans ses habitudes.</small></i></span></div>
-    <Reveal className="experience-text experience-text-light"><p className="eyebrow dark">Ce que vous ressentez</p><h3>Le calme de ne plus avoir à y penser.</h3><p>Une propriété continue de vivre en votre absence. AUREVIA reste sur place, remarque ce qui change et agit avant que le détail ne devienne une contrainte.</p></Reveal>
-    <div className="visual visual-coast experience-visual"><span><b>02</b><i>Présent, sans être envahissant<small>Vous recevez l’information utile, jamais le bruit du quotidien.</small></i></span></div>
-    <Reveal className="experience-text experience-text-dark"><p className="eyebrow">Ce qui reste entre vos mains</p><h3>Les décisions importantes. Rien de plus.</h3><p>Vous gardez la maîtrise de votre propriété. Nous portons les réservations, les prestataires et les imprévus, puis nous revenons vers vous lorsqu’un choix mérite réellement votre attention.</p></Reveal>
-    <div className="visual visual-night experience-visual"><span><b>03</b><i>Veillé dans la durée<small>Chaque action préserve le caractère, l’état et la valeur du lieu.</small></i></span></div>
-    <div className="visual visual-key experience-visual"><span><b>04</b><i>Prêt à vous retrouver<small>À votre retour, la propriété est exactement comme vous souhaitez la retrouver.</small></i></span></div>
-   </div>
-   <Link className="text-link identity-link" href="/proprietari">Découvrir votre expérience AUREVIA <ArrowRight size={15}/></Link>
-  </div></section>
+      <section className="section simulator-teaser simulator-photo velyo-simulator-teaser"><div className="container split">
+        <Reveal><p className="eyebrow">Estimation indicative</p><h2>Quel potentiel pour votre location à Genova ?</h2><p>Surface, zone, capacité et disponibilité : obtenez une première projection, puis faites-la confirmer par une analyse du bien.</p><Link className="button" href="/simulatore">Essayer le simulateur <ArrowRight size={16} /></Link></Reveal>
+        <Reveal className="estimate-card estimate-premium velyo-estimate-card"><div className="estimate-brand"><Image src="/images/brand/velyo-mark.svg" width={58} height={58} alt="" /><span>Projection Velyo</span></div><p className="estimate-case">Exemple illustratif · appartement 2 chambres à Genova</p><div className="estimate-comparison"><div><small>Situation renseignée</small><b>29 800 €</b></div><i>→</i><div><small>Scénario optimisé</small><strong>42 600 €</strong></div></div><div className="estimate-gain"><span>Progression indicative</span><b>+ 43 %</b></div><p>Projection non contractuelle avant frais, fiscalité et analyse du bien.</p></Reveal>
+      </div></section>
 
-  <section className="section ivory"><div className="container"><Reveal><p className="eyebrow dark">Collection AUREVIA</p><h2>Nos biens</h2><p className="property-empty">Aucun bien actuellement.</p></Reveal></div></section>
+      <section className="section home-gallery ivory"><div className="container">
+        <Reveal className="experience-intro"><p className="eyebrow dark">L’expérience voyageur</p><h2>Genova, avec les bons repères.<br /><span>Pas avec une liste interminable.</span></h2></Reveal>
+        <div className="experience-mosaic velyo-experience-mosaic">
+          <div className="visual experience-visual experience-visual-main" style={{ backgroundImage: "linear-gradient(180deg,rgba(17,19,24,.04),rgba(17,19,24,.65)),url(/images/home/hero-concierge.webp)" }}><span><b>01</b><i>Porto Antico en famille<small>Un parcours simple pour les premières heures dans la ville.</small></i></span></div>
+          <Reveal className="experience-text experience-text-light"><p className="eyebrow dark">Ce que Velyo apporte</p><h3>Des recommandations qui tiennent compte du vrai séjour.</h3><p>Quartier, âge des voyageurs, mobilité, météo et temps disponible : les conseils restent pratiques et faciles à suivre.</p></Reveal>
+          <div className="visual experience-visual" style={{ backgroundImage: "linear-gradient(180deg,rgba(17,19,24,.04),rgba(17,19,24,.65)),url(/images/about/genova-architecture.webp)" }}><span><b>02</b><i>Centre historique<small>Ruelles, palais et pauses locales sans perdre le fil.</small></i></span></div>
+          <Reveal className="experience-text experience-text-dark"><p className="eyebrow">Simple à réserver</p><h3>Les informations utiles au bon moment.</h3><p>Velyo peut préparer les horaires, les accès, quelques options et un plan de repli réaliste lorsque la météo change.</p></Reveal>
+          <div className="visual experience-visual" style={{ backgroundImage: "linear-gradient(180deg,rgba(17,19,24,.04),rgba(17,19,24,.65)),url(/images/home/liguria-coast.webp)" }}><span><b>03</b><i>Nervi & la côte<small>Une respiration facile à organiser depuis Genova.</small></i></span></div>
+          <div className="visual experience-visual" style={{ backgroundImage: "linear-gradient(180deg,rgba(17,19,24,.04),rgba(17,19,24,.65)),url(/images/home/genova-night.webp)" }}><span><b>04</b><i>Saveurs génoises<small>Quelques bonnes adresses selon le quartier et le budget.</small></i></span></div>
+        </div>
+        <Link className="text-link identity-link" href="/esperienze">Découvrir les expériences à Genova <ArrowRight size={15} /></Link>
+      </div></section>
 
-  <section className="section process"><div className="container"><Reveal><p className="eyebrow">Notre méthode</p><h2 className="method-title"><span>Votre propriété, orchestrée</span><span>avec précision à chaque étape</span></h2></Reveal><MethodJourney/></div></section>
+      <section className="section ivory"><div className="container">
+        <Reveal><p className="eyebrow dark">Collection de démonstration</p><h2>Une structure prête à accueillir vos propriétés.</h2><p className="property-disclaimer">Les fiches affichées sont des exemples de présentation et non des annonces actuellement disponibles.</p></Reveal>
+        <div className="card-grid three velyo-property-preview">{properties.slice(0, 3).map((property) => <PropertyCard key={property.slug} property={property} />)}</div>
+        <Link className="text-link mobile-services-link" href="/proprieta">Voir la collection exemple <ArrowRight size={15} /></Link>
+      </div></section>
 
-  <section className="section ivory"><div className="container"><Reveal><p className="eyebrow dark">La confiance, racontée</p><h2>Une présence discrète et constante</h2></Reveal><ReviewCards/><p className="demo-note">Les portraits et avis définitifs seront publiés uniquement après accord écrit et vérification de leur provenance.</p></div></section>
+      <section className="section process"><div className="container"><Reveal><p className="eyebrow">Notre méthode</p><h2 className="method-title"><span>Un démarrage structuré.</span><span>Un suivi régulier ensuite.</span></h2></Reveal><MethodJourney /></div></section>
 
-  <section className="section final-cta"><ShieldCheck/><h2 className="final-cta-title"><span>Votre propriété mérite</span><span>une gestion à sa hauteur</span></h2><p>Parlons de votre propriété et définissons une gestion adaptée à vos besoins.</p><Link className="button" href="/valutazione">Demander une évaluation</Link></section>
- </>;
+      <section className="section ivory"><div className="container"><Reveal><p className="eyebrow dark">La confiance, racontée</p><h2>Des propriétaires informés sans être sollicités pour tout.</h2></Reveal><ReviewCards /><p className="demo-note">Les avis présentés sont des textes de démonstration. Ils seront remplacés uniquement par des témoignages vérifiés et autorisés.</p></div></section>
+
+      <section className="section final-cta"><ShieldCheck /><h2 className="final-cta-title"><span>Votre bien mérite</span><span>une gestion simple à suivre.</span></h2><p>Présentez-nous la propriété et le niveau de délégation que vous recherchez.</p><Link className="button" href="/valutazione">Demander une estimation</Link></section>
+    </>
+  );
 }

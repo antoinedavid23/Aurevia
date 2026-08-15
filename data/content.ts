@@ -1,59 +1,62 @@
-export type Service={slug:string;title:string;cardTitle?:string;short:string;number:string;image?:string};
-export type Property={slug:string;name:string;location:string;bedrooms:number;guests:number;baths:number;tone:number;image:string};
+export type Service = { slug: string; title: string; cardTitle?: string; short: string; number: string; image?: string };
+export type Property = { slug: string; name: string; location: string; bedrooms: number; guests: number; baths: number; tone: number; image: string; shortDescription?: string; description?: string; propertyType?: string; surface?: number; amenities?: string[]; gallery?: string[] };
 
-export const services:Service[]=[
- {slug:"gestione-proprieta",title:"Gestion de propriété",cardTitle:"Gestion intégrale du bien",short:"Un pilotage unique pour préserver le bien et simplifier chaque décision.",number:"01"},
- {slug:"concierge",title:"Assistance sur mesure",cardTitle:"Conciergerie personnalisée",short:"Chaque demande privée est organisée avec précision, discrétion et réactivité.",number:"02"},
- {slug:"accoglienza-voyageurs",title:"Accueil des voyageurs",cardTitle:"Accueil des voyageurs",short:"Un parcours d’arrivée fluide, soigné et conforme à vos standards.",number:"03"},
- {slug:"pulizie-biancheria",title:"Ménage et linge",cardTitle:"Entretien & linge",short:"Une préparation contrôlée avant chaque séjour, jusque dans les moindres détails.",number:"04"},
- {slug:"manutenzione",title:"Maintenance",cardTitle:"Maintenance coordonnée",short:"Prévention, interventions et suivi assurés par un réseau local sélectionné.",number:"05"},
- {slug:"revenue-management",title:"Optimisation des revenus",cardTitle:"Performance locative",short:"Tarifs et calendrier pilotés pour valoriser durablement vos revenus.",number:"06"},
- {slug:"sicurezza",title:"Sécurité du bien",cardTitle:"Sécurité du bien",short:"Contrôle des accès, vérification des fermetures et procédures claires pour protéger votre propriété.",number:"07"},
- {slug:"amministrazione",title:"Administration",cardTitle:"Suivi administratif",short:"Des comptes rendus structurés pour suivre clairement chaque opération.",number:"08"},
-].map((service,i)=>({...service,image:["/images/services/property-management.webp","/images/services/concierge-service.webp","/images/services/guest-welcome.webp","/images/services/housekeeping.webp","/images/services/maintenance.webp","/images/services/revenue-management.webp","/images/services/security.webp","/images/services/administration.webp"][i]}));
+export const services: Service[] = [
+  { slug: "gestione-proprieta", title: "Gestion locative", cardTitle: "Gestion complète du quotidien", short: "Calendrier, réservations, coordination et suivi réunis auprès d’un interlocuteur local.", number: "01" },
+  { slug: "concierge", title: "Assistance locale", cardTitle: "Une réponse pratique sur place", short: "Demandes voyageurs, réservations locales et solutions utiles pendant le séjour.", number: "02" },
+  { slug: "accoglienza-voyageurs", title: "Accueil des voyageurs", cardTitle: "Des arrivées simples et préparées", short: "Informations, accès, installation et assistance au bon moment.", number: "03" },
+  { slug: "pulizie-biancheria", title: "Ménage et linge", cardTitle: "Un bien prêt entre chaque séjour", short: "Rotations, linge, contrôles et réassort coordonnés selon une checklist claire.", number: "04" },
+  { slug: "manutenzione", title: "Maintenance", cardTitle: "Les problèmes traités à temps", short: "Diagnostic, devis, artisans locaux et suivi d’intervention sans multiplier les interlocuteurs.", number: "05" },
+  { slug: "revenue-management", title: "Optimisation", cardTitle: "Un calendrier mieux piloté", short: "Positionnement, tarifs, durées de séjour et lecture simple des performances.", number: "06" },
+  { slug: "sicurezza", title: "Suivi du bien", cardTitle: "Des accès et équipements contrôlés", short: "Inventaire, clés, signalement des écarts et procédures connues en cas d’incident.", number: "07" },
+  { slug: "amministrazione", title: "Suivi propriétaire", cardTitle: "L’essentiel, sans le bruit", short: "Réservations, justificatifs, interventions et décisions regroupés dans un suivi lisible.", number: "08" },
+].map((service, index) => ({
+  ...service,
+  image: [
+    "/images/services/property-management.webp",
+    "/images/services/concierge-service.webp",
+    "/images/services/guest-welcome.webp",
+    "/images/services/housekeeping.webp",
+    "/images/services/maintenance.webp",
+    "/images/services/revenue-management.webp",
+    "/images/services/security.webp",
+    "/images/services/administration.webp",
+  ][index],
+}));
 
-export const properties:Property[]=[
- {slug:"villa-del-mare",name:"Villa del Mare",location:"Portofino",bedrooms:4,guests:8,baths:4,tone:1,image:"/images/home/hero-concierge.webp"},
- {slug:"attico-aurelia",name:"Attique Aurelia",location:"Gênes",bedrooms:3,guests:6,baths:2,tone:2,image:"/images/home/luxury-bedroom.webp"},
- {slug:"villa-azzurra",name:"Villa Azzurra",location:"Santa Margherita Ligure",bedrooms:5,guests:10,baths:5,tone:3,image:"/images/owners/property-care.webp"},
- {slug:"casa-camogli",name:"Casa Camogli",location:"Camogli",bedrooms:2,guests:4,baths:2,tone:4,image:"/images/home/liguria-coast.webp"},
- {slug:"villa-paradiso",name:"Villa Paradiso",location:"Rapallo",bedrooms:4,guests:8,baths:3,tone:5,image:"/images/about/genova-architecture.webp"},
- {slug:"residenza-nervi",name:"Résidence Nervi",location:"Nervi",bedrooms:3,guests:6,baths:2,tone:6,image:"/images/about/interior-detail.webp"},
+export const properties: Property[] = [
+  { slug: "terrazza-castelletto", name: "Terrazza Castelletto", location: "Castelletto · Genova", bedrooms: 2, guests: 4, baths: 1, tone: 1, image: "/images/home/hero-concierge.webp", shortDescription: "Appartement lumineux avec vue sur la ville.", description: "Fiche de démonstration destinée à valider la structure du catalogue Velyo.", propertyType: "Appartement", surface: 82, amenities: ["Terrasse", "Cuisine équipée", "Wi-Fi", "Vue ville"] },
+  { slug: "loft-porto-antico", name: "Loft Porto Antico", location: "Porto Antico · Genova", bedrooms: 1, guests: 3, baths: 1, tone: 2, image: "/images/about/genova-architecture.webp", shortDescription: "Un pied-à-terre proche du port et du centre historique.", description: "Exemple éditorial, sans disponibilité commerciale réelle.", propertyType: "Loft", surface: 64, amenities: ["Proche du port", "Climatisation", "Arrivée autonome", "Espace ouvert"] },
+  { slug: "casa-carignano", name: "Casa Carignano", location: "Carignano · Genova", bedrooms: 3, guests: 6, baths: 2, tone: 3, image: "/images/owners/property-care.webp", shortDescription: "Des volumes confortables dans un quartier résidentiel central.", description: "Présentation de démonstration à remplacer par des informations vérifiées.", propertyType: "Appartement", surface: 118, amenities: ["Trois chambres", "Balcon", "Ascenseur", "Double séjour"] },
+  { slug: "appartamento-maddalena", name: "Appartamento Maddalena", location: "Maddalena · Genova", bedrooms: 2, guests: 4, baths: 1, tone: 4, image: "/images/home/genova-night.webp", shortDescription: "Une adresse au cœur des caruggi.", description: "Fiche exemple pour tester le parcours de consultation.", propertyType: "Appartement", surface: 76, amenities: ["Centre historique", "Cuisine équipée", "Bureau", "Charme ancien"] },
+  { slug: "casa-nervi", name: "Casa Nervi", location: "Nervi · Genova", bedrooms: 2, guests: 5, baths: 2, tone: 5, image: "/images/home/liguria-coast.webp", shortDescription: "Une base calme près des parcs et de la promenade.", description: "Exemple de bien côtier géré à Genova.", propertyType: "Maison", surface: 94, amenities: ["Proche mer", "Balcon", "Deux salles d’eau", "Quartier calme"] },
+  { slug: "casa-boccadasse", name: "Casa Boccadasse", location: "Boccadasse · Genova", bedrooms: 1, guests: 2, baths: 1, tone: 6, image: "/images/about/lighthouse.webp", shortDescription: "Une petite adresse pensée pour un séjour à deux.", description: "Fiche de démonstration, à remplacer par un bien autorisé.", propertyType: "Appartement", surface: 48, amenities: ["Pour deux voyageurs", "Proche mer", "Climatisation", "Cuisine compacte"] },
 ];
 
-export const experiences=[
- ["yacht-e-boat","Yacht privé","La côte ligure vue depuis la mer, avec des itinéraires conçus sur demande."],
- ["jet-prive","Jet privé","Vols privés, coordination des créneaux, transferts aéroport et assistance bagages selon votre itinéraire."],
- ["chef-privato","Chef privé","Une table intime inspirée par les saveurs de la Ligurie."],
- ["transfer-privato","Transfert privé","Des déplacements coordonnés avec confort et discrétion."],
- ["esperienze-locali","Expériences locales","Des lieux, maisons et rencontres soigneusement sélectionnés."],
- ["wellness","Bien-être","Des soins et moments de détente directement dans la propriété."],
- ["eventi-privati","Événements privés","Des occasions orchestrées avec attention jusque dans les détails."],
- ["securite-privee","Protection rapprochée","Une présence discrète et coordonnée pour protéger vos déplacements, vos événements et votre tranquillité."],
-].map(([slug,title,short],i)=>({slug,title,short,tone:i+1,image:["/images/experiences/yacht.webp","/images/experiences/private-jet.webp","/images/experiences/private-chef.webp","/images/experiences/private-transfer.webp","/images/experiences/liguria-tour.webp","/images/experiences/wellness.webp","/images/experiences/private-event.webp","/images/experiences/private-security.webp"][i],details:{
- "yacht-e-boat":["Itinéraire personnalisé","Skipper et équipage","Restauration sur demande"],
- "jet-prive":["Recherche d’appareil","Coordination aéroport","Transfert porte-à-porte"],
- "chef-privato":["Menu personnalisé","Approvisionnement local","Service à domicile"],
- "transfer-privato":["Chauffeur dédié","Suivi des horaires","Accueil personnalisé"],
- "esperienze-locali":["Sélection locale","Programme privé","Réservations coordonnées"],
- "wellness":["Praticien sélectionné","Installation à domicile","Planning sur mesure"],
- "eventi-privati":["Conception de l’événement","Prestataires coordonnés","Suivi opérationnel"],
- "securite-privee":["Agents sélectionnés","Protection discrète","Coordination sur mesure"],
- }[slug]||[]}));
+export const experiences = [
+  ["porto-antico-famille", "Porto Antico en famille", "Un parcours simple autour du port, adapté aux familles et aux premières heures dans la ville.", "/images/home/hero-concierge.webp", ["Itinéraire à pied", "Repères pratiques", "Options selon la météo"]],
+  ["centre-historique", "Centre historique & palazzi", "Ruelles, palais et places emblématiques dans un chemin facile à suivre.", "/images/about/genova-architecture.webp", ["Parcours personnalisé", "Palais et places", "Pauses gourmandes"]],
+  ["saveurs-genovese", "Saveurs génoises", "Quelques tables et spécialités locales sélectionnées selon le quartier et le budget.", "/images/about/philosophy.webp", ["Adresses locales", "Réservation sur demande", "Options végétariennes"]],
+  ["nervi-parcs", "Nervi & ses parcs", "Une respiration entre promenade côtière, parcs et petites adresses du quartier.", "/images/home/liguria-coast.webp", ["Accès expliqué", "Promenade côtière", "Suggestions de déjeuner"]],
+  ["boccadasse-mer", "Boccadasse & la mer", "Un moment simple au bord de l’eau avec les bons horaires et les accès utiles.", "/images/about/lighthouse.webp", ["Créneau conseillé", "Accès et retour", "Options pour dîner"]],
+  ["camogli-journee", "Camogli à la journée", "Une escapade réaliste depuis Genova, sans empiler trop d’étapes.", "/images/owners/property-care.webp", ["Transport conseillé", "Itinéraire à pied", "Plan B météo"]],
+  ["aquarium-musees", "Aquarium & musées", "Une journée culturelle organisée selon l’âge des voyageurs et le temps disponible.", "/images/home/owner-trust.webp", ["Billets et horaires", "Parcours par durée", "Alternatives en cas de pluie"]],
+  ["transferts-locaux", "Transferts locaux", "Gare, aéroport, port ou rendez-vous : des déplacements organisés sans complication.", "/images/home/genova-night.webp", ["Chauffeur ou taxi", "Suivi des horaires", "Accueil personnalisé"]],
+].map(([slug, title, short, image, details]) => ({ slug, title, short, image, details } as { slug: string; title: string; short: string; image: string; details: string[] }));
 
-export const testimonials=[
- {quote:"Un service précis, discret et toujours présent.",place:"Portofino"},
- {quote:"Notre propriété est entretenue avec une attention que nous ne pouvions plus assurer seuls.",place:"Gênes"},
- {quote:"Nous avons enfin un interlocuteur unique pour tout coordonner.",place:"Riviera ligure"},
+export const testimonials = [
+  { quote: "Un service clair, réactif et vraiment présent sur place.", place: "Genova" },
+  { quote: "Nous avons enfin un interlocuteur unique pour le logement.", place: "Nervi" },
+  { quote: "Les décisions importantes nous sont présentées sans bruit inutile.", place: "Castelletto" },
 ];
 
-export const faqs=[
- ["Dans quelles zones intervenez-vous ?","Nous intervenons à Gênes et dans les principales localités de la Riviera ligure, après étude de chaque propriété."],
- ["Le simulateur garantit-il les revenus indiqués ?","Non. Il fournit une estimation indicative fondée sur des coefficients internes. Une évaluation personnalisée reste nécessaire."],
- ["Puis-je continuer à utiliser personnellement mon bien ?","Oui. Vos périodes d’occupation sont intégrées à la stratégie de gestion."],
- ["Comment les tarifs sont-ils définis ?","Nous tenons compte de la localisation, du niveau de finition, des équipements, de la saisonnalité et des périodes disponibles."],
- ["Comment gérez-vous la maintenance ?","Nous coordonnons les contrôles et interventions avec des professionnels locaux selon les procédures convenues avec le propriétaire."],
- ["Quels types de propriétés gérez-vous ?","Des appartements, attiques, villas et maisons indépendantes correspondant aux standards AUREVIA."],
- ["Comment protégez-vous la confidentialité ?","Chaque demande est traitée de manière confidentielle et seules les informations nécessaires sont recueillies."],
- ["Combien de temps faut-il pour démarrer ?","Le délai dépend de la préparation du bien et des services retenus. Il est précisé après la visite initiale."],
+export const faqs = [
+  ["Dans quelles zones intervenez-vous ?", "Velyo intervient à Genova et étudie les demandes dans les zones proches selon l’accès, le type de bien et le niveau de service attendu."],
+  ["Puis-je continuer à utiliser personnellement mon bien ?", "Oui. Vos périodes d’occupation sont intégrées au calendrier et restent prioritaires selon le cadre convenu."],
+  ["Le simulateur garantit-il les revenus indiqués ?", "Non. Il fournit une estimation indicative. Une visite et une analyse personnalisée restent indispensables."],
+  ["Comment sont facturés le ménage et les interventions ?", "Les frais séparés et les éventuels seuils de validation sont présentés dans la proposition de gestion avant le démarrage."],
+  ["Comment serai-je informé ?", "Le rythme du suivi est défini avec vous. L’objectif est de transmettre l’essentiel et de solliciter votre validation au bon moment."],
+  ["Comment gérez-vous la maintenance ?", "Velyo qualifie la situation, recherche l’intervenant adapté, présente les éléments utiles et suit l’action sur place."],
+  ["Les propriétés affichées sont-elles disponibles ?", "Les fiches présentes dans cette version sont des exemples de structure. Elles doivent être remplacées par des biens réels et autorisés avant publication."],
+  ["Combien de temps faut-il pour démarrer ?", "Le délai dépend de l’état du bien, des accès, des supports à préparer et des services retenus. Il est précisé après la visite initiale."],
 ];
