@@ -117,6 +117,7 @@ export function LocaleController({ children }: { children: React.ReactNode }) {
       proprietari: { fr:"Accompagnement des propriétaires | AUREVIA", it:"Servizi per proprietari | AUREVIA", en:"Owner services | AUREVIA" },
       contatti: { fr:"Contact privé | AUREVIA", it:"Contatto riservato | AUREVIA", en:"Private contact | AUREVIA" },
       valutazione: { fr:"Évaluation confidentielle | AUREVIA", it:"Valutazione riservata | AUREVIA", en:"Private property assessment | AUREVIA" },
+      audit: { fr:"Diagnostic privé | AUREVIA", it:"Diagnosi privata | AUREVIA", en:"Private assessment | AUREVIA" },
     };
     document.title = (titles[section] || titles.home)[locale];
   }, [locale, pathname]);

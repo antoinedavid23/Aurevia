@@ -16,6 +16,8 @@ const labels: Record<string, string> = {
   services: "Services recherchés", currentlyRented: "Bien déjà loué",
   availability: "Disponibilité", currentOccupancy: "Occupation actuelle",
   currentRevenue: "Revenu actuel", objective: "Objectif", message: "Message",
+  portfolio: "Taille du portefeuille", status: "Situation actuelle", area: "Zone",
+  timing: "Délai souhaité",
 };
 
 function escapeHtml(value: unknown) {
