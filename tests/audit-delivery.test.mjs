@@ -2,6 +2,11 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 import ts from "typescript";
+import { typescriptModuleUrl } from "./helpers/import-typescript.mjs";
+import { auditPayload } from "./helpers/audit-payload.mjs";
+
+const frenchEmailUrl = await typescriptModuleUrl("lib/audit-email-fr.ts");
+const { frenchAuditEmailPayload, auditEmailLabels } = await import(frenchEmailUrl);
 
 const source = await readFile(new URL("../lib/lead-delivery.ts", import.meta.url), "utf8");
 const payload = {
@@ -47,7 +52,7 @@ async function setup(t, { inboxFails = false, email = "absent" } = {}) {
   });
   const errors = t.mock.method(console, "error", () => {});
   const { outputText } = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.ES2022, target: ts.ScriptTarget.ES2022 } });
-  const delivery = await import(dataUrl(outputText.replaceAll('"@/lib/lead-storage"', JSON.stringify(storageUrl))));
+  const delivery = await import(dataUrl(outputText.replaceAll('"@/lib/lead-storage"', JSON.stringify(storageUrl)).replaceAll('"@/lib/audit-email-fr"', JSON.stringify(frenchEmailUrl))));
   return { ...delivery, storage, calls, errors };
 }
 
@@ -82,7 +87,7 @@ test("team receives the full report; visitor email is reply-to only, never recip
   // Every leaf of the full report is retained, including all 12 months,
   // assumptions, rates, zero fees, private notes and financial totals.
   const leaves = value => value && typeof value === "object" ? Object.values(value).flatMap(leaves) : [value];
-  for (const value of leaves(payload.auditReport)) {
+  for (const value of leaves(frenchAuditEmailPayload(payload).auditReport)) {
     const expected = typeof value === "boolean" ? value ? "Oui" : "Non" : String(value);
     assert.ok(calls[0].body.html.includes(expected), `HTML missing ${expected}`);
     assert.ok(calls[0].body.text.includes(expected), `Text missing ${expected}`);
@@ -113,9 +118,9 @@ test("untrusted answers are escaped and unknown figures are not shown as zero", 
   assert.doesNotMatch(mail.html, /<script|<img/);
   assert.match(mail.html, /&lt;script&gt;/);
   assert.match(mail.html, /&lt;img/);
-  assert.match(mail.html, /Current Net :<\/b> Non renseigné \/ à confirmer/);
-  assert.match(mail.text, /Current Net : Non renseigné \/ à confirmer/);
-  assert.match(mail.text, /Management Fee : 0/);
+  assert.match(mail.html, /Net actuel estimé \(€\) :<\/b> Non renseigné \/ à confirmer/);
+  assert.match(mail.text, /Net actuel estimé \(€\) : Non renseigné \/ à confirmer/);
+  assert.match(mail.text, /Frais de gestion : 0/);
   assert.ok(mail.text.includes('<img src=x onerror="test">'));
 });
 
@@ -156,4 +161,52 @@ test("valuation validation preserves the complete dossier and client contact det
   assert.equal(parsed.phone, payload.phone);
   assert.equal(parsed.email, payload.email);
   assert.equal(parsed.propertyCount, 16);
+});
+
+for (const locale of ["it", "fr", "en"]) {
+  test(`${locale}: the actual complete audit email is French while original answers and figures stay intact`, async t => {
+    const original = auditPayload(locale);
+    const snapshot = structuredClone(original);
+    const { deliverLead, calls, storage } = await setup(t, { email: "success" });
+    await deliverLead("valuation", original);
+    const translated = frenchAuditEmailPayload(original);
+    assert.deepEqual(original, snapshot);
+    assert.deepEqual(storage.received[0].payload, snapshot);
+    const scalars = value => value && typeof value === "object" ? Object.values(value).flatMap(scalars)
+      : typeof value === "string" ? [] : [value];
+    assert.deepEqual(scalars(translated.auditReport), scalars(original.auditReport));
+    for (const key of ["name", "surname", "email", "phone", "address", "constraint", "ownerConstraint"]) assert.equal(translated[key], original[key]);
+    assert.equal(translated.auditReport.qualification.ownerConstraint, original.constraint);
+    assert.equal(translated.auditReport.confidentialMonthlyPlan.months.length, 12);
+    assert.equal(translated.auditReport.portfolioProjection.projectedGrossRevenue, 344064);
+    for (const body of [calls[0].body.html, calls[0].body.text]) {
+      for (const phrase of ["Plus de temps libre", "Prendre soin du bien", "Hypothèse tarifaire", "Tarification dynamique", "Répartition saisonnière indicative", "Frais moyens de réservation", "344064", "Douze derniers mois"]) assert.ok(body.includes(phrase), phrase);
+      assert.doesNotMatch(body, /Più tempo libero|More free time|Declared nightly rate|Owner Priorities|One representative property|Current Gross|Last 12 months|Indicative seasonal allocation/);
+      assert.ok(body.includes(original.constraint));
+    }
+    assert.match(calls[0].body.html, /lang="fr"/);
+    assert.deepEqual(calls[0].body.to, ["contatto@aurevia-genova.com"]);
+    assert.equal(calls[0].body.reply_to, original.email);
+    const checkKeys = value => {
+      if (!value || typeof value !== "object") return;
+      if (Array.isArray(value)) return value.forEach(checkKeys);
+      for (const [key, nested] of Object.entries(value)) {
+        assert.ok(auditEmailLabels[key], `Untranslated report heading: ${key}`);
+        checkKeys(nested);
+      }
+    };
+    checkKeys(original.auditReport);
+  });
+}
+
+test("launch, unknown fees, detailed commissions and pool variants also get French explanations", () => {
+  const launch = frenchAuditEmailPayload(auditPayload("en", { status: "launch", distribution: "none", neighborhood: "quinto" }));
+  assert.match(launch.auditReport.evidenceAndLimits.pricingBasis, /Sans tarif actuel déclaré/);
+  assert.match(launch.auditReport.locationModel.calibration, /Repère indicatif/);
+  assert.equal(launch.auditReport.distributionModel.inputMode, "Non renseigné");
+  const detailed = frenchAuditEmailPayload(auditPayload("it", {}, { channelFeeMode: "detailed", channelMix: { airbnb: { share: 60, fee: 8 }, booking: { share: 40, fee: 15 }, other: { share: 0, fee: null } }, poolKind: "shared", pool: true }));
+  assert.equal(detailed.auditReport.distributionModel.inputMode, "Détail par canal");
+  assert.equal(detailed.auditReport.declaredProperty.amenities.poolType, "Piscine partagée");
+  assert.equal(detailed.auditReport.distributionModel.rows[1].channel, "Booking.com");
+  assert.match(detailed.auditReport.distributionModel.basis, /Frais déclarés, pondérés/);
 });

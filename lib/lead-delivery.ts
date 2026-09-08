@@ -1,5 +1,6 @@
 type LeadKind = "contact" | "valuation";
 import { storeLead } from "@/lib/lead-storage";
+import { auditEmailLabels, frenchAuditEmailPayload } from "@/lib/audit-email-fr";
 type LeadPayload = Record<string, unknown> & {
   name: string;
   surname: string;
@@ -47,17 +48,21 @@ function humanize(key: string) {
     .replace(/^./, (letter) => letter.toUpperCase());
 }
 
+function fieldLabel(key: string) {
+  return labels[key] || auditEmailLabels[key] || humanize(key);
+}
+
 function renderInternalValue(value: unknown): string {
   if (value == null) return "Non renseigné / à confirmer";
   if (typeof value === "boolean") return value ? "Oui" : "Non";
   if (Array.isArray(value)) {
     if (value.every((item) => !isRecord(item) && !Array.isArray(item))) return value.map(renderInternalValue).join(", ");
     return value.map((item) => isRecord(item)
-      ? `<div style="margin:8px 0;padding:10px 12px;background:#f6f3eb;border-left:3px solid #c8a15a">${Object.entries(item).map(([key, nested]) => `<div><b>${escapeHtml(humanize(key))} :</b> ${renderInternalValue(nested)}</div>`).join("")}</div>`
+      ? `<div style="margin:8px 0;padding:10px 12px;background:#f6f3eb;border-left:3px solid #c8a15a">${Object.entries(item).map(([key, nested]) => `<div><b>${escapeHtml(fieldLabel(key))} :</b> ${renderInternalValue(nested)}</div>`).join("")}</div>`
       : renderInternalValue(item)).join("");
   }
   if (isRecord(value)) {
-    return `<div style="display:grid;gap:4px">${Object.entries(value).map(([key, nested]) => `<div><b>${escapeHtml(humanize(key))} :</b> ${renderInternalValue(nested)}</div>`).join("")}</div>`;
+    return `<div style="display:grid;gap:4px">${Object.entries(value).map(([key, nested]) => `<div><b>${escapeHtml(fieldLabel(key))} :</b> ${renderInternalValue(nested)}</div>`).join("")}</div>`;
   }
   return escapeHtml(value);
 }
@@ -70,7 +75,7 @@ function renderInternalText(value: unknown, depth = 0): string {
   }
   if (isRecord(value)) {
     return Object.entries(value).map(([key, nested]) => {
-      const heading = `${"  ".repeat(depth)}${labels[key] || humanize(key)} :`;
+      const heading = `${"  ".repeat(depth)}${fieldLabel(key)} :`;
       return `${heading}${isRecord(nested) || Array.isArray(nested) ? "\n" : " "}${renderInternalText(nested, depth + 1)}`;
     }).join("\n");
   }
@@ -96,17 +101,18 @@ function renderAuditReport(value: unknown) {
   const meta = ["reportVersion", "generatedAt", "language"];
   const metadata = meta
     .filter((key) => value[key] !== undefined)
-    .map((key) => `<span style="margin-right:18px"><b>${escapeHtml(humanize(key))} :</b> ${escapeHtml(value[key])}</span>`)
+    .map((key) => `<span style="margin-right:18px"><b>${escapeHtml(fieldLabel(key))} :</b> ${escapeHtml(value[key])}</span>`)
     .join("");
   const sections = Object.entries(value)
     .filter(([key]) => !meta.includes(key))
-    .map(([key, section]) => `<section style="margin-top:24px"><h2 style="margin:0;padding:11px 14px;background:#0d1b2a;color:#e2c782;font:20px Georgia,serif">${escapeHtml(sectionLabels[key] || humanize(key))}</h2><div style="padding:14px;border:1px solid #d9d3c7;border-top:0;line-height:1.55">${renderInternalValue(section)}</div></section>`)
+    .map(([key, section]) => `<section style="margin-top:24px"><h2 style="margin:0;padding:11px 14px;background:#0d1b2a;color:#e2c782;font:20px Georgia,serif">${escapeHtml(sectionLabels[key] || fieldLabel(key))}</h2><div style="padding:14px;border:1px solid #d9d3c7;border-top:0;line-height:1.55">${renderInternalValue(section)}</div></section>`)
     .join("");
   return `<div style="margin-top:30px;padding-top:24px;border-top:3px solid #c8a15a"><h1 style="margin:0 0 8px;font:28px Georgia,serif;color:#0d1b2a">Dossier interne complet AUREVIA</h1><p style="margin:0;color:#677176">Strictement interne — contient les données masquées au prospect et les points à vérifier pendant l’appel.</p><p style="font-size:12px;color:#7b8386">${metadata}</p>${sections}</div>`;
 }
 
 async function sendLeadEmail(kind: LeadKind, payload: LeadPayload) {
   const isAudit = kind === "valuation" && isRecord(payload.auditReport);
+  if (isAudit) payload = frenchAuditEmailPayload(payload);
   const apiKey = process.env.RESEND_API_KEY;
   const recipient = isAudit ? AUDIT_RECIPIENT : process.env.CONTACT_RECIPIENT || AUDIT_RECIPIENT;
   const from = process.env.CONTACT_FROM || "AUREVIA <contact@aurevia-genova.com>";
@@ -124,11 +130,11 @@ async function sendLeadEmail(kind: LeadKind, payload: LeadPayload) {
     .filter(([key, value]) => !ignored.has(key) && key !== "auditReport" && value !== "" && value != null);
   const rows = entries
     .map(([key, value]) => {
-      return `<tr><th style="padding:10px;text-align:left;vertical-align:top;border-bottom:1px solid #ddd">${escapeHtml(labels[key] || humanize(key))}</th><td style="padding:10px;border-bottom:1px solid #ddd;white-space:pre-line">${renderInternalValue(value)}</td></tr>`;
+      return `<tr><th style="padding:10px;text-align:left;vertical-align:top;border-bottom:1px solid #ddd">${escapeHtml(fieldLabel(key))}</th><td style="padding:10px;border-bottom:1px solid #ddd;white-space:pre-line">${renderInternalValue(value)}</td></tr>`;
     }).join("");
   const title = isAudit ? "Nouvel audit AUREVIA" : "Nouvelle demande AUREVIA";
   const introduction = isAudit
-    ? "Coordonnées du client, réponses et audit intégral ci-dessous, y compris les parties réservées à AUREVIA. Répondez à ce mail pour contacter le client. Aucun mail ne lui a été envoyé."
+    ? "Coordonnées du client, réponses et audit intégral ci-dessous, y compris les parties réservées à AUREVIA. Les réponses libres sont conservées dans la langue d’origine du client. Répondez à ce mail pour contacter le client. Aucun mail ne lui a été envoyé."
     : "Une demande a été envoyée depuis aurevia-genova.com.";
   const subject = `${isAudit ? "Audit complet AUREVIA" : kind === "valuation" ? "Nouvelle évaluation" : "Nouveau contact"} — ${payload.name} ${payload.surname}`.replace(/[\r\n]+/g, " ");
 
@@ -140,7 +146,7 @@ async function sendLeadEmail(kind: LeadKind, payload: LeadPayload) {
       to: [recipient],
       reply_to: payload.email,
       subject,
-      html: `<div style="font-family:Arial,sans-serif;color:#0d1b2a;max-width:920px;margin:auto"><h1 style="font-family:Georgia,serif">${title}</h1><p>${introduction}</p><table style="width:100%;border-collapse:collapse">${rows}</table>${renderAuditReport(auditReport)}</div>`,
+      html: `<div lang="fr" style="font-family:Arial,sans-serif;color:#0d1b2a;max-width:920px;margin:auto"><h1 style="font-family:Georgia,serif">${title}</h1><p>${introduction}</p><table style="width:100%;border-collapse:collapse">${rows}</table>${renderAuditReport(auditReport)}</div>`,
       text: `${title}\n\n${introduction}\n\n${renderInternalText(Object.fromEntries(entries))}${isRecord(auditReport) ? `\n\nDOSSIER INTERNE COMPLET — CONFIDENTIEL\n\n${renderInternalText(auditReport)}` : ""}`,
     }),
   });
