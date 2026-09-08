@@ -5,6 +5,12 @@ const nextConfig: NextConfig = {
     return [{
       source: "/audit/:path*",
       headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }],
+    }, {
+      source: "/administration/:path*",
+      headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }, { key: "Cache-Control", value: "private, no-store" }],
+    }, {
+      source: "/api/leads/:path*",
+      headers: [{ key: "Cache-Control", value: "private, no-store" }],
     }];
   },
 };

@@ -236,10 +236,10 @@ for (const locale of ["it", "fr", "en"]) {
       "@/lib/audit-distribution": distribution,
       "@/lib/audit-session": url("export const getAuditSession = () => null; export const getServerAuditSession = () => null; export const subscribeAuditSession = () => () => {};"),
       "./AuditThankYou.module.css": css,
-    }, "\nexport { AuditReport, thanks };\n");
+    }, "\nexport { thanks };\n");
     const { AuditReport, thanks } = await import(view);
     const before = JSON.stringify(stored);
-    const html = renderToStaticMarkup(createElement(AuditReport, { stored }));
+    const html = renderToStaticMarkup(createElement(AuditReport, { stored, locale }));
     const text = html.replace(/<[^>]+>/g, " ").replaceAll("&nbsp;", " ");
     const booking = "/audit/appuntamento";
     assert.ok(html.indexOf(`href="${booking}"`) < html.indexOf('class="included"'), "booking is in the opening screen");
@@ -267,5 +267,13 @@ for (const locale of ["it", "fr", "en"]) {
     }
     assert.equal(JSON.stringify(stored), before, "display restrictions never mutate the full internal dossier");
     assert.deepEqual(Object.keys(thanks[locale]).sort(), Object.keys(thanks.it).sort());
+    const internal = renderToStaticMarkup(createElement(AuditReport, { stored, locale: "fr", internal: true }));
+    assert.match(internal, /Audit intégral/);
+    assert.match(internal, /janvier/);
+    assert.match(internal, /décembre/);
+    assert.match(internal, /Total annuel/);
+    assert.doesNotMatch(internal, /redacted|reservedOperation|audit-unlock|audit-pricing-lock|audit-locked-lines|href="\/audit\/appuntamento/);
+    for (const phrase of thanks.fr.diagnosisNotes) assert.ok(internal.includes(phrase));
+    assert.equal(JSON.stringify(stored), before);
   });
 }

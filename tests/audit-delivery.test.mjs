@@ -66,10 +66,10 @@ test("audit is received in the internal inbox even without a mail credential", a
   assert.match(errors.mock.calls[0].arguments[0], /RESEND_API_KEY is missing/);
 });
 
-test("team receives the full report; visitor email is reply-to only, never recipient", async t => {
-  const { deliverLead, calls } = await setup(t, { email: "success" });
+test("storage-outage fallback retains the full report; visitor is never recipient", async t => {
+  const { deliverLead, calls } = await setup(t, { inboxFails: true, email: "success" });
   const result = await deliverLead("valuation", payload);
-  assert.deepEqual(result.channels, ["inbox", "email"]);
+  assert.deepEqual(result.channels, ["email"]);
   assert.deepEqual(calls[0].body.to, ["contatto@aurevia-genova.com"]);
   assert.equal(calls[0].body.subject, "Audit complet AUREVIA — Test Audit");
   assert.equal(calls[0].body.reply_to, payload.email);
@@ -103,14 +103,36 @@ test("ordinary forms keep their configured recipient; audit routing cannot be ch
   const { auditReport, ...ordinary } = payload;
   await deliverLead("contact", ordinary);
   assert.deepEqual(calls[1].body.to, ["team@example.invalid"]);
-  assert.equal(calls[1].body.subject, "Nouveau contact — Test Audit");
+  assert.equal(calls[1].body.subject, "Nouveau contact AUREVIA — Test Audit");
   await deliverLead("valuation", ordinary);
   assert.deepEqual(calls[2].body.to, ["team@example.invalid"]);
-  assert.equal(calls[2].body.subject, "Nouvelle évaluation — Test Audit");
+  assert.equal(calls[2].body.subject, "Nouveau contact AUREVIA — Test Audit");
 });
 
+for (const locale of ["it", "fr", "en"]) {
+  test(`${locale}: persisted audits send only a French contact notification and private CRM link`, async t => {
+    const { deliverLead, calls, storage, renderCrmNotification } = await setup(t, { email: "success" });
+    const original = auditPayload(locale);
+    const result = await deliverLead("valuation", original);
+    assert.deepEqual(result.channels, ["inbox", "email"]);
+    assert.deepEqual(storage.received[0].payload, original);
+    for (const body of [calls[0].body.html, calls[0].body.text]) {
+      for (const field of [original.name, original.surname, original.email, original.phone]) assert.ok(body.includes(field));
+      assert.ok(body.includes("https://aurevia-genova.com/administration?demande=42"));
+      assert.doesNotMatch(body, /344064|auditSnapshot|declaredPerformance|Janvier|confidentialMonthlyPlan|Contrainte propriétaire/);
+      assert.ok(!body.includes(original.address));
+      assert.ok(!body.includes(original.constraint));
+    }
+    assert.match(calls[0].body.html, /lang="fr"/);
+    assert.equal(calls[0].body.subject, `Nouveau contact AUREVIA — ${original.name} ${original.surname}`);
+    assert.deepEqual(calls[0].body.to, ["contatto@aurevia-genova.com"]);
+    assert.equal(calls[0].body.reply_to, original.email);
+    assert.throws(() => renderCrmNotification(original, -1));
+  });
+}
+
 test("untrusted answers are escaped and unknown figures are not shown as zero", async t => {
-  const { deliverLead, calls } = await setup(t, { email: "success" });
+  const { deliverLead, calls } = await setup(t, { inboxFails: true, email: "success" });
   await deliverLead("valuation", { ...payload, name: "Test\r\nAudit", message: '<script>alert("test")</script>',
     auditReport: { callPreparation: { note: '<img src=x onerror="test">', currentNet: null, managementFee: 0, checks: [["A", "B"]] } } });
   const mail = calls[0].body;
@@ -167,7 +189,7 @@ for (const locale of ["it", "fr", "en"]) {
   test(`${locale}: the actual complete audit email is French while original answers and figures stay intact`, async t => {
     const original = auditPayload(locale);
     const snapshot = structuredClone(original);
-    const { deliverLead, calls, storage } = await setup(t, { email: "success" });
+    const { deliverLead, calls, storage } = await setup(t, { inboxFails: true, email: "success" });
     await deliverLead("valuation", original);
     const translated = frenchAuditEmailPayload(original);
     assert.deepEqual(original, snapshot);

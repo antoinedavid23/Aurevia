@@ -1,354 +1,124 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import {
-  Archive,
-  Check,
-  ChevronDown,
-  Download,
-  ExternalLink,
-  Inbox,
-  Mail,
-  Phone,
-  Search,
-} from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { ArrowLeft, ArrowUpRight, Download, Mail, Phone, RefreshCw, Search } from "lucide-react";
+import { AdminAuditDossier } from "./AdminAuditDossier";
+import { csvCell, isRecord, leadStatuses, leadStatusLabels, type CrmLead, type LeadStatus } from "@/lib/lead-crm";
+import styles from "./AdminLeadInbox.module.css";
 
-type Lead = {
-  id: number;
-  kind: "contact" | "valuation";
-  name: string;
-  surname: string;
-  email: string;
-  phone: string | null;
-  city: string | null;
-  propertyType: string | null;
-  subject: string | null;
-  message: string;
-  details: Record<string, unknown>;
-  status: "new" | "read" | "archived";
-  createdAt: string | number;
-};
-
-const detailLabels: Record<string, string> = {
-  address: "Adresse",
-  availability: "Disponibilité",
-  bathrooms: "Salles de bain",
-  bedrooms: "Chambres",
-  capacity: "Capacité",
-  currentRental: "Location actuelle",
-  deadline: "Délai souhaité",
-  goals: "Objectifs",
-  numberOfProperties: "Nombre de biens",
-  ownerType: "Profil",
-  parking: "Parking",
-  pool: "Piscine / jacuzzi",
-  propertyType: "Type de bien",
-  seaView: "Vue mer",
-  services: "Services recherchés",
-  surface: "Surface",
-  terrace: "Terrasse",
-  auditReport: "Dossier interne complet",
-  distribution: "Canaux de distribution",
-  compliance: "Conformité",
-  ownerConstraint: "Contrainte principale",
-};
-
-function displayValue(value: unknown) {
-  if (Array.isArray(value)) return value.join(", ");
-  if (typeof value === "boolean") return value ? "Oui" : "Non";
-  if (value === null || value === undefined || value === "") return "Non renseigné";
-  return String(value);
-}
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
-}
-
-function auditLabel(key: string) {
-  const labels: Record<string, string> = {
-    portfolioProjection: "Projection totale du portefeuille",
-    perProperty: "Résultats par logement représentatif",
-    exactPropertyCount: "Nombre exact de biens",
-    qualification: "Qualification du prospect",
-    declaredProperty: "Bien déclaré",
-    declaredPerformance: "Performance déclarée",
-    aureviaCentralModel: "Modèle financier AUREVIA",
-    internalScores: "Scores internes",
-    confidentialMonthlyPlan: "Plan mensuel confidentiel",
-    callPreparation: "Préparation de l’appel",
-    pointsToVerifyDuringCall: "Points à vérifier pendant l’appel",
-    firstPriorities: "Premières priorités",
-  };
-  return labels[key] || key.replace(/([a-z0-9])([A-Z])/g, "$1 $2").replace(/^./, letter => letter.toUpperCase());
-}
-
-function AuditReportValue({ value, depth = 0 }: { value: unknown; depth?: number }) {
-  if (Array.isArray(value)) {
-    return <div className="lead-audit-list">{value.map((item, index) =>
-      isRecord(item)
-        ? <article key={index}><AuditReportValue value={item} depth={depth + 1} /></article>
-        : <p key={index}>{displayValue(item)}</p>,
-    )}</div>;
-  }
-  if (isRecord(value)) {
-    return <div className={depth === 0 ? "lead-audit-sections" : "lead-audit-values"}>
-      {Object.entries(value).map(([key, nested]) => <section key={key}>
-        {depth === 0 ? <h4>{auditLabel(key)}</h4> : <strong>{auditLabel(key)}</strong>}
-        <AuditReportValue value={nested} depth={depth + 1} />
-      </section>)}
-    </div>;
-  }
-  return <span>{displayValue(value)}</span>;
-}
-
-export function AdminLeadInbox() {
-  const [leads, setLeads] = useState<Lead[]>([]);
-  const [status, setStatus] = useState<"active" | "new" | "read" | "archived">("active");
-  const [kind, setKind] = useState<"all" | Lead["kind"]>("all");
+export function AdminLeadInbox({ initialSelectedId }: { initialSelectedId?: number }) {
+  const [leads, setLeads] = useState<CrmLead[]>([]);
+  const [status, setStatus] = useState<"active" | "all" | LeadStatus>("active");
+  const [kind, setKind] = useState("all");
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [updateError, setUpdateError] = useState("");
+  const [refreshKey, setRefreshKey] = useState(0);
+  const [selectedId, setSelectedId] = useState(initialSelectedId);
+  const [savingId, setSavingId] = useState<number | null>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const requestGeneration = useRef(0);
 
   useEffect(() => {
-    let active = true;
+    const controller = new AbortController();
     async function refresh(silent = false) {
+      const generation = ++requestGeneration.current;
       if (!silent) setLoading(true);
       try {
-        const response = await fetch("/api/leads", { cache: "no-store" });
-        if (!response.ok) throw new Error("Inbox unavailable");
-        const nextLeads = await response.json();
-        if (active) {
-          setLeads(nextLeads);
-          setError("");
-        }
-      } catch {
-        if (active) setError("La boîte de réception n’a pas pu être actualisée.");
+        const response = await fetch("/api/leads", { cache: "no-store", signal: controller.signal });
+        if (!response.ok) throw new Error(response.status === 403 ? "Votre session a expiré. Reconnectez-vous pour consulter les dossiers." : "Le stockage des dossiers est indisponible. Réessayez avant de considérer cette liste comme complète.");
+        const rows = await response.json();
+        if (!Array.isArray(rows)) throw new Error("La liste des dossiers n’a pas pu être lue.");
+        if (!controller.signal.aborted && generation === requestGeneration.current) { setLeads(rows); setError(""); }
+      } catch (cause) {
+        if (!controller.signal.aborted) setError(cause instanceof Error ? cause.message : "Actualisation impossible.");
       } finally {
-        if (active && !silent) setLoading(false);
+        if (!controller.signal.aborted && !silent) setLoading(false);
       }
     }
     void refresh();
-    const interval = window.setInterval(() => void refresh(true), 20_000);
-    const onFocus = () => void refresh(true);
-    window.addEventListener("focus", onFocus);
-    return () => {
-      active = false;
-      window.clearInterval(interval);
-      window.removeEventListener("focus", onFocus);
-    };
-  }, []);
+    const interval = window.setInterval(() => void refresh(true), 30_000);
+    const focus = () => void refresh(true);
+    window.addEventListener("focus", focus);
+    return () => { controller.abort(); window.clearInterval(interval); window.removeEventListener("focus", focus); };
+  }, [refreshKey]);
 
-  async function updateStatus(id: number, nextStatus: Lead["status"]) {
-    const response = await fetch("/api/leads", {
-      method: "PATCH",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ id, status: nextStatus }),
-    });
-    if (response.ok) {
-      setLeads((items) =>
-        items.map((item) => (item.id === id ? { ...item, status: nextStatus } : item)),
-      );
-    }
+  useEffect(() => { if (selectedId) headingRef.current?.focus(); }, [selectedId, loading]);
+
+  async function updateStatus(id: number, nextStatus: LeadStatus) {
+    if (savingId !== null) return;
+    setSavingId(id); setUpdateError("");
+    ++requestGeneration.current;
+    try {
+      const response = await fetch("/api/leads", { method: "PATCH", headers: { "content-type": "application/json" }, body: JSON.stringify({ id, status: nextStatus }) });
+      if (!response.ok) throw new Error("Le changement de statut n’a pas été enregistré. Réessayez.");
+      ++requestGeneration.current;
+      setLeads(items => items.map(item => item.id === id ? { ...item, status: nextStatus } : item));
+    } catch (cause) { setUpdateError(cause instanceof Error ? cause.message : "Enregistrement impossible."); }
+    finally { setSavingId(null); }
   }
 
-  const visible = useMemo(() => {
-    const normalized = query.trim().toLowerCase();
-    return leads.filter((lead) => {
-      const statusMatches =
-        status === "active"
-          ? lead.status !== "archived"
-          : lead.status === status;
-      const kindMatches = kind === "all" || lead.kind === kind;
-      const text = [
-        lead.name,
-        lead.surname,
-        lead.email,
-        lead.phone,
-        lead.city,
-        lead.propertyType,
-        lead.subject,
-        lead.message,
-      ]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase();
-      return statusMatches && kindMatches && (!normalized || text.includes(normalized));
-    });
-  }, [leads, status, kind, query]);
+  const visible = useMemo(() => leads.filter(lead => {
+    const statusMatches = status === "all" || (status === "active" ? !["closed", "archived"].includes(lead.status) : lead.status === status);
+    const audit = isRecord(lead.details?.auditReport);
+    const kindMatches = kind === "all" || (kind === "audit" ? audit : !audit);
+    const text = [lead.name, lead.surname, lead.email, lead.phone, lead.city, lead.subject].filter(Boolean).join(" ").toLocaleLowerCase("fr");
+    return statusMatches && kindMatches && text.includes(query.trim().toLocaleLowerCase("fr"));
+  }), [leads, status, kind, query]);
+  const selected = leads.find(lead => lead.id === selectedId);
+  const newCount = leads.filter(lead => lead.status === "new").length;
+  const appointmentCount = leads.filter(lead => lead.status === "appointment").length;
+  const audits = leads.filter(lead => isRecord(lead.details?.auditReport)).length;
 
-  const unread = leads.filter((lead) => lead.status === "new").length;
-
+  function selectLead(id?: number) {
+    setSelectedId(id); setUpdateError("");
+    const url = new URL(window.location.href);
+    if (id) url.searchParams.set("demande", String(id)); else url.searchParams.delete("demande");
+    window.history.replaceState(null, "", `${url.pathname}${url.search}#demandes`);
+  }
   function exportCsv() {
-    const escape = (value: unknown) => `"${displayValue(value).replaceAll('"', '""')}"`;
-    const rows = visible.map((lead) =>
-      [
-        lead.id,
-        lead.kind,
-        `${lead.name} ${lead.surname}`,
-        lead.email,
-        lead.phone,
-        lead.city,
-        lead.propertyType,
-        lead.status,
-        new Date(lead.createdAt).toLocaleString("fr-FR"),
-        lead.message,
-      ]
-        .map(escape)
-        .join(";"),
-    );
-    const csv = [
-      "ID;Type;Nom;E-mail;Téléphone;Ville;Type de bien;Statut;Date;Message",
-      ...rows,
-    ].join("\n");
-    const url = URL.createObjectURL(
-      new Blob([`\uFEFF${csv}`], { type: "text/csv;charset=utf-8" }),
-    );
-    const anchor = document.createElement("a");
-    anchor.href = url;
-    anchor.download = `demandes-aurevia-${new Date().toISOString().slice(0, 10)}.csv`;
-    anchor.click();
-    URL.revokeObjectURL(url);
+    const rows = visible.map(lead => [lead.id, lead.name, lead.surname, lead.email, lead.phone, lead.city, leadStatusLabels[lead.status], new Date(lead.createdAt).toLocaleString("fr-FR")].map(csvCell).join(";"));
+    const url = URL.createObjectURL(new Blob(["\uFEFFID;Prénom;Nom;E-mail;Téléphone;Ville;Statut;Reçu le\n" + rows.join("\n")], { type: "text/csv;charset=utf-8" }));
+    const anchor = document.createElement("a"); anchor.href = url; anchor.download = `contacts-aurevia-${new Date().toISOString().slice(0, 10)}.csv`; anchor.click();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
 
-  return (
-    <section className="admin-inbox" id="demandes">
-      <div className="admin-section-head">
-        <div>
-          <p className="eyebrow">Demandes reçues</p>
-          <h2>Boîte de réception</h2>
-          <p>
-            {unread} nouvelle{unread > 1 ? "s" : ""} demande
-            {unread > 1 ? "s" : ""} à traiter.
-          </p>
-        </div>
-        <button className="admin-export" onClick={exportCsv} disabled={!visible.length}>
-          <Download size={16} /> Exporter la sélection
-        </button>
+  return <section id="demandes" className={styles.crm} data-no-translate>
+    <div className={styles.heading}><div><h2>Votre portefeuille de contacts</h2><p>Contacts, audits et suivi des échanges.</p></div><button type="button" onClick={() => setRefreshKey(key => key + 1)} disabled={loading}><RefreshCw size={16}/> Actualiser</button></div>
+    <div className={styles.metrics} aria-label="Vue d’ensemble">
+      <div><span>Contacts reçus</span><strong>{loading || error ? "—" : leads.length}</strong></div>
+      <div><span>Nouveaux</span><strong>{loading || error ? "—" : newCount}</strong></div>
+      <div><span>Audits complets</span><strong>{loading || error ? "—" : audits}</strong></div>
+      <div><span>Rendez-vous</span><strong>{loading || error ? "—" : appointmentCount}</strong></div>
+    </div>
+    {error && <p className={styles.error} role="alert">{error} <a href="/connexion">Connexion</a></p>}
+    {updateError && <p className={styles.error} role="alert">{updateError}</p>}
+    {selected ? <article className={styles.dossier}>
+      <div className={styles.dossierToolbar}><button type="button" onClick={() => selectLead()}><ArrowLeft size={16}/> Tous les contacts</button><span>Dossier privé · #{selected.id}</span></div>
+      <div className={styles.contactHead}>
+        <div><h2 ref={headingRef} tabIndex={-1}>{selected.name} {selected.surname}</h2><p>{selected.city || "Localisation à préciser"} · Reçu le {new Date(selected.createdAt).toLocaleDateString("fr-FR")}</p></div>
+        <label>Suivi de la demande<select value={selected.status} disabled={savingId !== null} onChange={event => void updateStatus(selected.id, event.target.value as LeadStatus)}>{leadStatuses.map(value => <option key={value} value={value}>{leadStatusLabels[value]}</option>)}</select></label>
       </div>
-
-      <div className="admin-toolbar">
-        <label className="admin-search">
-          <Search size={17} />
-          <span className="sr-only">Rechercher une demande</span>
-          <input
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="Nom, e-mail, ville, message…"
-          />
-        </label>
-        <label>
-          <span className="sr-only">Filtrer par origine</span>
-          <select value={kind} onChange={(event) => setKind(event.target.value as typeof kind)}>
-            <option value="all">Toutes les demandes</option>
-            <option value="contact">Contacts</option>
-            <option value="valuation">Évaluations</option>
-          </select>
-        </label>
-        <div className="admin-inbox-filters" aria-label="Filtrer par statut">
-          {(["active", "new", "read", "archived"] as const).map((item) => (
-            <button
-              key={item}
-              className={status === item ? "active" : ""}
-              onClick={() => setStatus(item)}
-            >
-              {item === "active"
-                ? "Actives"
-                : item === "new"
-                  ? "Nouvelles"
-                  : item === "read"
-                    ? "Lues"
-                    : "Archivées"}
-            </button>
-          ))}
-        </div>
+      <div className={styles.contactLinks}><a href={`mailto:${selected.email}`}><Mail size={17}/>{selected.email}</a>{selected.phone && <a href={`tel:${selected.phone.replace(/[^+\d]/g, "")}`}><Phone size={17}/>{selected.phone}</a>}<span>{savingId === selected.id ? "Enregistrement…" : leadStatusLabels[selected.status]}</span></div>
+      <AdminAuditDossier key={selected.id} lead={selected}/>
+    </article> : <>
+      {selectedId && !loading && !error && <p className={styles.error} role="alert">Ce dossier est introuvable. <button type="button" onClick={() => selectLead()}>Afficher les contacts</button></p>}
+      <div className={styles.toolbar}>
+        <label className={styles.search}><Search size={17}/><span className="sr-only">Rechercher un contact</span><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Nom, e-mail, téléphone, ville…"/></label>
+        <label><span className="sr-only">Statut</span><select value={status} onChange={event => setStatus(event.target.value as typeof status)}><option value="active">À traiter</option><option value="all">Tous les statuts</option>{leadStatuses.map(value => <option key={value} value={value}>{leadStatusLabels[value]}</option>)}</select></label>
+        <label><span className="sr-only">Type de demande</span><select value={kind} onChange={event => setKind(event.target.value)}><option value="all">Toutes les demandes</option><option value="audit">Audits</option><option value="contact">Contacts simples</option></select></label>
+        <button type="button" onClick={exportCsv} disabled={!visible.length || !!error}><Download size={16}/> Exporter</button>
       </div>
-
-      {error && <p role="alert" className="form-status">{error}</p>}
-      {loading ? (
-        <p>Chargement des demandes…</p>
-      ) : visible.length === 0 ? (
-        <div className="admin-empty">
-          <Inbox />
-          <p>Aucune demande ne correspond à ces critères.</p>
-        </div>
-      ) : (
-        <div className="lead-list">
-          {visible.map((lead) => (
-            <article className={`lead-card status-${lead.status}`} key={lead.id}>
-              <div className="lead-card-top">
-                <div>
-                  <span>
-                    {lead.kind === "valuation" ? "Évaluation" : "Contact"} · #{lead.id}
-                  </span>
-                  <h3>
-                    {lead.name} {lead.surname}
-                  </h3>
-                </div>
-                <time>
-                  {new Date(lead.createdAt).toLocaleDateString("fr-FR", {
-                    day: "2-digit",
-                    month: "long",
-                    year: "numeric",
-                  })}
-                </time>
-              </div>
-              <div className="lead-meta">
-                <a href={`mailto:${lead.email}`}>
-                  <Mail size={15} />
-                  {lead.email}
-                  <ExternalLink size={13} />
-                </a>
-                {lead.phone && (
-                  <a href={`tel:${lead.phone}`}>
-                    <Phone size={15} />
-                    {lead.phone}
-                  </a>
-                )}
-                {lead.city && <span>{lead.city}</span>}
-                {lead.propertyType && <span>{lead.propertyType}</span>}
-              </div>
-              {lead.subject && <p className="lead-subject">{lead.subject}</p>}
-              <p className="lead-message">{lead.message}</p>
-              {lead.details && Object.keys(lead.details).length > 0 && (
-                <details className="lead-details">
-                  <summary>
-                    Voir toutes les informations <ChevronDown size={16} />
-                  </summary>
-                  <dl>
-                    {Object.entries(lead.details).map(([key, value]) => (
-                      key === "auditReport"
-                        ? <div className="lead-audit-wrapper" key={key}>
-                            <dt>{detailLabels[key]}</dt>
-                            <dd><AuditReportValue value={value} /></dd>
-                          </div>
-                        : <div key={key}>
-                            <dt>{detailLabels[key] || key}</dt>
-                            <dd>{displayValue(value)}</dd>
-                          </div>
-                    ))}
-                  </dl>
-                </details>
-              )}
-              <div className="lead-actions">
-                {lead.status === "new" && (
-                  <button onClick={() => updateStatus(lead.id, "read")}>
-                    <Check size={15} /> Marquer comme lue
-                  </button>
-                )}
-                {lead.status !== "archived" ? (
-                  <button onClick={() => updateStatus(lead.id, "archived")}>
-                    <Archive size={15} /> Archiver
-                  </button>
-                ) : (
-                  <button onClick={() => updateStatus(lead.id, "read")}>
-                    <Inbox size={15} /> Restaurer
-                  </button>
-                )}
-              </div>
-            </article>
-          ))}
-        </div>
-      )}
-    </section>
-  );
+      <p className={styles.count} role="status">{loading ? "Chargement des dossiers…" : error ? "Liste non vérifiée" : `${visible.length} contact${visible.length > 1 ? "s" : ""}`}</p>
+      {!loading && !error && visible.length === 0 && <div className={styles.empty}><h3>Aucun contact pour le moment</h3><p>Les demandes enregistrées apparaîtront ici. Modifiez les filtres si vous recherchez un ancien dossier.</p></div>}
+      {visible.length > 0 && <div className={styles.tableWrap}><table><thead><tr><th>Contact</th><th>Projet</th><th>Reçu le</th><th>Suivi</th><th><span className="sr-only">Dossier</span></th></tr></thead><tbody>{visible.map(lead => <tr key={lead.id}>
+        <td><button type="button" className={styles.name} onClick={() => selectLead(lead.id)}>{lead.name} {lead.surname}</button><a className={styles.email} href={`mailto:${lead.email}`}>{lead.email}</a></td>
+        <td><strong>{isRecord(lead.details?.auditReport) ? "Audit immobilier" : "Prise de contact"}</strong><span>{lead.city || "À préciser"}{typeof lead.details?.propertyCount === "number" ? ` · ${lead.details.propertyCount} bien(s)` : ""}</span></td>
+        <td>{new Date(lead.createdAt).toLocaleDateString("fr-FR")}</td>
+        <td><span className={`${styles.status} ${lead.status === "new" ? styles.newStatus : ""}`}>{leadStatusLabels[lead.status] || lead.status}</span></td>
+        <td><button type="button" onClick={() => selectLead(lead.id)} aria-label={`Ouvrir le dossier de ${lead.name} ${lead.surname}`}>Ouvrir <ArrowUpRight size={16}/></button></td>
+      </tr>)}</tbody></table></div>}
+    </>}
+  </section>;
 }

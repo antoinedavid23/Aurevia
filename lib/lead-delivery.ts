@@ -110,7 +110,18 @@ function renderAuditReport(value: unknown) {
   return `<div style="margin-top:30px;padding-top:24px;border-top:3px solid #c8a15a"><h1 style="margin:0 0 8px;font:28px Georgia,serif;color:#0d1b2a">Dossier interne complet AUREVIA</h1><p style="margin:0;color:#677176">Strictement interne — contient les données masquées au prospect et les points à vérifier pendant l’appel.</p><p style="font-size:12px;color:#7b8386">${metadata}</p>${sections}</div>`;
 }
 
-async function sendLeadEmail(kind: LeadKind, payload: LeadPayload) {
+export function renderCrmNotification(payload: LeadPayload, leadId: number) {
+  if (!Number.isSafeInteger(leadId) || leadId <= 0) throw new Error("Référence CRM invalide.");
+  const url = `https://aurevia-genova.com/administration?demande=${leadId}`;
+  const contact = [["Prénom", payload.name], ["Nom", payload.surname], ["Téléphone", payload.phone || "Non renseigné"], ["E-mail", payload.email]];
+  return {
+    subject: `Nouveau contact AUREVIA — ${payload.name} ${payload.surname}`.replace(/[\r\n]+/g, " "),
+    html: `<div lang="fr" style="font-family:Arial,sans-serif;max-width:580px;margin:auto;color:#0d1b2a"><div style="background:#0d1b2a;padding:24px;color:#d8b66d;letter-spacing:3px">AUREVIA</div><div style="padding:24px;border:1px solid #d5d9db"><h1 style="font:26px Georgia,serif;margin:0 0 20px">Un nouveau contact</h1><table style="width:100%;border-collapse:collapse">${contact.map(([label, value]) => `<tr><th style="text-align:left;padding:12px 0;border-bottom:1px solid #e0e3e5;font-weight:400">${label}</th><td style="padding:12px 0;border-bottom:1px solid #e0e3e5">${escapeHtml(value)}</td></tr>`).join("")}</table><p style="margin:24px 0"><a href="${url}" style="display:inline-block;padding:14px 20px;background:#c6a05a;color:#0d1b2a;text-decoration:none">Ouvrir le dossier privé →</a></p><p style="font-size:13px;color:#566773">Les réponses, l’audit et les informations des biens sont enregistrés dans votre administration. Connexion requise.</p></div></div>`,
+    text: `Nouveau contact AUREVIA\n\n${contact.map(([label, value]) => `${label} : ${value}`).join("\n")}\n\nDossier privé : ${url}\nConnexion requise. Les réponses, l’audit et les informations des biens sont dans votre administration.`,
+  };
+}
+
+async function sendLeadEmail(kind: LeadKind, payload: LeadPayload, storedId?: number | null) {
   const isAudit = kind === "valuation" && isRecord(payload.auditReport);
   if (isAudit) payload = frenchAuditEmailPayload(payload);
   const apiKey = process.env.RESEND_API_KEY;
@@ -121,7 +132,7 @@ async function sendLeadEmail(kind: LeadKind, payload: LeadPayload) {
     return null;
   }
 
-  const ignored = new Set(["website", "consent"]);
+  const ignored = new Set(["website", "consent", "auditSnapshot"]);
   const auditReport = payload.auditReport;
   // Contact details always come first, even if the submitted object's order changes.
   const contactKeys = ["name", "surname", "email", "phone"];
@@ -137,6 +148,7 @@ async function sendLeadEmail(kind: LeadKind, payload: LeadPayload) {
     ? "Coordonnées du client, réponses et audit intégral ci-dessous, y compris les parties réservées à AUREVIA. Les réponses libres sont conservées dans la langue d’origine du client. Répondez à ce mail pour contacter le client. Aucun mail ne lui a été envoyé."
     : "Une demande a été envoyée depuis aurevia-genova.com.";
   const subject = `${isAudit ? "Audit complet AUREVIA" : kind === "valuation" ? "Nouvelle évaluation" : "Nouveau contact"} — ${payload.name} ${payload.surname}`.replace(/[\r\n]+/g, " ");
+  const notification = storedId ? renderCrmNotification(payload, storedId) : null;
 
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -145,9 +157,9 @@ async function sendLeadEmail(kind: LeadKind, payload: LeadPayload) {
       from,
       to: [recipient],
       reply_to: payload.email,
-      subject,
-      html: `<div lang="fr" style="font-family:Arial,sans-serif;color:#0d1b2a;max-width:920px;margin:auto"><h1 style="font-family:Georgia,serif">${title}</h1><p>${introduction}</p><table style="width:100%;border-collapse:collapse">${rows}</table>${renderAuditReport(auditReport)}</div>`,
-      text: `${title}\n\n${introduction}\n\n${renderInternalText(Object.fromEntries(entries))}${isRecord(auditReport) ? `\n\nDOSSIER INTERNE COMPLET — CONFIDENTIEL\n\n${renderInternalText(auditReport)}` : ""}`,
+      subject: notification?.subject || subject,
+      html: notification?.html || `<div lang="fr" style="font-family:Arial,sans-serif;color:#0d1b2a;max-width:920px;margin:auto"><h1 style="font-family:Georgia,serif">${title}</h1><p>${introduction}</p><table style="width:100%;border-collapse:collapse">${rows}</table>${renderAuditReport(auditReport)}</div>`,
+      text: notification?.text || `${title}\n\n${introduction}\n\n${renderInternalText(Object.fromEntries(entries))}${isRecord(auditReport) ? `\n\nDOSSIER INTERNE COMPLET — CONFIDENTIEL\n\n${renderInternalText(auditReport)}` : ""}`,
     }),
   });
   if (!response.ok) {
@@ -161,13 +173,15 @@ async function sendLeadEmail(kind: LeadKind, payload: LeadPayload) {
 
 export async function deliverLead(kind: LeadKind, payload: LeadPayload) {
   if (payload.website) return { reference: "filtered", channels: ["spam-filter"] };
+  // Never replace the full dossier with a coordinates-only email until a
+  // durable write has returned an actual CRM reference. Legacy email fallback
+  // is retained until production storage is connected (and on storage outage).
+  let storedId: number | null = null;
+  try { storedId = (await storeLead(kind, payload)).id; }
+  catch (error) { console.error("AUREVIA lead storage unavailable", error); }
   if (kind === "valuation" && isRecord(payload.auditReport)) {
-    // Internal inbox and team email are independent delivery channels.
-    // The visitor never receives an email, and success requires a real receipt.
-    const [inbox, email] = await Promise.allSettled([storeLead(kind, payload), sendLeadEmail(kind, payload)]);
-    const storedId = inbox.status === "fulfilled" ? inbox.value.id : null;
+    const [email] = await Promise.allSettled([sendLeadEmail(kind, payload, storedId)]);
     const emailId = email.status === "fulfilled" ? email.value : null;
-    if (inbox.status === "rejected") console.error("AUREVIA audit inbox unavailable", inbox.reason);
     if (email.status === "rejected") console.error("AUREVIA audit notification unavailable", email.reason);
     if (!storedId && !emailId) throw new Error("Aucun canal de réception AUREVIA n’a confirmé le dossier.");
     return {
@@ -176,13 +190,7 @@ export async function deliverLead(kind: LeadKind, payload: LeadPayload) {
       channels: [...(storedId ? ["inbox"] : []), ...(emailId ? ["email"] : [])],
     };
   }
-  const emailId = await sendLeadEmail(kind, payload);
+  const emailId = await sendLeadEmail(kind, payload, storedId);
   if (!emailId) throw new Error("RESEND_API_KEY n’est pas configurée dans l’environnement du site.");
-  let storedId: number | null = null;
-  try {
-    storedId = (await storeLead(kind, payload)).id;
-  } catch (error) {
-    console.error("AUREVIA lead storage unavailable", error);
-  }
   return { reference: emailId, leadId: storedId, channels: storedId ? ["email", "inbox"] : ["email"] };
 }

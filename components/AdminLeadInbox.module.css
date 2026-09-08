@@ -1,0 +1,39 @@
+.crm { --crm-border: #d4d9dc; --crm-ink: #0d1b2a; color: var(--crm-ink); background: #f6f7f8; padding: clamp(1rem, 3vw, 2.5rem); scroll-margin-top: 100px; }
+.heading, .dossierToolbar, .contactHead, .contactLinks { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+.heading { margin-bottom: 1.8rem; }
+.crm h2 { margin: 0; color: inherit; font-size: clamp(1.5rem, 2.5vw, 2.1rem); line-height: 1.25; letter-spacing: -.02em; }
+.heading p, .contactHead p { color: #4f606c; margin: .5rem 0 0; }
+.crm button, .crm select { border: 1px solid var(--crm-border); border-radius: 3px; background: #fff; color: var(--crm-ink); min-height: 44px; padding: .6rem .85rem; font: inherit; font-size: .875rem; }
+.crm button { display: inline-flex; gap: .5rem; align-items: center; justify-content: center; cursor: pointer; }
+.crm button:hover:not(:disabled) { background: #f1f4f5; border-color: #83919b; }
+.crm button:disabled { opacity: .55; cursor: wait; }
+.crm :is(button, a, input, select, summary):focus-visible { outline: 2px solid #916d26; outline-offset: 3px; }
+.metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: #0d1b2a; color: #fff; margin-bottom: 1.8rem; }
+.metrics > div { padding: 1.25rem 1.5rem; border-right: 1px solid #344450; }
+.metrics span { display: block; color: #d0d8dc; font-size: .875rem; }
+.metrics strong { display: block; margin-top: .6rem; font-size: 2rem; font-weight: 500; color: #e1bf76; }
+.toolbar { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
+.search { display: flex; gap: .75rem; align-items: center; border: 1px solid var(--crm-border); padding: 0 .8rem; min-width: 240px; flex: 1; background: #fff; border-radius: 3px; }
+.search input { border: 0; background: transparent; color: var(--crm-ink); font: inherit; min-width: 0; width: 100%; min-height: 46px; }
+.count { font-size: .875rem; color: #52636f; margin: 1rem 0; }
+.tableWrap { overflow: auto; background: #fff; border-top: 1px solid var(--crm-border); }
+.tableWrap table { border-collapse: collapse; width: 100%; min-width: 720px; font-size: .875rem; }
+.tableWrap th { text-align: left; font-weight: 500; color: #546572; background: #f3f5f6; padding: .85rem 1rem; }
+.tableWrap td { padding: 1.2rem 1rem; border-bottom: 1px solid var(--crm-border); vertical-align: middle; }
+.tableWrap td > span:not(.status), .email { display: block; margin-top: .3rem; color: #52636f; }
+.tableWrap strong { font-weight: 500; }
+.crm button.name { display: block; background: none; border: 0; min-height: 0; padding: 0; font-weight: 600; font-size: 1rem; text-align: left; }
+.status { display: inline-block; border: 1px solid #c6d1d6; border-radius: 2px; padding: .25rem .5rem; white-space: nowrap; }
+.newStatus { color: #70500e; background: #fcf5e4; border-color: #d3b16d; }
+.empty { text-align: center; padding: 3rem 1rem; border-block: 1px solid var(--crm-border); }
+.empty h3 { font-size: 1.3rem; }
+.error { background: #fff0ee; border-left: 3px solid #a13627; padding: 1rem; color: #83271d; }
+.error a { text-decoration: underline; }
+.dossier { background: #fff; border: 1px solid var(--crm-border); }
+.dossierToolbar { background: #f3f5f6; padding: 1rem 1.5rem; font-size: .875rem; }
+.contactHead { padding: 1.5rem 1.5rem 1rem; align-items: start; }
+.contactHead label { font-size: .875rem; display: grid; gap: .4rem; min-width: 170px; }
+.contactLinks { padding: 0 1.5rem 1.5rem; justify-content: flex-start; border-bottom: 1px solid var(--crm-border); }
+.contactLinks a { display: inline-flex; gap: .5rem; align-items: center; font-size: .9rem; overflow-wrap: anywhere; }
+.contactLinks > span { margin-left: auto; font-size: .875rem; color: #687681; }
+@media (max-width: 680px) { .metrics { grid-template-columns: repeat(2, 1fr); } .metrics > div { border-bottom: 1px solid #344450; padding: 1rem; } .toolbar > label:not(.search) { flex: 1; } .toolbar select { width: 100%; } .search { min-width: 100%; } .contactHead, .contactLinks, .dossierToolbar { padding-inline: 1rem; } .contactHead label { width: 100%; } }

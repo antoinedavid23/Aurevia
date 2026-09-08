@@ -216,6 +216,7 @@ export function AuditFunnel() {
       compliance: optionLabel("compliance"),
       ownerConstraint: answers.constraint,
       auditReport: internalAudit,
+      auditSnapshot: { version: 1, answers, finance, result, locale },
       message: `Audit publicitaire — ${result.portfolio} bien(s), base représentative · ${optionLabel("status")} · ${optionLabel("objective")} · ${optionLabel("distribution")} · ${result.location.label} (${answers.address}) · ${optionLabel("compliance")} · ${optionLabel("timing")} · ${finance.propertyType}, ${finance.area} m², ${finance.bedrooms} ch., ${finance.guests} pers. PAR LOGEMENT · PORTEFEUILLE : actuel brut ${result.currentGross} €, net ${result.currentNet} € · Potentiel brut ${result.projectedGross} €, net ${result.projectedNet} € · PAR LOGEMENT : potentiel brut ${result.perProperty.projectedGross} €, net ${result.perProperty.projectedNet} € · Score ${result.fit}/100 · Recommandation ${result.offer} · Contrainte propriétaire : ${answers.constraint}`,
     };
     try {

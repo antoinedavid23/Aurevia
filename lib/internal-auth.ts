@@ -16,7 +16,8 @@ function base64ToBytes(value: string) {
 }
 
 async function hmac(value: string) {
-  const secret = process.env.ADMIN_AUTH_SECRET || INTERNAL_PASSWORD_HASH;
+  const secret = process.env.ADMIN_AUTH_SECRET;
+  if (!secret || secret.length < 32) throw new Error("Le secret privé de l’administration n’est pas configuré.");
   const key = await crypto.subtle.importKey(
     "raw",
     new TextEncoder().encode(secret),
@@ -74,16 +75,20 @@ export async function createAdminSessionValue(username: string) {
 }
 
 export async function getInternalAdminUser() {
+  if (!process.env.ADMIN_AUTH_SECRET || process.env.ADMIN_AUTH_SECRET.length < 32) return null;
   const value = (await cookies()).get(COOKIE_NAME)?.value;
   if (!value) return null;
-  const [payload, signature] = value.split(".");
+  const [payload, signature, extra] = value.split(".");
+  if (extra !== undefined) return null;
   if (!payload || !signature || !safeEqual(await hmac(payload), signature)) return null;
   try {
     const parsed = JSON.parse(new TextDecoder().decode(base64ToBytes(payload))) as {
       username: string;
       expiresAt: number;
     };
-    if (parsed.expiresAt < Date.now()) return null;
+    if (!Number.isSafeInteger(parsed.expiresAt) || parsed.expiresAt <= Date.now()
+      || parsed.expiresAt > Date.now() + SESSION_DURATION_SECONDS * 1000
+      || parsed.username !== (process.env.ADMIN_USERNAME || "Aurevia")) return null;
     return {
       displayName: parsed.username,
       email: process.env.ADMIN_RECOVERY_EMAIL || "administration@aurevia.local",

@@ -12,7 +12,7 @@ export async function typescriptModuleUrl(relative) {
   for (const [, specifier] of output.matchAll(/from\s+"([^"]+)"/g)) {
     const resolved = specifier.startsWith("@/") ? new URL(`${specifier.slice(2)}.ts`, root)
       : specifier.startsWith(".") ? new URL(`${specifier}.ts`, url) : null;
-    if (resolved) output = output.replaceAll(JSON.stringify(specifier), JSON.stringify(await typescriptModuleUrl(resolved)));
+    output = output.replaceAll(JSON.stringify(specifier), JSON.stringify(resolved ? await typescriptModuleUrl(resolved) : import.meta.resolve(specifier)));
   }
   const compiled = `data:text/javascript;base64,${Buffer.from(output).toString("base64")}`;
   cache.set(url.href, compiled);

@@ -184,11 +184,11 @@ export function AuditThankYou() {
     <header className="audit-header"><Link href="/" className="audit-logo" aria-label="AUREVIA"><img src="/images/brand/aurevia-logo-transparent-gold.png" width={280} height={280} alt="AUREVIA"/></Link><AuditLanguageMenu/></header>
     <main className="audit-result"><section className="audit-result-head"><div><h1>{t.missingTitle}</h1><p>{t.missingText}</p><Link className="audit-primary" href="/audit">{t.restart}<ArrowRight size={18}/></Link></div></section></main>
   </div>;
-  return <AuditReport stored={stored}/>;
+  return <AuditReport stored={stored} locale={locale}/>;
 }
 
-function AuditReport({ stored }: { stored: StoredAudit }) {
-  const { locale } = useLocale();
+export function AuditReport({ stored, locale, internal = false }: { stored: StoredAudit; locale: Locale; internal?: boolean }) {
+  const ReportBody = internal ? "div" : "main";
   const t = thanks[locale];
   const pc = portfolioCopy[locale];
   const dc = distributionCopy[locale];
@@ -226,33 +226,33 @@ function AuditReport({ stored }: { stored: StoredAudit }) {
   ];
 
   return <div className={`audit-shell audit-result-shell ${styles.report}`} data-no-translate>
-    <header className="audit-header">
+    {!internal && <header className="audit-header">
       <Link href="/" className="audit-logo" aria-label="AUREVIA">
         <img src="/images/brand/aurevia-logo-transparent-gold.png" width={280} height={280} alt="AUREVIA" />
       </Link>
       <span className="audit-header-label">{t.label}</span>
       <AuditLanguageMenu />
-    </header>
+    </header>}
 
-    <main className="audit-result">
+    <ReportBody className="audit-result">
       <section className="audit-result-head">
         <div>
-          <h1>{t.title}</h1>
-          <p>{stored?.name ? `${t.hello}, ${stored.name}. ` : ""}{t.intro}</p>
-          <div className={styles.openingAction}>
+          {internal ? <h2>Audit intégral</h2> : <h1>{t.title}</h1>}
+          <p>{internal ? "Copie du bilan remis au prospect. Toutes les sections calculées sont accessibles ci-dessous. Les estimations restent à valider, même dans ce dossier interne." : <>{stored?.name ? `${t.hello}, ${stored.name}. ` : ""}{t.intro}</>}</p>
+          {!internal && <div className={styles.openingAction}>
             <Link className={`audit-primary ${styles.bookingAction}`} {...bookingLink}>{t.cta}<ArrowRight size={18} aria-hidden="true" /></Link>
             <small><CalendarDays size={15} aria-hidden="true" />{t.calendar}</small>
-          </div>
+          </div>}
         </div>
-        <aside className={styles.openingPreview}>
+        {!internal && <aside className={styles.openingPreview}>
           <h2>{t.nextTitle}</h2>
           <p>{t.openingNote}</p>
           <ul>{t.nextTopics.map(topic => <li key={topic}><LockKeyhole size={15} aria-hidden="true" /><span>{topic}</span><span className={styles.redacted} aria-hidden="true" /></li>)}</ul>
           <a href="#audit-strategy" className={styles.previewLink}>{t.reveal}<ArrowRight size={16} aria-hidden="true" /></a>
-        </aside>
+        </aside>}
       </section>
 
-      <div className={styles.included}><Check size={18} aria-hidden="true" /><p><strong>{t.available}</strong> — {t.availableText}</p></div>
+      {!internal && <div className={styles.included}><Check size={18} aria-hidden="true" /><p><strong>{t.available}</strong> — {t.availableText}</p></div>}
       <aside className={styles.evidence}><strong>{dc.evidence}</strong><p>{dc.evidenceNote}</p></aside>
       <AuditPortfolioSummary result={result} locale={locale}/>
 
@@ -272,7 +272,7 @@ function AuditReport({ stored }: { stored: StoredAudit }) {
         <div className="audit-executive-findings">
           {findings.map((finding, index) => <article key={finding}><span>0{index + 1}</span><p>{finding}</p></article>)}
         </div>
-        <Link className="audit-text-cta" {...bookingLink} aria-label={`${t.callNow} — ${t.bookingLabel}`}>{t.callNow}<ArrowRight size={16} aria-hidden="true" /></Link>
+        {!internal && <Link className="audit-text-cta" {...bookingLink} aria-label={`${t.callNow} — ${t.bookingLabel}`}>{t.callNow}<ArrowRight size={16} aria-hidden="true" /></Link>}
       </section>
 
       <section className="audit-finance-detail">
@@ -296,10 +296,10 @@ function AuditReport({ stored }: { stored: StoredAudit }) {
           <div className="audit-comparison-row is-head"><span>{t.indicator}</span><span>{t.declared}</span><span>{t.model}</span><span>{t.variation}</span></div>
           {comparisonRows.map((row) => <div className="audit-comparison-row" key={row.label}><strong>{row.label}</strong><span>{row.current}</span><span>{row.target}</span><b>{row.delta}</b></div>)}
         </div>
-        <div className={styles.inlineBooking}>
+        {!internal && <div className={styles.inlineBooking}>
           <div><h3>{t.financeCallTitle}</h3><p>{t.financeCallText}</p></div>
           <Link className={`audit-primary ${styles.bookingAction}`} {...bookingLink}>{t.cta}<ArrowRight size={18} aria-hidden="true" /></Link>
-        </div>
+        </div>}
       </section>
 
       <section className="audit-season">
@@ -310,10 +310,19 @@ function AuditReport({ stored }: { stored: StoredAudit }) {
         <dl className={styles.quarters}>
           {quarterlyProjection.map((value, index) => <div key={t.quarters[index]}><dt>{t.quarters[index]}</dt><dd>{money(value)}</dd></div>)}
         </dl>
-        <div className="audit-pricing-lock">
+        {internal ? <div className="crm-monthly-table"><table>
+          <caption>Plan mensuel indicatif · mêmes totaux que le bilan annuel</caption>
+          <thead><tr><th>Mois</th><th>Nuits disponibles / bien</th><th>Nuits vendues / bien</th><th>Occupation</th><th>Tarif moyen</th><th>Brut / bien</th><th>Brut portefeuille</th></tr></thead>
+          <tbody>{result.monthlyPlan.map(row => <tr key={row.monthIndex}>
+            <th scope="row">{new Intl.DateTimeFormat("fr-FR", { month: "long", timeZone: "UTC" }).format(new Date(Date.UTC(2025, row.monthIndex, 1)))}</th>
+            <td>{row.availableNightsPerProperty}</td><td>{row.bookedNightsPerProperty}</td><td>{row.occupancyRate}%</td>
+            <td>{money(row.nightlyRate)}</td><td>{money(row.projectedGrossPerProperty)}</td><td>{money(row.projectedGrossPortfolio)}</td>
+          </tr>)}</tbody>
+          <tfoot><tr><th>Total annuel</th><td>{finance.days}</td><td>{result.perProperty.targetBookedNights}</td><td>{result.targetOccupancy}%</td><td>{money(result.targetNightly)}</td><td>{money(result.perProperty.projectedGross)}</td><td>{money(result.projectedGross)}</td></tr></tfoot>
+        </table><p>Répartition saisonnière simulée, non issue de réservations observées. Les dates d’usage personnel, prix par date et durées minimales de séjour restent à vérifier.</p></div> : <div className="audit-pricing-lock">
           <div className="audit-pricing-ghost" aria-hidden="true"><span /><span /><span /><span /><span /><span /></div>
           <div><LockKeyhole size={20} /><strong>{t.pricingLocked}</strong><p>{t.pricingLockedText}</p><Link {...bookingLink}>{t.cta}<ArrowRight size={14} aria-hidden="true" /></Link></div>
-        </div>
+        </div>}
       </section>
 
       <section className="audit-operations">
@@ -322,7 +331,7 @@ function AuditReport({ stored }: { stored: StoredAudit }) {
           <p>{t.diagnosisIntro}</p>
         </div>
         <div className="audit-operation-grid">
-          {(t.metrics as string[]).map((label, index) => index < 2 ? <article key={label}>
+          {(t.metrics as string[]).map((label, index) => internal || index < 2 ? <article key={label}>
             <div><span>0{index + 1}</span><b>{metrics[index]}/100</b></div>
             <h3>{label}</h3><p>{(t.diagnosisNotes as string[])[index]}</p>
             <div className="audit-operation-meter"><i style={{ width: `${metrics[index]}%` }} /></div>
@@ -340,15 +349,15 @@ function AuditReport({ stored }: { stored: StoredAudit }) {
       <section className="audit-result-grid">
         <div className="audit-report">
           <div className="audit-recommendation"><span>{t.recommended}</span><h2>{result.offer === "privilege" ? t.privilege : t.serenity}</h2><p>{result.offer === "privilege" ? t.privilegeText : t.serenityText}</p><div><ShieldCheck size={18} /><span>AUREVIA · Genova &amp; Liguria</span></div></div>
-          <div className="audit-priorities"><h3>{t.priorities}</h3>{(t.items as string[]).map((item, index) => <div key={item}><span>0{index + 1}</span>{index === 0 ? <><p>{item}</p><Check size={16} /></> : <><p>{t.priorityPreviews[index - 1]}<span className={styles.priorityRedacted} aria-hidden="true" /><small className={styles.priorityLabel}>{t.reserved}</small></p><LockKeyhole size={16} aria-hidden="true" /></>}</div>)}</div>
+          <div className="audit-priorities"><h3>{t.priorities}</h3>{(t.items as string[]).map((item, index) => <div key={item}><span>0{index + 1}</span>{internal || index === 0 ? <><p>{item}</p><Check size={16} /></> : <><p>{t.priorityPreviews[index - 1]}<span className={styles.priorityRedacted} aria-hidden="true" /><small className={styles.priorityLabel}>{t.reserved}</small></p><LockKeyhole size={16} aria-hidden="true" /></>}</div>)}</div>
         </div>
-        <aside className="audit-unlock">
+        {!internal && <aside className="audit-unlock">
           <div className="audit-blurred" aria-hidden="true"><span /><span /><span /><span /><span /></div>
           <div className="audit-unlock-content"><LockKeyhole size={30} /><h2>{t.locked}</h2><p>{t.lockedText}</p><Link className="audit-primary" {...bookingLink}>{t.cta}<ArrowRight size={18} aria-hidden="true" /></Link><small><CalendarDays size={14} />{t.calendar}</small></div>
-        </aside>
+        </aside>}
       </section>
 
-      <section className="audit-appendix" id="audit-strategy" tabIndex={-1}>
+      {!internal && <section className="audit-appendix" id="audit-strategy" tabIndex={-1}>
         <div className="audit-section-copy"><h2>{t.appendixTitle}</h2><p>{t.appendixIntro}</p></div>
         <div className="audit-locked-grid">
           {(t.lockedCards as string[]).map((title, index) => <article key={title}>
@@ -363,10 +372,10 @@ function AuditReport({ stored }: { stored: StoredAudit }) {
           <div><h2>{t.finalTitle}</h2><p className={styles.finalText}>{t.financeCallText}</p><small><CalendarDays size={14} />{t.calendar}</small></div>
           <Link className="audit-primary" {...bookingLink}>{t.cta}<ArrowRight size={18} aria-hidden="true" /></Link>
         </div>
-      </section>
+      </section>}
 
       <p className="audit-disclaimer">{t.note}</p>
-      <Link className="audit-back-link" href="/">{t.back}<ArrowRight size={14} /></Link>
-    </main>
+      {!internal && <Link className="audit-back-link" href="/">{t.back}<ArrowRight size={14} /></Link>}
+    </ReportBody>
   </div>;
 }

@@ -1,5 +1,5 @@
 type LeadKind = "contact" | "valuation";
-type LeadStatus = "new" | "read" | "archived";
+import type { LeadStatus } from "./lead-crm";
 type LeadPayload = Record<string, unknown> & {
   name: string;
   surname: string;

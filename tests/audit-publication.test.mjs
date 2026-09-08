@@ -9,7 +9,9 @@ test("advertising audit routes carry a noindex HTTP header", async () => {
   const source = await read("next.config.ts");
   const output = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.ES2022, target: ts.ScriptTarget.ES2022 } }).outputText;
   const { default: config } = await import(`data:text/javascript;base64,${Buffer.from(output).toString("base64")}`);
-  assert.deepEqual(await config.headers(), [{ source: "/audit/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }] }]);
+  const headers = await config.headers();
+  assert.deepEqual(headers.filter(rule => rule.source === "/audit/:path*"), [{ source: "/audit/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }] }]);
+  assert.ok(headers.find(rule => rule.source === "/administration/:path*").headers.some(header => header.key === "Cache-Control" && header.value.includes("no-store")));
 });
 
 test("the audit stays outside the public navigation and sitemap", async () => {

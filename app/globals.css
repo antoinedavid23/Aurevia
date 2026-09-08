@@ -973,6 +973,39 @@ input,select,textarea,label,
 .admin-empty{display:grid;place-items:center;gap:10px;min-height:220px;border:1px dashed var(--line);color:#829098}
 
 .admin-hero .container{max-width:1160px}
+.admin-hero{min-height:0;padding-top:140px;padding-bottom:32px}
+.admin-hero h1{font-size:clamp(2rem,3vw,3rem);max-width:none}
+.admin-crm-nav{display:flex;gap:28px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:24px;padding-top:18px;font-size:.9375rem}
+.admin-crm-nav a{color:var(--soft-gold)}
+.admin-dashboard{padding-top:32px}
+.crm-dossier-body{font-size:1rem;line-height:1.65;color:#0d1b2a}
+.crm-contact-record,.crm-private-record{padding:24px}
+.crm-contact-record h3,.crm-private-record h3{font-size:1.4rem;margin:0 0 14px;color:#0d1b2a}
+.crm-dossier-body details{border-top:1px solid #d4d9dc;padding:12px 0}
+.crm-dossier-body summary{cursor:pointer;min-height:36px;font-weight:600;font-size:.9375rem;overflow-wrap:anywhere}
+.crm-original-message{white-space:pre-wrap;overflow-wrap:anywhere;font-size:.9375rem;color:#52636f}
+.crm-values{margin:12px 0;min-width:0}
+.crm-values>div{display:grid;grid-template-columns:minmax(100px,1fr) minmax(0,2fr);gap:18px;padding:10px 0;border-bottom:1px solid #e5e8e9}
+.crm-values dt{font-size:.875rem;color:#52636f;overflow-wrap:anywhere}
+.crm-values dd{margin:0;font-size:.9375rem;overflow-wrap:anywhere;min-width:0}
+.crm-values dd .crm-values>div{display:block}
+.crm-values dd .crm-values dt{margin-bottom:4px}
+.crm-value-list{padding-left:20px;margin:0}
+.crm-value-list li{padding:4px 0}
+.crm-legacy-note{margin:24px;padding:16px;border-left:2px solid #96702a;background:#fcf5e4}
+.crm-dossier-body .audit-shell{min-height:0}
+.crm-dossier-body .audit-result{width:100%;max-width:none;padding:24px}
+.crm-dossier-body .audit-result-head,.crm-dossier-body .audit-result-grid{grid-template-columns:1fr}
+.crm-dossier-body .audit-result-head h2{font-size:2rem}
+.crm-dossier-body .audit-finance-gain strong{font-size:clamp(1.6rem,3vw,2.5rem)}
+.crm-monthly-table{overflow:auto;margin-top:24px}
+.crm-monthly-table table{width:100%;min-width:780px;border-collapse:collapse;font-size:.875rem}
+.crm-monthly-table caption{text-align:left;padding:12px 0;font-size:1rem}
+.crm-monthly-table th,.crm-monthly-table td{padding:12px 10px;border-bottom:1px solid #d4d9dc;text-align:right;font-variant-numeric:tabular-nums}
+.crm-monthly-table th:first-child{text-align:left}
+.crm-monthly-table tfoot{background:#f0f2f3;font-weight:600}
+.crm-monthly-table>p{font-size:.875rem;color:#52636f}
+@media(max-width:680px){.crm-contact-record,.crm-private-record,.crm-dossier-body .audit-result{padding:18px}.crm-values>div{grid-template-columns:1fr;gap:4px}.admin-hero{padding-top:120px}.admin-crm-nav{gap:16px}}
 .admin-session{display:flex;align-items:center;gap:24px;margin-top:25px;color:#aab5ba;font-size:.78rem}
 .admin-subnav{position:sticky;top:88px;z-index:15;background:rgba(7,16,25,.96);border-block:1px solid var(--line);backdrop-filter:blur(16px)}
 .admin-subnav .container{display:flex;gap:34px;overflow:auto}
