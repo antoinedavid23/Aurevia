@@ -93,6 +93,13 @@ for (const locale of ["it", "fr", "en"]) {
     assert.match(html, /192/);
     assert.match(html, /\+20\s?%/);
     assert.doesNotMatch(html, /190|343/);
+    const pricingExplanation = {
+      it: [/tarificazione dinamica/, /domanda/, /stagione/, /aumento medio del 20%/, /base annua/],
+      fr: [/tarification dynamique/, /demande/, /saison/, /hausse moyenne de 20 %/, /sur l’année/],
+      en: [/dynamic pricing/, /demand/, /seasonality/, /20% increase in the average nightly rate/, /over the year/],
+    };
+    for (const phrase of pricingExplanation[locale]) assert.match(html, phrase);
+    assert.doesNotMatch(html, /sans autre coefficient|senza ulteriori coefficienti|without additional coefficients/);
     const launch = auditResult({ ...answers, status: "launch", distribution: "none" }, finance);
     const launchHtml = renderToStaticMarkup(createElement(AuditLocationSummary, { locale, detailed: true, location: launch.location }));
     assert.ok(launchHtml.includes(String(launch.targetNightly)));

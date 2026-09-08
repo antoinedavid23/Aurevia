@@ -10,9 +10,9 @@ export function AuditLocationSummary({ location, locale, detailed = false }: {
   if (!location.complete) return null;
   const declared = location.pricingBasis === "declared-rate-plus-20";
   const copy = {
-    it: { current: "Tariffa attuale dichiarata", projected: "Tariffa simulata · +20%", note: "La simulazione parte dalla Sua tariffa e applica +20%, senza ulteriori coefficienti. Quartiere e dotazioni saranno verificati con AUREVIA." },
-    fr: { current: "Tarif actuel déclaré", projected: "Tarif simulé · +20 %", note: "La simulation reprend votre tarif et applique +20 %, sans autre coefficient. Le quartier et les équipements seront étudiés avec AUREVIA." },
-    en: { current: "Declared current rate", projected: "Simulated rate · +20%", note: "The simulation applies +20% to your rate, without additional coefficients. AUREVIA will review the neighbourhood and amenities with you." },
+    it: { current: "Tariffa attuale dichiarata", projected: "Tariffa media simulata · +20%", note: "Con la tarificazione dinamica, AUREVIA adegua il prezzo di ogni notte alla domanda, alla stagione e agli eventi locali. Il Suo audit ipotizza un aumento medio del 20% della tariffa per notte su base annua, non un rincaro uniforme per ogni data." },
+    fr: { current: "Tarif actuel déclaré", projected: "Tarif moyen simulé · +20 %", note: "Grâce à la tarification dynamique, AUREVIA ajuste le prix de chaque nuit selon la demande, la saison et les événements locaux. Votre audit retient une hausse moyenne de 20 % du tarif par nuit sur l’année, et non une augmentation uniforme à chaque date." },
+    en: { current: "Declared current rate", projected: "Simulated average rate · +20%", note: "Through dynamic pricing, AUREVIA adjusts each night’s price to demand, seasonality and local events. Your audit assumes a 20% increase in the average nightly rate over the year, rather than the same increase on every date." },
   }[locale];
   const money = (value: number) => new Intl.NumberFormat(locale, { style: "currency", currency: "EUR", minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(value);
   return <aside className={styles.summary} aria-label={t.reportTitle}>
