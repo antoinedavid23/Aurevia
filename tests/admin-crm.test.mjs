@@ -73,7 +73,7 @@ test("admin sessions fail closed without a private signing secret, and reject ta
 
 test("CRM API checks authentication and rejects cross-site or malformed updates before storage", async () => {
   const authUrl = dataUrl('let user = null; export const setUser = value => user = value; export const getAdminUser = async () => user;');
-  const storageUrl = dataUrl('export const calls = []; export const listLeads = async () => { calls.push("list"); return []; }; export const updateLeadStatus = async (id,status) => { calls.push({id,status}); return id === 42 ? {id,status} : null; };');
+  const storageUrl = dataUrl('export const calls = []; export const listLeads = async filters => { calls.push({filters}); return {items:[],total:0}; }; export const getLead = async id => { calls.push({detail:id}); return id === 42 ? {id,details:{auditReport:{complete:true}}} : null; }; export const updateLeadStatus = async (id,status) => { calls.push({id,status}); return id === 42 ? {id,status} : null; };');
   const auth = await import(authUrl); const storage = await import(storageUrl);
   const source = await readFile(new URL("../app/api/leads/route.ts", import.meta.url), "utf8");
   let compiled = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.ES2022, target: ts.ScriptTarget.ES2022 } }).outputText;
@@ -91,4 +91,10 @@ test("CRM API checks authentication and rejects cross-site or malformed updates 
   assert.equal(result.status, 200); assert.match(result.headers.get("cache-control"), /no-store/);
   assert.deepEqual(await result.json(), {id:42,status:"appointment"});
   assert.equal((await api.PATCH(request({id:99,status:"closed"}))).status, 404);
+  for (const suffix of ["?page=0", "?page=1.5", "?page=100001", "?id=oops", "?id=-1", "?kind=invalid", "?status=invalid", `?q=${"a".repeat(121)}`])
+    assert.equal((await api.GET(new Request(`https://aurevia-genova.com/api/leads${suffix}`))).status, 400);
+  const list = await api.GET(new Request("https://aurevia-genova.com/api/leads?page=2&kind=audit"));
+  assert.equal(list.status, 200); assert.match(list.headers.get("cache-control"), /no-store/);
+  assert.equal((await api.GET(new Request("https://aurevia-genova.com/api/leads?id=42"))).status, 200);
+  assert.equal((await api.GET(new Request("https://aurevia-genova.com/api/leads?id=99"))).status, 404);
 });

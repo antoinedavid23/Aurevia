@@ -16,6 +16,7 @@
 .search { display: flex; gap: .75rem; align-items: center; border: 1px solid var(--crm-border); padding: 0 .8rem; min-width: 240px; flex: 1; background: #fff; border-radius: 3px; }
 .search input { border: 0; background: transparent; color: var(--crm-ink); font: inherit; min-width: 0; width: 100%; min-height: 46px; }
 .count { font-size: .875rem; color: #52636f; margin: 1rem 0; }
+.pagination { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.25rem; font-size: .875rem; }
 .tableWrap { overflow: auto; background: #fff; border-top: 1px solid var(--crm-border); }
 .tableWrap table { border-collapse: collapse; width: 100%; min-width: 720px; font-size: .875rem; }
 .tableWrap th { text-align: left; font-weight: 500; color: #546572; background: #f3f5f6; padding: .85rem 1rem; }

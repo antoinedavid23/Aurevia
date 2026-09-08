@@ -10,6 +10,24 @@ export type CrmLead = {
   status: LeadStatus; createdAt: string | number;
 };
 
+export type CrmLeadSummary = Omit<CrmLead, "details" | "message"> & { isAudit: boolean; propertyCount: number | null };
+export type LeadFilters = { page: number; query: string; status: "active" | "all" | LeadStatus; kind: "all" | "audit" | "contact" };
+export const leadPageSize = 25;
+export type LeadPage = {
+  items: CrmLeadSummary[]; page: number; pageSize: number; total: number;
+  counts: { total: number; new: number; audits: number; appointments: number };
+};
+
+export function parseLeadFilters(params: URLSearchParams): LeadFilters | null {
+  const page = params.get("page") || "1";
+  const status = params.get("status") || "active";
+  const kind = params.get("kind") || "all";
+  const query = (params.get("q") || "").trim();
+  if (!/^\d+$/.test(page) || !Number.isSafeInteger(Number(page)) || Number(page) < 1 || Number(page) > 100000
+    || !["active", "all", ...leadStatuses].includes(status) || !["all", "audit", "contact"].includes(kind) || query.length > 120) return null;
+  return { page: Number(page), status: status as LeadFilters["status"], kind: kind as LeadFilters["kind"], query };
+}
+
 export function isRecord(value: unknown): value is Record<string, unknown> {
   return value !== null && typeof value === "object" && !Array.isArray(value);
 }

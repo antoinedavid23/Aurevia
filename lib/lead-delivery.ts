@@ -178,7 +178,7 @@ export async function deliverLead(kind: LeadKind, payload: LeadPayload) {
   // is retained until production storage is connected (and on storage outage).
   let storedId: number | null = null;
   try { storedId = (await storeLead(kind, payload)).id; }
-  catch (error) { console.error("AUREVIA lead storage unavailable", error); }
+  catch { console.error("AUREVIA lead storage unavailable"); }
   if (kind === "valuation" && isRecord(payload.auditReport)) {
     const [email] = await Promise.allSettled([sendLeadEmail(kind, payload, storedId)]);
     const emailId = email.status === "fulfilled" ? email.value : null;
