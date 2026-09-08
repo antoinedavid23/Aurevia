@@ -47,6 +47,10 @@ const detailLabels: Record<string, string> = {
   services: "Services recherchés",
   surface: "Surface",
   terrace: "Terrasse",
+  auditReport: "Dossier interne complet",
+  distribution: "Canaux de distribution",
+  compliance: "Conformité",
+  ownerConstraint: "Contrainte principale",
 };
 
 function displayValue(value: unknown) {
@@ -54,6 +58,47 @@ function displayValue(value: unknown) {
   if (typeof value === "boolean") return value ? "Oui" : "Non";
   if (value === null || value === undefined || value === "") return "Non renseigné";
   return String(value);
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+}
+
+function auditLabel(key: string) {
+  const labels: Record<string, string> = {
+    portfolioProjection: "Projection totale du portefeuille",
+    perProperty: "Résultats par logement représentatif",
+    exactPropertyCount: "Nombre exact de biens",
+    qualification: "Qualification du prospect",
+    declaredProperty: "Bien déclaré",
+    declaredPerformance: "Performance déclarée",
+    aureviaCentralModel: "Modèle financier AUREVIA",
+    internalScores: "Scores internes",
+    confidentialMonthlyPlan: "Plan mensuel confidentiel",
+    callPreparation: "Préparation de l’appel",
+    pointsToVerifyDuringCall: "Points à vérifier pendant l’appel",
+    firstPriorities: "Premières priorités",
+  };
+  return labels[key] || key.replace(/([a-z0-9])([A-Z])/g, "$1 $2").replace(/^./, letter => letter.toUpperCase());
+}
+
+function AuditReportValue({ value, depth = 0 }: { value: unknown; depth?: number }) {
+  if (Array.isArray(value)) {
+    return <div className="lead-audit-list">{value.map((item, index) =>
+      isRecord(item)
+        ? <article key={index}><AuditReportValue value={item} depth={depth + 1} /></article>
+        : <p key={index}>{displayValue(item)}</p>,
+    )}</div>;
+  }
+  if (isRecord(value)) {
+    return <div className={depth === 0 ? "lead-audit-sections" : "lead-audit-values"}>
+      {Object.entries(value).map(([key, nested]) => <section key={key}>
+        {depth === 0 ? <h4>{auditLabel(key)}</h4> : <strong>{auditLabel(key)}</strong>}
+        <AuditReportValue value={nested} depth={depth + 1} />
+      </section>)}
+    </div>;
+  }
+  return <span>{displayValue(value)}</span>;
 }
 
 export function AdminLeadInbox() {
@@ -271,10 +316,15 @@ export function AdminLeadInbox() {
                   </summary>
                   <dl>
                     {Object.entries(lead.details).map(([key, value]) => (
-                      <div key={key}>
-                        <dt>{detailLabels[key] || key}</dt>
-                        <dd>{displayValue(value)}</dd>
-                      </div>
+                      key === "auditReport"
+                        ? <div className="lead-audit-wrapper" key={key}>
+                            <dt>{detailLabels[key]}</dt>
+                            <dd><AuditReportValue value={value} /></dd>
+                          </div>
+                        : <div key={key}>
+                            <dt>{detailLabels[key] || key}</dt>
+                            <dd>{displayValue(value)}</dd>
+                          </div>
                     ))}
                   </dl>
                 </details>

@@ -36,7 +36,7 @@ function translateTree(root: ParentNode, locale: Locale) {
     }
   }
   root.querySelectorAll<HTMLElement>("input,textarea,button,a,[aria-label],[title]").forEach((element) => {
-    if (element.closest(".admin-shell") || element.hasAttribute("data-no-translate")) return;
+    if (element.closest(".admin-shell,[data-no-translate]")) return;
     const stored = originalAttributes.get(element) ?? new Map<string, string>();
     if (!originalAttributes.has(element)) originalAttributes.set(element, stored);
     attributes.forEach((attribute) => {
@@ -108,7 +108,9 @@ export function LocaleController({ children }: { children: React.ReactNode }) {
   }, [locale]);
 
   useEffect(() => {
-    const section = pathname.split("/").filter(Boolean)[0] || "home";
+    const section = pathname.replace(/\/$/, "") === "/audit/appuntamento"
+      ? "appointment"
+      : pathname.split("/").filter(Boolean)[0] || "home";
     const titles: Record<string, Record<Locale, string>> = {
       home: { fr:"AUREVIA | Gestion de locations courte durée à Gênes", it:"AUREVIA | Gestione di affitti brevi a Genova", en:"AUREVIA | Short-term rental property management in Genoa" },
       servizi: { fr:"Gestion de locations courte durée | AUREVIA", it:"Gestione di affitti brevi | AUREVIA", en:"Short-term rental management | AUREVIA" },
@@ -117,7 +119,8 @@ export function LocaleController({ children }: { children: React.ReactNode }) {
       proprietari: { fr:"Accompagnement des propriétaires | AUREVIA", it:"Servizi per proprietari | AUREVIA", en:"Owner services | AUREVIA" },
       contatti: { fr:"Contact privé | AUREVIA", it:"Contatto riservato | AUREVIA", en:"Private contact | AUREVIA" },
       valutazione: { fr:"Évaluation confidentielle | AUREVIA", it:"Valutazione riservata | AUREVIA", en:"Private property assessment | AUREVIA" },
-      audit: { fr:"Diagnostic privé | AUREVIA", it:"Diagnosi privata | AUREVIA", en:"Private assessment | AUREVIA" },
+      audit: { fr:"Audit gratuit de votre bien | AUREVIA", it:"Audit gratuito del Suo immobile | AUREVIA", en:"Free property audit | AUREVIA" },
+      appointment: { fr:"Un rendez-vous avec AUREVIA", it:"Un appuntamento con AUREVIA", en:"An appointment with AUREVIA" },
     };
     document.title = (titles[section] || titles.home)[locale];
   }, [locale, pathname]);
