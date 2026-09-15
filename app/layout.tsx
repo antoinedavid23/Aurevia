@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SiteShell } from "@/components/SiteShell";
 import { LocaleController } from "@/components/LocaleController";
+import { MarketingConsent } from "@/components/MarketingConsent";
 import "@fontsource/cinzel/400.css";
 import "@fontsource/cinzel/500.css";
 import "@fontsource/cinzel/600.css";
@@ -66,5 +67,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       },
     ],
   };
-  return <html lang="it" className="locale-pending"><body><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(structuredData)}}/><LocaleController><SiteShell>{children}</SiteShell></LocaleController><Analytics /><SpeedInsights /><noscript><style>{`.locale-pending body{visibility:visible!important}`}</style></noscript></body></html>;
+  return <html lang="it" className="locale-pending"><body><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(structuredData)}}/><LocaleController><SiteShell>{children}</SiteShell><MarketingConsent/></LocaleController><Analytics /><SpeedInsights /><noscript><style>{`.locale-pending body{visibility:visible!important}`}</style></noscript></body></html>;
 }

@@ -13,6 +13,7 @@ import { isAuditLocationComplete, locationCopy } from "@/lib/audit-location";
 import { nextAuditScreen } from "@/lib/audit-navigation";
 import { isAuditPortfolioComplete, portfolioCopy } from "@/lib/audit-portfolio";
 import { isConfirmedAuditDelivery, saveAuditSession } from "@/lib/audit-session";
+import { trackMetaLead } from "@/lib/meta-pixel";
 export { auditResult } from "@/lib/audit-model";
 
 import { auditCopy as copy, financeCopy, initialAnswers as initial, initialFinance } from "./audit-content";
@@ -224,6 +225,7 @@ export function AuditFunnel() {
       if (!response.ok) throw new Error("submission_failed");
       const receipt: unknown = await response.json();
       if (!isConfirmedAuditDelivery(receipt)) throw new Error("delivery_not_confirmed");
+      trackMetaLead();
       saveAuditSession({ version: 2, answers, finance, result, name: String(data.name || ""), locale, receipt });
       setStatus("__calculating__");
       for(let phase=1;phase<fc.loading.length;phase++){await new Promise(resolve=>window.setTimeout(resolve,620));setLoadingPhase(phase);}

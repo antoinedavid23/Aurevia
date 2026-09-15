@@ -1,4 +1,5 @@
 import {LegalIdentityNotice,LegalLayout} from "@/components/LegalPage";
+import {MetaPrivacyNotice} from "@/components/MarketingPrivacy";
 export const metadata={title:"Politique de confidentialité"};
 export default function Page(){return <LegalLayout title="Politique de confidentialité" intro="Comment AUREVIA collecte, utilise et protège vos données personnelles.">
   <h2>1. Responsable du traitement</h2><p>AUREVIA détermine les finalités et les moyens des traitements réalisés au moyen du site aurevia-genova.com. Toute demande relative aux données personnelles peut être adressée à <a href="mailto:contatto@aurevia-genova.com">contatto@aurevia-genova.com</a>.</p><LegalIdentityNotice/>
@@ -8,4 +9,5 @@ export default function Page(){return <LegalLayout title="Politique de confident
   <h2>5. Transferts internationaux</h2><p>Certains prestataires techniques sont établis aux États-Unis ou peuvent traiter des données hors de l’Espace économique européen. AUREVIA leur demande d’encadrer ces transferts au moyen des mécanismes reconnus par le RGPD, notamment une décision d’adéquation applicable ou les clauses contractuelles types de la Commission européenne.</p>
   <h2>6. Vos droits</h2><p>Vous pouvez demander l’accès à vos données, leur rectification, leur effacement, la limitation ou l’opposition au traitement, ainsi que leur portabilité lorsque les conditions légales sont réunies. Vous pouvez également retirer un consentement à tout moment, sans affecter les traitements déjà réalisés.</p><p>Adressez votre demande à <a href="mailto:contatto@aurevia-genova.com?subject=Exercice%20de%20mes%20droits%20RGPD">contatto@aurevia-genova.com</a>. Une preuve d’identité pourra être demandée uniquement en cas de doute raisonnable. Vous pouvez introduire une réclamation auprès du <a href="https://www.garanteprivacy.it/" target="_blank" rel="noreferrer">Garante per la protezione dei dati personali</a>.</p>
   <h2>7. Sécurité et mise à jour</h2><p>AUREVIA applique des mesures organisationnelles et techniques proportionnées : connexion chiffrée, accès administrateur restreint, secrets conservés hors du code public et limitation des données collectées. Cette politique peut évoluer pour refléter les changements du service ou de la réglementation.</p>
+  <MetaPrivacyNotice/>
 </LegalLayout>}

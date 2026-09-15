@@ -49,11 +49,6 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   const isAuditFunnel = pathname.startsWith("/audit");
   const [open, setOpen] = useState(false);
   const [headerHidden, setHeaderHidden] = useState(false);
-  const [cookies, setCookies] = useState(false);
-  useEffect(() => {
-    const frame = requestAnimationFrame(() => setCookies(!localStorage.getItem("aurevia-cookie")));
-    return () => cancelAnimationFrame(frame);
-  }, []);
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
@@ -86,10 +81,6 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
     document.addEventListener("keydown", closeOnEscape);
     return () => document.removeEventListener("keydown", closeOnEscape);
   }, []);
-  function saveCookieChoice(choice: "accepted" | "refused") {
-    localStorage.setItem("aurevia-cookie", choice);
-    setCookies(false);
-  }
   if (isPrivateStrategy || isAuditFunnel) return <main>{children}</main>;
   return <>
     <header className={`site-header${headerHidden ? " is-hidden" : ""}`}>
@@ -121,6 +112,5 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       <div className="footer-bottom"><span>© {new Date().getFullYear()} AUREVIA</span><Link href="/mentions-legales">Mentions légales</Link><Link href="/privacy">Confidentialité</Link><Link href="/cookie-policy">Cookies</Link><Link href="/termini">Conditions d’utilisation</Link></div>
     </footer>
     <Link className="sticky-cta" href="/valutazione">Évaluer mon bien <ArrowRight size={16}/></Link>
-    {cookies && <div className="cookie" role="dialog" aria-label="Information relative aux cookies"><div className="cookie-mark">A</div><div className="cookie-copy"><strong>Votre confidentialité, sans compromis</strong><p>Le site utilise uniquement des mécanismes essentiels ou fonctionnels. Aucun cookie publicitaire ni outil de profilage n’est utilisé.</p><Link href="/cookie-policy">Consulter la politique relative aux cookies</Link></div><div className="cookie-actions"><button className="cookie-primary" onClick={() => saveCookieChoice("accepted")}>J’ai compris</button></div></div>}
   </>;
 }
