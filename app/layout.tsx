@@ -4,6 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SiteShell } from "@/components/SiteShell";
 import { LocaleController } from "@/components/LocaleController";
 import { MarketingConsent } from "@/components/MarketingConsent";
+import { instagramProfile } from "@/lib/social-links";
 import "@fontsource/cinzel/400.css";
 import "@fontsource/cinzel/500.css";
 import "@fontsource/cinzel/600.css";
@@ -54,6 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         url: "https://aurevia-genova.com",
         logo: "https://aurevia-genova.com/images/brand/aurevia-logo-transparent-gold.png",
         email: "contatto@aurevia-genova.com",
+        sameAs: [instagramProfile.url],
         description: "Gestione di affitti brevi e servizi su misura per proprietà di pregio a Genova e in Liguria.",
         areaServed: ["Genova", "Liguria", "Riviera Ligure"],
       },
