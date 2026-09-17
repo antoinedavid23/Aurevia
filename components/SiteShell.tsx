@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { contactPhone, contactPhoneHref } from "@/lib/contact-details";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ArrowRight, ChevronDown, LogIn, Menu, X } from "lucide-react";
@@ -108,7 +109,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         <div className="footer-brand"><b>AUREVIA</b><p><span>L’art de prendre soin</span><span>de ce qui compte.</span></p><small>Gestion et valorisation de propriétés d’exception.</small></div>
         <div><b>Explorer</b>{nav.map(([name, href]) => <Link key={href} href={href}>{name}</Link>)}</div>
         <div><b>Propriétaires</b><Link href="/proprietari">Gestion AUREVIA</Link><Link href="/valutazione">Évaluation privée</Link><Link href="/faq">Questions fréquentes</Link></div>
-        <div className="footer-contact"><b>Contact privé</b><a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL || "contatto@aurevia-genova.com"}`}>{process.env.NEXT_PUBLIC_EMAIL || "contatto@aurevia-genova.com"}</a><a href={instagramProfile.url} target="_blank" rel="noopener noreferrer" data-no-translate>Instagram · {instagramProfile.handle}</a><span>Gênes, Italie</span><p>Chaque demande est étudiée personnellement et traitée avec la plus grande discrétion.</p></div>
+        <div className="footer-contact"><b>Contact privé</b><a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL || "contatto@aurevia-genova.com"}`}>{process.env.NEXT_PUBLIC_EMAIL || "contatto@aurevia-genova.com"}</a><a href={contactPhoneHref} data-no-translate>{contactPhone}</a><a href={instagramProfile.url} target="_blank" rel="noopener noreferrer" data-no-translate>Instagram · {instagramProfile.handle}</a><span>Gênes, Italie</span><p>Chaque demande est étudiée personnellement et traitée avec la plus grande discrétion.</p></div>
       </div>
       <div className="footer-bottom"><span>© {new Date().getFullYear()} AUREVIA</span><Link href="/mentions-legales">Mentions légales</Link><Link href="/privacy">Confidentialité</Link><Link href="/cookie-policy">Cookies</Link><Link href="/termini">Conditions d’utilisation</Link></div>
     </footer>

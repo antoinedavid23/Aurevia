@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { contactPhoneHref } from "@/lib/contact-details";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SiteShell } from "@/components/SiteShell";
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         url: "https://aurevia-genova.com",
         logo: "https://aurevia-genova.com/images/brand/aurevia-logo-transparent-gold.png",
         email: "contatto@aurevia-genova.com",
+        telephone: contactPhoneHref.slice(4),
         sameAs: [instagramProfile.url],
         description: "Gestione di affitti brevi e servizi su misura per proprietà di pregio a Genova e in Liguria.",
         areaServed: ["Genova", "Liguria", "Riviera Ligure"],
