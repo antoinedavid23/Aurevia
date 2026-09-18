@@ -1,15 +1,16 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useId, useMemo, useState } from "react";
+import type { StrategyLocale } from "@/lib/strategy-locale";
+import { strategyEconomicsCopy } from "@/lib/strategy-economics-copy";
 import styles from "@/app/administration/strategia/strategia.module.css";
 
-const euro = new Intl.NumberFormat("it-IT", {
-  style: "currency",
-  currency: "EUR",
-  maximumFractionDigits: 0,
-});
-
-export function StrategyEconomics() {
+export function StrategyEconomics({ locale = "it" }: { locale?: StrategyLocale }) {
+  const copy = strategyEconomicsCopy[locale];
+  const numberLocale = { it: "it-IT", fr: "fr-FR", en: "en-GB" }[locale];
+  const euro = new Intl.NumberFormat(numberLocale, { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
+  const decimal = (value: number, digits = 1) => new Intl.NumberFormat(numberLocale, { minimumFractionDigits: digits, maximumFractionDigits: digits }).format(value);
+  const fieldId = useId();
   const [properties, setProperties] = useState(50);
   const [adr, setAdr] = useState(150);
   const [occupancy, setOccupancy] = useState(70);
@@ -44,43 +45,43 @@ export function StrategyEconomics() {
 
   return <div className={styles.calculator}>
     <div className={styles.controls}>
-      <label>Immobili
-        <input type="range" min="1" max="80" value={properties} onChange={(event) => setProperties(Number(event.target.value))}/>
-        <output>{properties}</output>
+      <label htmlFor={`${fieldId}-properties`}>{copy.properties}
+        <input id={`${fieldId}-properties`} type="range" min="1" max="80" value={properties} onChange={(event) => setProperties(Number(event.target.value))}/>
+        <output htmlFor={`${fieldId}-properties`} aria-hidden="true">{properties}</output>
       </label>
-      <label>ADR medio
-        <input type="range" min="90" max="350" step="5" value={adr} onChange={(event) => setAdr(Number(event.target.value))}/>
-        <output>{euro.format(adr)}</output>
+      <label htmlFor={`${fieldId}-adr`}>{copy.adr}
+        <input id={`${fieldId}-adr`} type="range" min="90" max="350" step="5" value={adr} onChange={(event) => setAdr(Number(event.target.value))}/>
+        <output htmlFor={`${fieldId}-adr`} aria-hidden="true">{euro.format(adr)}</output>
       </label>
-      <label>Occupazione
-        <input type="range" min="35" max="95" value={occupancy} onChange={(event) => setOccupancy(Number(event.target.value))}/>
-        <output>{occupancy}%</output>
+      <label htmlFor={`${fieldId}-occupancy`}>{copy.occupancy}
+        <input id={`${fieldId}-occupancy`} type="range" min="35" max="95" value={occupancy} onChange={(event) => setOccupancy(Number(event.target.value))}/>
+        <output htmlFor={`${fieldId}-occupancy`} aria-hidden="true">{occupancy}%</output>
       </label>
-      <label>Commissione Aurevia
-        <input type="range" min="15" max="35" value={fee} onChange={(event) => setFee(Number(event.target.value))}/>
-        <output>{fee}%</output>
+      <label htmlFor={`${fieldId}-fee`}>{copy.fee}
+        <input id={`${fieldId}-fee`} type="range" min="15" max="35" value={fee} onChange={(event) => setFee(Number(event.target.value))}/>
+        <output htmlFor={`${fieldId}-fee`} aria-hidden="true">{fee}%</output>
       </label>
     </div>
 
     <div className={styles.metricGrid}>
-      <article><span>GMV prenotazioni / mese</span><strong>{euro.format(metrics.portfolioGmv)}</strong><small>{metrics.occupiedNights.toFixed(1)} notti occupate per immobile</small></article>
-      <article><span>Ricavi Aurevia / mese</span><strong>{euro.format(metrics.aureviaRevenue)}</strong><small>commissione applicata al GMV</small></article>
-      <article><span>Margine di contribuzione</span><strong>{euro.format(metrics.contribution)}</strong><small>ipotesi obiettivo 40%, non EBITDA</small></article>
-      <article><span>Ricavi per immobile</span><strong>{euro.format(properties ? metrics.aureviaRevenue / properties : 0)}</strong><small>prima dei costi fissi centrali</small></article>
+      <article><span>{copy.gmv}</span><strong>{euro.format(metrics.portfolioGmv)}</strong><small>{decimal(metrics.occupiedNights)} {copy.nights}</small></article>
+      <article><span>{copy.revenue}</span><strong>{euro.format(metrics.aureviaRevenue)}</strong><small>{copy.commissionHint}</small></article>
+      <article><span>{copy.contribution}</span><strong>{euro.format(metrics.contribution)}</strong><small>{copy.contributionHint}</small></article>
+      <article><span>{copy.perProperty}</span><strong>{euro.format(properties ? metrics.aureviaRevenue / properties : 0)}</strong><small>{copy.fixedCostHint}</small></article>
     </div>
 
     <div className={styles.realityCheck}>
       <div>
-        <span>Se 200.000 € significa GMV prenotazioni</span>
-        <strong>{metrics.occupancyFor200kGmv.toFixed(1)}% di occupazione</strong>
-        <p>Con gli input attuali. In alternativa servirebbe un ADR di {euro.format(metrics.adrFor200kGmv)} all’occupazione selezionata.</p>
+        <span>{copy.gmvTarget}</span>
+        <strong>{decimal(metrics.occupancyFor200kGmv)}% {copy.occupancySuffix}</strong>
+        <p>{copy.gmvExplanation.replace("{adr}", euro.format(metrics.adrFor200kGmv))}</p>
       </div>
       <div className={metrics.occupancyFor200kAurevia > 100 ? styles.alert : undefined}>
-        <span>Se 200.000 € significa ricavi Aurevia</span>
-        <strong>{metrics.occupancyFor200kAurevia.toFixed(0)}% di occupazione</strong>
-        <p>Richiederebbe {euro.format(metrics.gmvFor200kAurevia)} di GMV mensile: non plausibile con {properties} immobili agli input attuali.</p>
+        <span>{copy.revenueTarget}</span>
+        <strong>{decimal(metrics.occupancyFor200kAurevia, 0)}% {copy.occupancySuffix}</strong>
+        <p>{copy.revenueExplanation.replace("{gmv}", euro.format(metrics.gmvFor200kAurevia)).replace("{properties}", String(properties))}</p>
       </div>
     </div>
-    <p className={styles.methodNote}>Formula: immobili × 30 giorni × occupazione × ADR. Sono scenari direzionali basati sugli input del fondatore, non una previsione di mercato. Pulizie, imposta di soggiorno, IVA, costi del proprietario e ricavi accessori sono esclusi.</p>
+    <p className={styles.methodNote}>{copy.method}</p>
   </div>;
 }

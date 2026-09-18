@@ -108,6 +108,8 @@ export function LocaleController({ children }: { children: React.ReactNode }) {
   }, [locale]);
 
   useEffect(() => {
+    // The private strategy owns its locale and server-generated document title.
+    if (pathname.startsWith("/administration/strategia")) return;
     const section = pathname.replace(/\/$/, "") === "/audit/appuntamento"
       ? "appointment"
       : pathname.split("/").filter(Boolean)[0] || "home";

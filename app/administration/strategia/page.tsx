@@ -3,28 +3,36 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { StrategyEconomics } from "@/components/StrategyEconomics";
 import { getAdminUser } from "@/lib/admin";
+import { getStrategyLocale, strategyLocaleNames } from "@/lib/strategy-locale";
+import { translateStrategy, translateStrategyTree } from "@/lib/strategy-i18n";
 import styles from "./strategia.module.css";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: "Strategia premium Genova",
-  description: "Strumento decisionale privato per la crescita di AUREVIA a Genova.",
+type StrategyPageProps = { searchParams: Promise<{ lang?: string | string[] }> };
+
+export async function generateMetadata({ searchParams }: StrategyPageProps): Promise<Metadata> {
+  const locale = getStrategyLocale((await searchParams).lang);
+  const t = (source: string) => translateStrategy(source, locale);
+  return {
+  title: t("Strategia premium Genova"),
+  description: t("Strumento decisionale privato per la crescita di AUREVIA a Genova."),
   robots: { index: false, follow: false, nocache: true },
   openGraph: {
-    title: "AUREVIA · Strategia privata Genova",
-    description: "Custodia patrimoniale. Controllo. Performance.",
+    title: t("AUREVIA · Strategia privata Genova"),
+    description: t("Custodia patrimoniale. Controllo. Performance."),
     type: "website",
-    locale: "it_IT",
-    images: [{ url: "/strategia-og.png", width: 1745, height: 909, alt: "AUREVIA — Strategia privata Genova" }],
+    locale: { it: "it_IT", fr: "fr_FR", en: "en_GB" }[locale],
+    images: [{ url: "/strategia-og.png", width: 1745, height: 909, alt: t("AUREVIA — Strategia privata Genova") }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AUREVIA · Strategia privata Genova",
-    description: "Custodia patrimoniale. Controllo. Performance.",
+    title: t("AUREVIA · Strategia privata Genova"),
+    description: t("Custodia patrimoniale. Controllo. Performance."),
     images: ["/strategia-og.png"],
   },
-};
+  };
+}
 
 type Ad = {
   title: string;
@@ -158,13 +166,22 @@ function SectionHeader({index,title,children}:{index:string;title:string;childre
   return <div className={styles.sectionHeader}><span className={styles.sectionIndex}>{index}</span><h2>{title}</h2><p>{children}</p></div>;
 }
 
-export default async function StrategyPage() {
+export default async function StrategyPage({ searchParams }: StrategyPageProps) {
   const user = await getAdminUser();
   if (!user) redirect("/connexion");
+  const locale = getStrategyLocale((await searchParams).lang);
 
-  return <div className={styles.page} data-no-translate>
+  return translateStrategyTree(<div className={styles.page} data-no-translate lang={locale}>
     <header className={styles.hero}>
-      <div className={styles.heroTop}><span className={styles.brand}>AUREVIA · STRATEGIA RISERVATA</span><Link className={styles.back} href="/administration">Torna all’amministrazione</Link></div>
+      <div className={styles.heroTop}>
+        <span className={styles.brand}>AUREVIA · STRATEGIA RISERVATA</span>
+        <div className={styles.heroActions}>
+          <div className={styles.languageSwitch} role="group" aria-label="Lingua / Langue / Language">
+            {strategyLocaleNames.map(({ code, name }) => <Link key={code} href={{ pathname: "/administration/strategia", query: { lang: code } }} scroll={false} lang={code} hrefLang={code} aria-current={locale === code ? "true" : undefined}>{name}</Link>)}
+          </div>
+          <Link className={styles.back} href="/administration">Torna all’amministrazione</Link>
+        </div>
+      </div>
       <div className={styles.heroGrid}>
         <div><p className={styles.kicker}>Sistema decisionale · Genova · 2026–2028</p><h1>Custodia patrimoniale. Controllo. Performance.</h1><p className={styles.lead}>La strategia per diventare il property manager premium di riferimento a Genova, partendo da zero dati interni e costruendo prova, densità operativa e fiducia proprietario.</p></div>
         <aside className={styles.heroDecision}><span>Decisione prioritaria</span><strong>Non acquistare traffico finché sito, prova e misurazione non sono credibili in italiano.</strong><small>Prima l’infrastruttura di fiducia; poi 1.000 €/mese su due intenti misurabili.</small></aside>
@@ -193,7 +210,7 @@ export default async function StrategyPage() {
 
       <section id="economia" className={styles.section}>
         <SectionHeader index="01" title="Reality check economico">Il target “200 k€/mese” deve essere definito come GMV delle prenotazioni o ricavi Aurevia. Con 50 immobili e ADR 150 €, le due letture producono economie radicalmente diverse.</SectionHeader>
-        <StrategyEconomics/>
+        <StrategyEconomics locale={locale}/>
         <div className={styles.callout} style={{marginTop:18}}><strong>Raccomandazione di pianificazione</strong><p>Trattare 200 k€ come GMV mensile del portafoglio. A 70% di occupazione, 50 immobili richiedono circa 190 € di ADR; a 150 € di ADR servirebbe circa 89% di occupazione. Il piano base prudente è 150–180 k€ GMV e 37,5–45 k€ di ricavi Aurevia al 25%, prima di servizi accessori.</p></div>
         <div className={styles.callout} style={{marginTop:12}}><strong>Il paid non può comprare 50 mandati</strong><p>Sei mesi a 1.000 € equivalgono a 6.000 €, cioè 120 € di CAC massimo per ciascuna delle 50 unità prima di qualsiasi costo vendita. Con una chiusura del 15–30% servirebbero circa 167–333 opportunità qualificate. Il target può diventare plausibile solo acquisendo portafogli: 6–10 proprietari con 5–8 unità medie, tramite vendita diretta e partner.</p></div>
       </section>
@@ -347,5 +364,5 @@ export default async function StrategyPage() {
         <div className={styles.footerNote}><strong>Metodo e limiti.</strong> NotebookLM utilizza 10 fonti esistenti già pronte; non è stata aggiunta alcuna fonte. La ricerca last30days copre 90 giorni, ma Reddit è parziale (HTTP 429) e YouTube non ha restituito risultati pertinenti: da questa copertura non si deduce l’assenza di discussione. Punteggi, target del funnel, prezzi Aurevia e scenari economici sono raccomandazioni o ipotesi, non fatti di mercato. Gli obblighi normativi richiedono la verifica di commercialista, avvocato e autorità competenti.</div>
       </section>
     </main>
-  </div>;
+  </div>, locale);
 }
