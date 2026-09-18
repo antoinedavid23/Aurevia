@@ -7,13 +7,20 @@
   --aurevia-navy: #0d1b2a;
 }
 
-/* Bright gold is reserved for accents; small copy on ivory stays navy. */
+/* Gold editorial accents; ordinary body copy on ivory stays navy. */
 [data-aurevia-site] :is(h1, h2, h3) em:where(:not([data-aurevia-original-hero], [data-aurevia-original-hero] *)) {
   color: var(--aurevia-gold-title) !important;
 }
 
+/* All section kickers share Aurevia gold, without recoloring the watermarks. */
+[data-aurevia-site] main :is(.eyebrow, .hero-kicker, .owner-tailored-eyebrow, .owner-clarity-kicker):not(.section-watermark):not([aria-hidden="true"]):where(:not([data-aurevia-original-hero], [data-aurevia-original-hero] *)) {
+  --aurevia-gold-text: var(--aurevia-gold-title);
+  --aurevia-watermark-eyebrow-color: var(--aurevia-gold-title);
+  color: var(--aurevia-gold-title) !important;
+}
+
 /* On dark surfaces the accent becomes champagne, never dark bronze. */
-[data-aurevia-site] :is(.aurevia-page-hero, .aurevia-mobile-menu, .aurevia-footer, .site-footer-cta, .simulator-form, .experience-text-dark) {
+[data-aurevia-site] :is(.aurevia-page-hero, .aurevia-mobile-menu, .aurevia-footer, .site-footer-cta, .simulator-form, .experience-text-dark, .section-heading-art--dark, .traveler-commerce-section, .about-story-new, .service-clarity-conclusion, .detail-value-panel, .final-cta) {
   --aurevia-gold-text: #f2d694;
   --aurevia-gold-title: #f2d694;
 }
@@ -64,6 +71,60 @@
   color: inherit;
 }
 
+/* Thin slider rails follow the thumb's travel, inside a comfortable hit area. */
+[data-aurevia-site] .simulator-form input.aurevia-range {
+  width: 100%;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: linear-gradient(to right, var(--aurevia-gold) var(--range-progress), rgba(255, 255, 255, .3) var(--range-progress)) center / calc(100% - 20px) 4px no-repeat;
+  background-clip: border-box !important;
+  appearance: none;
+  -webkit-appearance: none;
+  touch-action: pan-y;
+}
+[data-aurevia-site] .simulator-form input.aurevia-range:focus {
+  outline: none;
+  box-shadow: none;
+}
+[data-aurevia-site] .simulator-form input.aurevia-range::-webkit-slider-runnable-track {
+  height: 4px;
+  border: 0;
+  background: transparent;
+}
+[data-aurevia-site] .simulator-form input.aurevia-range::-moz-range-track {
+  height: 4px;
+  border: 0;
+  background: transparent;
+}
+[data-aurevia-site] .simulator-form input.aurevia-range::-webkit-slider-thumb {
+  width: 20px;
+  height: 20px;
+  margin-top: -8px;
+  border: 2px solid var(--aurevia-gold-soft);
+  border-radius: 50%;
+  background: var(--aurevia-gold);
+  box-shadow: none;
+  -webkit-appearance: none;
+}
+[data-aurevia-site] .simulator-form input.aurevia-range::-moz-range-thumb {
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--aurevia-gold-soft);
+  border-radius: 50%;
+  background: var(--aurevia-gold);
+  box-shadow: none;
+}
+[data-aurevia-site] .simulator-form input.aurevia-range:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 4px var(--aurevia-navy), 0 0 0 6px var(--aurevia-gold-soft);
+}
+[data-aurevia-site] .simulator-form input.aurevia-range:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 4px var(--aurevia-navy), 0 0 0 6px var(--aurevia-gold-soft);
+}
+
 /* Two independent contact actions, with comfortable keyboard and touch targets. */
 [data-aurevia-site] .aurevia-footer .footer-direct-contact {
   display: grid;
@@ -76,9 +137,6 @@
   justify-content: space-between;
   gap: 18px;
   min-height: 44px;
-}
-[data-aurevia-site] .aurevia-footer .footer-direct-contact-link + .footer-direct-contact-link {
-  border-top: 1px solid rgba(242, 214, 148, .16);
 }
 [data-aurevia-site] .aurevia-footer .footer-direct-contact-link:is(:hover, :focus-visible) strong {
   color: var(--aurevia-gold-soft);

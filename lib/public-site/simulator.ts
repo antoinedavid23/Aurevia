@@ -85,7 +85,7 @@ const locationLift: Record<string, { price: number; occupancy: number }> = {
 export function calculateManagedProjection(i: ManagedProjectionInput): ManagedProjection {
   const days = clamp(Math.round(i.days || 90), 90, 365);
   const nightlyNow = clamp(Math.round(i.currentNightly || 20), 20, 200);
-  const currentOccupancy = clamp(rounded(i.currentOccupancy || 25), 25, 80);
+  const currentOccupancy = clamp(rounded(i.currentOccupancy || 25), 25, 100);
   const currentBookedNights = Math.round(days * (currentOccupancy / 100));
   const currentAnnual = Math.round(nightlyNow * currentBookedNights);
   const location = locationLift[i.location] || locationLift["Autre quartier de Genova"];
@@ -131,13 +131,16 @@ export function calculateManagedProjection(i: ManagedProjectionInput): ManagedPr
     -1,
     9,
   ));
-  const occupancyLift = rounded(clamp(
+  const potentialOccupancyLift = rounded(clamp(
     3.5 + location.occupancy + typeOccupancy + bedroomOccupancy + areaOccupancy + capacityOccupancy + finishOccupancy + amenityOccupancy,
     3,
     9,
   ));
 
-  const occupancy = rounded(clamp(currentOccupancy + occupancyLift, 25, 92));
+  // Keep the model's 92% target, but never reduce a higher declared occupancy.
+  // A fully booked property has no additional nights available to sell.
+  const occupancy = rounded(Math.max(currentOccupancy, Math.min(currentOccupancy + potentialOccupancyLift, 92)));
+  const occupancyLift = rounded(occupancy - currentOccupancy);
   const bookedNights = Math.round(days * (occupancy / 100));
   const nightly = Math.round(nightlyNow * (1 + priceLiftPercent / 100));
   const annual = Math.round(nightly * bookedNights);

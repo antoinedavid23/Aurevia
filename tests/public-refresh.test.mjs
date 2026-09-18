@@ -81,6 +81,24 @@ test('Aurevia palette covers gradients, alpha effects, sliders and readable text
   assert.ok((luminance('#faf9f6') + .05) / (luminance('#b28b2f') + .05) >= 3, 'Large gold headings on the light surface');
 });
 
+test('editorial kickers use gold without recoloring watermarks or the original hero', () => {
+  const theme = postcss.parse(read('app/aurevia-public-theme.css'));
+  const kickers = theme.nodes.find(rule => rule.type === 'rule' && rule.selector.includes('main :is(.eyebrow'));
+  assert.ok(kickers);
+  assert.ok(kickers.selector.includes(':not(.section-watermark)'));
+  assert.ok(kickers.selector.includes(':not([aria-hidden="true"])'));
+  assert.ok(kickers.selector.includes('[data-aurevia-original-hero]'));
+  for (const property of ['color', '--aurevia-gold-text', '--aurevia-watermark-eyebrow-color']) {
+    assert.equal(kickers.nodes.find(decl => decl.prop === property)?.value, 'var(--aurevia-gold-title)');
+  }
+  assert.ok(kickers.nodes.find(decl => decl.prop === 'color').important);
+  const dark = theme.nodes.find(rule => rule.type === 'rule' && rule.selector.includes('.aurevia-page-hero,'));
+  for (const section of ['.about-story-new', '.traveler-commerce-section', '.service-clarity-conclusion']) {
+    assert.ok(dark.selector.includes(section));
+  }
+  assert.equal(dark.nodes.find(decl => decl.prop === '--aurevia-gold-title')?.value, '#f2d694');
+});
+
 test('all displayed logos reuse the approved no-tagline artwork', () => {
   // Fingerprint of the approved export; no dependency on untracked local outputs.
   assert.equal(createHash('sha256').update(readFileSync('public/images/brand/aurevia-logo-no-tagline.png')).digest('hex'), 'd5dcc07249ecc83cff7423089a2ef626d3fcd99caac90db0cebc651cb891330a');

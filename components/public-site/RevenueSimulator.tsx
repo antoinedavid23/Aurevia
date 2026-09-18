@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useId, useMemo, useState, type CSSProperties } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { calculateManagedProjection, SimulatorInput } from "@/lib/public-site/simulator";
@@ -22,9 +22,14 @@ const initial: SimulatorInput = {
 };
 
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
+const rangeStyle = (value: number, min: number, max: number): CSSProperties => ({
+  "--range-progress": `${((clamp(value, min, max) - min) / (max - min)) * 100}%`,
+} as CSSProperties);
 
 export function RevenueSimulator() {
   const { locale } = useLocale();
+  const occupancyId = useId();
+  const availabilityId = useId();
   const euro = (value: number) => new Intl.NumberFormat({ it: "it-IT", fr: "fr-FR", en: "en-GB" }[locale], { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(value);
   const decimal = (value: number) => new Intl.NumberFormat({ it: "it-IT", fr: "fr-FR", en: "en-GB" }[locale], { maximumFractionDigits: 1 }).format(value);
   const [i, setI] = useState(initial);
@@ -73,7 +78,7 @@ export function RevenueSimulator() {
       <section className="simulator-form-section simulator-current-section">
         <p className="eyebrow"><span>01</span> Votre situation aujourd’hui</p>
         <div className="field-row">
-          <label>Taux moyen de réservation <output>{currentOccupancy}%</output><input className="aurevia-range" style={{ background: `linear-gradient(to right, var(--aurevia-gold) 0%, var(--aurevia-gold) ${currentOccupancy}%, rgba(255,255,255,.24) ${currentOccupancy}%, rgba(255,255,255,.24) 100%)` }} type="range" min="25" max="80" value={currentOccupancy} onChange={(event) => setCurrentOccupancy(+event.target.value)} /></label>
+          <label htmlFor={occupancyId}>Taux moyen de réservation <output htmlFor={occupancyId} aria-hidden="true">{currentOccupancy}%</output><input id={occupancyId} className="aurevia-range" style={rangeStyle(currentOccupancy, 25, 100)} type="range" min="25" max="100" step="1" value={currentOccupancy} aria-valuetext={`${currentOccupancy}%`} onChange={(event) => setCurrentOccupancy(+event.target.value)} /></label>
           <label>Prix moyen facturé par nuit <span className="simulator-price-field"><input type="number" min="20" max="200" step="1" value={currentNightly} onChange={(event) => setCurrentNightly(+event.target.value)} onBlur={() => setCurrentNightly((value) => clamp(value || 20, 20, 200))} /><small>€ / nuit</small></span></label>
         </div>
         <p className="form-hint" data-no-translate>{copy.hint}</p>
@@ -93,7 +98,7 @@ export function RevenueSimulator() {
           <label>Surface en m²<input type="number" min="20" max="180" value={i.area} onChange={(event) => set("area", +event.target.value)} /></label>
           <label>Présentation du logement<select value={i.finish} onChange={(event) => set("finish", event.target.value)}>{["À rafraîchir", "Simple et fonctionnel", "Soigné", "Très soigné"].map((value) => <option key={value} value={value}>{value}</option>)}</select></label>
         </div>
-        <label>Jours disponibles à la location <output>{i.days} jours</output><input className="aurevia-range" style={{ background: `linear-gradient(to right, var(--aurevia-gold) 0%, var(--aurevia-gold) ${((i.days - 90) / 275) * 100}%, rgba(255,255,255,.24) ${((i.days - 90) / 275) * 100}%, rgba(255,255,255,.24) 100%)` }} type="range" min="90" max="365" value={i.days} onChange={(event) => set("days", +event.target.value)} /></label>
+        <label htmlFor={availabilityId}>Jours disponibles à la location <output htmlFor={availabilityId} aria-hidden="true">{i.days} jours</output><input id={availabilityId} className="aurevia-range" style={rangeStyle(i.days, 90, 365)} type="range" min="90" max="365" value={i.days} onChange={(event) => set("days", +event.target.value)} /></label>
         <div className="field-row simulator-amenities">{([
           ["transit", "Transports proches"],
           ["elevator", "Ascenseur"],
