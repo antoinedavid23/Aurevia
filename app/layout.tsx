@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { contactPhoneHref } from "@/lib/contact-details";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { SiteShell } from "@/components/SiteShell";
+import { BrandSiteShell as SiteShell } from "@/components/BrandSiteShell";
+import { BrandLogoFilter } from "@/components/BrandLogoFilter";
 import { LocaleController } from "@/components/LocaleController";
 import { MarketingConsent } from "@/components/MarketingConsent";
 import { instagramProfile } from "@/lib/social-links";
@@ -13,7 +14,16 @@ import "@fontsource/manrope/400.css";
 import "@fontsource/manrope/500.css";
 import "@fontsource/manrope/600.css";
 import "@fontsource/manrope/700.css";
+import "@fontsource/montserrat/400.css";
+import "@fontsource/montserrat/500.css";
+import "@fontsource/montserrat/600.css";
+import "@fontsource/montserrat/700.css";
+import "@fontsource/montserrat/800.css";
+import "@fontsource/lato/400.css";
+import "@fontsource/lato/700.css";
 import "./globals.css";
+import "./aurevia-public-layouts.css";
+import "./aurevia-public-theme.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://aurevia-genova.com"),
@@ -54,7 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         "@id": "https://aurevia-genova.com/#organization",
         name: "AUREVIA",
         url: "https://aurevia-genova.com",
-        logo: "https://aurevia-genova.com/images/brand/aurevia-logo-transparent-gold.png",
+        logo: "https://aurevia-genova.com/images/brand/aurevia-logo-no-tagline.png",
         email: "contatto@aurevia-genova.com",
         telephone: contactPhoneHref.slice(4),
         sameAs: [instagramProfile.url],
@@ -71,5 +81,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       },
     ],
   };
-  return <html lang="it" className="locale-pending"><body><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(structuredData)}}/><LocaleController><SiteShell>{children}</SiteShell><MarketingConsent/></LocaleController><Analytics /><SpeedInsights /><noscript><style>{`.locale-pending body{visibility:visible!important}`}</style></noscript></body></html>;
+  return <html lang="it" className="locale-pending"><body><BrandLogoFilter/><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(structuredData)}}/><LocaleController><SiteShell>{children}</SiteShell><MarketingConsent/></LocaleController><Analytics /><SpeedInsights /><noscript><style>{`.locale-pending body{visibility:visible!important}`}</style></noscript></body></html>;
 }

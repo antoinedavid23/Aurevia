@@ -1,0 +1,178 @@
+/*
+ * Variantes de composition des grands titres Velyo.
+ * Ce fichier est chargé après la feuille historique pour garder les axes
+ * éditoriaux intentionnels face aux règles génériques du site.
+ */
+
+.watermark-heading--offset-right {
+  --velyo-heading-shift: clamp(42px, 5.2vw, 92px);
+  padding-left: var(--velyo-heading-shift);
+}
+
+/* La méthode est sur fond clair : son accroche conserve le bleu éditorial. */
+.process .watermark-heading.watermark-heading--center > .eyebrow:not(.section-watermark) {
+  color: var(--velyo-blue) !important;
+}
+
+.watermark-heading--offset-right > .section-watermark,
+.management-offers-heading .watermark-heading--offset-right > .section-watermark {
+  right: auto;
+  left: var(--velyo-heading-shift);
+}
+
+.watermark-heading--image-side > .section-watermark,
+.watermark-heading--compact > .section-watermark,
+.watermark-heading--catalog > .section-watermark {
+  right: auto;
+  left: 0;
+}
+
+.watermark-heading--image-side > .section-watermark {
+  top: .06em;
+}
+
+.watermark-heading--compact > .section-watermark {
+  top: .08em;
+}
+
+.watermark-heading--catalog > .section-watermark {
+  top: .04em;
+}
+
+.watermark-heading--split {
+  --velyo-heading-shift: clamp(24px, 3vw, 54px);
+}
+
+.watermark-heading--split > .section-watermark {
+  right: auto;
+  left: var(--velyo-heading-shift);
+}
+
+.watermark-heading--split > div:first-of-type {
+  margin-left: var(--velyo-heading-shift);
+}
+
+.watermark-heading--center > .section-watermark,
+.process .watermark-heading--center > .section-watermark {
+  right: auto;
+  left: 50%;
+  width: max-content;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.owner-page-watermark--right {
+  --velyo-owner-heading-shift: clamp(44px, 5vw, 90px);
+}
+
+.owner-page-watermark--right > .section-watermark {
+  right: auto;
+  left: var(--velyo-owner-heading-shift);
+  width: calc(100% - var(--velyo-owner-heading-shift));
+}
+
+.owner-page-watermark--right > .eyebrow {
+  left: var(--velyo-owner-heading-shift) !important;
+}
+
+.owner-page-watermark--right .owner-tailored-heading > div:first-child {
+  margin-left: var(--velyo-owner-heading-shift);
+}
+
+.owner-page-watermark--center {
+  --velyo-owner-heading-shift: clamp(70px, 8vw, 150px);
+}
+
+.owner-page-watermark--center > .section-watermark {
+  right: auto;
+  left: var(--velyo-owner-heading-shift);
+  width: calc(100% - var(--velyo-owner-heading-shift));
+}
+
+.owner-page-watermark--center > .eyebrow {
+  left: var(--velyo-owner-heading-shift) !important;
+}
+
+.owner-page-watermark--center .owner-management-heading > div:first-child {
+  margin-left: var(--velyo-owner-heading-shift);
+}
+
+.about-story-new-heading {
+  --velyo-about-shift: clamp(40px, 6vw, 110px);
+}
+
+.about-story-new-heading::before {
+  left: var(--velyo-about-shift);
+}
+
+.about-story-new-heading > div:first-child {
+  margin-left: var(--velyo-about-shift);
+}
+
+.about-commitment-new .about-commitment-heading {
+  --velyo-about-shift: clamp(22px, 3.5vw, 64px);
+}
+
+.about-commitment-new .about-commitment-heading::before {
+  left: var(--velyo-about-shift);
+}
+
+.about-commitment-new .about-commitment-heading > div:first-child {
+  margin-left: var(--velyo-about-shift);
+}
+
+@media (max-width: 900px) {
+  .watermark-heading--offset-right {
+    --velyo-heading-shift: clamp(16px, 3.5vw, 34px);
+  }
+
+  .owner-page-watermark--right,
+  .owner-page-watermark--center {
+    --velyo-owner-heading-shift: clamp(18px, 4vw, 38px);
+  }
+
+  .about-story-new-heading,
+  .about-commitment-new .about-commitment-heading {
+    --velyo-about-shift: clamp(14px, 3vw, 28px);
+  }
+}
+
+@media (max-width: 760px) {
+  .watermark-heading--offset-right {
+    --velyo-heading-shift: 0px;
+    padding-left: 0;
+  }
+
+  .watermark-heading--split {
+    --velyo-heading-shift: 0px;
+  }
+
+  .watermark-heading--split > div:first-of-type,
+  .owner-page-watermark--right .owner-tailored-heading > div:first-child,
+  .owner-page-watermark--center .owner-management-heading > div:first-child,
+  .about-story-new-heading > div:first-child,
+  .about-commitment-new .about-commitment-heading > div:first-child {
+    margin-left: 0;
+  }
+
+  .owner-page-watermark--right,
+  .owner-page-watermark--center,
+  .about-story-new-heading,
+  .about-commitment-new .about-commitment-heading {
+    --velyo-owner-heading-shift: 0px;
+    --velyo-about-shift: 0px;
+  }
+
+  .owner-page-watermark--right > .eyebrow,
+  .owner-page-watermark--center > .eyebrow {
+    left: 0 !important;
+  }
+
+  .watermark-heading--center > .section-watermark,
+  .process .watermark-heading--center > .section-watermark {
+    left: 0;
+    width: auto;
+    transform: none;
+    text-align: left;
+  }
+}

@@ -181,7 +181,7 @@ export function AuditThankYou() {
   const { locale } = useLocale();
   const t = thanks[locale];
   if (!stored) return <div className="audit-shell audit-result-shell" data-no-translate>
-    <header className="audit-header"><Link href="/" className="audit-logo" aria-label="AUREVIA"><img src="/images/brand/aurevia-logo-transparent-gold.png" width={280} height={280} alt="AUREVIA"/></Link><AuditLanguageMenu/></header>
+    <header className="audit-header"><Link href="/" className="audit-logo" aria-label="AUREVIA"><img src="/images/brand/aurevia-logo-no-tagline.png" width={280} height={280} alt="AUREVIA"/></Link><AuditLanguageMenu/></header>
     <main className="audit-result"><section className="audit-result-head"><div><h1>{t.missingTitle}</h1><p>{t.missingText}</p><Link className="audit-primary" href="/audit">{t.restart}<ArrowRight size={18}/></Link></div></section></main>
   </div>;
   return <AuditReport stored={stored} locale={locale}/>;
@@ -228,7 +228,7 @@ export function AuditReport({ stored, locale, internal = false }: { stored: Stor
   return <div className={`audit-shell audit-result-shell ${styles.report}`} data-no-translate>
     {!internal && <header className="audit-header">
       <Link href="/" className="audit-logo" aria-label="AUREVIA">
-        <img src="/images/brand/aurevia-logo-transparent-gold.png" width={280} height={280} alt="AUREVIA" />
+        <img src="/images/brand/aurevia-logo-no-tagline.png" width={280} height={280} alt="AUREVIA" />
       </Link>
       <span className="audit-header-label">{t.label}</span>
       <AuditLanguageMenu />

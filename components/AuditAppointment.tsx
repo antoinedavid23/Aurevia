@@ -48,7 +48,7 @@ export function AuditAppointment() {
   return <div className={`audit-shell ${styles.page}`} data-no-translate lang={locale}>
     <header className="audit-header">
       <Link href="/" className="audit-logo" aria-label="AUREVIA">
-        <img src="/images/brand/aurevia-logo-transparent-gold.png" width={280} height={280} alt="AUREVIA" />
+        <img src="/images/brand/aurevia-logo-no-tagline.png" width={280} height={280} alt="AUREVIA" />
       </Link>
       <span className="audit-header-label">{t.label}</span>
       <AuditLanguageMenu />

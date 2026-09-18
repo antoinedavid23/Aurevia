@@ -1,0 +1,197 @@
+/* Velyo supplies typography, proportions and motion; Aurevia supplies the palette. */
+[data-aurevia-site] {
+  --aurevia-gold: #ddb85e;
+  --aurevia-gold-soft: #f2d694;
+  --aurevia-gold-text: #0d1b2a;
+  --aurevia-gold-title: #b28b2f;
+  --aurevia-navy: #0d1b2a;
+}
+
+/* Bright gold is reserved for accents; small copy on ivory stays navy. */
+[data-aurevia-site] :is(h1, h2, h3) em:where(:not([data-aurevia-original-hero], [data-aurevia-original-hero] *)) {
+  color: var(--aurevia-gold-title) !important;
+}
+
+/* On dark surfaces the accent becomes champagne, never dark bronze. */
+[data-aurevia-site] :is(.aurevia-page-hero, .aurevia-mobile-menu, .aurevia-footer, .site-footer-cta, .simulator-form, .experience-text-dark) {
+  --aurevia-gold-text: #f2d694;
+  --aurevia-gold-title: #f2d694;
+}
+
+/* Aurevia navigation: a solid midnight-blue surface, including mobile controls. */
+[data-aurevia-site] header.aurevia-header.site-header {
+  --aurevia-gold-text: #f2d694;
+  background: #0d1b2a;
+  color: #fcfaf6;
+  border-bottom-color: rgba(242, 214, 148, .24);
+  box-shadow: 0 8px 28px rgba(7, 16, 25, .12);
+}
+[data-aurevia-site] .aurevia-header .desktop-navigation a {
+  color: #fcfaf6;
+  opacity: 1;
+}
+[data-aurevia-site] .aurevia-header .desktop-navigation a:is(:hover, :focus-visible, [aria-current="page"]) {
+  color: #f2d694;
+}
+[data-aurevia-site] .aurevia-header .desktop-navigation a::after {
+  background: #f2d694;
+}
+[data-aurevia-site] .aurevia-header :is(.admin-login, .menu-btn, .aurevia-language-picker select) {
+  color: #fcfaf6;
+  border-color: rgba(242, 214, 148, .3);
+  background: transparent;
+}
+[data-aurevia-site] .aurevia-header .aurevia-language-picker option {
+  color: #fcfaf6;
+  background: #0d1b2a;
+}
+[data-aurevia-site] .aurevia-mobile-menu .mobile-admin-login,
+[data-aurevia-site] .aurevia-mobile-menu .mobile-menu-head button {
+  color: #fcfaf6;
+}
+
+/* Gold-filled controls need navy labels. Geometry and motion remain Velyo's. */
+[data-aurevia-site] :is(.button:not(.ghost), .header-consultation, .mobile-consultation, .site-footer-cta-button, .sticky-cta):where(:not([data-aurevia-original-hero], [data-aurevia-original-hero] *)) {
+  background: var(--aurevia-gold) !important;
+  border-color: var(--aurevia-gold) !important;
+  color: var(--aurevia-navy) !important;
+}
+[data-aurevia-site] :is(.button:not(.ghost), .header-consultation, .mobile-consultation, .site-footer-cta-button, .sticky-cta):hover:where(:not([data-aurevia-original-hero], [data-aurevia-original-hero] *)) {
+  background: var(--aurevia-gold-soft) !important;
+  border-color: var(--aurevia-gold-soft) !important;
+}
+[data-aurevia-site] :is(.button:not(.ghost), .header-consultation, .mobile-consultation, .site-footer-cta-button, .sticky-cta) > :is(span, svg):where(:not([data-aurevia-original-hero], [data-aurevia-original-hero] *)) {
+  color: inherit;
+}
+
+/* Two independent contact actions, with comfortable keyboard and touch targets. */
+[data-aurevia-site] .aurevia-footer .footer-direct-contact {
+  display: grid;
+  gap: 4px 18px;
+}
+[data-aurevia-site] .aurevia-footer .footer-direct-contact-link {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 44px;
+}
+[data-aurevia-site] .aurevia-footer .footer-direct-contact-link + .footer-direct-contact-link {
+  border-top: 1px solid rgba(242, 214, 148, .16);
+}
+[data-aurevia-site] .aurevia-footer .footer-direct-contact-link:is(:hover, :focus-visible) strong {
+  color: var(--aurevia-gold-soft);
+}
+[data-aurevia-site] .aurevia-footer .footer-direct-contact-link:focus-visible {
+  outline: 2px solid var(--aurevia-gold-soft);
+  outline-offset: 4px;
+}
+[data-aurevia-site] .aurevia-footer .footer-direct-contact-link:not(:hover):not(:focus-visible) svg {
+  transform: none;
+}
+
+/* The original homepage hero is the one deliberate visual exception. */
+[data-aurevia-original-hero] {
+  --font-serif: "Cinzel", Georgia, serif;
+  --font-sans: "Manrope", Arial, sans-serif;
+  --midnight: #071019;
+  --navy: #0d1b2a;
+  --anthracite: #1c1c1c;
+  --gold: #c8a15a;
+  --soft-gold: #d7ba7d;
+  --ivory: #f6f1e8;
+  --sand: #d8d2c4;
+  --white: #fcfaf6;
+  --line: rgba(200, 161, 90, .24);
+  color: var(--white);
+  font-family: var(--font-sans);
+}
+
+/* Accommodate Aurevia's square artwork in Velyo's horizontal navigation slot. */
+[data-aurevia-site] .logo.aurevia-logo,
+[data-aurevia-site] .aurevia-footer .footer-identity .aurevia-logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 154px;
+  height: 82px;
+  min-width: 154px;
+  flex: 0 0 154px;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+}
+[data-aurevia-site] .logo.aurevia-logo img,
+[data-aurevia-site] header.aurevia-header.site-header > .logo.aurevia-logo img,
+[data-aurevia-site] .aurevia-footer .footer-identity .aurevia-logo img {
+  position: static;
+  display: block;
+  width: 154px !important;
+  height: 154px !important;
+  max-width: none !important;
+  margin: 0 !important;
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+  filter: none;
+  clip-path: none;
+  mix-blend-mode: normal;
+}
+[data-aurevia-site] header.aurevia-header.site-header > .logo.aurevia-logo img,
+[data-aurevia-site] .aurevia-mobile-menu .mobile-menu-head > .logo.aurevia-logo img {
+  clip-path: none;
+  transform: translateY(2px);
+}
+
+/* Keep Aurevia's existing language controls and locale persistence. */
+[data-aurevia-site] .aurevia-language-picker {
+  display: block;
+  width: 64px;
+  margin: 0;
+}
+[data-aurevia-site] .aurevia-language-picker select {
+  min-height: 44px;
+  padding: 8px;
+  border: 0;
+  border-bottom: 1px solid var(--aurevia-line);
+  background: transparent;
+  color: var(--aurevia-ink);
+  font-size: .72rem;
+  cursor: pointer;
+}
+[data-aurevia-site] .aurevia-language-picker option {
+  background: var(--aurevia-paper);
+  color: var(--aurevia-ink);
+}
+[data-aurevia-site] .aurevia-mobile-menu .aurevia-language-options {
+  display: flex;
+  gap: 12px;
+  margin-block: 16px;
+}
+[data-aurevia-site] .aurevia-mobile-menu .aurevia-language-options button {
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, .24);
+  background: transparent;
+  color: white;
+}
+[data-aurevia-site] .aurevia-mobile-menu .aurevia-language-options button[aria-current="true"] {
+  background: white;
+  color: var(--aurevia-blue);
+  border-color: white;
+}
+@media (max-width: 760px) {
+  [data-aurevia-site] header.aurevia-header.site-header > .logo.aurevia-logo {
+    width: 128px;
+    height: 72px;
+    min-width: 128px;
+    flex-basis: 128px;
+  }
+  [data-aurevia-site] header.aurevia-header.site-header > .logo.aurevia-logo img {
+    width: 128px !important;
+    height: 128px !important;
+    transform: translateY(2px);
+  }
+}

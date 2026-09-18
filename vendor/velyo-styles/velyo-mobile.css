@@ -1,0 +1,2387 @@
+/*
+ * Velyo responsive layer
+ * Imported last on purpose: it reconciles the historical mobile rules into a
+ * single, predictable system without changing the desktop composition.
+ */
+
+@media (max-width: 1180px) {
+  .velyo-header {
+    min-height: 76px;
+    padding: 0 24px;
+  }
+
+  .velyo-header .velyo-logo img {
+    width: 152px;
+    height: auto;
+  }
+
+  .velyo-header .menu-btn {
+    display: inline-flex;
+    min-width: 48px;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .desktop-navigation,
+  .velyo-header .header-actions {
+    display: none;
+  }
+}
+
+/* Homepage hero mobile — one message, one primary action. */
+@media (max-width: 700px) {
+  .home-velyo-hero.hero-velyo {
+    min-height: 720px;
+  }
+
+  .home-velyo-hero .velyo-hero-overlay {
+    background:
+      linear-gradient(180deg, rgba(3, 18, 31, .18) 0%, rgba(3, 18, 31, .48) 43%, rgba(3, 18, 31, .92) 100%),
+      linear-gradient(90deg, rgba(3, 18, 31, .36), rgba(3, 18, 31, .06));
+  }
+
+  .home-velyo-hero .hero-content {
+    align-items: end;
+    padding-top: 112px;
+    padding-bottom: calc(40px + env(safe-area-inset-bottom));
+  }
+
+  .home-velyo-hero .velyo-hero-brand .hero-kicker {
+    margin-bottom: 17px;
+    font-size: .93rem;
+  }
+
+  .home-velyo-hero .velyo-hero-brand h1 {
+    max-width: 100%;
+    font-size: clamp(3rem, 13.2vw, 4.1rem);
+    line-height: .88;
+    letter-spacing: -.052em;
+  }
+
+  .home-velyo-hero .velyo-hero-brand .hero-slogan {
+    max-width: 29rem;
+    margin-top: 20px;
+    font-size: .96rem;
+    line-height: 1.52;
+  }
+
+  .home-velyo-hero .velyo-hero-brand .actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 14px;
+  }
+
+  .home-velyo-hero .velyo-hero-brand .actions .button {
+    display: none;
+  }
+
+  .home-velyo-hero .hero-secondary-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 46px;
+    position: relative;
+    padding-bottom: 5px;
+    color: rgba(255, 255, 255, .86);
+    border-bottom: 0;
+    font-size: .68rem;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 430px) {
+  .home-velyo-hero .velyo-hero-brand .actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .home-velyo-hero .velyo-hero-brand .actions .button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 980px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .container,
+  .footer-grid,
+  .footer-bottom {
+    width: min(100% - 48px, 760px);
+  }
+
+  .section {
+    padding-block: 88px;
+  }
+
+  .split,
+  .catalog-intro-editorial,
+  .management-offers-heading,
+  .owner-intro-editorial,
+  .owner-tailored-heading,
+  .owner-management-heading,
+  .about-intro-heading,
+  .about-story-new-heading,
+  .about-commitment-heading,
+  .about-values-new-heading,
+  .section-heading-art,
+  .valuation-opening-grid,
+  .valuation-experience,
+  .valuation-next-heading,
+  .simulator-editorial-heading,
+  .contact-layout,
+  .detail-opening-grid,
+  .service-opening-shell,
+  .detail-process-heading,
+  .detail-scope-grid,
+  .detail-clarity-grid,
+  .service-conclusion-grid,
+  .experience-detail-cta-inner,
+  .property-detail-opening,
+  .property-detail-story,
+  .property-detail-amenities-heading {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .watermark-heading,
+  .owner-page-watermark,
+  .section-heading-art {
+    max-width: 100%;
+  }
+
+  .section-watermark,
+  .section-heading-watermark,
+  .valuation-next-watermark,
+  .service-conclusion-watermark {
+    max-width: 100%;
+    white-space: nowrap;
+  }
+
+  .velyo-page-hero {
+    min-height: 610px;
+    height: min(76svh, 680px);
+  }
+
+  .velyo-page-hero-layout {
+    min-height: inherit;
+    align-items: end;
+    padding-block: 138px 66px;
+  }
+
+  .velyo-page-hero-copy {
+    max-width: 700px;
+  }
+
+  .velyo-page-hero-copy h1 {
+    max-width: 100%;
+    font-size: clamp(4rem, 10vw, 6.25rem);
+    line-height: .86;
+  }
+
+  .home-velyo-hero {
+    min-height: 760px;
+    height: 100svh;
+  }
+
+  .home-velyo-hero .hero-content {
+    min-height: 100%;
+    align-items: end;
+    padding-block: 142px 72px;
+  }
+
+  .velyo-hero-brand h1 {
+    font-size: clamp(4.2rem, 10.5vw, 6.5rem);
+  }
+
+  .trust-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .owner-welcome .split,
+  .simulator-editorial-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 54px;
+  }
+
+  .velyo-owner-visual,
+  .simulator-editorial-card {
+    min-height: 520px;
+  }
+
+  .home-services .card-grid,
+  .service-catalog-grid,
+  .experience-commerce-grid,
+  .management-offers {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-services .card-grid {
+    gap: 22px;
+  }
+
+  .home-service-card {
+    grid-template-columns: minmax(280px, .8fr) minmax(0, 1.2fr);
+    min-height: 360px;
+  }
+
+  .catalog-card {
+    grid-template-columns: minmax(280px, .78fr) minmax(0, 1.22fr);
+    min-height: 420px;
+  }
+
+  .management-offers-heading > p,
+  .catalog-intro-note,
+  .owner-intro-statement,
+  .owner-tailored-heading > p,
+  .owner-management-heading > p,
+  .about-intro-heading > div:last-child,
+  .about-story-new-heading > p,
+  .about-values-new-heading > p,
+  .section-heading-art > p,
+  .valuation-opening-copy,
+  .valuation-next-heading > p:last-child,
+  .simulator-editorial-heading > p {
+    max-width: 620px;
+    margin-left: 0;
+  }
+
+  .experience-mosaic,
+  .velyo-experience-mosaic {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .experience-visual-main {
+    grid-column: 1 / -1;
+  }
+
+  .method-light-path {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+  }
+
+  .method-light-path::-webkit-scrollbar {
+    display: none;
+  }
+
+  .method-light-path button {
+    min-width: 104px;
+    scroll-snap-align: start;
+  }
+
+  .method-active-panel {
+    grid-template-columns: 128px minmax(0, 1fr) minmax(220px, .65fr);
+  }
+
+  .review-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .review-card:nth-child(3) {
+    display: none;
+  }
+
+  .owner-tailored-composition {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .owner-tailored-relief {
+    grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  }
+
+  .concierge-rhythm-static-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .concierge-rhythm-static-card {
+    grid-template-columns: minmax(260px, .82fr) minmax(0, 1.18fr);
+  }
+
+  .owner-clarity-scroll,
+  .about-values-scroll {
+    height: auto;
+    min-height: 0;
+  }
+
+  .owner-clarity-editorial,
+  .about-values-editorial {
+    position: relative;
+    top: auto;
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .owner-clarity-scroll-triggers,
+  .about-values-scroll-triggers {
+    display: none;
+  }
+
+  .owner-clarity-nav,
+  .about-value-nav {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+  }
+
+  .owner-clarity-nav::-webkit-scrollbar,
+  .about-value-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .owner-clarity-nav button,
+  .about-value-nav button {
+    min-width: 220px;
+    scroll-snap-align: start;
+  }
+
+  .about-intro-visuals {
+    grid-template-columns: minmax(0, 1fr) minmax(0, .72fr);
+  }
+
+  .about-intro-main {
+    grid-row: span 2;
+  }
+
+  .about-local-new {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about-local-image {
+    min-height: 620px;
+  }
+
+  .about-local-copy {
+    padding: 84px 24px;
+  }
+
+  .about-commitment-new ul {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about-commitment-new li {
+    min-height: 0;
+  }
+
+  .traveler-commerce-steps,
+  .traveler-extras-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .experience-owner-cta {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .valuation-aside {
+    position: relative;
+    top: auto;
+    display: grid;
+    grid-template-columns: minmax(260px, .8fr) minmax(0, 1.2fr);
+  }
+
+  .valuation-aside-image {
+    min-height: 100%;
+  }
+
+  .valuation-form-shell {
+    max-width: none;
+  }
+
+  .valuation-next-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .simulator-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .simulator-layout .result-panel {
+    position: relative;
+    top: auto;
+  }
+
+  .detail-impact-strip,
+  .service-proof-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .service-proof-stage {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .service-proof-image {
+    min-height: 440px;
+  }
+
+  .detail-journey-scroll {
+    height: auto;
+  }
+
+  .detail-journey-stage {
+    position: relative;
+    top: auto;
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .detail-journey-triggers {
+    display: none;
+  }
+
+  .detail-journey-nav {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+  }
+
+  .detail-journey-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .detail-journey-nav button {
+    min-width: 210px;
+    scroll-snap-align: start;
+  }
+
+  .property-detail-gallery-section,
+  .property-detail-overview,
+  .property-detail-amenities {
+    overflow: clip;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 48px 28px;
+  }
+
+  .site-footer-cta-inner {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+
+@media (max-width: 760px) {
+  main .eyebrow {
+    font-size: .8rem !important;
+    line-height: 1.4;
+  }
+
+  :root {
+    --mobile-gutter: 20px;
+  }
+
+  .container,
+  .footer-grid,
+  .footer-bottom {
+    width: calc(100% - (var(--mobile-gutter) * 2));
+  }
+
+  .section {
+    padding-block: 70px;
+  }
+
+  .button,
+  .text-link,
+  .site-footer-cta-button,
+  .management-offer-cta,
+  .mobile-consultation,
+  .mobile-admin-login,
+  button,
+  input,
+  select,
+  textarea {
+    min-height: 48px;
+  }
+
+  a,
+  button,
+  input,
+  select,
+  textarea {
+    -webkit-tap-highlight-color: rgba(31, 95, 191, .16);
+  }
+
+  p,
+  li,
+  a,
+  strong,
+  span {
+    overflow-wrap: break-word;
+  }
+
+  .velyo-header {
+    min-height: 72px;
+    padding: max(10px, env(safe-area-inset-top)) var(--mobile-gutter) 10px;
+  }
+
+  .velyo-header .velyo-logo img {
+    width: 138px;
+  }
+
+  .velyo-header .menu-btn {
+    width: 48px;
+    padding: 0;
+  }
+
+  .velyo-header .menu-btn span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .velyo-mobile-menu {
+    height: 100dvh;
+    min-height: 100dvh;
+    padding: max(18px, env(safe-area-inset-top)) var(--mobile-gutter) max(18px, env(safe-area-inset-bottom));
+    overflow-y: auto;
+  }
+
+  .velyo-mobile-menu .mobile-menu-head {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 0 0 16px;
+    background: inherit;
+  }
+
+  .velyo-mobile-menu .mobile-menu-head .velyo-logo img {
+    width: 138px !important;
+    max-width: none !important;
+    height: auto !important;
+  }
+
+  .velyo-mobile-menu .mobile-menu-head .velyo-logo {
+    width: 142px;
+    height: auto;
+  }
+
+  .velyo-mobile-menu .mobile-menu-head button {
+    min-width: 48px;
+    min-height: 48px;
+  }
+
+  .velyo-mobile-menu nav {
+    margin-block: 8px 24px;
+  }
+
+  .velyo-mobile-menu nav a {
+    min-height: 58px;
+    padding-block: 12px;
+    font-size: clamp(1.35rem, 6.2vw, 1.75rem);
+    line-height: 1.02;
+  }
+
+  .velyo-mobile-menu nav a > span {
+    flex: 0 0 30px;
+  }
+
+  .velyo-mobile-menu .mobile-menu-footer {
+    position: static;
+    display: grid;
+    gap: 10px;
+    padding-bottom: 8px;
+  }
+
+  .velyo-mobile-menu .mobile-consultation,
+  .velyo-mobile-menu .mobile-admin-login {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .velyo-page-hero {
+    height: min(80svh, 620px);
+    min-height: 540px;
+  }
+
+  .velyo-page-hero-layout {
+    padding-block: 120px 50px;
+  }
+
+  .velyo-page-hero-copy .eyebrow {
+    margin-bottom: 16px;
+  }
+
+  .velyo-page-hero-copy h1 {
+    font-size: clamp(3.35rem, 17.5vw, 5rem);
+    line-height: .86;
+    letter-spacing: -.055em;
+    text-wrap: balance;
+  }
+
+  .velyo-page-hero-copy.title-starts-a h1 {
+    font-size: clamp(2.65rem, 12vw, 3.5rem);
+    letter-spacing: -.045em;
+  }
+
+  .velyo-page-hero-copy > p:last-child {
+    max-width: 32rem;
+    margin-top: 22px;
+    font-size: 1rem;
+    line-height: 1.58;
+  }
+
+  .velyo-page-hero-background {
+    object-position: 56% center;
+  }
+
+  .home-velyo-hero {
+    min-height: 700px;
+    height: 100svh;
+  }
+
+  .home-velyo-hero .velyo-hero-image {
+    object-position: 56% center;
+  }
+
+  .home-velyo-hero .hero-content {
+    padding-block: 116px calc(44px + env(safe-area-inset-bottom));
+  }
+
+  .velyo-hero-brand {
+    max-width: 100%;
+  }
+
+  .velyo-hero-brand h1 {
+    font-size: clamp(3.35rem, 16.5vw, 4.85rem);
+    line-height: .84;
+    letter-spacing: -.055em;
+  }
+
+  .velyo-hero-brand .hero-slogan {
+    max-width: 32rem;
+    margin-top: 24px;
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .velyo-hero-brand .actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  .velyo-hero-brand .actions .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .velyo-trust-strip {
+    padding-block: 18px;
+    overflow: hidden;
+  }
+
+  .trust-cards {
+    width: calc(100% - var(--mobile-gutter));
+    margin-left: var(--mobile-gutter);
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-padding-inline: var(--mobile-gutter);
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .trust-cards::-webkit-scrollbar {
+    display: none;
+  }
+
+  .trust-cards article {
+    flex: 0 0 min(82vw, 330px);
+    min-height: 128px;
+    padding: 22px 20px;
+    scroll-snap-align: start;
+  }
+
+  .watermark-heading,
+  .watermark-heading--split,
+  .owner-page-watermark,
+  .section-heading-art,
+  .about-story-new-heading,
+  .about-commitment-heading,
+  .about-values-new-heading,
+  .valuation-next-heading {
+    padding-top: 38px;
+  }
+
+  .section-watermark,
+  .section-heading-watermark,
+  .valuation-next-watermark,
+  .service-conclusion-watermark {
+    inset-inline: 0 auto !important;
+    top: 0 !important;
+    max-width: calc(100vw - (var(--mobile-gutter) * 2));
+    font-size: clamp(3.6rem, 18vw, 6rem) !important;
+    line-height: .8 !important;
+    letter-spacing: -.04em !important;
+    transform: none !important;
+    overflow: hidden;
+  }
+
+  .watermark-heading > .eyebrow:not(.section-watermark),
+  .owner-page-watermark .eyebrow,
+  .section-heading-art .eyebrow,
+  .about-story-new-heading .eyebrow,
+  .about-commitment-heading .eyebrow,
+  .about-values-new-heading .eyebrow,
+  .valuation-next-heading > .eyebrow {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 16px;
+  }
+
+  .watermark-heading h2,
+  .owner-intro-editorial h2,
+  .owner-tailored-heading h2,
+  .owner-management-heading h2,
+  .about-intro-heading h2,
+  .about-story-new-heading h2,
+  .about-local-copy h2,
+  .about-commitment-heading h2,
+  .about-values-new-heading h2,
+  .section-heading-art h2,
+  .valuation-opening h2,
+  .valuation-next h2,
+  .simulator-editorial-heading h2,
+  .contact-heading,
+  .detail-process-title,
+  .detail-section-intro h2,
+  .service-conclusion-copy h2 {
+    max-width: 100%;
+    font-size: clamp(3.15rem, 14vw, 4.65rem) !important;
+    line-height: .89 !important;
+    letter-spacing: -.05em;
+    text-wrap: balance;
+  }
+
+  .management-offers-heading h2,
+  .management-offers-heading h2 > span,
+  .management-offers-heading h2 > em,
+  .owner-intro-editorial h2 > span,
+  .owner-intro-editorial h2 > em,
+  .owner-tailored-relief-heading h3,
+  .experience-owner-intro h2 em {
+    max-width: 100%;
+    white-space: normal !important;
+    text-wrap: balance !important;
+  }
+
+  .owner-intro-editorial h2 {
+    font-size: clamp(2.7rem, 11.5vw, 3.2rem) !important;
+  }
+
+  .owner-intro-editorial h2 > span {
+    white-space: nowrap !important;
+  }
+
+  .section-heading-art--dark .section-heading-watermark {
+    color: rgba(101, 169, 248, .15);
+  }
+
+  .owner-welcome .split,
+  .simulator-editorial-layout {
+    gap: 38px;
+  }
+
+  .velyo-owner-visual,
+  .simulator-editorial-card {
+    min-height: 390px;
+  }
+
+  .velyo-owner-copy h2,
+  .simulator-scan-copy h2 {
+    margin-bottom: 24px;
+  }
+
+  .owner-attention-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .owner-attention-grid article {
+    min-height: 0;
+    padding: 22px 0;
+  }
+
+  .home-services .card-grid,
+  .service-catalog-grid,
+  .experience-commerce-grid {
+    gap: 18px;
+  }
+
+  .home-service-card,
+  .catalog-card,
+  .experience-commerce-card {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0 !important;
+  }
+
+  .home-service-card-media,
+  .catalog-card-media {
+    min-height: 245px;
+  }
+
+  .home-service-card-copy,
+  .catalog-card-content {
+    padding: 26px 22px;
+  }
+
+  .home-service-card-copy h3,
+  .catalog-card-heading h3 {
+    font-size: clamp(2rem, 10vw, 2.75rem);
+    line-height: .95;
+  }
+
+  .catalog-card-content > ul {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .services-all-button,
+  .simulator-scan-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .simulator-editorial-card > div {
+    inset-inline: 18px;
+    bottom: 18px;
+  }
+
+  .experience-intro,
+  .catalog-intro-editorial,
+  .management-offers-heading {
+    gap: 22px;
+  }
+
+  .experience-mosaic,
+  .velyo-experience-mosaic {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .experience-visual-main,
+  .experience-mosaic > * {
+    grid-column: auto;
+    min-height: 300px;
+  }
+
+  .experience-text {
+    padding: 34px 24px;
+  }
+
+  .method-light-journey {
+    margin-top: 40px;
+  }
+
+  .method-light-path {
+    display: flex !important;
+    grid-template-columns: none !important;
+    flex-wrap: nowrap;
+    width: calc(100% + var(--mobile-gutter));
+    gap: 8px !important;
+    padding: 0 var(--mobile-gutter) 20px 0 !important;
+  }
+
+  .method-light-path::before,
+  .method-light-progress {
+    display: none;
+  }
+
+  .method-light-path button {
+    flex: 0 0 148px;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 5px !important;
+    align-content: center;
+    align-items: center !important;
+    justify-items: start !important;
+    min-height: 100px !important;
+    padding: 12px 14px !important;
+    border: 1px solid rgba(18, 58, 102, .16) !important;
+    background: rgba(255, 255, 255, .34);
+    color: #647180 !important;
+    text-align: left !important;
+  }
+
+  .method-light-path button i {
+    display: none !important;
+  }
+
+  .method-light-path button span,
+  .method-light-path button small,
+  .method-light-path button strong {
+    display: block !important;
+    padding: 0 !important;
+    color: currentColor !important;
+    opacity: 1 !important;
+  }
+
+  .method-light-path button span {
+    font-size: .68rem;
+    font-weight: 700;
+  }
+
+  .method-light-path button small {
+    font-size: .61rem !important;
+    line-height: 1.25;
+    letter-spacing: .06em !important;
+  }
+
+  .method-light-path button strong {
+    max-width: 16ch;
+    font-size: .76rem !important;
+    line-height: 1.25;
+  }
+
+  .method-light-path button.is-active {
+    border-color: #123a66 !important;
+    background: #123a66;
+    color: #fff !important;
+  }
+
+  .method-light-path button {
+    min-width: 148px;
+    min-height: 100px;
+  }
+
+  .method-active-panel {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    min-height: 0;
+    padding: 30px 0;
+  }
+
+  .method-active-number {
+    font-size: 4.5rem;
+    line-height: .8;
+  }
+
+  .method-active-copy h3 {
+    font-size: clamp(2.5rem, 12vw, 3.5rem);
+    line-height: .92;
+  }
+
+  .method-active-panel > ul {
+    padding-top: 4px;
+  }
+
+  .method-light-footer {
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .method-light-controls {
+    justify-content: space-between;
+  }
+
+  .concierge-method-link {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .review-carousel {
+    width: 100%;
+    margin-top: 36px;
+    padding-inline: 0;
+  }
+
+  .review-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .review-card:nth-child(n + 2) {
+    display: none;
+  }
+
+  .review-card {
+    min-height: 430px;
+    padding: 30px 24px;
+  }
+
+  .review-card blockquote {
+    font-size: clamp(1.65rem, 8vw, 2.15rem);
+    line-height: 1.08;
+  }
+
+  .review-arrow {
+    top: auto;
+    bottom: 20px;
+    width: 48px;
+    height: 48px;
+    transform: none;
+  }
+
+  .review-arrow-left {
+    left: 18px;
+  }
+
+  .review-arrow-right {
+    right: 18px;
+  }
+
+  .catalog-intro-note,
+  .management-offers-heading > p,
+  .owner-intro-statement,
+  .owner-tailored-heading > p,
+  .owner-management-heading > p,
+  .about-intro-heading > div:last-child,
+  .about-story-new-heading > p,
+  .about-commitment-heading > div:last-child,
+  .about-values-new-heading > p,
+  .section-heading-art > p,
+  .valuation-opening-copy,
+  .valuation-next-heading > p:last-child,
+  .simulator-editorial-heading > p {
+    max-width: 100%;
+  }
+
+  .management-offers {
+    gap: 20px;
+  }
+
+  .management-offer {
+    padding: 28px 22px;
+  }
+
+  .management-offer h3 {
+    font-size: clamp(2.65rem, 12vw, 3.5rem);
+  }
+
+  .management-offer-rate {
+    align-items: start;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .management-offer-rate strong {
+    font-size: clamp(3.2rem, 15vw, 4.5rem);
+  }
+
+  .management-offer-groups {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .management-offer-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .traveler-commerce-section {
+    padding-block: 72px;
+  }
+
+  .traveler-commerce-heading,
+  .traveler-extras-heading {
+    gap: 20px;
+  }
+
+  .traveler-commerce-steps,
+  .traveler-extras-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .traveler-commerce-steps li,
+  .traveler-extras-grid article {
+    min-height: 0;
+    padding: 28px 22px;
+  }
+
+  .experience-owner-cta {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    padding: 34px 24px;
+  }
+
+  .experience-owner-cta .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .owner-intro-editorial,
+  .owner-tailored-heading,
+  .owner-management-heading {
+    gap: 22px;
+  }
+
+  .owner-intro-statement {
+    padding-top: 0;
+  }
+
+  .owner-intro-statement .text-link {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .owner-tailored-plan,
+  .owner-tailored-relief {
+    padding: 26px 22px;
+  }
+
+  .owner-tailored-plan-intro,
+  .owner-tailored-relief {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .owner-tailored-details > div,
+  .owner-tailored-relief li {
+    grid-template-columns: 42px minmax(0, 1fr);
+  }
+
+  .owner-tailored-relief-heading {
+    padding-bottom: 26px;
+  }
+
+  .concierge-rhythm-static-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .concierge-rhythm-static-media {
+    min-height: 280px;
+  }
+
+  .concierge-rhythm-static-copy {
+    padding: 28px 22px;
+  }
+
+  .owner-clarity-editorial,
+  .about-values-editorial {
+    padding-block: 64px;
+    gap: 34px;
+  }
+
+  .owner-clarity-copy,
+  .about-value-panel {
+    min-height: 0;
+  }
+
+  .owner-clarity-copy h3,
+  .about-value-panel h3 {
+    font-size: clamp(3rem, 14vw, 4.25rem);
+    line-height: .9;
+  }
+
+  .owner-clarity-nav,
+  .about-value-nav {
+    width: calc(100% + var(--mobile-gutter));
+    margin-right: calc(var(--mobile-gutter) * -1);
+    padding-right: var(--mobile-gutter);
+  }
+
+  .owner-clarity-nav button,
+  .about-value-nav button {
+    min-width: min(78vw, 290px);
+    min-height: 98px;
+  }
+
+  .about-intro-heading {
+    gap: 24px;
+  }
+
+  .about-intro-visuals {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .about-intro-main {
+    grid-row: auto;
+  }
+
+  .about-intro-main > div,
+  .about-intro-detail > div {
+    min-height: 390px;
+  }
+
+  .about-intro-visuals aside {
+    padding: 32px 24px;
+  }
+
+  .about-story-journey article {
+    grid-template-columns: 54px minmax(0, 1fr);
+    gap: 14px;
+    padding: 28px 0;
+  }
+
+  .about-story-journey article > span {
+    font-size: 2.75rem;
+  }
+
+  .about-story-journey h3 {
+    font-size: clamp(2rem, 9.5vw, 2.75rem);
+  }
+
+  .about-local-image {
+    min-height: 500px;
+    background-position: 60% center;
+  }
+
+  .about-local-image > div {
+    inset-inline: var(--mobile-gutter);
+    bottom: 28px;
+  }
+
+  .about-local-image span {
+    font-size: clamp(3.8rem, 19vw, 5.5rem);
+  }
+
+  .about-local-copy {
+    padding: 66px var(--mobile-gutter);
+  }
+
+  .about-commitment-new ul {
+    margin-top: 38px;
+  }
+
+  .about-commitment-new li {
+    padding: 28px 0;
+  }
+
+  .about-commitment-new li strong {
+    font-size: clamp(2rem, 9vw, 2.7rem);
+  }
+
+  .valuation-opening {
+    padding-block: 72px 46px;
+  }
+
+  .valuation-opening-grid {
+    gap: 20px;
+  }
+
+  .valuation-workspace {
+    padding-bottom: 70px;
+  }
+
+  .valuation-experience {
+    gap: 18px;
+  }
+
+  .valuation-aside {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .valuation-aside-image {
+    min-height: 360px;
+  }
+
+  .valuation-aside-content,
+  .valuation-form-shell {
+    padding: 26px 20px;
+  }
+
+  .valuation-aside-content li {
+    grid-template-columns: 38px minmax(0, 1fr);
+  }
+
+  .valuation-reassurance {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .valuation-form .form-progress {
+    gap: 4px;
+  }
+
+  .valuation-form .form-progress span {
+    min-width: 0;
+    padding-inline: 4px;
+  }
+
+  .valuation-form .form-progress small {
+    font-size: .61rem;
+    letter-spacing: .02em;
+  }
+
+  .valuation-form legend {
+    font-size: clamp(2rem, 9.5vw, 2.75rem);
+  }
+
+  .valuation-form .field-row,
+  .valuation-form .amenities-checks,
+  .valuation-next-steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .valuation-form .form-navigation {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .valuation-form .form-navigation .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .valuation-form .form-navigation .ghost {
+    order: 2;
+  }
+
+  .valuation-direct-contact {
+    overflow-wrap: anywhere;
+  }
+
+  .valuation-next {
+    padding-block: 72px;
+  }
+
+  .valuation-next-steps li {
+    padding: 26px 0;
+  }
+
+  .simulator-intro,
+  .simulator-layout {
+    gap: 28px !important;
+  }
+
+  .simulator-form-section,
+  .simulator-layout .result-panel {
+    padding: 24px 18px !important;
+  }
+
+  .simulator-form .field-row,
+  .simulator-form .simulator-compact-grid,
+  .simulator-form .simulator-amenities {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .simulator-layout .result-panel > strong {
+    font-size: clamp(3rem, 14vw, 4rem);
+  }
+
+  .result-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .result-metric,
+  .result-explanation > div {
+    min-height: 0;
+    padding: 20px 0;
+  }
+
+  .result-panel .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .contact-layout {
+    gap: 42px;
+  }
+
+  .contact-intro > p:not(.eyebrow) {
+    color: #566473;
+    opacity: 1;
+  }
+
+  .contact-panel,
+  .contact-layout > .form-card {
+    padding: 24px 20px;
+  }
+
+  .contact-details {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .contact-details > * {
+    min-width: 0;
+  }
+
+  .contact-primary > span:nth-child(2) {
+    overflow-wrap: anywhere;
+  }
+
+  .contact-feature-image {
+    min-height: 330px;
+  }
+
+  .form-card .field-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .form-card .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .detail-page-opening,
+  .service-detail-opening,
+  .detail-process-section,
+  .detail-scope-section,
+  .detail-clarity-section,
+  .experience-detail-cta {
+    padding-block: 70px;
+  }
+
+  .detail-opening-copy h1,
+  .service-opening-heading h1 {
+    font-size: clamp(3.35rem, 15vw, 4.75rem);
+    line-height: .87;
+  }
+
+  .detail-impact-strip,
+  .service-proof-cards,
+  .detail-rules,
+  .service-commercial-rules {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .detail-impact-strip > *,
+  .service-proof-cards > *,
+  .detail-rules > *,
+  .service-commercial-rules > * {
+    min-height: 0;
+    padding: 26px 22px;
+  }
+
+  .service-proof-image {
+    min-height: 350px;
+  }
+
+  .detail-journey-stage,
+  .detail-value-panel,
+  .service-price-card,
+  .service-conclusion-promise {
+    padding: 28px 22px;
+  }
+
+  .detail-journey-nav {
+    width: calc(100% + var(--mobile-gutter));
+    padding-right: var(--mobile-gutter);
+  }
+
+  .detail-journey-nav button {
+    min-width: min(78vw, 280px);
+  }
+
+  .detail-journey-copy h3,
+  .detail-value-panel h2,
+  .service-price-card h2,
+  .service-conclusion-promise h3 {
+    font-size: clamp(2.4rem, 11vw, 3.25rem);
+  }
+
+  .experience-detail-cta-inner {
+    gap: 28px;
+  }
+
+  .experience-detail-cta .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .property-editorial-card,
+  .property-detail-opening,
+  .property-detail-story {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .property-image {
+    min-height: 300px;
+  }
+
+  .property-card-copy {
+    padding: 26px 22px;
+  }
+
+  .property-card-footer,
+  .property-detail-facts {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .property-card-footer .facts,
+  .property-detail-facts {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .property-detail-gallery-section {
+    min-height: 520px;
+  }
+
+  .property-detail-overview,
+  .property-detail-amenities {
+    padding-block: 70px;
+  }
+
+  .site-footer-cta {
+    padding-block: 72px calc(72px + env(safe-area-inset-bottom));
+  }
+
+  .site-footer-cta-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+  }
+
+  .site-footer-cta-inner::before {
+    top: -.08em;
+    left: 0;
+    font-size: clamp(4.4rem, 22vw, 7rem);
+  }
+
+  .site-footer-cta-copy h2 {
+    font-size: clamp(3.5rem, 16vw, 5rem);
+    line-height: .86;
+  }
+
+  .site-footer-cta-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .velyo-footer {
+    padding: 60px 0 calc(92px + env(safe-area-inset-bottom));
+  }
+
+  .footer-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .footer-grid > div {
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .14);
+  }
+
+  .footer-grid .footer-brand {
+    padding-top: 0;
+  }
+
+  .footer-grid a,
+  .footer-grid span {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .footer-contact a {
+    overflow-wrap: anywhere;
+  }
+
+  .footer-bottom {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    padding-top: 22px;
+  }
+
+  .footer-bottom > * {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+  }
+
+  .sticky-cta {
+    left: var(--mobile-gutter);
+    right: var(--mobile-gutter);
+    bottom: max(12px, env(safe-area-inset-bottom));
+    width: auto;
+    min-height: 52px;
+    justify-content: center;
+    box-shadow: 0 14px 38px rgba(7, 22, 40, .26);
+  }
+
+  .velyo-cookie {
+    left: 12px;
+    right: 12px;
+    bottom: calc(76px + env(safe-area-inset-bottom));
+    width: auto;
+    max-height: calc(100dvh - 104px);
+    overflow-y: auto;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding: 22px 18px;
+  }
+
+  .velyo-cookie .cookie-mark {
+    display: none;
+  }
+
+  .velyo-cookie .cookie-copy p {
+    display: block;
+    margin-block: 7px;
+  }
+
+  .velyo-cookie,
+  .velyo-cookie .cookie-copy strong,
+  .velyo-cookie .cookie-copy p {
+    color: #fff;
+  }
+
+  .velyo-cookie .cookie-copy a {
+    color: #9dcaff;
+  }
+
+  .velyo-cookie .cookie-secondary {
+    border-color: rgba(255, 255, 255, .42);
+    color: #fff;
+  }
+
+  .velyo-cookie .cookie-primary {
+    background: #1f5fbf;
+    color: #fff;
+  }
+
+  .velyo-cookie .cookie-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .velyo-cookie .cookie-actions button {
+    width: 100%;
+  }
+}
+
+/* Final mobile override for the simplified homepage hero. */
+@media (max-width: 700px) {
+  .home-velyo-hero.hero-velyo {
+    min-height: 720px;
+  }
+
+  .home-velyo-hero .velyo-hero-overlay {
+    background:
+      linear-gradient(180deg, rgba(3, 18, 31, .18) 0%, rgba(3, 18, 31, .48) 43%, rgba(3, 18, 31, .92) 100%),
+      linear-gradient(90deg, rgba(3, 18, 31, .36), rgba(3, 18, 31, .06));
+  }
+
+  .home-velyo-hero .hero-content {
+    align-items: end;
+    padding-top: 112px;
+    padding-bottom: calc(40px + env(safe-area-inset-bottom));
+  }
+
+  .home-velyo-hero .velyo-hero-brand .hero-kicker {
+    margin-bottom: 17px;
+    font-size: .93rem;
+  }
+
+  .home-velyo-hero .velyo-hero-brand h1 {
+    max-width: 100%;
+    font-size: clamp(3rem, 13.2vw, 4.1rem);
+    line-height: .88;
+    letter-spacing: -.052em;
+  }
+
+  .home-velyo-hero .velyo-hero-brand .hero-slogan {
+    max-width: 29rem;
+    margin-top: 20px;
+    font-size: .96rem;
+    line-height: 1.52;
+  }
+
+  .home-velyo-hero .velyo-hero-brand .actions {
+    display: flex;
+    grid-template-columns: none;
+    align-items: center;
+    gap: 18px;
+    margin-top: 14px;
+  }
+
+  .home-velyo-hero .velyo-hero-brand .actions .button {
+    display: none;
+  }
+
+  .home-velyo-hero .hero-secondary-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 46px;
+    color: rgba(255, 255, 255, .86);
+    border-bottom: 0;
+    font-size: .68rem;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 430px) {
+  .home-velyo-hero .velyo-hero-brand .actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .home-velyo-hero .velyo-hero-brand .actions .button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --mobile-gutter: 16px;
+  }
+
+  .section {
+    padding-block: 60px;
+  }
+
+  .velyo-page-hero-copy h1 {
+    font-size: clamp(3.15rem, 17.5vw, 4.25rem);
+  }
+
+  .velyo-page-hero-copy.title-starts-a h1 {
+    font-size: clamp(2.55rem, 11.5vw, 3.15rem);
+  }
+
+  .velyo-hero-brand h1 {
+    font-size: clamp(3.15rem, 17vw, 4.2rem);
+  }
+
+  .velyo-owner-visual,
+  .simulator-editorial-card,
+  .about-intro-main > div,
+  .about-intro-detail > div {
+    min-height: 330px;
+  }
+
+  .watermark-heading h2,
+  .owner-intro-editorial h2,
+  .owner-tailored-heading h2,
+  .owner-management-heading h2,
+  .about-intro-heading h2,
+  .about-story-new-heading h2,
+  .about-local-copy h2,
+  .about-commitment-heading h2,
+  .about-values-new-heading h2,
+  .section-heading-art h2,
+  .valuation-opening h2,
+  .valuation-next h2,
+  .simulator-editorial-heading h2,
+  .contact-heading,
+  .detail-process-title,
+  .detail-section-intro h2,
+  .service-conclusion-copy h2 {
+    font-size: clamp(2.75rem, 14vw, 3.85rem) !important;
+  }
+
+  .owner-intro-editorial h2 {
+    font-size: clamp(2.65rem, 11.4vw, 2.9rem) !important;
+  }
+
+  .home-service-card-media,
+  .catalog-card-media {
+    min-height: 220px;
+  }
+
+  .home-service-card-copy,
+  .catalog-card-content,
+  .management-offer,
+  .valuation-aside-content,
+  .valuation-form-shell,
+  .contact-panel,
+  .contact-layout > .form-card,
+  .detail-journey-stage,
+  .detail-value-panel,
+  .service-price-card,
+  .service-conclusion-promise {
+    padding-inline: 18px;
+  }
+
+  .review-card {
+    min-height: 450px;
+    padding-inline: 20px;
+  }
+
+  .review-card blockquote {
+    font-size: clamp(1.5rem, 7.5vw, 1.85rem);
+  }
+
+  .method-active-copy h3,
+  .owner-clarity-copy h3,
+  .about-value-panel h3 {
+    font-size: clamp(2.65rem, 13vw, 3.45rem);
+  }
+
+  .valuation-form-topline {
+    align-items: start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .valuation-form .form-progress small {
+    max-width: 74px;
+    white-space: normal;
+  }
+
+  .simulator-layout .result-panel > strong {
+    font-size: clamp(2.65rem, 13.5vw, 3.5rem);
+  }
+
+  .about-local-image {
+    min-height: 430px;
+  }
+
+  .property-detail-gallery-section {
+    min-height: 440px;
+  }
+}
+
+/* Introduction propriétaires : le repère reste entier et le titre s'adapte sans déborder. */
+@media (max-width: 980px) {
+  .owner-intro .owner-page-watermark--left {
+    container-type: inline-size;
+  }
+
+  .owner-intro .owner-page-watermark--left > .section-watermark {
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
+    font-size: 5.55cqw !important;
+    white-space: nowrap;
+  }
+
+  .owner-intro .owner-intro-editorial h2 > span {
+    max-width: 13ch;
+    white-space: normal !important;
+    text-wrap: balance !important;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .catalog-card:hover,
+  .home-service-card:hover,
+  .management-offer:hover,
+  .traveler-extras-grid article:hover,
+  .about-intro-visuals figure:hover,
+  .review-card:hover {
+    transform: none;
+  }
+
+  .catalog-card:active,
+  .home-service-card:active,
+  .management-offer:active,
+  .traveler-extras-grid article:active {
+    transform: scale(.99);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trust-cards,
+  .method-light-path,
+  .owner-clarity-nav,
+  .about-value-nav,
+  .detail-journey-nav {
+    scroll-behavior: auto;
+  }
+}
+
+/* Legal documents need a concise editorial opening, not a full campaign hero. */
+@media (max-width: 700px) {
+  .legal-page .velyo-page-hero {
+    height: auto;
+    min-height: 430px;
+  }
+
+  .legal-page .velyo-page-hero-layout {
+    padding-block: 115px 46px;
+  }
+
+  .legal-page .velyo-page-hero-copy h1 {
+    font-size: clamp(2.9rem, 14vw, 4rem);
+    line-height: .92;
+  }
+}
+
+/* Mobile readability: editorial labels remain compact without dropping below a comfortable size. */
+@media (max-width: 760px) {
+  .menu-btn span,
+  .eyebrow,
+  .velyo-page-hero-copy .eyebrow,
+  .home-service-card-copy > small,
+  .home-service-card-link,
+  .catalog-card-kicker,
+  .catalog-card-commercial span,
+  .catalog-card-owner span,
+  .management-offer-top small,
+  .management-offer h4,
+  .footer-bottom,
+  .footer-bottom a,
+  .footer-bottom span {
+    font-size: max(.68rem, 10.5px);
+  }
+}
+
+/*
+ * Responsive QA — garde-fous finaux.
+ * Ces règles restent volontairement ciblées afin de préserver les compositions
+ * éditoriales desktop tout en supprimant les derniers débordements et les
+ * interactions dépendantes du survol sur écran tactile.
+ */
+
+/* Le long repère de l'accueil reste entier dans les largeurs desktop compactes. */
+@media (min-width: 981px) and (max-width: 1360px) {
+  .home-services .section-watermark {
+    right: 0 !important;
+    width: auto !important;
+    max-width: calc(100vw - 72px);
+    font-size: clamp(3.5rem, 5.55vw, 5.1rem) !important;
+  }
+}
+
+/* Les conclusions des pages de détail ne tronquent plus leur mot de fond. */
+.service-conclusion-watermark {
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+  font-size: clamp(3.2rem, 6.8vw, 5.5rem) !important;
+}
+
+@media (max-width: 980px) {
+  main,
+  main section,
+  main .container,
+  main :is(.split, .section-heading-art, .watermark-heading, .owner-page-watermark) > * {
+    min-width: 0;
+  }
+
+  main img,
+  main video,
+  main svg {
+    max-width: 100%;
+  }
+
+  .legal-content table {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 760px) {
+  /* Les contrôles tactiles restent généreux sans déformer checkbox et radio. */
+  input[type="checkbox"],
+  input[type="radio"] {
+    width: 19px;
+    height: 19px;
+    min-height: 0;
+    flex: 0 0 19px;
+    margin: 0;
+  }
+
+  label:has(> input[type="checkbox"]),
+  label:has(> input[type="radio"]) {
+    min-height: 44px;
+    align-items: center;
+  }
+
+  /* Sur tactile, les précisions qui s'ouvrent au survol restent accessibles. */
+  .owner-tailored-details > article {
+    min-height: 0;
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 12px;
+    padding: 22px 0;
+  }
+
+  .owner-tailored-details > article > i {
+    display: none;
+  }
+
+  .owner-tailored-details > article p,
+  .detail-scope-list.service-scope-list article small {
+    max-height: none;
+    margin-top: 10px;
+    overflow: visible;
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Les mots de fond longs privilégient l'intégrité à une taille excessive. */
+  .owner-welcome .section-watermark,
+  .home-services .section-watermark,
+  .home-gallery .section-watermark,
+  .process .section-watermark,
+  .expertise-evidence .section-watermark {
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
+    white-space: nowrap;
+  }
+
+  .owner-welcome .section-watermark {
+    font-size: clamp(1.82rem, 7.1vw, 3.2rem) !important;
+  }
+
+  .home-services .section-watermark,
+  .home-gallery .section-watermark {
+    font-size: clamp(1.95rem, 8vw, 3.45rem) !important;
+  }
+
+  .process .section-watermark,
+  .expertise-evidence .section-watermark {
+    font-size: clamp(2.1rem, 8.8vw, 3.7rem) !important;
+  }
+
+  .service-conclusion-watermark {
+    font-size: clamp(2.9rem, 13.4vw, 4.4rem) !important;
+  }
+
+  .form-card,
+  .valuation-form-shell,
+  .simulator-form-section,
+  .result-panel {
+    min-width: 0;
+  }
+
+  .form-card input:not([type="checkbox"]):not([type="radio"]),
+  .form-card select,
+  .form-card textarea,
+  .valuation-form input:not([type="checkbox"]):not([type="radio"]),
+  .valuation-form select,
+  .valuation-form textarea,
+  .simulator-form input:not([type="checkbox"]):not([type="radio"]),
+  .simulator-form select,
+  .simulator-form textarea {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+/* Les très petits téléphones conservent une hiérarchie ample sans rogner les titres. */
+@media (max-width: 380px) {
+  :root {
+    --mobile-gutter: 14px;
+  }
+
+  .velyo-page-hero-copy h1,
+  .velyo-hero-brand h1 {
+    font-size: clamp(2.85rem, 15.8vw, 3.7rem) !important;
+  }
+
+  .watermark-heading h2,
+  .owner-intro-editorial h2,
+  .owner-tailored-heading h2,
+  .owner-management-heading h2,
+  .about-intro-heading h2,
+  .about-story-new-heading h2,
+  .about-local-copy h2,
+  .about-commitment-heading h2,
+  .about-values-new-heading h2,
+  .section-heading-art h2,
+  .valuation-opening h2,
+  .valuation-next h2,
+  .simulator-editorial-heading h2,
+  .contact-heading,
+  .detail-process-title,
+  .detail-section-intro h2,
+  .service-conclusion-copy h2 {
+    font-size: clamp(2.5rem, 13.3vw, 3.25rem) !important;
+  }
+
+  .button,
+  .site-footer-cta-button,
+  .mobile-consultation {
+    padding-inline: 17px;
+  }
+}
+
+/* Un téléphone tenu à l'horizontale ne transforme pas les héros en écran bloqué. */
+@media (max-width: 900px) and (max-height: 620px) and (orientation: landscape) {
+  .home-velyo-hero,
+  .home-velyo-hero.hero-velyo,
+  .velyo-page-hero {
+    height: auto;
+    min-height: 600px;
+  }
+
+  .home-velyo-hero .hero-content,
+  .velyo-page-hero-layout {
+    padding-block: 104px 42px;
+  }
+}
+
+/* Sur mobile, le mot de fond est plus compact : son centrage optique aussi. */
+@media (max-width: 760px) {
+  :root {
+    --velyo-watermark-eyebrow-y: -15px;
+  }
+
+  :where(.watermark-heading:has(> .section-watermark)) {
+    --velyo-watermark-eyebrow-y: -36px;
+  }
+
+  .watermark-heading--image-side {
+    --velyo-watermark-eyebrow-y: -39px;
+  }
+
+  .watermark-heading--catalog,
+  .management-offers-heading .watermark-heading {
+    --velyo-watermark-eyebrow-y: -12px;
+  }
+
+  .simulator-watermark-heading {
+    --velyo-watermark-eyebrow-y: -33px;
+  }
+
+  .owner-page-watermark {
+    --velyo-watermark-eyebrow-y: -40px;
+  }
+
+  .section-heading-art,
+  .section-heading-art--valuation {
+    --velyo-watermark-eyebrow-y: -21px;
+  }
+
+  .valuation-next-heading {
+    --velyo-watermark-eyebrow-y: 0px;
+    padding-top: 17px;
+  }
+
+  .service-opening-heading {
+    --velyo-watermark-eyebrow-y: -37px;
+  }
+
+  .service-conclusion-copy {
+    --velyo-watermark-eyebrow-y: -54px;
+  }
+
+  .about-intro-heading {
+    --velyo-watermark-eyebrow-y: -15px;
+  }
+
+  .about-story-new-heading,
+  .about-values-new-heading {
+    --velyo-watermark-eyebrow-y: -40px;
+  }
+
+  .about-commitment-heading {
+    --velyo-watermark-eyebrow-y: -8px;
+  }
+}
+
+/* Harmonie des grands titres traduits : largeur utile, trois lignes et aucun vide artificiel. */
+@media (max-width: 980px) {
+  .catalog-intro-editorial.watermark-heading {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .valuation-next-heading {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto !important;
+  }
+
+  .valuation-next-heading > .eyebrow,
+  .valuation-next-heading > h2,
+  .valuation-next-heading > p:last-child {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+
+  .valuation-next-heading > h2 {
+    width: min(100%, 15ch);
+    max-width: none !important;
+  }
+
+  .valuation-next-heading > h2 > span,
+  .valuation-next-heading > h2 > em {
+    display: inline;
+  }
+
+  .valuation-next-heading > p:last-child {
+    width: min(100%, 620px);
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 760px) {
+  :is(
+    .watermark-heading,
+    .owner-intro-editorial,
+    .owner-tailored-heading,
+    .owner-management-heading,
+    .about-intro-heading,
+    .about-story-new-heading,
+    .about-local-copy,
+    .about-commitment-heading,
+    .about-values-new-heading,
+    .section-heading-art,
+    .valuation-opening,
+    .valuation-next,
+    .simulator-editorial-heading,
+    .contact-intro,
+    .detail-opening-copy,
+    .detail-process-heading,
+    .detail-section-intro,
+    .service-conclusion-copy
+  ) h2 {
+    max-width: 100% !important;
+    font-size: clamp(2.45rem, 11.2vw, 3.15rem) !important;
+    line-height: .92 !important;
+    letter-spacing: -.045em;
+    overflow-wrap: normal;
+    text-wrap: balance;
+    word-break: normal;
+  }
+
+  .about-story-new-heading h2 {
+    font-size: clamp(2.35rem, 10.6vw, 2.9rem) !important;
+  }
+
+  .about-local-copy h2,
+  .catalog-intro-editorial h2,
+  .valuation-opening h2 {
+    font-size: clamp(2.25rem, 10vw, 2.8rem) !important;
+  }
+
+  .about-story-new-heading h2 > span,
+  .about-story-new-heading h2 > em {
+    display: block;
+  }
+
+  .service-detail-opening .detail-opening-copy h2 {
+    max-width: 100% !important;
+    font-size: clamp(2.35rem, 10.6vw, 2.9rem) !important;
+  }
+}
+
+/* Échelle finale commune aux mots décoratifs, y compris les anciennes exceptions. */
+:is(
+  .section-watermark,
+  .section-heading-watermark,
+  .valuation-next-watermark,
+  .service-conclusion-watermark
+),
+.watermark-heading > .section-watermark,
+.owner-page-watermark > .section-watermark,
+.watermark-heading.velyo-owner-copy > .section-watermark.dark,
+.home-services .section-watermark,
+.home-gallery .section-watermark,
+.process .section-watermark,
+.expertise-evidence .section-watermark {
+  font-size: var(--velyo-section-watermark-size) !important;
+}
+
+/* Audit final mobile : le contenu utile reste lisible sans agrandir les
+   grands titres ni alourdir la direction artistique. */
+@media (max-width: 760px) {
+  .home-velyo-hero .hero-secondary-link {
+    font-size: .8rem;
+  }
+
+  .velyo-page-hero .velyo-page-hero-copy .eyebrow {
+    font-size: .9rem;
+    line-height: 1.35;
+  }
+
+  .home-service-card-copy p,
+  .home-gallery .experience-mosaic small,
+  .method-active-deliverables li,
+  .form-privacy,
+  .valuation-form small,
+  .simulator-editorial-card > small {
+    font-size: .9rem;
+    line-height: 1.55;
+  }
+
+  .home-gallery small,
+  .management-offer-group li,
+  .management-offer > ul li,
+  .management-offer-traveler p,
+  .management-offer-separate p,
+  .experience-category-card-copy > p,
+  .traveler-commerce-steps p,
+  .traveler-extras-grid p,
+  .valuation-aside-content li p,
+  .simulator-classic .simulator-form .form-hint,
+  .simulator-classic .result-explanation > p:not(.eyebrow),
+  .simulator-classic .result-explanation > div > p {
+    font-size: .9rem;
+    line-height: 1.55;
+  }
+
+  .simulator-classic .simulator-form-section > .eyebrow {
+    font-size: .8rem !important;
+  }
+
+  .concierge-rhythm-static-copy > p,
+  .owner-clarity-overline,
+  .owner-clarity-kicker,
+  .valuation-reassurance,
+  .valuation-form .form-required,
+  .valuation-form .form-privacy,
+  .simulator-classic .result-panel .demo-note {
+    font-size: .8rem;
+    line-height: 1.5;
+  }
+
+  .concierge-rhythm-static-copy li,
+  .concierge-rhythm-static-note,
+  .valuation-form-shell .valuation-next-label,
+  .valuation-form-shell .form-privacy {
+    font-size: .9rem;
+    line-height: 1.5;
+  }
+
+  .home-service-card-copy small,
+  .home-gallery .eyebrow,
+  .method-editorial-journey .method-light-path.method-seven-steps button small,
+  .method-active-deliverables > p,
+  .owner-evidence-grid small {
+    font-size: .75rem !important;
+    line-height: 1.4;
+  }
+
+  .method-editorial-journey .method-light-path.method-seven-steps button strong {
+    font-size: .86rem !important;
+    line-height: 1.25;
+  }
+
+  .velyo-footer .footer-column a,
+  .velyo-footer .footer-direct-contact,
+  .velyo-footer .footer-bottom a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .velyo-footer .footer-bottom,
+  .velyo-footer .footer-bottom a,
+  .velyo-footer .footer-bottom > span {
+    font-size: .75rem;
+    line-height: 1.45;
+  }
+}
+
+/* En paysage, le titre, l'accroche et le texte du héros restent visibles dès
+   le premier écran au lieu d'être repoussés sous une hauteur fixe. */
+@media (max-width: 900px) and (max-height: 620px) and (orientation: landscape) {
+  .home-velyo-hero,
+  .home-velyo-hero.hero-velyo,
+  .velyo-page-hero.page-hero {
+    height: auto;
+    min-height: 100svh;
+  }
+
+  .home-velyo-hero .hero-content,
+  .velyo-page-hero-layout.container {
+    min-height: 100svh;
+    padding-block: 82px 24px;
+    align-items: center;
+  }
+
+  .velyo-page-hero .velyo-page-hero-copy h1 {
+    font-size: clamp(2.85rem, 7vw, 4.2rem);
+    line-height: .88;
+  }
+
+  .velyo-page-hero .velyo-page-hero-copy .eyebrow {
+    margin-bottom: 10px;
+  }
+
+  .velyo-page-hero .velyo-page-hero-copy > p:last-child {
+    max-width: 48rem;
+    margin-top: 14px;
+    font-size: .95rem;
+    line-height: 1.45;
+  }
+}

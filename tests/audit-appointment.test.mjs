@@ -59,7 +59,7 @@ for (const locale of ["it", "fr", "en"]) {
     assert.ok(fallback.includes(`aria-label="${copy[locale].fallback} — ${copy[locale].newTab}"`));
     assert.ok(html.indexOf(fallback) < html.indexOf(iframe), "fallback is available before the embedded calendar");
     assert.match(html, /href="\/audit\/grazie"/);
-    assert.match(html, /src="\/images\/brand\/aurevia-logo-transparent-gold.png"/);
+    assert.match(html, /src="\/images\/brand\/aurevia-logo-no-tagline.png"/);
     assert.doesNotMatch(html, /<form\b|<input\b|href="\/contatti|[?&](?:name|email|phone)=/);
     assert.deepEqual(Object.keys(copy[locale]).sort(), Object.keys(copy.it).sort());
   });

@@ -42,3 +42,11 @@ next-env.d.ts
 /outputs/
 /work/
 /aurevia-site.tar.gz
+
+# Local reference projects, browser profiles, research and deployment bundles
+/Velyo/
+/.chrome-velyo-qa/
+/.codex-*.log
+/research/
+/output/
+/*.tar.gz

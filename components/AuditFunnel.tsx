@@ -45,7 +45,7 @@ const internalMonths = ["Janvier","Février","Mars","Avril","Mai","Juin","Juille
 
 function FunnelHeader({ label }: { label: string }) {
   return <header className="audit-header">
-    <Link href="/" className="audit-logo" aria-label="AUREVIA"><img src="/images/brand/aurevia-logo-transparent-gold.png" width={280} height={280} alt="AUREVIA"/></Link>
+    <Link href="/" className="audit-logo" aria-label="AUREVIA"><img src="/images/brand/aurevia-logo-no-tagline.png" width={280} height={280} alt="AUREVIA"/></Link>
     <span className="audit-header-label">{label}</span>
     <AuditLanguageMenu/>
   </header>;
@@ -236,12 +236,12 @@ export function AuditFunnel() {
 
   return <div className="audit-shell" data-no-translate>
     <FunnelHeader label={t.top}/>
-    {status==="__calculating__"&&<section className="audit-calculating"><div className="audit-calculating-mark"><img src="/images/brand/aurevia-logo-transparent-gold.png" width="280" height="280" alt="AUREVIA"/></div><h1>{fc.loadingTitle}</h1><div className="audit-calculating-line"><span style={{width:`${((loadingPhase+1)/fc.loading.length)*100}%`}}/></div><p key={loadingPhase}>{fc.loading[loadingPhase]}</p><div className="audit-calculating-steps">{fc.loading.map((_,index)=><i key={index} className={index<=loadingPhase?"active":""}/>)}</div></section>}
+    {status==="__calculating__"&&<section className="audit-calculating"><div className="audit-calculating-mark"><img src="/images/brand/aurevia-logo-no-tagline.png" width="280" height="280" alt="AUREVIA"/></div><h1>{fc.loadingTitle}</h1><div className="audit-calculating-line"><span style={{width:`${((loadingPhase+1)/fc.loading.length)*100}%`}}/></div><p key={loadingPhase}>{fc.loading[loadingPhase]}</p><div className="audit-calculating-steps">{fc.loading.map((_,index)=><i key={index} className={index<=loadingPhase?"active":""}/>)}</div></section>}
     {status!=="__calculating__"&&<>
     {screen < 0 ? (()=>{const index=screen+2;const sale=sales[locale][index];if(index===1)return <AuditServicesIntro content={sale} onContinue={advance}/>;return <section className={`audit-sales audit-sales-${index}`} onPointerMove={event=>{const rect=event.currentTarget.getBoundingClientRect();setTilt({x:((event.clientY-rect.top)/rect.height-.5)*-1.6,y:((event.clientX-rect.left)/rect.width-.5)*2.2})}} onPointerLeave={()=>setTilt({x:0,y:0})}>
       {index===0&&<><video className="audit-sales-video" autoPlay muted loop playsInline poster="/images/home/hero-mobile-poster.webp"><source src="/videos/genova-hero.mp4" type="video/mp4"/></video><div className="audit-sales-shade"/></>}
       <motion.div className="audit-sales-card" animate={{rotateX:tilt.x,rotateY:tilt.y}} transition={{type:"spring",stiffness:90,damping:18,mass:.7}} style={{transformPerspective:1500,transformStyle:"preserve-3d"}}>
-        {index===0&&<div className="audit-sales-brand"><img src="/images/brand/aurevia-logo-transparent-gold.png" width={480} height={480} alt="AUREVIA"/></div>}
+        {index===0&&<div className="audit-sales-brand"><img src="/images/brand/aurevia-logo-no-tagline.png" width={480} height={480} alt="AUREVIA"/></div>}
         <h1>{sale.title}</h1><p className="audit-sales-text">{sale.text}</p>
         {sale.details ? <ol className="audit-service-lines">{sale.points.map((point,i)=><li key={point}><span className="audit-service-number">0{i+1}</span><strong>{point}</strong><span className="audit-service-detail">{sale.details?.[i]}</span></li>)}</ol> : <div className="audit-sales-points">{sale.points.map((point,i)=><span key={point}><b>0{i+1}</b>{point}</span>)}</div>}
         <button className="audit-primary" onClick={advance}>{sale.cta}<ArrowRight size={18}/></button>

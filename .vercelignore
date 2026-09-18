@@ -1,0 +1,11 @@
+.env*
+!.env.example
+.git
+.chrome-velyo-qa
+.codex-*.log
+Velyo
+research
+output
+outputs
+work
+*.tar.gz

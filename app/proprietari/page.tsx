@@ -1,78 +1,64 @@
 import Link from "next/link";
-import { ArrowRight, Check, FileText, KeyRound, LineChart, ShieldCheck } from "lucide-react";
-import { PageHero, CTA } from "@/components/PageHero";
+import { ArrowRight } from "lucide-react";
+import { PageHero } from "@/components/public-site/PageHero";
 import type { Metadata } from "next";
+import { OwnerClarityJourney, OwnerPromiseJourney } from "@/components/public-site/InteractiveSections";
+import { ConciergeRhythm } from "@/components/public-site/ConciergeRhythm";
+import { ItalianContent } from "@/components/public-site/ItalianContent";
+import { pageMetadata } from "@/lib/public-site/site-metadata";
 
-export const metadata: Metadata = {
-  title: "Gestione di affitti brevi per proprietari",
-  description: "Un interlocutore unico per valorizzare, proteggere e gestire la Sua proprietà a Genova e sulla Riviera Ligure, anche a distanza.",
-  alternates: { canonical: "/proprietari" },
-};
-import { OwnerClarityJourney } from "@/components/InteractiveSections";
+export const metadata: Metadata = pageMetadata({
+  title: "Gestione locativa a Genova",
+  description: "Confiez votre location courte durée à un interlocuteur local à Genova. AUREVIA gère les voyageurs, les prestataires, le bien et votre reporting.",
+  path: "/proprietari",
+});
 
-const managementPhases = [
-  {
-    number: "01",
-    label: "Mise en valeur",
-    title: "Préparer un bien qui inspire immédiatement confiance",
-    text: "Avant toute mise en location, nous examinons le positionnement, les équipements et le parcours d’arrivée. La présentation est construite pour valoriser les qualités réelles du bien sans créer de promesse artificielle.",
-    image: "/images/owners/preparation-aurevia.webp",
-    items: ["Audit du bien et de son positionnement", "Conseils décoration et équipements", "Création ou optimisation de l’annonce", "Recommandations pour la séance photo"],
-  },
-  {
-    number: "02",
-    label: "Exécution",
-    title: "Un niveau de préparation vérifié avant chaque séjour",
-    text: "Ménage, linge, inventaire et consommables suivent un cadre précis. Les prestataires sont coordonnés, les points sensibles sont contrôlés et les anomalies sont signalées avant qu’elles ne deviennent un incident voyageur.",
-    image: "/images/owners/controle-inventaire-aurevia.webp",
-    items: ["Coordination du ménage et du linge", "Contrôle visuel après intervention", "Suivi des stocks et de l’inventaire", "Organisation des maintenances nécessaires"],
-  },
-  {
-    number: "03",
-    label: "Pilotage",
-    title: "Chaque décision expliquée, chaque performance suivie",
-    text: "La gestion ne s’arrête pas à remplir un calendrier. Nous suivons les tarifs, l’occupation, les durées de séjour et les retours voyageurs afin d’ajuster la stratégie avec méthode et de rendre compte clairement au propriétaire.",
-    image: "/images/owners/reporting-aurevia.webp",
-    items: ["Tarification dynamique et calendrier", "Suivi de l’occupation et des séjours", "Compte rendu propriétaire régulier", "Recommandations d’amélioration documentées"],
-  },
+const ownerRelief = [
+  ["Le quotidien est pris en charge", "Réservations, voyageurs, préparation du bien et interventions : le périmètre est posé clairement."],
+  ["Chaque intervenant suit le même cadre", "Les rôles, les contacts et la marche à suivre sont définis avant le premier séjour."],
+  ["Votre accord reste la règle", "Vos périodes, votre budget et les décisions qui demandent toujours votre accord."],
+];
+
+const tailoredOrganisation = [
+  ["01", "Ce que nous gérons", "Réservations, voyageurs, préparation du bien et interventions : le périmètre est posé clairement."],
+  ["02", "Ce que vous gardez", "Vos périodes, votre budget et les décisions qui demandent toujours votre accord."],
+  ["03", "Comment nous agissons", "Les rôles, les contacts et la marche à suivre sont définis avant le premier séjour."],
+  ["04", "Ce que vous recevez", "Des nouvelles au rythme choisi, avec les faits utiles et les décisions à prendre."],
 ];
 
 export default function Page() {
-  return <>
-    <PageHero label="Pour les propriétaires" title="Votre propriété pilotée avec méthode, même à distance" text="AUREVIA coordonne la mise en valeur, les voyageurs, les prestataires et les performances depuis un interlocuteur unique." image="/images/owners/property-care.webp"/>
-
-    <section className="section ivory owner-intro"><div className="container">
-      <div className="owner-intro-grid">
-        <div><p className="eyebrow dark">Une gestion lisible</p><h2>Moins de contraintes. Plus de maîtrise.</h2></div>
-        <div><p>Vous conservez la vision et les décisions importantes. Nous prenons en charge l’exécution quotidienne, avec un cadre défini ensemble et une communication régulière.</p><Link className="text-link" href="/valutazione">Étudier ma propriété <ArrowRight size={16}/></Link></div>
-      </div>
-      <div className="owner-pillars">
-        <div><KeyRound/><span>Un interlocuteur unique</span><p>Pour coordonner voyageurs, prestataires et imprévus.</p></div>
-        <div><LineChart/><span>Une stratégie active</span><p>Pour ajuster prix, occupation et durées de séjour.</p></div>
-        <div><ShieldCheck/><span>Un bien suivi</span><p>Pour contrôler la préparation et documenter les incidents.</p></div>
-        <div><FileText/><span>Des comptes rendus clairs</span><p>Pour savoir ce qui a été fait, quand et pourquoi.</p></div>
+  return <ItalianContent>
+    <PageHero label="Déléguer sans disparaître" title="Votre bien, sous contrôle" text="AUREVIA prend en charge la location à Genova. Vous gardez la visibilité, vos règles et les décisions qui comptent." image="/images/public-site/concierge/owner-conversation-premium.webp" />
+    <section className="section ivory owner-intro"><div className="container watermark-heading owner-page-watermark owner-page-watermark--left"><p className="section-watermark" aria-hidden="true">LA CONFIANCE SE CONSTRUIT</p>
+      <p className="eyebrow dark">Des faits à chaque étape</p>
+      <div className="owner-intro-editorial"><div><h2><span>Vous savez ce qui est fait.</span><em>Et pourquoi.</em></h2></div><div className="owner-intro-statement"><p>Du diagnostic à l’optimisation, chaque étape précise l’action menée, le résultat attendu et les informations que vous recevez.</p><Link className="text-link" href="/valutazione">Confier mon bien <ArrowRight size={16} /></Link></div></div>
+      <OwnerPromiseJourney />
+    </div></section>
+    <section className="section owner-comparison"><div className="container watermark-heading owner-page-watermark owner-page-watermark--right"><p className="section-watermark" aria-hidden="true">VOTRE PLAN DE GESTION</p>
+      <p className="eyebrow">Un cadre défini ensemble</p>
+      <div className="owner-tailored-heading"><div><h2>Un cadre sur mesure. Pas d’improvisation.</h2></div><p>Avant le premier séjour, nous définissons le périmètre, les validations, le budget, vos périodes personnelles et le rythme des comptes rendus.</p></div>
+      <div className="owner-tailored-composition">
+        <article className="owner-tailored-plan">
+          <div className="owner-tailored-plan-intro">
+            <div className="owner-tailored-plan-copy"><h3>Chaque personne sait quoi faire.</h3><p>Le fonctionnement est défini, documenté puis appliqué au quotidien. AUREVIA peut agir rapidement sans redemander les mêmes consignes à chaque situation.</p></div>
+          </div>
+          <div className="owner-tailored-scope"><div className="owner-tailored-details">{tailoredOrganisation.map(([number, label, text]) => <article key={number} tabIndex={0}><span>{number}</span><div><strong>{label}</strong><p>{text}</p></div><i aria-hidden="true">+</i></article>)}</div></div>
+        </article>
+        <aside className="owner-tailored-relief">
+          <div className="owner-tailored-relief-heading">
+            <h3>Le quotidien avance.<br/><em>Vous gardez le cap.</em></h3>
+            <p>Le cadre posé ensemble permet à AUREVIA d’agir sur le quotidien et de vous solliciter uniquement lorsque votre accord est nécessaire.</p>
+            <Link className="owner-tailored-relief-link" href="/valutazione">Confier mon bien <ArrowRight size={15} /></Link>
+          </div>
+          <ol>{ownerRelief.map(([title, text], index) => <li key={title}><span>0{index + 1}</span><div><strong>{title}</strong><p>{text}</p></div></li>)}</ol>
+        </aside>
       </div>
     </div></section>
-
-    <section className="section owner-comparison"><div className="container">
-      <p className="eyebrow">Ce qui change pour vous</p>
-      <h2>Votre propriété ne dicte plus votre quotidien.</h2>
-      <p className="owner-comparison-intro">Vous gardez les décisions qui comptent. Nous absorbons tout ce qui mobilise votre temps, votre attention et votre disponibilité.</p>
-      <div className="comparison owner-comparison-grid">
-        <div><span>Lorsque vous gérez seul</span><h3>Votre bien reste toujours dans un coin de votre tête.</h3><ul><li>Vous surveillez les messages, même lorsque vous devriez décrocher</li><li>Vous coordonnez plusieurs personnes sans savoir qui relancer</li><li>Vous prenez des décisions rapides avec une information incomplète</li><li>Un imprévu suffit à désorganiser votre journée</li><li>Vous vous demandez régulièrement si tout est vraiment sous contrôle</li></ul><strong>Votre propriété devient une responsabilité permanente.</strong></div>
-        <div><span>Avec AUREVIA</span><h3>Vous savez que quelqu’un veille, décide et agit.</h3><ul><li>Une seule personne connaît votre bien et porte chaque sujet</li><li>Vous êtes informé au bon moment, sans être sollicité pour chaque détail</li><li>Les voyageurs, prestataires et incidents sont gérés sans interrompre votre quotidien</li><li>Chaque décision importante vous est présentée clairement</li><li>Vous retrouvez votre propriété prête, suivie et préservée</li></ul><strong>Vous gardez la maîtrise. Vous retrouvez l’esprit libre.</strong></div>
-      </div>
+    <section className="section ivory owner-management concierge-offer-section"><div className="container watermark-heading owner-page-watermark owner-page-watermark--center"><p className="section-watermark" aria-hidden="true">CHAQUE SÉJOUR SUIVI</p>
+      <p className="eyebrow dark">Le cycle de chaque location</p>
+      <div className="owner-management-heading"><div><h2>Chaque séjour prépare déjà le suivant.</h2></div><p>Nous préparons le bien, gérons le séjour et le remettons à niveau avant l’arrivée suivante.</p></div>
+      <ConciergeRhythm />
     </div></section>
-
-    <section className="section ivory owner-management"><div className="container">
-      <div className="owner-management-heading"><p className="eyebrow dark">Ce que nous gérons</p><h2>De la première visite au rapport propriétaire</h2><p>Trois temps structurent notre accompagnement. Chaque étape possède ses contrôles, ses responsables et ses livrables.</p></div>
-      <div className="owner-phases">{managementPhases.map((phase) => <article key={phase.number} className="owner-phase">
-        <div className="owner-phase-image" style={{backgroundImage:`url(${phase.image})`}} role="img" aria-label={phase.title}/>
-        <div className="owner-phase-content"><span>{phase.number} · {phase.label}</span><h3>{phase.title}</h3><p>{phase.text}</p><ul>{phase.items.map(item => <li key={item}><Check size={15}/>{item}</li>)}</ul></div>
-      </article>)}</div>
-    </div></section>
-
-    <section className="owner-transparency"><div className="container"><OwnerClarityJourney/></div></section>
-    <CTA/>
-  </>;
+    <section className="owner-transparency"><div className="container"><OwnerClarityJourney /></div></section>
+  </ItalianContent>;
 }
