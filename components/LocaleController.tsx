@@ -60,12 +60,11 @@ export function LocaleController({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const requested = new URLSearchParams(window.location.search).get("lang");
-    const stored = localStorage.getItem("aurevia-locale");
+    // Only an explicit language link can override Italian on a fresh page load.
+    // Never infer a language from the device or a previous visit's storage/cookie.
     const initial = requested && locales.some((code) => code === requested)
       ? requested as Locale
-      : stored && locales.some((code) => code === stored)
-        ? stored as Locale
-        : DEFAULT_LOCALE;
+      : DEFAULT_LOCALE;
     const frame = requestAnimationFrame(() => updateLocale(initial));
     return () => cancelAnimationFrame(frame);
   }, []);
@@ -128,8 +127,7 @@ export function LocaleController({ children }: { children: React.ReactNode }) {
   }, [locale, pathname]);
 
   const setLocale = useCallback((next: Locale) => {
-    localStorage.setItem("aurevia-locale", next);
-    document.cookie = `aurevia-locale=${next}; path=/; max-age=31536000; samesite=lax`;
+    // Keep the manual choice while navigating; a new visit starts in Italian.
     updateLocale(next);
     window.dispatchEvent(new CustomEvent("aurevia:locale", { detail: next }));
   }, []);

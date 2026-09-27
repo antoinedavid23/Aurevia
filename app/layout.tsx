@@ -26,6 +26,7 @@ import "./aurevia-public-layouts.css";
 import "./aurevia-public-theme.css";
 
 export const metadata: Metadata = {
+  other: { google: "notranslate" },
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://aurevia-genova.com"),
   title: { default: "AUREVIA | Gestione di affitti brevi a Genova e in Liguria", template: "%s | AUREVIA" },
   description: "Gestione di affitti brevi e property management su misura per proprietà di pregio e seconde case a Genova e in Liguria.",
@@ -81,5 +82,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       },
     ],
   };
-  return <html lang="it" className="locale-pending"><body><BrandLogoFilter/><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(structuredData)}}/><LocaleController><SiteShell>{children}</SiteShell><MarketingConsent/></LocaleController><Analytics /><SpeedInsights /><noscript><style>{`.locale-pending body{visibility:visible!important}`}</style></noscript></body></html>;
+  return <html lang="it" translate="no" className="locale-pending"><body><BrandLogoFilter/><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(structuredData)}}/><LocaleController><SiteShell>{children}</SiteShell><MarketingConsent/></LocaleController><Analytics /><SpeedInsights /><noscript><style>{`.locale-pending body{visibility:visible!important}`}</style></noscript></body></html>;
 }

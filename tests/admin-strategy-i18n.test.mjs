@@ -21,7 +21,7 @@ async function componentModule(path, signedIn = true) {
     else if (specifier === "@/lib/admin") resolved = dataUrl(`export const getAdminUser = async () => ${signedIn ? '({id:"test-admin"})' : 'null'};`);
     else if (specifier === "next/navigation") resolved = dataUrl('export const redirect = path => { throw new Error(`redirect:${path}`); };');
     else if (specifier === "next/link") resolved = dataUrl(`import {createElement} from ${JSON.stringify(import.meta.resolve("react"))}; export default function Link({href, scroll, children, ...props}) { return createElement("a", {...props, href: typeof href === "string" ? href : href.pathname + "?" + new URLSearchParams(href.query)}, children); }`);
-    else if (specifier === "@/components/StrategyEconomics") resolved = await componentModule("components/StrategyEconomics.tsx");
+    else if (specifier.startsWith("@/components/Strategy")) resolved = await componentModule(`${specifier.slice(2)}.tsx`);
     else if (specifier.startsWith("@/lib/")) resolved = await typescriptModuleUrl(`${specifier.slice(2)}.ts`);
     else resolved = import.meta.resolve(specifier);
     source = source.replaceAll(JSON.stringify(specifier), JSON.stringify(resolved));
@@ -69,6 +69,11 @@ for (const [locale, heading, feeLabel] of [
     assert.equal((html.match(/<details/g) || []).length, 30);
     assert.equal((html.match(/<section /g) || []).length, 15);
     assert.equal((html.match(/type="range"/g) || []).length, 4);
+    assert.equal((html.match(/<option /g) || []).length, 15);
+    assert.equal((html.match(/role="table"/g) || []).length, 3);
+    assert.equal((html.match(/data-label=/g) || []).length, 158);
+    const label = {it:"Promessa / valore",fr:"Promesse / valeur",en:"Promise / value"}[locale];
+    assert.ok(html.includes(`data-label="${label}"`));
     const expectedGmv = new Intl.NumberFormat({it:"it-IT",fr:"fr-FR",en:"en-GB"}[locale], {style:"currency",currency:"EUR",maximumFractionDigits:0}).format(157500);
     assert.ok(html.includes(expectedGmv), "identical economic result, localised formatting only");
     if (locale !== "it") {

@@ -45,21 +45,21 @@ export function StrategyEconomics({ locale = "it" }: { locale?: StrategyLocale }
 
   return <div className={styles.calculator}>
     <div className={styles.controls}>
-      <label htmlFor={`${fieldId}-properties`}>{copy.properties}
+      <label htmlFor={`${fieldId}-properties`}>
+        <span className={styles.controlHeading}><span>{copy.properties}</span><output htmlFor={`${fieldId}-properties`} aria-hidden="true">{properties}</output></span>
         <input id={`${fieldId}-properties`} type="range" min="1" max="80" value={properties} onChange={(event) => setProperties(Number(event.target.value))}/>
-        <output htmlFor={`${fieldId}-properties`} aria-hidden="true">{properties}</output>
       </label>
-      <label htmlFor={`${fieldId}-adr`}>{copy.adr}
+      <label htmlFor={`${fieldId}-adr`}>
+        <span className={styles.controlHeading}><span>{copy.adr}</span><output htmlFor={`${fieldId}-adr`} aria-hidden="true">{euro.format(adr)}</output></span>
         <input id={`${fieldId}-adr`} type="range" min="90" max="350" step="5" value={adr} onChange={(event) => setAdr(Number(event.target.value))}/>
-        <output htmlFor={`${fieldId}-adr`} aria-hidden="true">{euro.format(adr)}</output>
       </label>
-      <label htmlFor={`${fieldId}-occupancy`}>{copy.occupancy}
+      <label htmlFor={`${fieldId}-occupancy`}>
+        <span className={styles.controlHeading}><span>{copy.occupancy}</span><output htmlFor={`${fieldId}-occupancy`} aria-hidden="true">{occupancy}%</output></span>
         <input id={`${fieldId}-occupancy`} type="range" min="35" max="95" value={occupancy} onChange={(event) => setOccupancy(Number(event.target.value))}/>
-        <output htmlFor={`${fieldId}-occupancy`} aria-hidden="true">{occupancy}%</output>
       </label>
-      <label htmlFor={`${fieldId}-fee`}>{copy.fee}
+      <label htmlFor={`${fieldId}-fee`}>
+        <span className={styles.controlHeading}><span>{copy.fee}</span><output htmlFor={`${fieldId}-fee`} aria-hidden="true">{fee}%</output></span>
         <input id={`${fieldId}-fee`} type="range" min="15" max="35" value={fee} onChange={(event) => setFee(Number(event.target.value))}/>
-        <output htmlFor={`${fieldId}-fee`} aria-hidden="true">{fee}%</output>
       </label>
     </div>
 

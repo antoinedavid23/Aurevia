@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { StrategyEconomics } from "@/components/StrategyEconomics";
+import { StrategyNavigation } from "@/components/StrategyNavigation";
+import { StrategyTable } from "@/components/StrategyTable";
 import { getAdminUser } from "@/lib/admin";
 import { getStrategyLocale, strategyLocaleNames } from "@/lib/strategy-locale";
 import { translateStrategy, translateStrategyTree } from "@/lib/strategy-i18n";
@@ -189,9 +191,9 @@ export default async function StrategyPage({ searchParams }: StrategyPageProps) 
       <div className={styles.meta}><span>Aggiornato 5 agosto 2026</span><span>10 fonti NotebookLM pronte</span><span>Solo fonti gratuite</span><span>Segnale social 90 giorni: debole</span><span>Accesso amministratore</span></div>
     </header>
 
-    <nav className={styles.nav} aria-label="Indice strategico">
+    <StrategyNavigation label={translateStrategy("Indice strategico", locale)}>
       <a href="#decisione">Decisione</a><a href="#economia">Economia</a><a href="#swot">SWOT</a><a href="#concorrenti">Concorrenti</a><a href="#offerta">Offerta</a><a href="#marketing">Marketing</a><a href="#copy">Copy</a><a href="#ads">30 Ads</a><a href="#funnel">Funnel</a><a href="#landing">Landing</a><a href="#opportunita">Opportunità</a><a href="#oceano">Blue Ocean</a><a href="#genova">Genova</a><a href="#roadmap">Roadmap</a><a href="#fonti">Fonti</a>
-    </nav>
+    </StrategyNavigation>
 
     <main className={styles.main}>
       <section id="decisione" className={styles.section}>
@@ -227,7 +229,7 @@ export default async function StrategyPage({ searchParams }: StrategyPageProps) 
 
       <section id="concorrenti" className={styles.section}>
         <SectionHeader index="03" title="Posizionamento competitivo">Gli attori non sono tutti luxury. La tabella separa scala, livello di gamma e vantaggio realmente visibile; “su preventivo” significa che il prezzo non è verificabile pubblicamente.</SectionHeader>
-        <div className={styles.tableWrap}><table className={styles.table}><thead><tr><th>Attore</th><th>Promessa / valore</th><th>Cliente / gamma</th><th>Prova visibile</th><th>Genova</th><th>Prezzo pubblico</th><th>Lettura Aurevia</th></tr></thead><tbody>{competitors.map((item)=><tr key={item.name}><td><a href={item.url} target="_blank" rel="noreferrer"><b>{item.name}</b></a></td><td>{item.promise}</td><td>{item.client}<br/><span className={styles.confidence}>{item.level}</span></td><td>{item.proof}</td><td>{item.genova}</td><td>{item.price}</td><td>{item.lesson}</td></tr>)}</tbody></table></div>
+        <div className={styles.tableWrap}><StrategyTable><thead><tr><th>Attore</th><th>Promessa / valore</th><th>Cliente / gamma</th><th>Prova visibile</th><th>Genova</th><th>Prezzo pubblico</th><th>Lettura Aurevia</th></tr></thead><tbody>{competitors.map((item)=><tr key={item.name}><td><a href={item.url} target="_blank" rel="noreferrer"><b>{item.name}</b></a></td><td>{item.promise}</td><td>{item.client}<br/><span className={styles.confidence}>{item.level}</span></td><td>{item.proof}</td><td>{item.genova}</td><td>{item.price}</td><td>{item.lesson}</td></tr>)}</tbody></StrategyTable></div>
         <div className={styles.callout} style={{marginTop:18}}><strong>Sintesi</strong><p>Wonderful Italy possiede la scala; Italianway la piattaforma; Owner Value la trasparenza locale; AlterEgo l’esclusività dichiarata. Aurevia deve possedere l’intersezione che nessuno dimostra completamente: Genova + custodia patrimoniale + controllo multi-bene + responsabilità personale.</p></div>
       </section>
 
@@ -313,7 +315,7 @@ export default async function StrategyPage({ searchParams }: StrategyPageProps) 
 
       <section id="opportunita" className={styles.section}>
         <SectionHeader index="10" title="Opportunità non occupate: scoring ponderato">Scala 1–5 applicata a impatto commerciale 30%, fit premium 20%, difendibilità 20%, facilità 15%, costo 10% e velocità 5%. Il punteggio è giudizio consulenziale, non dato di mercato.</SectionHeader>
-        <div className={styles.tableWrap}><table className={styles.table}><thead><tr><th>Rank</th><th>Opportunità</th><th>Score /100</th><th>Valutazioni 1–5</th><th>Cosa crea</th><th>Timing</th></tr></thead><tbody>{opportunities.map((item,index)=>{const score=opportunityScore(item.ratings); return <tr key={item.name}><td>{index+1}</td><td><b>{item.name}</b></td><td><span className={styles.score}>{score}</span><div className={styles.bar}><i style={{width:`${score}%`}}/></div></td><td>I {item.ratings[0]} · P {item.ratings[1]} · D {item.ratings[2]} · F {item.ratings[3]} · C {item.ratings[4]} · V {item.ratings[5]}</td><td>{item.copy}</td><td>{item.timing}</td></tr>})}</tbody></table></div>
+        <div className={styles.tableWrap}><StrategyTable><thead><tr><th>Rank</th><th>Opportunità</th><th>Score /100</th><th>Valutazioni 1–5</th><th>Cosa crea</th><th>Timing</th></tr></thead><tbody>{opportunities.map((item,index)=>{const score=opportunityScore(item.ratings); return <tr key={item.name}><td>{index+1}</td><td><b>{item.name}</b></td><td><span className={styles.score}>{score}</span><div className={styles.bar}><i style={{width:`${score}%`}}/></div></td><td>I {item.ratings[0]} · P {item.ratings[1]} · D {item.ratings[2]} · F {item.ratings[3]} · C {item.ratings[4]} · V {item.ratings[5]}</td><td>{item.copy}</td><td>{item.timing}</td></tr>})}</tbody></StrategyTable></div>
         <p className={styles.methodNote} style={{marginTop:10}}>I = impatto commerciale · P = compatibilità premium · D = difendibilità · F = facilità · C = costo favorevole · V = velocità.</p>
         <div className={styles.callout} style={{marginTop:18}}><strong>Ordine di esecuzione</strong><p>Traveler Select è il miglior quick win: elevata rilevanza, facile da spiegare e relativamente rapido. Command Center e Passaporto patrimoniale sono le barriere più profonde: richiedono disciplina dati, ma diventano più forti a ogni mese di gestione.</p></div>
       </section>
@@ -349,12 +351,12 @@ export default async function StrategyPage({ searchParams }: StrategyPageProps) 
           <article><span>30–90 giorni</span><h3>Provare il sistema</h3><ul><li>Firmare 3–5 immobili faro, non qualsiasi immobile.</li><li>Attivare paid con 1.000 €/mese e due intenti.</li><li>Produrre il primo case log verificato, anche senza uplift.</li><li>Testare 6 ads: controllo, custodia, stima.</li><li>Avviare partner referral con recap mensile.</li><li>Misurare costo e margine per immobile.</li><li>Review operativa settimanale del team.</li></ul><div className={styles.gate}><b>Gate:</b> onboarding ≤21 giorni, reporting puntuale, incidenti tracciati, margine di contribuzione positivo per immobile.</div></article>
           <article><span>90–180 giorni</span><h3>Scalare con densità</h3><ul><li>Target base 12–20 immobili attivi.</li><li>Cercare 2–4 proprietari portafoglio, non 30 lead isolati.</li><li>Formalizzare rete partner e backup.</li><li>Automatizzare Command Center e Passaporto.</li><li>Creare owner review trimestrale e referral.</li><li>Aggiungere coordinamento operativo prima del sovraccarico.</li><li>Passare a 50 solo con contratto portafoglio e gate verdi.</li></ul><div className={styles.gate}><b>Gate 50:</b> 2 backup critici, rating ospiti ≥4,8, issue SLA ≥95%, churn proprietari &lt;2%/mese e margine ≥40% sul perimetro definito.</div></article>
         </div>
-        <div className={styles.tableWrap} style={{marginTop:18}}><table className={styles.table}><thead><tr><th>KPI primario</th><th>Definizione</th><th>Driver</th><th>Guardrail</th><th>Cadence</th></tr></thead><tbody>
+        <div className={styles.tableWrap} style={{marginTop:18}}><StrategyTable><thead><tr><th>KPI primario</th><th>Definizione</th><th>Driver</th><th>Guardrail</th><th>Cadence</th></tr></thead><tbody>
           <tr><td><b>Immobili attivi profittevoli</b></td><td>Unità live con margine di contribuzione positivo dopo costi variabili.</td><td>Nuove firme, tempo onboarding, GMV/unità.</td><td>Nessun volume che abbassi qualità o SLA.</td><td>Settimanale</td></tr>
           <tr><td><b>Margine di contribuzione</b></td><td>(Ricavi gestione − costi variabili attribuibili) / ricavi gestione.</td><td>Commissione, densità, costo partner, incidenti.</td><td>Costi fissi e compenso founder separati.</td><td>Mensile</td></tr>
           <tr><td><b>Fiducia proprietario</b></td><td>Retention, NPS/CSAT e issue chiuse entro SLA.</td><td>Reporting puntuale, tempo risposta, decisioni tracciate.</td><td>Rating ospite, danni, reclami vicinato.</td><td>Mensile / trimestrale</td></tr>
           <tr><td><b>Pipeline ponderata</b></td><td>Unità potenziali × probabilità di fase, non semplice numero di lead.</td><td>Partner attivi, call qualificate, proposte.</td><td>CAC e fit premium.</td><td>Settimanale</td></tr>
-        </tbody></table></div>
+        </tbody></StrategyTable></div>
       </section>
 
       <section id="fonti" className={styles.section}>
