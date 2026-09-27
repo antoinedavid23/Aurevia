@@ -26,6 +26,46 @@ test('the original video hero and logo remain on the homepage', () => {
   assert.doesNotMatch(source, /aurevia-hero-image/);
 });
 
+test('decorative phrases gain responsive contrast without changing foreground typography', () => {
+  const theme = postcss.parse(read('app/aurevia-public-theme.css'));
+  const alphaValues = [];
+  theme.walkDecls('--aurevia-watermark-alpha', decl => alphaValues.push(Number(decl.value)));
+  assert.deepEqual(alphaValues, [.28, .22, .36, .28]);
+  const watermarkRule = theme.nodes.find(rule => rule.type === 'rule' && rule.selector.includes('main :is(.section-watermark,'));
+  assert.ok(watermarkRule);
+  assert.ok(watermarkRule.selector.includes('.owner-welcome .watermark-heading--image-side > .section-watermark'));
+  assert.ok(watermarkRule.selector.includes('.about-values-new-heading)::before'));
+  assert.deepEqual(watermarkRule.nodes.map(decl => decl.prop), ['color', 'opacity', 'pointer-events', 'user-select']);
+  assert.equal(watermarkRule.nodes.find(decl => decl.prop === 'color').important, true);
+  assert.equal(watermarkRule.nodes.find(decl => decl.prop === 'pointer-events').value, 'none');
+});
+
+test('homepage mosaic resets high-specificity grid placements on mobile only', () => {
+  const theme = postcss.parse(read('app/aurevia-public-theme.css'));
+  const mosaicRules = [];
+  theme.walkRules(rule => {
+    if (!rule.selector.includes('.aurevia-experience-mosaic')) return;
+    assert.equal(rule.parent.type, 'atrule');
+    assert.equal(rule.parent.name, 'media');
+    assert.equal(rule.parent.params, '(max-width: 760px)', 'Desktop mosaic must stay unchanged');
+    assert.ok(rule.selector.includes('.home-gallery'));
+    mosaicRules.push(rule);
+  });
+  const grid = mosaicRules.find(rule => rule.selector.endsWith('.aurevia-experience-mosaic.experience-mosaic'));
+  const children = mosaicRules.find(rule => rule.selector.endsWith('> :nth-child(n)'));
+  const images = mosaicRules.find(rule => rule.selector.endsWith('> .experience-visual'));
+  const value = (rule, prop) => rule.nodes.find(decl => decl.prop === prop);
+  assert.equal(value(grid, 'grid-template-columns').value, 'minmax(0, 1fr)');
+  assert.equal(value(grid, 'grid-template-rows').value, 'none');
+  assert.equal(value(children, 'grid-column').value, '1 / -1');
+  assert.equal(value(children, 'grid-row').value, 'auto');
+  assert.equal(value(children, 'grid-column').important, true);
+  assert.equal(value(children, 'grid-row').important, true);
+  assert.equal(value(children, 'height').value, 'auto');
+  assert.equal(value(images, 'min-height').value, 'clamp(320px, 95vw, 440px)');
+  assert.equal(value(images, 'background-size').value, 'cover');
+});
+
 test('public styles and animation names cannot leak into private screens', () => {
   for (const file of ['app/aurevia-public-layouts.css','app/aurevia-public-theme.css']) {
     const tree = postcss.parse(read(file));
